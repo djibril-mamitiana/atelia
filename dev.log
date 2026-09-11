@@ -1,0 +1,230 @@
+
+> ecommerce-premium@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.137.1:3000
+- Environments: .env
+✓ Ready in 500ms
+✓ Running next.config.ts took 49ms
+
+(node:20328) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /categories 200 in 3.4s (next.js: 481ms, application-code: 2.9s)
+ GET / 200 in 5.5s (next.js: 39ms, application-code: 5.4s)
+ GET /produits 200 in 658ms (next.js: 20ms, application-code: 638ms)
+ GET /categories 200 in 382ms (next.js: 4ms, application-code: 379ms)
+ GET /categories/electroportatif 200 in 1699ms (next.js: 593ms, application-code: 1106ms)
+ GET / 200 in 2.1s (next.js: 3ms, application-code: 2.1s)
+ GET /produits/kit-darrosage-automatique-connecte-wi-fi 200 in 3.1s (next.js: 602ms, application-code: 2.5s)
+ GET /categories 200 in 372ms (next.js: 3ms, application-code: 369ms)
+ GET / 200 in 2.1s (next.js: 3ms, application-code: 2.1s)
+ GET /produits 200 in 672ms (next.js: 3ms, application-code: 669ms)
+ GET /panier 200 in 319ms (next.js: 24ms, application-code: 294ms)
+ GET /tutoriels/comment-choisir-sa-perceuse 200 in 1703ms (next.js: 631ms, application-code: 1072ms)
+[browser] Image with src "https://picsum.photos/seed/atelia-12/1000/1000" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET /categories/quincaillerie 200 in 3.7s (next.js: 12ms, application-code: 3.6s)
+ GET /categories/quincaillerie 200 in 2.3s (next.js: 8ms, application-code: 2.3s)
+ GET /categories/quincaillerie 200 in 3.4s (next.js: 8ms, application-code: 3.4s)
+ GET /categories/quincaillerie 200 in 947ms (next.js: 8ms, application-code: 939ms)
+ GET /categories/quincaillerie 200 in 919ms (next.js: 3ms, application-code: 916ms)
+ GET /categories/quincaillerie 200 in 1106ms (next.js: 8ms, application-code: 1098ms)
+ GET /categories/quincaillerie 200 in 1043ms (next.js: 3ms, application-code: 1040ms)
+ GET /categories/quincaillerie 200 in 1117ms (next.js: 3ms, application-code: 1114ms)
+ GET /categories/quincaillerie 200 in 1049ms (next.js: 8ms, application-code: 1041ms)
+ GET /categories/outillage 200 in 961ms (next.js: 16ms, application-code: 944ms)
+ GET / 200 in 575ms (next.js: 5ms, application-code: 570ms)
+ GET / 200 in 723ms (next.js: 23ms, application-code: 700ms)
+ GET / 200 in 580ms (next.js: 9ms, application-code: 571ms)
+[browser] Image with src "https://picsum.photos/seed/atelia-6/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-25/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-19/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-5/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-13/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-12/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-3/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-20/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-8/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-18/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ GET / 200 in 1107ms (next.js: 4ms, application-code: 1103ms)
+[browser] Image with src "https://picsum.photos/seed/atelia-8/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-6/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-3/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-20/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-25/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-19/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-18/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-5/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ GET /categories/jardin 200 in 991ms (next.js: 22ms, application-code: 969ms)
+ GET /categories/maison 200 in 1006ms (next.js: 10ms, application-code: 996ms)
+ GET /panier 200 in 2.2s (next.js: 5ms, application-code: 2.2s)
+[browser] Image with src "https://picsum.photos/seed/atelia-12/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-14/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ GET /checkout 200 in 424ms (next.js: 393ms, application-code: 30ms)
+ GET /connexion?next=%2Fcheckout 200 in 76ms (next.js: 30ms, application-code: 46ms)
+ GET /connexion?next=%2Fcheckout 200 in 24ms (next.js: 3ms, application-code: 21ms)
+ GET /inscription?next=%2Fcheckout 200 in 53ms (next.js: 30ms, application-code: 23ms)
+ POST /inscription?next=%2Fcheckout 200 in 53ms (next.js: 3ms, application-code: 50ms)
+  └─ ƒ registerAction({"email":"raobeliaandotiana@gmail.com","firstName":"Raobelia","lastName":"Andotiana","...":"2 items not stringified"}) in 5ms src/server/actions/auth.actions.ts
+ POST /inscription?next=%2Fcheckout 200 in 5.8s (next.js: 5ms, application-code: 5.8s)
+  └─ ƒ registerAction({"email":"raobeliaandotiana@gmail.com","firstName":"Raobelia","lastName":"Andotiana","...":"2 items not stringified"}) in 3404ms src/server/actions/auth.actions.ts
+ GET /checkout 200 in 2.6s (next.js: 5ms, application-code: 2.6s)
+ GET /checkout 200 in 2.6s (next.js: 4ms, application-code: 2.6s)
+ GET /checkout 200 in 3.4s (next.js: 2ms, application-code: 3.4s)
+ POST /checkout 200 in 5.5s (next.js: 4ms, application-code: 5.5s)
+  └─ ƒ addAddressAction({"city":"Tana","country":"FR","firstName":"Raobelia","...":"5 items not stringified"}) in 1788ms src/server/actions/address.actions.ts
+ POST /checkout 200 in 4.6s (next.js: 3ms, application-code: 4.6s)
+  └─ ƒ createOrderAction({"billingAddressId":"cmtuov07g0001oocimnxp3jf7","customerNote":"buien","shippingAddressId":"cmtuov07g0001oocimnxp3jf7","...":"1 item not stringified"}) in 4556ms src/server/actions/checkout.actions.ts
+ GET /commande/cmtuovdos0002oocir7syckvw 200 in 3.0s (next.js: 1043ms, application-code: 1918ms)
+ GET / 200 in 3.3s (next.js: 6ms, application-code: 3.3s)
+[browser] Image with src "https://picsum.photos/seed/atelia-8/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-6/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-3/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-20/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-25/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-19/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-18/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-5/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ GET / 200 in 8ms (next.js: 3ms, application-code: 4ms)
+ POST / 200 in 2.5s (next.js: 10ms, application-code: 2.5s)
+  └─ ƒ logoutAction() in 2ms src/server/actions/auth.actions.ts
+ GET / 200 in 2.4s (next.js: 4ms, application-code: 2.4s)
+ GET / 200 in 2.5s (next.js: 44ms, application-code: 2.5s)
+ GET / 200 in 2.6s (next.js: 3ms, application-code: 2.6s)
+[browser] Image with src "https://picsum.photos/seed/atelia-30/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-13/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-28/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-24/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-12/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-2/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ POST / 200 in 37ms (next.js: 4ms, application-code: 33ms)
+  └─ ƒ toggleFavoriteAction("cmtunl371009gt0cih9qimljc") in 23ms src/server/actions/favorite.actions.ts
+ GET /tutoriels 200 in 1655ms (next.js: 32ms, application-code: 1623ms)
+ GET / 200 in 3.2s (next.js: 3ms, application-code: 3.2s)
+ GET /connexion 200 in 46ms (next.js: 13ms, application-code: 34ms)
+ GET /compte 200 in 1850ms (next.js: 230ms, proxy.ts: 6ms, application-code: 1614ms)
+ GET /compte 200 in 2.1s (next.js: 5ms, proxy.ts: 8ms, application-code: 2.1s)
+ POST /connexion 200 in 4.4s (next.js: 3ms, application-code: 4.4s)
+  └─ ƒ loginAction({"email":"raobeliaandotiana@gmail.com","password":"A123654789"}) in 1871ms src/server/actions/auth.actions.ts
+ GET /compte 200 in 2.3s (next.js: 3ms, proxy.ts: 5ms, application-code: 2.3s)
+ GET /compte/profil 200 in 490ms (next.js: 230ms, proxy.ts: 5ms, application-code: 256ms)
+ GET /compte/profil 200 in 265ms (next.js: 5ms, proxy.ts: 11ms, application-code: 249ms)
+ GET /compte/commandes 200 in 813ms (next.js: 183ms, proxy.ts: 6ms, application-code: 624ms)
+ GET /compte/commandes 200 in 511ms (next.js: 3ms, proxy.ts: 6ms, application-code: 502ms)
+ GET /compte/commandes/cmtuovdos0002oocir7syckvw 200 in 1943ms (next.js: 947ms, proxy.ts: 6ms, application-code: 989ms)
+ GET / 200 in 2.4s (next.js: 5ms, application-code: 2.4s)
+[browser] Image with src "https://picsum.photos/seed/atelia-25/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-19/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-5/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-6/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-8/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-3/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-20/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-18/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ GET / 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST / 200 in 2.4s (next.js: 3ms, application-code: 2.4s)
+  └─ ƒ logoutAction() in 4ms src/server/actions/auth.actions.ts
+ GET / 200 in 2.3s (next.js: 4ms, application-code: 2.3s)
+ GET / 200 in 2.6s (next.js: 29ms, application-code: 2.5s)
+ GET / 200 in 2.6s (next.js: 4ms, application-code: 2.6s)
+ GET /connexion 200 in 45ms (next.js: 14ms, application-code: 31ms)
+ GET /compte 200 in 275ms (next.js: 7ms, proxy.ts: 8ms, application-code: 260ms)
+ GET /compte 200 in 988ms (next.js: 3ms, proxy.ts: 5ms, application-code: 980ms)
+ POST /connexion 200 in 1608ms (next.js: 3ms, application-code: 1605ms)
+  └─ ƒ loginAction({"email":"christoftran@gmail.com","password":"Admin1234!"}) in 514ms src/server/actions/auth.actions.ts
+ GET /compte 200 in 1072ms (next.js: 4ms, proxy.ts: 5ms, application-code: 1063ms)
+ GET /admin 200 in 1139ms (next.js: 346ms, proxy.ts: 5ms, application-code: 788ms)
+ GET /admin/products 200 in 1123ms (next.js: 336ms, proxy.ts: 12ms, application-code: 775ms)
+ GET /admin/products/cmtunkvxe008gt0ci11diia5a 200 in 3.0s (next.js: 854ms, proxy.ts: 5ms, application-code: 2.1s)
+ GET /admin/brands 200 in 476ms (next.js: 213ms, proxy.ts: 5ms, application-code: 258ms)
+ GET /admin/inventory 200 in 3.5s (next.js: 1888ms, proxy.ts: 5ms, application-code: 1640ms)
+ GET /admin/orders 200 in 835ms (next.js: 270ms, proxy.ts: 9ms, application-code: 556ms)
+ GET /admin/orders 200 in 3.2s (next.js: 4ms, proxy.ts: 5ms, application-code: 3.2s)
+ GET / 200 in 2.5s (next.js: 6ms, application-code: 2.5s)
+[browser] Image with src "https://picsum.photos/seed/atelia-8/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-6/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-3/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-20/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-25/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-19/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-18/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-5/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-30/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-13/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-24/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-28/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ GET /compte/commandes 200 in 523ms (next.js: 4ms, proxy.ts: 5ms, application-code: 515ms)
+ GET / 200 in 2.1s (next.js: 4ms, application-code: 2.1s)
+[browser] Image with src "https://picsum.photos/seed/atelia-8/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-6/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-3/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-20/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-25/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-19/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-18/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-5/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+ GET /connexion 200 in 38ms (next.js: 8ms, application-code: 30ms)
+ GET /compte 200 in 277ms (next.js: 4ms, proxy.ts: 4ms, application-code: 269ms)
+ POST /connexion 200 in 1588ms (next.js: 3ms, application-code: 1585ms)
+  └─ ƒ loginAction({"email":"raobeliaandotiana@gmail.com","password":"A123654789"}) in 506ms src/server/actions/auth.actions.ts
+ GET /compte 200 in 1084ms (next.js: 4ms, proxy.ts: 7ms, application-code: 1073ms)
+ GET /compte 200 in 1640ms (next.js: 3ms, proxy.ts: 5ms, application-code: 1633ms)
+ GET /compte/commandes 200 in 535ms (next.js: 6ms, proxy.ts: 7ms, application-code: 522ms)
+ GET /compte/commandes/cmtuovdos0002oocir7syckvw 200 in 1038ms (next.js: 20ms, proxy.ts: 16ms, application-code: 1002ms)
+ GET /admin/inventory 200 in 1964ms (next.js: 3ms, proxy.ts: 6ms, application-code: 1955ms)
+ GET /admin/tutorials 200 in 724ms (next.js: 203ms, proxy.ts: 6ms, application-code: 515ms)
+ GET /admin/analytics 200 in 2.4s (next.js: 189ms, proxy.ts: 5ms, application-code: 2.2s)
+ GET /admin/settings 200 in 535ms (next.js: 258ms, proxy.ts: 18ms, application-code: 259ms)
+ GET /admin/orders 200 in 3.2s (next.js: 11ms, proxy.ts: 6ms, application-code: 3.2s)
+ GET /admin 200 in 2.2s (next.js: 7ms, proxy.ts: 5ms, application-code: 2.2s)
+ GET /admin/orders 200 in 3.2s (next.js: 4ms, proxy.ts: 5ms, application-code: 3.2s)
+ GET /admin/orders?status=PENDING 200 in 518ms (next.js: 5ms, proxy.ts: 6ms, application-code: 506ms)
+ GET /admin/orders 200 in 554ms (next.js: 5ms, proxy.ts: 13ms, application-code: 536ms)
+ GET /admin/orders/cmtuovdos0002oocir7syckvw 200 in 5.2s (next.js: 1386ms, proxy.ts: 11ms, application-code: 3.8s)
+ POST /admin/orders/cmtuovdos0002oocir7syckvw 200 in 5.3s (next.js: 12ms, proxy.ts: 7ms, application-code: 5.3s)
+  └─ ƒ updateOrderStatusAction("cmtuovdos0002oocir7syckvw", "CONFIRMED", "") in 2931ms src/server/actions/admin/order.actions.ts
+ GET /admin/orders/cmtuovdos0002oocir7syckvw 200 in 3.2s (next.js: 13ms, proxy.ts: 6ms, application-code: 3.2s)
+ POST /admin/orders/cmtuovdos0002oocir7syckvw 200 in 2.4s (next.js: 13ms, proxy.ts: 5ms, application-code: 2.4s)
+  └─ ƒ updateOrderStatusAction("cmtuovdos0002oocir7syckvw", "PROCESSING", "") in 1359ms src/server/actions/admin/order.actions.ts
+ GET /admin/orders/cmtuovdos0002oocir7syckvw 200 in 1005ms (next.js: 11ms, proxy.ts: 6ms, application-code: 988ms)
+ POST /admin/orders/cmtuovdos0002oocir7syckvw 200 in 2.6s (next.js: 12ms, proxy.ts: 5ms, application-code: 2.6s)
+  └─ ƒ updateOrderStatusAction("cmtuovdos0002oocir7syckvw", "SHIPPED", "") in 1587ms src/server/actions/admin/order.actions.ts
+ GET /admin/orders/cmtuovdos0002oocir7syckvw 200 in 979ms (next.js: 12ms, proxy.ts: 6ms, application-code: 961ms)
+ POST /admin/orders/cmtuovdos0002oocir7syckvw 200 in 2.6s (next.js: 11ms, proxy.ts: 10ms, application-code: 2.6s)
+  └─ ƒ updateOrderStatusAction("cmtuovdos0002oocir7syckvw", "OUT_FOR_DELIVERY", "") in 1559ms src/server/actions/admin/order.actions.ts
+ GET /admin/orders/cmtuovdos0002oocir7syckvw 200 in 1020ms (next.js: 12ms, proxy.ts: 6ms, application-code: 1002ms)
+ POST /admin/orders/cmtuovdos0002oocir7syckvw 200 in 2.6s (next.js: 14ms, proxy.ts: 16ms, application-code: 2.6s)
+  └─ ƒ updateOrderStatusAction("cmtuovdos0002oocir7syckvw", "DELIVERED", "") in 1558ms src/server/actions/admin/order.actions.ts
+ GET /admin/orders/cmtuovdos0002oocir7syckvw 200 in 992ms (next.js: 11ms, proxy.ts: 4ms, application-code: 977ms)
+ GET /admin 200 in 795ms (next.js: 5ms, proxy.ts: 14ms, application-code: 776ms)
+✓ Compiled in 158ms
+ GET /admin 200 in 2.4s (next.js: 10ms, proxy.ts: 18ms, application-code: 2.3s)
+ GET /admin/products 200 in 821ms (next.js: 23ms, proxy.ts: 19ms, application-code: 779ms)
+ GET / 200 in 2.5s (next.js: 4ms, application-code: 2.5s)
+ GET /categories/outils-diamant 200 in 1011ms (next.js: 17ms, application-code: 993ms)
+ GET /admin/products/cmturyp44008zx4cim87g3mny 200 in 804ms (next.js: 17ms, proxy.ts: 6ms, application-code: 781ms)
+ GET / 200 in 1988ms (next.js: 16ms, application-code: 1972ms)
+ GET /produits 200 in 569ms (next.js: 7ms, application-code: 562ms)
+[browser] Image with src "https://picsum.photos/seed/atelia-24/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-13/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-2/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-28/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-29/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-5/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-6/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-14/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-17/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-9/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-21/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-30/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-11/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
+[browser] Image with src "https://picsum.photos/seed/atelia-4/1000/1000" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.
