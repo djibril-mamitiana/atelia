@@ -1,18 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { SearchBar } from "@/components/layout/search-bar";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 
 type CategoryNode = { id: string; name: string; slug: string; children: CategoryNode[] };
 
 export function MobileNav({ categories }: { categories: CategoryNode[] }) {
+  const t = useTranslations("MobileNav");
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button onClick={() => setOpen(true)} aria-label="Ouvrir le menu" className="text-ink lg:hidden">
+      <button onClick={() => setOpen(true)} aria-label={t("openMenu")} className="text-ink lg:hidden">
         <Menu size={24} />
       </button>
 
@@ -21,10 +24,13 @@ export function MobileNav({ categories }: { categories: CategoryNode[] }) {
           <div className="absolute inset-0 bg-ink/40" onClick={() => setOpen(false)} />
           <div className="absolute inset-y-0 left-0 flex w-[86%] max-w-sm flex-col bg-surface shadow-2xl">
             <div className="flex items-center justify-between border-b border-border px-4 py-4">
-              <span className="font-display text-lg text-ink">Menu</span>
-              <button onClick={() => setOpen(false)} aria-label="Fermer le menu">
-                <X size={22} />
-              </button>
+              <span className="font-display text-lg text-ink">{t("menu")}</span>
+              <div className="flex items-center gap-4">
+                <LanguageSwitcher variant="light" />
+                <button onClick={() => setOpen(false)} aria-label={t("closeMenu")}>
+                  <X size={22} />
+                </button>
+              </div>
             </div>
 
             <div className="border-b border-border p-4">
@@ -59,16 +65,16 @@ export function MobileNav({ categories }: { categories: CategoryNode[] }) {
               ))}
               <div className="flex flex-col gap-1 px-4 py-3">
                 <Link href="/tutoriels" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  Tutoriels
+                  {t("tutorials")}
                 </Link>
                 <Link href="/produits?promotion=1" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  Promotions
+                  {t("promotions")}
                 </Link>
                 <Link href="/contact" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  Contact
+                  {t("contact")}
                 </Link>
                 <Link href="/faq" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  FAQ
+                  {t("faq")}
                 </Link>
               </div>
             </nav>

@@ -162,6 +162,16 @@ model Category {
   name        String
   slug        String   @unique
   description String?
+  // `name`/`description` above are French (the source language, same as
+  // Tutorial). Optional per-locale overrides for the other 3 storefront
+  // languages — null falls back to French. Hand-translated (only 10
+  // categories), see prisma/data/category-translations.json.
+  nameDe        String?
+  nameEn        String?
+  nameIt        String?
+  descriptionDe String?
+  descriptionEn String?
+  descriptionIt String?
   imageUrl    String?
   parentId    String?
   order       Int      @default(0)
@@ -204,6 +214,22 @@ model Product {
   sku              String   @unique
   description      String
   shortDescription String?
+  // `name`/`description`/`shortDescription` above are the source-catalogue
+  // language (German). These are optional per-locale overrides consumed by
+  // the storefront when the visitor's locale isn't German — null falls
+  // back to the German field above. Populated by
+  // scripts/backfill-product-translations.mjs from a translated-phrase
+  // dictionary (prisma/data/description-translations.json), not hand-typed
+  // per product.
+  nameFr                String?
+  nameEn                String?
+  nameIt                String?
+  descriptionFr         String?
+  descriptionEn         String?
+  descriptionIt         String?
+  shortDescriptionFr    String?
+  shortDescriptionEn    String?
+  shortDescriptionIt    String?
   price            Decimal  @db.Decimal(10, 2)
   compareAtPrice   Decimal? @db.Decimal(10, 2)
   taxRate          Decimal  @default(20.0) @db.Decimal(4, 2)
@@ -570,6 +596,20 @@ model Tutorial {
   slug            String        @unique
   description     String
   content         String        // markdown / rich content (steps)
+  // `title`/`description`/`content` above are French (the source language
+  // here, unlike Product where it's German). These are optional per-locale
+  // overrides for the other 3 storefront languages — null falls back to
+  // the French field above. Hand-translated (only 9 tutorials), see
+  // prisma/data/tutorial-translations.json.
+  titleDe         String?
+  titleEn         String?
+  titleIt         String?
+  descriptionDe   String?
+  descriptionEn   String?
+  descriptionIt   String?
+  contentDe       String?
+  contentEn       String?
+  contentIt       String?
   thumbnailUrl    String?
   videoUrl        String
   durationMinutes Int

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
 import Image from "next/image";
 import { Search, X } from "lucide-react";
 import { searchSuggestionsAction } from "@/server/actions/search.actions";
@@ -11,7 +11,16 @@ import { cn } from "@/lib/utils";
 
 type Suggestions = Awaited<ReturnType<typeof searchSuggestionsAction>>;
 
-export function SearchBar({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
+export function SearchBar({
+  className,
+  placeholder,
+  onNavigate,
+}: {
+  className?: string;
+  placeholder?: string;
+  onNavigate?: () => void;
+}) {
+  const t = useTranslations("SearchBar");
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
@@ -71,11 +80,11 @@ export function SearchBar({ className, onNavigate }: { className?: string; onNav
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => query.trim().length >= 2 && setOpen(true)}
           type="search"
-          placeholder="Rechercher un produit, une marque, un tutoriel…"
+          placeholder={placeholder ?? t("placeholder")}
           className="h-full flex-1 bg-transparent text-sm outline-none placeholder:text-muted"
         />
         {query && (
-          <button type="button" onClick={() => handleChange("")} aria-label="Effacer" className="text-muted hover:text-ink">
+          <button type="button" onClick={() => handleChange("")} aria-label={t("clear")} className="text-muted hover:text-ink">
             <X size={15} />
           </button>
         )}
@@ -84,13 +93,13 @@ export function SearchBar({ className, onNavigate }: { className?: string; onNav
       {open && query.trim().length >= 2 && (
         <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-40 max-h-[70vh] overflow-y-auto rounded-md border border-border bg-surface shadow-xl">
           {!results ? (
-            <p className="px-4 py-6 text-center text-sm text-muted">Recherche…</p>
+            <p className="px-4 py-6 text-center text-sm text-muted">{t("searching")}</p>
           ) : !hasResults ? (
-            <p className="px-4 py-6 text-center text-sm text-muted">Aucun résultat pour « {query} ».</p>
+            <p className="px-4 py-6 text-center text-sm text-muted">{t("noResults", { query })}</p>
           ) : (
             <div className="divide-y divide-border">
               {results.products.length > 0 && (
-                <SuggestionSection title="Produits">
+                <SuggestionSection title={t("products")}>
                   {results.products.map((p) => (
                     <Link
                       key={p.id}
@@ -117,7 +126,7 @@ export function SearchBar({ className, onNavigate }: { className?: string; onNav
               )}
 
               {results.categories.length > 0 && (
-                <SuggestionSection title="Catégories">
+                <SuggestionSection title={t("categories")}>
                   {results.categories.map((c) => (
                     <Link
                       key={c.id}
@@ -135,7 +144,7 @@ export function SearchBar({ className, onNavigate }: { className?: string; onNav
               )}
 
               {results.brands.length > 0 && (
-                <SuggestionSection title="Marques">
+                <SuggestionSection title={t("brands")}>
                   {results.brands.map((b) => (
                     <Link
                       key={b.id}
@@ -153,18 +162,18 @@ export function SearchBar({ className, onNavigate }: { className?: string; onNav
               )}
 
               {results.tutorials.length > 0 && (
-                <SuggestionSection title="Tutoriels">
-                  {results.tutorials.map((t) => (
+                <SuggestionSection title={t("tutorials")}>
+                  {results.tutorials.map((tutorial) => (
                     <Link
-                      key={t.id}
-                      href={`/tutoriels/${t.slug}`}
+                      key={tutorial.id}
+                      href={`/tutoriels/${tutorial.slug}`}
                       onClick={() => {
                         setOpen(false);
                         onNavigate?.();
                       }}
                       className="block px-4 py-2 text-sm text-ink hover:bg-paper"
                     >
-                      {t.title}
+                      {tutorial.title}
                     </Link>
                   ))}
                 </SuggestionSection>
@@ -174,7 +183,7 @@ export function SearchBar({ className, onNavigate }: { className?: string; onNav
                 onClick={goToSearchPage}
                 className="block w-full px-4 py-3 text-center text-sm font-medium text-accent-dark hover:bg-paper"
               >
-                Voir tous les résultats pour « {query} »
+                {t("viewAllResults", { query })}
               </button>
             </div>
           )}

@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { ShoppingCart, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QuantityStepper } from "@/components/ui/quantity-stepper";
@@ -22,6 +23,7 @@ export function AddToCartPanel({
   baseStock: number;
   variants: Variant[];
 }) {
+  const t = useTranslations("Product");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -45,7 +47,7 @@ export function AddToCartPanel({
       if (redirectToCheckout) {
         router.push("/checkout");
       } else {
-        toast("Ajouté au panier.", "success");
+        toast(t("addedToCart"), "success");
       }
     });
   }
@@ -54,7 +56,7 @@ export function AddToCartPanel({
     <div className="flex flex-col gap-4 rounded-md border border-border p-5">
       {variants.length > 0 && (
         <div>
-          <p className="mb-2 text-sm font-medium text-ink">Choix</p>
+          <p className="mb-2 text-sm font-medium text-ink">{t("choice")}</p>
           <div className="flex flex-wrap gap-2">
             {variants.map((v) => (
               <button
@@ -74,11 +76,11 @@ export function AddToCartPanel({
 
       <div className="flex items-baseline gap-2">
         <span className="text-2xl font-semibold text-ink">{formatPrice(price)}</span>
-        <span className="text-xs text-muted">TTC</span>
+        <span className="text-xs text-muted">{t("vatIncluded")}</span>
       </div>
 
       <p className={outOfStock ? "text-sm font-medium text-danger" : "text-sm text-sage"}>
-        {outOfStock ? "Rupture de stock" : stock <= 5 ? `Plus que ${stock} en stock` : "En stock"}
+        {outOfStock ? t("outOfStockStatus") : stock <= 5 ? t("lowStock", { count: stock }) : t("inStock")}
       </p>
 
       <div className="flex items-center gap-3">
@@ -87,16 +89,16 @@ export function AddToCartPanel({
 
       <div className="flex flex-col gap-2.5">
         <Button onClick={() => add(false)} disabled={outOfStock || pending} variant="outline" size="lg">
-          <ShoppingCart size={17} /> Ajouter au panier
+          <ShoppingCart size={17} /> {t("addToCart")}
         </Button>
         <Button onClick={() => add(true)} disabled={outOfStock || pending} size="lg">
-          <Zap size={17} /> Commander maintenant
+          <Zap size={17} /> {t("buyNow")}
         </Button>
       </div>
 
       <div className="mt-1 flex flex-col gap-1.5 border-t border-border pt-4 text-xs text-muted">
-        <p>Livraison à domicile dès 4,90 € — gratuite dès 49 € d&apos;achat.</p>
-        <p>Retrait en magasin gratuit sous 2h dans les points relais partenaires.</p>
+        <p>{t("shippingHome")}</p>
+        <p>{t("pickupFree")}</p>
       </div>
     </div>
   );

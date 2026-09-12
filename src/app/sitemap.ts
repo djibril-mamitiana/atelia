@@ -1,17 +1,41 @@
 import type { MetadataRoute } from "next";
 import { db } from "@/lib/db";
 import { SITE_URL } from "@/lib/constants";
+import { routing } from "@/i18n/routing";
 
-const staticRoutes: MetadataRoute.Sitemap = [
-  { url: SITE_URL, changeFrequency: "daily", priority: 1 },
-  { url: `${SITE_URL}/produits`, changeFrequency: "daily", priority: 0.9 },
-  { url: `${SITE_URL}/categories`, changeFrequency: "weekly", priority: 0.8 },
-  { url: `${SITE_URL}/tutoriels`, changeFrequency: "weekly", priority: 0.7 },
-  { url: `${SITE_URL}/contact`, changeFrequency: "yearly", priority: 0.3 },
-  { url: `${SITE_URL}/faq`, changeFrequency: "yearly", priority: 0.3 },
+type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
+
+const STATIC_ROUTES: { path: string; changeFrequency: ChangeFrequency; priority: number }[] = [
+  { path: "", changeFrequency: "daily", priority: 1 },
+  { path: "/produits", changeFrequency: "daily", priority: 0.9 },
+  { path: "/categories", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/tutoriels", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/contact", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/faq", changeFrequency: "yearly", priority: 0.3 },
 ];
 
+// URL segments (slugs) aren't translated, only the /{locale} prefix — so
+// every route gets one sitemap entry per locale, cross-linked via
+// `alternates.languages` for hreflang.
+function localizedEntries(
+  path: string,
+  changeFrequency: ChangeFrequency,
+  priority: number,
+  lastModified?: Date
+): MetadataRoute.Sitemap {
+  const languages = Object.fromEntries(routing.locales.map((locale) => [locale, `${SITE_URL}/${locale}${path}`]));
+  return routing.locales.map((locale) => ({
+    url: `${SITE_URL}/${locale}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+    alternates: { languages },
+  }));
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticEntries = STATIC_ROUTES.flatMap((r) => localizedEntries(r.path, r.changeFrequency, r.priority));
+
   // Falls back to the static routes alone if the database is unreachable
   // (e.g. DATABASE_URL not yet configured, or a transient outage during a
   // build) rather than failing the whole build.
@@ -23,13 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ]);
 
     return [
-      ...staticRoutes,
-      ...products.map((p) => ({ url: `${SITE_URL}/produits/${p.slug}`, lastModified: p.updatedAt, changeFrequency: "weekly" as const, priority: 0.6 })),
-      ...categories.map((c) => ({ url: `${SITE_URL}/categories/${c.slug}`, lastModified: c.updatedAt, changeFrequency: "weekly" as const, priority: 0.5 })),
-      ...tutorials.map((t) => ({ url: `${SITE_URL}/tutoriels/${t.slug}`, lastModified: t.updatedAt, changeFrequency: "monthly" as const, priority: 0.4 })),
+      ...staticEntries,
+      ...products.flatMap((p) => localizedEntries(`/produits/${p.slug}`, "weekly", 0.6, p.updatedAt)),
+      ...categories.flatMap((c) => localizedEntries(`/categories/${c.slug}`, "weekly", 0.5, c.updatedAt)),
+      ...tutorials.flatMap((t) => localizedEntries(`/tutoriels/${t.slug}`, "monthly", 0.4, t.updatedAt)),
     ];
   } catch (err) {
     console.error("sitemap: database unavailable, returning static routes only", err);
-    return staticRoutes;
+    return staticEntries;
   }
 }

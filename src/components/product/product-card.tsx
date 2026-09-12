@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Heart, ShoppingCart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { RatingStars } from "@/components/ui/rating-stars";
@@ -22,6 +23,7 @@ export function ProductCard({
   isFavorite?: boolean;
   className?: string;
 }) {
+  const t = useTranslations("Product");
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [favorite, setFavorite] = useState(isFavorite);
@@ -35,7 +37,7 @@ export function ProductCard({
   function handleAddToCart() {
     startTransition(async () => {
       const result = await addToCartAction(product.id, 1);
-      toast(result.success ? "Ajouté au panier." : result.error, result.success ? "success" : "error");
+      toast(result.success ? t("addedToCart") : result.error, result.success ? "success" : "error");
     });
   }
 
@@ -53,7 +55,7 @@ export function ProductCard({
   return (
     <div className={cn("group relative flex flex-col", className)}>
       <div className="relative aspect-square w-full overflow-hidden rounded-md bg-paper">
-        <Link href={`/produits/${product.slug}`} className="block h-full w-full">
+        <Link href={`/produits/${product.slug}`} className="relative block h-full w-full">
           {image ? (
             <Image
               src={image.url}
@@ -63,21 +65,21 @@ export function ProductCard({
               className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
             />
           ) : (
-            <div className="flex h-full items-center justify-center text-muted text-sm">Photo indisponible</div>
+            <div className="flex h-full items-center justify-center text-muted text-sm">{t("photoUnavailable")}</div>
           )}
         </Link>
 
         <div className="absolute left-2 top-2 flex flex-col gap-1.5">
-          {product.isNew && <Badge tone="sage">Nouveau</Badge>}
-          {product.isBestSeller && <Badge tone="gold">Meilleure vente</Badge>}
+          {product.isNew && <Badge tone="sage">{t("newBadge")}</Badge>}
+          {product.isBestSeller && <Badge tone="gold">{t("bestSellerBadge")}</Badge>}
           {discount && <Badge tone="accent">-{discount}%</Badge>}
-          {outOfStock && <Badge tone="danger">Rupture</Badge>}
+          {outOfStock && <Badge tone="danger">{t("outOfStockBadge")}</Badge>}
         </div>
 
         <button
           type="button"
           onClick={handleToggleFavorite}
-          aria-label={favorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+          aria-label={favorite ? t("removeFromFavorites") : t("addToFavorites")}
           aria-pressed={favorite}
           className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-surface/90 text-ink-soft shadow-sm transition-colors hover:text-accent"
         >
@@ -94,7 +96,7 @@ export function ProductCard({
         {product.reviewCount > 0 && (
           <div className="flex items-center gap-1.5">
             <RatingStars rating={Number(product.avgRating)} size={12} />
-            <span className="text-xs text-muted">({product.reviewCount})</span>
+            <span className="text-xs text-muted">{t("reviewsCount", { count: product.reviewCount })}</span>
           </div>
         )}
 
@@ -115,7 +117,7 @@ export function ProductCard({
           )}
         >
           <ShoppingCart size={15} />
-          {outOfStock ? "Indisponible" : "Ajouter au panier"}
+          {outOfStock ? t("unavailable") : t("addToCart")}
         </button>
       </div>
     </div>

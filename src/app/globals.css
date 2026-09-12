@@ -118,3 +118,33 @@ body {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+/* Marquee — auto-scrolling ticker / product carousel. Content is duplicated
+   once by the component so translating by exactly -50% loops seamlessly. */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 26s linear infinite;
+}
+
+.marquee-track.marquee-slow {
+  animation-duration: 60s;
+}
+
+/* Pauses on hover, i.e. as soon as the cursor moves onto it. */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

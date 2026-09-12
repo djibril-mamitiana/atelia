@@ -1,9 +1,10 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import { ProductCard } from "@/components/product/product-card";
 import type { ProductCard as ProductCardData } from "@/server/queries/catalog.queries";
 
-export function ProductSection({
+export async function ProductSection({
   title,
   subtitle,
   href,
@@ -15,6 +16,7 @@ export function ProductSection({
   products: ProductCardData[];
 }) {
   if (products.length === 0) return null;
+  const t = await getTranslations("Home");
 
   return (
     <section className="container-page py-12 lg:py-16">
@@ -24,7 +26,7 @@ export function ProductSection({
           {subtitle && <p className="mt-1.5 text-sm text-muted">{subtitle}</p>}
         </div>
         <Link href={href} className="hidden shrink-0 items-center gap-1.5 text-sm font-medium text-accent-dark hover:underline sm:flex">
-          Voir tout <ArrowRight size={15} />
+          {t("viewAll")} <ArrowRight size={15} />
         </Link>
       </div>
 
@@ -35,7 +37,7 @@ export function ProductSection({
       </div>
 
       <Link href={href} className="mt-7 flex items-center justify-center gap-1.5 text-sm font-medium text-accent-dark sm:hidden">
-        Voir tout <ArrowRight size={15} />
+        {t("viewAll")} <ArrowRight size={15} />
       </Link>
     </section>
   );

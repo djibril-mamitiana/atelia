@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +15,7 @@ type Address = AddressInput & { id: string };
 const EMPTY: AddressInput = { firstName: "", lastName: "", line1: "", city: "", postalCode: "", country: "FR" };
 
 export function AddressManager({ initialAddresses }: { initialAddresses: Address[] }) {
+  const t = useTranslations("Address");
   const { toast } = useToast();
   const [addresses, setAddresses] = useState(initialAddresses);
   const [pending, startTransition] = useTransition();
@@ -37,7 +39,7 @@ export function AddressManager({ initialAddresses }: { initialAddresses: Address
       setAddresses((prev) => [...prev, { ...form, id: result.id }]);
       setAdding(false);
       setForm(EMPTY);
-      toast("Adresse ajoutée.", "success");
+      toast(t("addedToast"), "success");
     });
   }
 
@@ -51,7 +53,7 @@ export function AddressManager({ initialAddresses }: { initialAddresses: Address
       }
       setAddresses((prev) => prev.map((a) => (a.id === editingId ? { ...form, id: editingId } : a)));
       setEditingId(null);
-      toast("Adresse mise à jour.", "success");
+      toast(t("updatedToast"), "success");
     });
   }
 
@@ -63,7 +65,7 @@ export function AddressManager({ initialAddresses }: { initialAddresses: Address
         return;
       }
       setAddresses((prev) => prev.filter((a) => a.id !== id));
-      toast("Adresse supprimée.", "success");
+      toast(t("deletedToast"), "success");
     });
   }
 
@@ -74,25 +76,25 @@ export function AddressManager({ initialAddresses }: { initialAddresses: Address
           <div key={addr.id} className="flex flex-col gap-4 rounded-md border border-ink p-4">
             <AddressFormFields value={form} onChange={setForm} />
             <div className="flex gap-2">
-              <Button onClick={handleUpdate} disabled={pending} size="sm">Enregistrer</Button>
-              <Button variant="ghost" size="sm" onClick={() => setEditingId(null)}>Annuler</Button>
+              <Button onClick={handleUpdate} disabled={pending} size="sm">{t("save")}</Button>
+              <Button variant="ghost" size="sm" onClick={() => setEditingId(null)}>{t("cancel")}</Button>
             </div>
           </div>
         ) : (
           <div key={addr.id} className="flex items-start justify-between gap-3 rounded-md border border-border p-4">
             <div className="text-sm">
               <p className="font-medium text-ink">
-                {addr.firstName} {addr.lastName} {addr.isDefaultShipping && <Badge tone="sage" className="ml-2">Par défaut</Badge>}
+                {addr.firstName} {addr.lastName} {addr.isDefaultShipping && <Badge tone="sage" className="ml-2">{t("default")}</Badge>}
               </p>
               <p className="text-muted">
                 {addr.line1}, {addr.postalCode} {addr.city}
               </p>
             </div>
             <div className="flex gap-2">
-              <button onClick={() => startEdit(addr)} aria-label="Modifier" className="text-muted hover:text-ink">
+              <button onClick={() => startEdit(addr)} aria-label={t("edit")} className="text-muted hover:text-ink">
                 <Pencil size={16} />
               </button>
-              <button onClick={() => handleDelete(addr.id)} aria-label="Supprimer" className="text-muted hover:text-danger">
+              <button onClick={() => handleDelete(addr.id)} aria-label={t("delete")} className="text-muted hover:text-danger">
                 <Trash2 size={16} />
               </button>
             </div>
@@ -104,8 +106,8 @@ export function AddressManager({ initialAddresses }: { initialAddresses: Address
         <div className="flex flex-col gap-4 rounded-md border border-ink p-4">
           <AddressFormFields value={form} onChange={setForm} />
           <div className="flex gap-2">
-            <Button onClick={handleAdd} disabled={pending} size="sm">Ajouter</Button>
-            <Button variant="ghost" size="sm" onClick={() => setAdding(false)}>Annuler</Button>
+            <Button onClick={handleAdd} disabled={pending} size="sm">{t("add")}</Button>
+            <Button variant="ghost" size="sm" onClick={() => setAdding(false)}>{t("cancel")}</Button>
           </div>
         </div>
       ) : (
@@ -117,7 +119,7 @@ export function AddressManager({ initialAddresses }: { initialAddresses: Address
             setAdding(true);
           }}
         >
-          <Plus size={16} /> Ajouter une adresse
+          <Plus size={16} /> {t("addAddress")}
         </Button>
       )}
     </div>

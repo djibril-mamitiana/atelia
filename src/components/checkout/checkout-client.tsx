@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useState, useTransition, type ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { Check, MapPin, Truck, Landmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
@@ -43,12 +44,6 @@ const EMPTY_ADDRESS: AddressInput = {
   country: "FR",
 };
 
-const SHIPPING_OPTIONS: { value: ShippingMethod; label: string; description: string }[] = [
-  { value: "STANDARD", label: "Livraison standard", description: "3 à 5 jours ouvrés" },
-  { value: "EXPRESS", label: "Livraison express", description: "1 à 2 jours ouvrés — 9,90 €" },
-  { value: "PICKUP", label: "Retrait en magasin", description: "Gratuit, sous 2h" },
-];
-
 export function CheckoutClient({
   addresses,
   lines,
@@ -58,10 +53,18 @@ export function CheckoutClient({
   lines: CartLine[];
   subtotal: number;
 }) {
+  const t = useTranslations("Checkout");
+  const tCart = useTranslations("Cart");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [step, setStep] = useState<1 | 2 | 3>(1);
+
+  const SHIPPING_OPTIONS: { value: ShippingMethod; label: string; description: string }[] = [
+    { value: "STANDARD", label: t("shippingStandardLabel"), description: t("shippingStandardDescription") },
+    { value: "EXPRESS", label: t("shippingExpressLabel"), description: t("shippingExpressDescription") },
+    { value: "PICKUP", label: t("shippingPickupLabel"), description: t("shippingPickupDescription") },
+  ];
 
   const [selectedAddressId, setSelectedAddressId] = useState<string | null>(
     addresses.find((a) => a.isDefaultShipping)?.id ?? addresses[0]?.id ?? null
@@ -91,7 +94,7 @@ export function CheckoutClient({
 
   function handlePay() {
     if (!selectedAddressId) {
-      toast("Choisissez une adresse de livraison.", "error");
+      toast(t("chooseAddressError"), "error");
       return;
     }
     startTransition(async () => {
@@ -113,7 +116,7 @@ export function CheckoutClient({
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
       <div className="flex flex-col gap-6">
-        <Step number={1} active={step === 1} done={step > 1} icon={MapPin} title="Adresse de livraison" onEdit={() => setStep(1)}>
+        <Step number={1} active={step === 1} done={step > 1} icon={MapPin} title={t("stepAddress")} onEdit={() => setStep(1)}>
           {step === 1 && (
             <div className="flex flex-col gap-4">
               {addresses.length > 0 && !addingAddress && (
@@ -144,7 +147,7 @@ export function CheckoutClient({
                     </label>
                   ))}
                   <button onClick={() => setAddingAddress(true)} className="self-start text-sm font-medium text-accent-dark hover:underline">
-                    + Utiliser une nouvelle adresse
+                    {t("useNewAddress")}
                   </button>
                 </div>
               )}
@@ -154,11 +157,11 @@ export function CheckoutClient({
                   <AddressFormFields value={newAddress} onChange={setNewAddress} />
                   <div className="flex gap-2">
                     <Button onClick={handleSaveAddress} disabled={pending}>
-                      Enregistrer cette adresse
+                      {t("saveAddress")}
                     </Button>
                     {addresses.length > 0 && (
                       <Button variant="ghost" onClick={() => setAddingAddress(false)}>
-                        Annuler
+                        {t("cancel")}
                       </Button>
                     )}
                   </div>
@@ -167,14 +170,14 @@ export function CheckoutClient({
 
               {!addingAddress && (
                 <Button className="self-start" disabled={!selectedAddressId} onClick={() => setStep(2)}>
-                  Continuer
+                  {t("continueBtn")}
                 </Button>
               )}
             </div>
           )}
         </Step>
 
-        <Step number={2} active={step === 2} done={step > 2} icon={Truck} title="Livraison" onEdit={() => setStep(2)}>
+        <Step number={2} active={step === 2} done={step > 2} icon={Truck} title={t("stepShipping")} onEdit={() => setStep(2)}>
           {step === 2 && (
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2.5">
@@ -202,29 +205,26 @@ export function CheckoutClient({
                 ))}
               </div>
               <Button className="self-start" onClick={() => setStep(3)}>
-                Continuer
+                {t("continueBtn")}
               </Button>
             </div>
           )}
         </Step>
 
-        <Step number={3} active={step === 3} done={false} icon={Landmark} title="Paiement par virement" onEdit={() => setStep(3)}>
+        <Step number={3} active={step === 3} done={false} icon={Landmark} title={t("stepPayment")} onEdit={() => setStep(3)}>
           {step === 3 && (
             <div className="flex flex-col gap-4">
               <div>
-                <Label htmlFor="coupon">Code promo (optionnel)</Label>
+                <Label htmlFor="coupon">{t("couponOptional")}</Label>
                 <Input id="coupon" value={couponCode} onChange={(e) => setCouponCode(e.target.value.toUpperCase())} />
               </div>
               <div>
-                <Label htmlFor="note">Note pour le livreur (optionnel)</Label>
+                <Label htmlFor="note">{t("noteOptional")}</Label>
                 <Textarea id="note" rows={2} value={customerNote} onChange={(e) => setCustomerNote(e.target.value)} />
               </div>
-              <p className="text-xs text-muted">
-                Le paiement se fait par virement bancaire. Après validation, vous recevrez les coordonnées
-                bancaires et la référence à indiquer — votre commande est préparée dès réception du virement.
-              </p>
+              <p className="text-xs text-muted">{t("bankTransferNotice")}</p>
               <Button size="lg" onClick={handlePay} disabled={pending}>
-                {pending ? "Validation…" : `Confirmer ma commande — ${formatPrice(estimatedTotal)}`}
+                {pending ? t("validating") : t("confirmOrder", { total: formatPrice(estimatedTotal) })}
               </Button>
             </div>
           )}
@@ -232,7 +232,7 @@ export function CheckoutClient({
       </div>
 
       <div className="rounded-md border border-border p-5">
-        <p className="mb-4 font-medium text-ink">Résumé de la commande</p>
+        <p className="mb-4 font-medium text-ink">{t("orderSummary")}</p>
         <div className="flex flex-col gap-3">
           {lines.map((line) => (
             <div key={line.id} className="flex items-center gap-3">
@@ -241,7 +241,7 @@ export function CheckoutClient({
               </div>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm text-ink">{line.name}</p>
-                <p className="text-xs text-muted">Qté {line.quantity}</p>
+                <p className="text-xs text-muted">{tCart("quantity", { quantity: line.quantity })}</p>
               </div>
               <span className="text-sm font-medium text-ink">{formatPrice(line.unitPrice * line.quantity)}</span>
             </div>
@@ -250,15 +250,15 @@ export function CheckoutClient({
 
         <dl className="mt-5 flex flex-col gap-2 border-t border-border pt-4 text-sm">
           <div className="flex justify-between">
-            <dt className="text-muted">Sous-total</dt>
+            <dt className="text-muted">{t("subtotal")}</dt>
             <dd className="text-ink">{formatPrice(subtotal)}</dd>
           </div>
           <div className="flex justify-between">
-            <dt className="text-muted">Livraison</dt>
-            <dd className="text-ink">{shippingCost === 0 ? "Offerte" : formatPrice(shippingCost)}</dd>
+            <dt className="text-muted">{t("shipping")}</dt>
+            <dd className="text-ink">{shippingCost === 0 ? tCart("free") : formatPrice(shippingCost)}</dd>
           </div>
           <div className="flex justify-between border-t border-border pt-3 text-base font-semibold text-ink">
-            <dt>Total estimé</dt>
+            <dt>{t("estimatedTotal")}</dt>
             <dd>{formatPrice(estimatedTotal)}</dd>
           </div>
         </dl>

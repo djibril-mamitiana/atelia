@@ -1,15 +1,7 @@
+import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { formatDateTime } from "@/lib/format";
 import { cn } from "@/lib/utils";
-
-const TIMELINE_STEPS: { status: string; label: string }[] = [
-  { status: "PENDING", label: "Commande créée" },
-  { status: "CONFIRMED", label: "Paiement confirmé" },
-  { status: "PROCESSING", label: "Préparation" },
-  { status: "SHIPPED", label: "Expédiée" },
-  { status: "OUT_FOR_DELIVERY", label: "En livraison" },
-  { status: "DELIVERED", label: "Livrée" },
-];
 
 export function OrderStatusTimeline({
   currentStatus,
@@ -18,11 +10,22 @@ export function OrderStatusTimeline({
   currentStatus: string;
   history: { status: string; comment: string | null; createdAt: Date }[];
 }) {
+  const t = useTranslations("Order");
+
+  const TIMELINE_STEPS: { status: string; label: string }[] = [
+    { status: "PENDING", label: t("stepCreated") },
+    { status: "CONFIRMED", label: t("stepPaymentConfirmed") },
+    { status: "PROCESSING", label: t("stepPreparing") },
+    { status: "SHIPPED", label: t("stepShipped") },
+    { status: "OUT_FOR_DELIVERY", label: t("stepOutForDelivery") },
+    { status: "DELIVERED", label: t("stepDelivered") },
+  ];
+
   if (currentStatus === "CANCELLED" || currentStatus === "REFUNDED") {
     const entry = history.find((h) => h.status === currentStatus);
     return (
       <div className="rounded-md bg-danger-soft px-4 py-3 text-sm text-danger">
-        <p className="font-medium">{currentStatus === "CANCELLED" ? "Commande annulée" : "Commande remboursée"}</p>
+        <p className="font-medium">{currentStatus === "CANCELLED" ? t("orderCancelled") : t("orderRefunded")}</p>
         {entry && <p className="mt-1 text-xs">{formatDateTime(entry.createdAt)} — {entry.comment}</p>}
       </div>
     );

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
 import { User, LogOut, Package, MapPin, Heart, Settings, LayoutDashboard } from "lucide-react";
 import { logoutAction } from "@/server/actions/auth.actions";
 import { canAccessAdmin } from "@/lib/auth/roles";
@@ -12,6 +12,7 @@ export function UserMenu({
 }: {
   session: { firstName: string; role: string } | null;
 }) {
+  const t = useTranslations("UserMenu");
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -29,10 +30,10 @@ export function UserMenu({
       <Link
         href="/connexion"
         className="flex flex-col items-center gap-0.5 text-ink-soft hover:text-ink"
-        aria-label="Se connecter"
+        aria-label={t("login")}
       >
         <User size={20} strokeWidth={1.6} />
-        <span className="hidden text-[11px] sm:block">Compte</span>
+        <span className="hidden text-[11px] sm:block">{t("accountLabel")}</span>
       </Link>
     );
   }
@@ -52,17 +53,17 @@ export function UserMenu({
       {open && (
         <div role="menu" className="absolute right-0 top-[calc(100%+10px)] z-40 w-60 rounded-md border border-border bg-surface py-1.5 shadow-xl">
           <p className="px-4 pb-2 pt-1 text-sm text-muted">
-            Bonjour <span className="font-medium text-ink">{session.firstName}</span>
+            {t("greetingPrefix")} <span className="font-medium text-ink">{session.firstName}</span>
           </p>
-          <MenuLink href="/compte" icon={LayoutDashboard} label="Mon compte" />
-          <MenuLink href="/compte/commandes" icon={Package} label="Mes commandes" />
-          <MenuLink href="/compte/favoris" icon={Heart} label="Mes favoris" />
-          <MenuLink href="/compte/adresses" icon={MapPin} label="Mes adresses" />
-          <MenuLink href="/compte/profil" icon={Settings} label="Profil & sécurité" />
+          <MenuLink href="/compte" icon={LayoutDashboard} label={t("myAccount")} />
+          <MenuLink href="/compte/commandes" icon={Package} label={t("myOrders")} />
+          <MenuLink href="/compte/favoris" icon={Heart} label={t("myFavorites")} />
+          <MenuLink href="/compte/adresses" icon={MapPin} label={t("myAddresses")} />
+          <MenuLink href="/compte/profil" icon={Settings} label={t("profileSecurity")} />
           {canAccessAdmin(session.role) && (
             <>
               <div className="my-1.5 border-t border-border" />
-              <MenuLink href="/admin" icon={LayoutDashboard} label="Back-office admin" />
+              <MenuLink href="/admin" icon={LayoutDashboard} label={t("adminBackoffice")} />
             </>
           )}
           <div className="my-1.5 border-t border-border" />
@@ -76,7 +77,7 @@ export function UserMenu({
             className="flex w-full items-center gap-2.5 px-4 py-2 text-left text-sm text-ink-soft hover:bg-paper"
           >
             <LogOut size={16} />
-            Déconnexion
+            {t("logout")}
           </button>
         </div>
       )}

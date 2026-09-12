@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Input, Label, FieldError } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { registerAction } from "@/server/actions/auth.actions";
 
 export function RegisterForm({ nextPath }: { nextPath?: string }) {
+  const t = useTranslations("Auth");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -39,30 +41,30 @@ export function RegisterForm({ nextPath }: { nextPath?: string }) {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="firstName">Prénom</Label>
+          <Label htmlFor="firstName">{t("firstNameLabel")}</Label>
           <Input id="firstName" required value={form.firstName} onChange={(e) => set("firstName", e.target.value)} />
           <FieldError>{fieldErrors.firstName?.[0]}</FieldError>
         </div>
         <div>
-          <Label htmlFor="lastName">Nom</Label>
+          <Label htmlFor="lastName">{t("lastNameLabel")}</Label>
           <Input id="lastName" required value={form.lastName} onChange={(e) => set("lastName", e.target.value)} />
           <FieldError>{fieldErrors.lastName?.[0]}</FieldError>
         </div>
       </div>
 
       <div>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t("emailLabel")}</Label>
         <Input id="email" type="email" autoComplete="email" required value={form.email} onChange={(e) => set("email", e.target.value)} />
         <FieldError>{fieldErrors.email?.[0]}</FieldError>
       </div>
 
       <div>
-        <Label htmlFor="phone">Téléphone (optionnel)</Label>
+        <Label htmlFor="phone">{t("phoneLabel")}</Label>
         <Input id="phone" type="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} />
       </div>
 
       <div>
-        <Label htmlFor="password">Mot de passe</Label>
+        <Label htmlFor="password">{t("passwordLabel")}</Label>
         <Input
           id="password"
           type="password"
@@ -71,12 +73,12 @@ export function RegisterForm({ nextPath }: { nextPath?: string }) {
           value={form.password}
           onChange={(e) => set("password", e.target.value)}
         />
-        <p className="mt-1.5 text-xs text-muted">8 caractères minimum, avec une majuscule et un chiffre.</p>
+        <p className="mt-1.5 text-xs text-muted">{t("passwordHint")}</p>
         <FieldError>{fieldErrors.password?.[0]}</FieldError>
       </div>
 
       <Button type="submit" disabled={pending} className="mt-2 w-full">
-        {pending ? "Création…" : "Créer mon compte"}
+        {pending ? t("register.submitPending") : t("register.submit")}
       </Button>
     </form>
   );

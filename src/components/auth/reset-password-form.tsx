@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Input, Label } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { resetPasswordAction } from "@/server/actions/password-reset.actions";
 
 export function ResetPasswordForm({ token }: { token: string }) {
+  const t = useTranslations("Auth");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +31,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
     <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
       {error && <p className="rounded-md bg-danger-soft px-3.5 py-2.5 text-sm text-danger">{error}</p>}
       <div>
-        <Label htmlFor="password">Nouveau mot de passe</Label>
+        <Label htmlFor="password">{t("newPasswordLabel")}</Label>
         <Input
           id="password"
           type="password"
@@ -38,10 +40,10 @@ export function ResetPasswordForm({ token }: { token: string }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <p className="mt-1.5 text-xs text-muted">8 caractères minimum, avec une majuscule et un chiffre.</p>
+        <p className="mt-1.5 text-xs text-muted">{t("passwordHint")}</p>
       </div>
       <Button type="submit" disabled={pending} className="w-full">
-        {pending ? "Enregistrement…" : "Choisir ce mot de passe"}
+        {pending ? t("resetPassword.submitPending") : t("resetPassword.submit")}
       </Button>
     </form>
   );

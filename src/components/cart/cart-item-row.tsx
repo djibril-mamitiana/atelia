@@ -1,8 +1,9 @@
 "use client";
 
 import { useTransition } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Trash2 } from "lucide-react";
 import { QuantityStepper } from "@/components/ui/quantity-stepper";
 import { useToast } from "@/components/ui/toast";
@@ -30,6 +31,7 @@ export function CartItemRow({
   quantity: number;
   stock: number;
 }) {
+  const t = useTranslations("Cart");
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
 
@@ -59,13 +61,13 @@ export function CartItemRow({
           {productName}
         </Link>
         {variantName && <p className="text-xs text-muted">{variantName}</p>}
-        {stock < quantity && <p className="text-xs font-medium text-danger">Stock limité à {stock}</p>}
+        {stock < quantity && <p className="text-xs font-medium text-danger">{t("stockLimited", { stock })}</p>}
 
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
           <QuantityStepper value={quantity} onChange={updateQuantity} max={Math.max(1, stock)} disabled={pending} />
           <div className="flex items-center gap-4">
             <span className="text-sm font-semibold text-ink">{formatPrice(unitPrice * quantity)}</span>
-            <button onClick={remove} aria-label="Retirer du panier" className="text-muted hover:text-danger">
+            <button onClick={remove} aria-label={t("removeFromCart")} className="text-muted hover:text-danger">
               <Trash2 size={17} />
             </button>
           </div>

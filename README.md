@@ -45,8 +45,9 @@ cp .env.example .env
    ```bash
    npx prisma migrate dev --name init
    ```
-6. Peuplez la base avec des données réalistes (22 catégories, 10 marques,
-   50 produits, 10 tutoriels, 20 utilisateurs, 50 commandes, 100 avis) :
+6. Peuplez la base avec des données réalistes (9 sous-catégories d'outils
+   diamant, 1 marque "Diamond Pro", ~1417 produits, 10 tutoriels,
+   20 utilisateurs, 50 commandes, 100 avis) :
    ```bash
    npx prisma db seed
    ```

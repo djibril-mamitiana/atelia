@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Heart, ShoppingCart } from "lucide-react";
 import { getSession } from "@/lib/auth/session";
 import { getCurrentCart, cartItemCount } from "@/server/services/cart";
@@ -6,24 +7,31 @@ import { getCategoryTree } from "@/server/queries/categories.queries";
 import { SearchBar } from "@/components/layout/search-bar";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { UserMenu } from "@/components/layout/user-menu";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { SITE_NAME } from "@/lib/constants";
 
 export async function Header() {
-  const [session, cart, categories] = await Promise.all([getSession(), getCurrentCart(), getCategoryTree()]);
+  const [session, cart, categories, t] = await Promise.all([
+    getSession(),
+    getCurrentCart(),
+    getCategoryTree(),
+    getTranslations("Header"),
+  ]);
   const count = cartItemCount(cart);
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-surface/95 backdrop-blur">
       <div className="hidden border-b border-border bg-ink text-paper/90 lg:block">
         <div className="container-page flex h-9 items-center justify-between text-xs">
-          <p>Livraison offerte dès 49 € d&apos;achat · Retrait en magasin gratuit</p>
-          <div className="flex gap-5">
+          <p>{t("announcement")}</p>
+          <div className="flex items-center gap-5">
             <Link href="/tutoriels" className="hover:text-white">
-              Tutoriels &amp; conseils
+              {t("tutorials")}
             </Link>
             <Link href="/contact" className="hover:text-white">
-              Contact
+              {t("contact")}
             </Link>
+            <LanguageSwitcher />
           </div>
         </div>
       </div>
@@ -42,7 +50,7 @@ export async function Header() {
 
           <Link href="/compte/favoris" className="hidden flex-col items-center gap-0.5 text-ink-soft hover:text-ink sm:flex">
             <Heart size={20} strokeWidth={1.6} />
-            <span className="hidden text-[11px] lg:block">Favoris</span>
+            <span className="hidden text-[11px] lg:block">{t("favorites")}</span>
           </Link>
 
           <Link href="/panier" className="relative flex flex-col items-center gap-0.5 text-ink-soft hover:text-ink">
@@ -54,7 +62,7 @@ export async function Header() {
                 </span>
               )}
             </span>
-            <span className="hidden text-[11px] lg:block">Panier</span>
+            <span className="hidden text-[11px] lg:block">{t("cart")}</span>
           </Link>
         </div>
       </div>
@@ -71,7 +79,7 @@ export async function Header() {
             </Link>
           ))}
           <Link href="/produits?promotion=1" className="whitespace-nowrap font-medium text-accent-dark">
-            Promotions
+            {t("promotions")}
           </Link>
         </div>
       </nav>

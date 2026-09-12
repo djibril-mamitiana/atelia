@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
@@ -18,6 +19,7 @@ export function CatalogFilters({
   brands: Brand[];
   priceBounds: { min: number; max: number };
 }) {
+  const t = useTranslations("Catalog");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -49,24 +51,24 @@ export function CatalogFilters({
   return (
     <aside className="flex flex-col gap-8">
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">Trier par</p>
+        <p className="mb-3 text-sm font-medium text-ink">{t("sortBy")}</p>
         <Select value={currentSort} onChange={(e) => updateParams({ tri: e.target.value })}>
-          <option value="pertinence">Pertinence</option>
-          <option value="prix-asc">Prix croissant</option>
-          <option value="prix-desc">Prix décroissant</option>
-          <option value="nouveaute">Nouveautés</option>
-          <option value="note">Meilleures notes</option>
+          <option value="pertinence">{t("sortRelevance")}</option>
+          <option value="prix-asc">{t("sortPriceAsc")}</option>
+          <option value="prix-desc">{t("sortPriceDesc")}</option>
+          <option value="nouveaute">{t("sortNewest")}</option>
+          <option value="note">{t("sortTopRated")}</option>
         </Select>
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">Catégorie</p>
+        <p className="mb-3 text-sm font-medium text-ink">{t("category")}</p>
         <div className="flex flex-col gap-2">
           <button
             onClick={() => updateParams({ categorie: null })}
             className={`text-left text-sm ${!currentCategory ? "font-medium text-accent-dark" : "text-muted hover:text-ink"}`}
           >
-            Toutes les catégories
+            {t("allCategories")}
           </button>
           {categories.map((cat) => (
             <button
@@ -84,7 +86,7 @@ export function CatalogFilters({
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">Marque</p>
+        <p className="mb-3 text-sm font-medium text-ink">{t("brand")}</p>
         <div className="flex flex-col gap-2">
           {brands.map((brand) => (
             <label key={brand.id} className="flex items-center gap-2 text-sm text-ink-soft">
@@ -101,14 +103,14 @@ export function CatalogFilters({
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">Prix</p>
+        <p className="mb-3 text-sm font-medium text-ink">{t("price")}</p>
         <p className="mb-2 text-xs text-muted">
           {formatPrice(priceBounds.min)} — {formatPrice(priceBounds.max)}
         </p>
         <div className="flex items-center gap-2">
           <input
             type="number"
-            placeholder="Min"
+            placeholder={t("minPlaceholder")}
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
             onBlur={() => updateParams({ prix_min: minPrice || null })}
@@ -117,7 +119,7 @@ export function CatalogFilters({
           <span className="text-muted">–</span>
           <input
             type="number"
-            placeholder="Max"
+            placeholder={t("maxPlaceholder")}
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             onBlur={() => updateParams({ prix_max: maxPrice || null })}
@@ -134,7 +136,7 @@ export function CatalogFilters({
             onChange={(e) => updateParams({ stock: e.target.checked ? "1" : null })}
             className="h-4 w-4 rounded-sm border-border-strong accent-accent"
           />
-          En stock uniquement
+          {t("inStockOnly")}
         </label>
         <label className="flex items-center gap-2 text-sm text-ink-soft">
           <input
@@ -143,12 +145,12 @@ export function CatalogFilters({
             onChange={(e) => updateParams({ promotion: e.target.checked ? "1" : null })}
             className="h-4 w-4 rounded-sm border-border-strong accent-accent"
           />
-          En promotion
+          {t("onSale")}
         </label>
       </div>
 
       <Button variant="outline" size="sm" onClick={() => router.push(pathname)}>
-        Réinitialiser les filtres
+        {t("resetFilters")}
       </Button>
     </aside>
   );

@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export function CouponForm({ error }: { error?: string }) {
+  const t = useTranslations("Cart");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -22,9 +24,9 @@ export function CouponForm({ error }: { error?: string }) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2">
       <div className="flex gap-2">
-        <Input placeholder="Code promo" value={code} onChange={(e) => setCode(e.target.value.toUpperCase())} />
+        <Input placeholder={t("couponPlaceholder")} value={code} onChange={(e) => setCode(e.target.value.toUpperCase())} />
         <Button type="submit" variant="outline">
-          Appliquer
+          {t("couponApply")}
         </Button>
       </div>
       {error && <p className="text-xs text-danger">{error}</p>}

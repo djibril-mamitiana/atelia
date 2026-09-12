@@ -1,0 +1,142 @@
+{
+  "outils-diamant": {
+    "de": {
+      "name": "Diamantwerkzeuge",
+      "description": "Diamantscheiben, -bohrer und -schleifscheiben zum Trennen und Bohren von Beton, Asphalt und Naturstein."
+    },
+    "en": {
+      "name": "Diamond tools",
+      "description": "Diamond blades, drills and grinding wheels for cutting and drilling concrete, asphalt and natural stone."
+    },
+    "it": {
+      "name": "Utensili diamantati",
+      "description": "Dischi, punte e mole diamantate per il taglio e la foratura di cemento, asfalto e pietra naturale."
+    }
+  },
+  "disques-diamant-115-230": {
+    "de": {
+      "name": "Diamantscheiben Ø115 – Ø230 mm",
+      "description": "Diamantscheiben Ø115 – Ø230 mm — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Diamond blades Ø115 – Ø230 mm",
+      "description": "Diamond blades Ø115 – Ø230 mm — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Dischi diamantati Ø115 – Ø230 mm",
+      "description": "Dischi diamantati Ø115 – Ø230 mm — gamma professionale Diamond Pro."
+    }
+  },
+  "disques-diamant-250-1000": {
+    "de": {
+      "name": "Diamantscheiben Ø250 – Ø1000 mm",
+      "description": "Diamantscheiben Ø250 – Ø1000 mm — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Diamond blades Ø250 – Ø1000 mm",
+      "description": "Diamond blades Ø250 – Ø1000 mm — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Dischi diamantati Ø250 – Ø1000 mm",
+      "description": "Dischi diamantati Ø250 – Ø1000 mm — gamma professionale Diamond Pro."
+    }
+  },
+  "disques-diamant-asphalte": {
+    "de": {
+      "name": "Diamantscheiben für Asphalt",
+      "description": "Diamantscheiben für Asphalt — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Diamond blades for asphalt",
+      "description": "Diamond blades for asphalt — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Dischi diamantati per asfalto",
+      "description": "Dischi diamantati per asfalto — gamma professionale Diamond Pro."
+    }
+  },
+  "forets-diamant": {
+    "de": {
+      "name": "Diamantbohrer und -bohrkronen",
+      "description": "Diamantbohrer und -bohrkronen — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Diamond drills and core bits",
+      "description": "Diamond drills and core bits — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Punte e corone diamantate",
+      "description": "Punte e corone diamantate — gamma professionale Diamond Pro."
+    }
+  },
+  "meules-diamant": {
+    "de": {
+      "name": "Diamantschleifscheiben und -werkzeuge",
+      "description": "Diamantschleifscheiben und -werkzeuge — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Diamond grinding wheels and tools",
+      "description": "Diamond grinding wheels and tools — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Mole e utensili diamantati per levigatura",
+      "description": "Mole e utensili diamantati per levigatura — gamma professionale Diamond Pro."
+    }
+  },
+  "disques-diamant-pierre-naturelle": {
+    "de": {
+      "name": "Diamantscheiben für Naturstein",
+      "description": "Diamantscheiben für Naturstein — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Diamond blades for natural stone",
+      "description": "Diamond blades for natural stone — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Dischi diamantati per pietra naturale",
+      "description": "Dischi diamantati per pietra naturale — gamma professionale Diamond Pro."
+    }
+  },
+  "autres-disques-diamant": {
+    "de": {
+      "name": "Weitere Diamantscheiben",
+      "description": "Weitere Diamantscheiben — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Other diamond blades",
+      "description": "Other diamond blades — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Altri dischi diamantati",
+      "description": "Altri dischi diamantati — gamma professionale Diamond Pro."
+    }
+  },
+  "accessoires-diamant": {
+    "de": {
+      "name": "Zubehör",
+      "description": "Zubehör — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Accessories",
+      "description": "Accessories — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Accessori",
+      "description": "Accessori — gamma professionale Diamond Pro."
+    }
+  },
+  "interflex": {
+    "de": {
+      "name": "Interflex",
+      "description": "Interflex — professionelle Diamond Pro Produktreihe."
+    },
+    "en": {
+      "name": "Interflex",
+      "description": "Interflex — professional Diamond Pro range."
+    },
+    "it": {
+      "name": "Interflex",
+      "description": "Interflex — gamma professionale Diamond Pro."
+    }
+  }
+}

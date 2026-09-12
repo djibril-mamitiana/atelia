@@ -88,11 +88,12 @@ async function clearDatabase() {
 // ─────────────────────────────────────────────────────────────
 // 2/3. Categories, brand & products — real supplier catalog only.
 //
-// Hualing Lu GmbH (diamond cutting/drilling/grinding tools), extracted
-// from "Katalog 2026_Optimized.html" (a pdf2html export of the supplier's
-// actual DE/EN price list): real SKUs ("Artikel-Nr."), real EUR prices,
-// real category structure — 1 parent category ("Outils diamant") + 9
-// sub-categories, 1 brand, ~1417 products.
+// Own house brand "Diamond Pro" (diamond cutting/drilling/grinding tools),
+// content extracted from "Katalog 2026_Optimized.html" (a pdf2html export
+// of a supplier's DE/EN price list, used only as a data source — no
+// supplier name, logo or branding is reused): real SKUs ("Artikel-Nr."),
+// real EUR prices, real category structure — 1 parent category ("Outils
+// diamant") + 9 sub-categories, 1 brand, ~1417 products.
 //
 // The previous faker-generated placeholder catalogue (7 generic
 // categories, 10 invented brands, 50 templated products) has been removed
@@ -108,7 +109,7 @@ async function clearDatabase() {
 // generic "{category} — {sku}" name instead of a real description and are
 // worth a manual pass before this goes to production.
 // ─────────────────────────────────────────────────────────────
-type HualingProduct = {
+type DiamondProProduct = {
   sku: string;
   name: string;
   descriptionDe: string;
@@ -122,17 +123,30 @@ type HualingProduct = {
   lowConfidence: boolean;
 };
 
-const HUALING_CATEGORIES: { slug: string; name: string }[] = JSON.parse(
-  readFileSync(path.join(__dirname, "data/hualing-categories.json"), "utf8"),
+const DIAMOND_PRO_CATEGORIES: { slug: string; name: string }[] = JSON.parse(
+  readFileSync(path.join(__dirname, "data/diamond-pro-categories.json"), "utf8"),
+);
+
+// See prisma/data/category-translations.json — hand-translated (only 10
+// categories), keyed by slug. Category's source language is French.
+const categoryTranslations: Record<string, Record<"de" | "en" | "it", { name: string; description: string }>> = JSON.parse(
+  readFileSync(path.join(__dirname, "data/category-translations.json"), "utf8")
 );
 
 async function seedCategories() {
   const bySlug = new Map<string, { id: string; slug: string }>();
+  const parentTranslation = categoryTranslations["outils-diamant"];
   const parent = await db.category.create({
     data: {
       name: "Outils diamant",
       slug: "outils-diamant",
       description: "Disques, forets et meules diamant pour la découpe et le perçage du béton, de l'asphalte et de la pierre naturelle.",
+      nameDe: parentTranslation?.de.name,
+      nameEn: parentTranslation?.en.name,
+      nameIt: parentTranslation?.it.name,
+      descriptionDe: parentTranslation?.de.description,
+      descriptionEn: parentTranslation?.en.description,
+      descriptionIt: parentTranslation?.it.description,
       imageUrl: pickImages(1)[0],
       order: 0,
       isActive: true,
@@ -141,12 +155,19 @@ async function seedCategories() {
   bySlug.set(parent.slug, parent);
 
   let order = 0;
-  for (const { slug, name } of HUALING_CATEGORIES) {
+  for (const { slug, name } of DIAMOND_PRO_CATEGORIES) {
+    const translation = categoryTranslations[slug];
     const child = await db.category.create({
       data: {
         name,
         slug,
-        description: `${name} — gamme professionnelle Hualing Lu.`,
+        description: `${name} — gamme professionnelle Diamond Pro.`,
+        nameDe: translation?.de.name,
+        nameEn: translation?.en.name,
+        nameIt: translation?.it.name,
+        descriptionDe: translation?.de.description,
+        descriptionEn: translation?.en.description,
+        descriptionIt: translation?.it.description,
         imageUrl: pickImages(1)[0],
         parentId: parent.id,
         order: order++,
@@ -161,11 +182,10 @@ async function seedCategories() {
 async function seedBrands() {
   return db.brand.create({
     data: {
-      name: "Hualing Lu",
-      slug: "hualing-lu",
+      name: "Diamond Pro",
+      slug: "diamond-pro",
       logoUrl: pickImages(1)[0],
       description: "Fabricant d'outils diamant professionnels (disques, forets, meules) pour le béton, l'asphalte et la pierre naturelle.",
-      website: "https://www.hualing.de",
       isActive: true,
     },
   });
@@ -175,7 +195,16 @@ async function seedProducts(
   categories: Map<string, { id: string; slug: string }>,
   brand: { id: string; slug: string; name: string }
 ) {
-  const catalog: HualingProduct[] = JSON.parse(readFileSync(path.join(__dirname, "data/hualing-catalog.json"), "utf8"));
+  const catalog: DiamondProProduct[] = JSON.parse(readFileSync(path.join(__dirname, "data/diamond-pro-catalog.json"), "utf8"));
+  // ~93% of names are just "{descriptionDe}{size suffix}" and only 179
+  // distinct descriptions exist across 1417 products, so per-locale name/
+  // description are reconstructed from this small translated-phrase
+  // dictionary rather than stored per product. See scripts/
+  // backfill-product-translations.mjs (same logic, used to backfill an
+  // already-seeded database without a full reseed).
+  const descriptionTranslations: Record<string, { fr: string; en: string; it: string }> = JSON.parse(
+    readFileSync(path.join(__dirname, "data/description-translations.json"), "utf8")
+  );
 
   const used = new Set<string>();
   const products: { id: string; name: string; slug: string; categorySlug: string }[] = [];
@@ -195,23 +224,59 @@ async function seedProducts(
     if (item.typeModel) descriptionParts.push(`Type : ${item.typeModel}`);
     const description = descriptionParts.join("\n") || item.name;
 
+    // Merchandising flags: the source catalogue has none of these (every row
+    // is a plain price-list entry), so without this the homepage's
+    // "Meilleures ventes" / "Promotions" / "Nouveautés" / "Produits
+    // spéciaux" sections would all be permanently empty. Independent rolls
+    // per product, seeded (faker.seed(42) above) for reproducible output.
+    const isFeatured = faker.number.float({ min: 0, max: 1 }) < 0.08;
+    const isBestSeller = faker.number.float({ min: 0, max: 1 }) < 0.08;
+    const isNew = faker.number.float({ min: 0, max: 1 }) < 0.12;
+    const hasPromo = faker.number.float({ min: 0, max: 1 }) < 0.15;
+    const compareAtPrice = hasPromo
+      ? Math.round(item.price * faker.number.float({ min: 1.1, max: 1.35 }) * 100) / 100
+      : null;
+
+    const translation = descriptionTranslations[item.descriptionDe];
+    const suffix = translation && item.name.startsWith(item.descriptionDe) ? item.name.slice(item.descriptionDe.length) : null;
+    const shortDescription = (item.descriptionDe || item.descriptionEn || item.name).slice(0, 200);
+    const FEATURES_LABEL = { fr: "Caractéristiques", en: "Features", it: "Caratteristiche" } as const;
+    const TYPE_LABEL = { fr: "Type", en: "Type", it: "Tipo" } as const;
+    function localizedDescription(lang: "fr" | "en" | "it") {
+      if (!translation) return undefined;
+      const parts = [translation[lang]];
+      if (specLines) parts.push(`${FEATURES_LABEL[lang]} : ${specLines}`);
+      if (item.typeModel) parts.push(`${TYPE_LABEL[lang]} : ${item.typeModel}`);
+      return parts.join("\n");
+    }
+
     const product = await db.product.create({
       data: {
         name: item.name,
         slug,
         sku: item.sku,
         description,
-        shortDescription: (item.descriptionDe || item.descriptionEn || item.name).slice(0, 200),
+        shortDescription,
+        nameFr: translation && suffix !== null ? `${translation.fr}${suffix}` : undefined,
+        nameEn: translation && suffix !== null ? `${translation.en}${suffix}` : undefined,
+        nameIt: translation && suffix !== null ? `${translation.it}${suffix}` : undefined,
+        descriptionFr: localizedDescription("fr"),
+        descriptionEn: localizedDescription("en"),
+        descriptionIt: localizedDescription("it"),
+        shortDescriptionFr: translation?.fr.slice(0, 200),
+        shortDescriptionEn: translation?.en.slice(0, 200),
+        shortDescriptionIt: translation?.it.slice(0, 200),
         price: item.price,
+        compareAtPrice,
         taxRate: 20,
         stock: faker.number.int({ min: 0, max: 120 }),
         lowStockThreshold: 5,
         categoryId: category.id,
         brandId: brand.id,
         isActive: true,
-        isFeatured: false,
-        isNew: false,
-        isBestSeller: false,
+        isFeatured,
+        isNew,
+        isBestSeller,
         seoTitle: `${item.name} | ${brand.name}`,
         seoDescription: description.slice(0, 150),
         images: { create: pickImages(2).map((url, i) => ({ url, alt: item.name, position: i })) },
@@ -265,6 +330,54 @@ const TUTORIALS: { title: string; categorySlug: string; level: "BEGINNER" | "INT
   { title: "Interflex : disques abrasifs pour métal et inox", categorySlug: "interflex", level: "BEGINNER", minutes: 6 },
 ];
 
+// See prisma/data/tutorial-translations.json — hand-translated (only 9
+// tutorials, unlike the dictionary-reconstruction approach for the 1417
+// products) title/description/content-heading for de/en/it, keyed by the
+// French `title` below.
+const tutorialTranslations: Record<
+  string,
+  Record<"de" | "en" | "it", { title: string; description: string; contentIntro: string }>
+> = JSON.parse(readFileSync(path.join(__dirname, "data/tutorial-translations.json"), "utf8"));
+
+// Generic step list, reused across every tutorial (same idea as the
+// content heading below) — real sentences in each language rather than
+// faker.lorem's Latin filler, which read as "wrong language" regardless of
+// locale, French included.
+const TUTORIAL_STEPS = {
+  fr: [
+    "Vérifiez la compatibilité de l'outil avec votre machine avant de commencer.",
+    "Installez l'accessoire en suivant les recommandations du fabricant.",
+    "Portez toujours les équipements de protection individuelle nécessaires.",
+    "Travaillez à vitesse modérée pour préserver la durée de vie de l'outil.",
+    "Nettoyez et rangez votre matériel après chaque utilisation.",
+  ],
+  de: [
+    "Prüfen Sie vor Beginn die Kompatibilität des Werkzeugs mit Ihrer Maschine.",
+    "Montieren Sie das Zubehör gemäß den Empfehlungen des Herstellers.",
+    "Tragen Sie stets die erforderliche persönliche Schutzausrüstung.",
+    "Arbeiten Sie mit moderater Geschwindigkeit, um die Lebensdauer des Werkzeugs zu schonen.",
+    "Reinigen und verstauen Sie Ihr Material nach jedem Gebrauch.",
+  ],
+  en: [
+    "Check that the tool is compatible with your machine before you start.",
+    "Fit the accessory following the manufacturer's recommendations.",
+    "Always wear the necessary personal protective equipment.",
+    "Work at a moderate speed to preserve the tool's lifespan.",
+    "Clean and store your equipment after each use.",
+  ],
+  it: [
+    "Verifica la compatibilità dell'utensile con la tua macchina prima di iniziare.",
+    "Monta l'accessorio seguendo le raccomandazioni del produttore.",
+    "Indossa sempre i dispositivi di protezione individuale necessari.",
+    "Lavora a velocità moderata per preservare la durata dell'utensile.",
+    "Pulisci e riponi il materiale dopo ogni utilizzo.",
+  ],
+} as const;
+
+function stepList(lang: keyof typeof TUTORIAL_STEPS) {
+  return TUTORIAL_STEPS[lang].map((line, i) => `${i + 1}. ${line}`).join("\n");
+}
+
 async function seedTutorials(
   categories: Map<string, { id: string; slug: string }>,
   products: { id: string; name: string; slug: string; categorySlug: string }[]
@@ -276,14 +389,25 @@ async function seedTutorials(
     const linked = matched.length > 0 ? matched : faker.helpers.arrayElements(products, 3);
 
     const slug = uniqueSlug(t.title, used);
+    const description = `${t.title} — conseils pas à pas et matériel recommandé pour réussir votre projet.`;
+    const content = `## Ce qu'il vous faut\n\nRetrouvez ci-dessous le matériel recommandé et les étapes à suivre.\n\n${stepList("fr")}`;
+    const translation = tutorialTranslations[t.title];
+
     await db.tutorial.create({
       data: {
         title: t.title,
         slug,
-        description: `${t.title} — conseils pas à pas et matériel recommandé pour réussir votre projet.`,
-        content:
-          `## Ce qu'il vous faut\n\nRetrouvez ci-dessous le matériel recommandé et les étapes à suivre.\n\n` +
-          Array.from({ length: 5 }, (_, i) => `${i + 1}. ${faker.lorem.sentence({ min: 8, max: 16 })}`).join("\n"),
+        description,
+        content,
+        titleDe: translation?.de.title,
+        titleEn: translation?.en.title,
+        titleIt: translation?.it.title,
+        descriptionDe: translation?.de.description,
+        descriptionEn: translation?.en.description,
+        descriptionIt: translation?.it.description,
+        contentDe: translation ? `${translation.de.contentIntro}${stepList("de")}` : undefined,
+        contentEn: translation ? `${translation.en.contentIntro}${stepList("en")}` : undefined,
+        contentIt: translation ? `${translation.it.contentIntro}${stepList("it")}` : undefined,
         thumbnailUrl: pickImages(1)[0],
         videoUrl: pickVideo(),
         durationMinutes: t.minutes,
@@ -705,7 +829,7 @@ async function main() {
   console.log(`  ✓ ${categories.size} categories (Outils diamant + 9 sub-categories)`);
 
   const brand = await seedBrands();
-  console.log("  ✓ 1 brand (Hualing Lu)");
+  console.log("  ✓ 1 brand (Diamond Pro)");
 
   const products = await seedProducts(categories, brand);
   console.log(`  ✓ ${products.length} real catalog products (Katalog 2026)`);

@@ -1,13 +1,15 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { Input, Label } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { loginAction } from "@/server/actions/auth.actions";
 
 export function LoginForm({ nextPath }: { nextPath?: string }) {
+  const t = useTranslations("Auth");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -33,15 +35,15 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
       {error && <p className="rounded-md bg-danger-soft px-3.5 py-2.5 text-sm text-danger">{error}</p>}
 
       <div>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t("emailLabel")}</Label>
         <Input id="email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
 
       <div>
         <div className="flex items-center justify-between">
-          <Label htmlFor="password">Mot de passe</Label>
+          <Label htmlFor="password">{t("passwordLabel")}</Label>
           <Link href="/mot-de-passe-oublie" className="text-xs text-muted hover:text-accent-dark">
-            Mot de passe oublié ?
+            {t("login.forgotPassword")}
           </Link>
         </div>
         <Input
@@ -55,7 +57,7 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
       </div>
 
       <Button type="submit" disabled={pending} className="mt-2 w-full">
-        {pending ? "Connexion…" : "Se connecter"}
+        {pending ? t("login.submitPending") : t("login.submit")}
       </Button>
     </form>
   );

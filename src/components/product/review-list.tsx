@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { formatDate } from "@/lib/format";
 
@@ -10,9 +11,11 @@ type ReviewItem = {
   user: { firstName: string; lastName: string };
 };
 
-export function ReviewList({ reviews }: { reviews: ReviewItem[] }) {
+export async function ReviewList({ reviews }: { reviews: ReviewItem[] }) {
+  const t = await getTranslations("Product");
+
   if (reviews.length === 0) {
-    return <p className="text-sm text-muted">Aucun avis publié pour ce produit pour le moment.</p>;
+    return <p className="text-sm text-muted">{t("noReviews")}</p>;
   }
 
   return (
