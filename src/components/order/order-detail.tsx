@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Landmark } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { OrderStatusTimeline } from "@/components/order/order-status-timeline";
@@ -23,6 +23,7 @@ const STATUS_TONE: Record<string, "accent" | "sage" | "danger" | "neutral"> = {
 
 export async function OrderDetail({ order }: { order: Order }) {
   const t = await getTranslations("Order");
+  const locale = await getLocale();
 
   const STATUS_LABELS: Record<string, string> = {
     PENDING: t("statusPending"),
@@ -48,7 +49,7 @@ export async function OrderDetail({ order }: { order: Order }) {
         <div>
           <p className="text-sm text-muted">{t("orderLabel")}</p>
           <h1 className="font-display text-2xl text-ink">{order.orderNumber}</h1>
-          <p className="text-sm text-muted">{t("placedOn", { date: formatDate(order.createdAt) })}</p>
+          <p className="text-sm text-muted">{t("placedOn", { date: formatDate(order.createdAt, locale) })}</p>
         </div>
         <Badge tone={STATUS_TONE[order.status]}>{STATUS_LABELS[order.status]}</Badge>
       </div>
@@ -66,7 +67,7 @@ export async function OrderDetail({ order }: { order: Order }) {
                 <div className="flex justify-between"><dt className="text-ink-soft">{t("bank")}</dt><dd className="font-medium text-ink">{bank.bankName}</dd></div>
                 <div className="flex justify-between"><dt className="text-ink-soft">{t("iban")}</dt><dd className="font-medium text-ink">{bank.iban}</dd></div>
                 <div className="flex justify-between"><dt className="text-ink-soft">{t("bic")}</dt><dd className="font-medium text-ink">{bank.bic}</dd></div>
-                <div className="flex justify-between"><dt className="text-ink-soft">{t("amount")}</dt><dd className="font-medium text-ink">{formatPrice(Number(order.total))}</dd></div>
+                <div className="flex justify-between"><dt className="text-ink-soft">{t("amount")}</dt><dd className="font-medium text-ink">{formatPrice(Number(order.total), locale)}</dd></div>
                 <div className="flex justify-between"><dt className="text-ink-soft">{t("reference")}</dt><dd className="font-medium text-ink">{order.orderNumber}</dd></div>
               </dl>
               <p className="mt-3 text-xs text-ink-soft">{t("referenceNote", { reference: order.orderNumber })}</p>
@@ -98,9 +99,9 @@ export async function OrderDetail({ order }: { order: Order }) {
                     <Link href={`/produits/${item.product.slug}`} className="truncate text-sm text-ink hover:text-accent-dark">
                       {item.productName}
                     </Link>
-                    <p className="text-xs text-muted">{item.quantity} × {formatPrice(Number(item.unitPrice))}</p>
+                    <p className="text-xs text-muted">{item.quantity} × {formatPrice(Number(item.unitPrice), locale)}</p>
                   </div>
-                  <span className="text-sm font-medium text-ink">{formatPrice(Number(item.total))}</span>
+                  <span className="text-sm font-medium text-ink">{formatPrice(Number(item.total), locale)}</span>
                 </div>
               ))}
             </div>
@@ -111,12 +112,12 @@ export async function OrderDetail({ order }: { order: Order }) {
           <div className="rounded-md border border-border p-5">
             <p className="mb-3 font-medium text-ink">{t("amountTitle")}</p>
             <dl className="flex flex-col gap-2 text-sm">
-              <div className="flex justify-between"><dt className="text-muted">{t("subtotal")}</dt><dd>{formatPrice(Number(order.subtotal))}</dd></div>
+              <div className="flex justify-between"><dt className="text-muted">{t("subtotal")}</dt><dd>{formatPrice(Number(order.subtotal), locale)}</dd></div>
               {Number(order.discount) > 0 && (
-                <div className="flex justify-between text-sage"><dt>{t("discount")}</dt><dd>-{formatPrice(Number(order.discount))}</dd></div>
+                <div className="flex justify-between text-sage"><dt>{t("discount")}</dt><dd>-{formatPrice(Number(order.discount), locale)}</dd></div>
               )}
-              <div className="flex justify-between"><dt className="text-muted">{t("shipping")}</dt><dd>{Number(order.shippingCost) === 0 ? t("free") : formatPrice(Number(order.shippingCost))}</dd></div>
-              <div className="flex justify-between border-t border-border pt-2 text-base font-semibold text-ink"><dt>{t("total")}</dt><dd>{formatPrice(Number(order.total))}</dd></div>
+              <div className="flex justify-between"><dt className="text-muted">{t("shipping")}</dt><dd>{Number(order.shippingCost) === 0 ? t("free") : formatPrice(Number(order.shippingCost), locale)}</dd></div>
+              <div className="flex justify-between border-t border-border pt-2 text-base font-semibold text-ink"><dt>{t("total")}</dt><dd>{formatPrice(Number(order.total), locale)}</dd></div>
             </dl>
             {order.payment && (
               <p className="mt-3 text-xs text-muted">

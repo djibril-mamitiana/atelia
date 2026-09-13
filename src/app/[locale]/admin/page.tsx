@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Euro, ShoppingBag, Users, Package, AlertTriangle, Clock } from "lucide-react";
 import { getDashboardKpis, getSalesByDay, getTopProducts, getTopCategories } from "@/server/queries/admin-dashboard.queries";
 import { BarChart } from "@/components/admin/bar-chart";
@@ -10,6 +10,7 @@ export const metadata: Metadata = { title: "Dashboard" };
 
 export default async function AdminDashboardPage() {
   const t = await getTranslations("Admin.Dashboard");
+  const locale = await getLocale();
   const [kpis, salesByDay, topProducts, topCategories] = await Promise.all([
     getDashboardKpis(),
     getSalesByDay(14),
@@ -18,11 +19,11 @@ export default async function AdminDashboardPage() {
   ]);
 
   const cards = [
-    { label: t("kpiRevenue"), value: formatPrice(kpis.revenue), icon: Euro },
+    { label: t("kpiRevenue"), value: formatPrice(kpis.revenue, locale), icon: Euro },
     { label: t("kpiOrders"), value: kpis.orderCount, icon: ShoppingBag },
     { label: t("kpiCustomers"), value: kpis.customerCount, icon: Users },
     { label: t("kpiActiveProducts"), value: kpis.productCount, icon: Package },
-    { label: t("kpiAvgBasket"), value: formatPrice(kpis.averageBasket), icon: Euro },
+    { label: t("kpiAvgBasket"), value: formatPrice(kpis.averageBasket, locale), icon: Euro },
     { label: t("kpiOrdersToProcess"), value: kpis.ordersToProcess, icon: Clock },
     { label: t("kpiOutOfStock"), value: kpis.outOfStockCount, icon: AlertTriangle },
     { label: t("kpiLowStock"), value: kpis.lowStockCount, icon: AlertTriangle },
@@ -45,7 +46,7 @@ export default async function AdminDashboardPage() {
       <div className="mt-8 grid gap-6 lg:grid-cols-[2fr_1fr]">
         <div className="rounded-md border border-border bg-surface p-5">
           <p className="mb-4 font-medium text-ink">{t("salesLast14Days")}</p>
-          <BarChart data={salesByDay.map((d) => ({ label: d.date.slice(5), value: d.total }))} />
+          <BarChart data={salesByDay.map((d) => ({ label: d.date.slice(5), value: d.total }))} locale={locale} />
         </div>
 
         <div className="rounded-md border border-border bg-surface p-5">
@@ -54,7 +55,7 @@ export default async function AdminDashboardPage() {
             {topCategories.map((c) => (
               <div key={c.name} className="flex items-center justify-between text-sm">
                 <span className="text-ink-soft">{c.name}</span>
-                <span className="font-medium text-ink">{formatPrice(c.revenue)}</span>
+                <span className="font-medium text-ink">{formatPrice(c.revenue, locale)}</span>
               </div>
             ))}
           </div>
@@ -71,7 +72,7 @@ export default async function AdminDashboardPage() {
             <div key={item.product?.id} className="flex items-center justify-between py-2.5 text-sm">
               <span className="text-ink">{item.product?.name ?? t("deletedProduct")}</span>
               <span className="text-muted">{t("unitsSold", { count: item.quantity })}</span>
-              <span className="font-medium text-ink">{formatPrice(item.revenue)}</span>
+              <span className="font-medium text-ink">{formatPrice(item.revenue, locale)}</span>
             </div>
           ))}
         </div>

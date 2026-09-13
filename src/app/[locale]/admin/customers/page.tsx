@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminCustomers } from "@/server/queries/admin.queries";
 import { AdminSearchBar } from "@/components/admin/admin-search-bar";
 import { Pagination } from "@/components/catalog/pagination";
@@ -11,6 +11,7 @@ export const metadata: Metadata = { title: "Clients — Admin" };
 
 export default async function AdminCustomersPage({ searchParams }: { searchParams: Promise<{ q?: string; page?: string }> }) {
   const t = await getTranslations("Admin.Customers");
+  const locale = await getLocale();
   const { q, page } = await searchParams;
   const { customers, total, pageCount } = await getAdminCustomers({ q, page: page ? Number(page) : 1 });
 
@@ -43,8 +44,8 @@ export default async function AdminCustomersPage({ searchParams }: { searchParam
                 </td>
                 <td className="px-4 py-3 text-muted">{c.email}</td>
                 <td className="px-4 py-3 text-ink">{c.orderCount}</td>
-                <td className="px-4 py-3 text-ink">{formatPrice(c.totalSpent)}</td>
-                <td className="px-4 py-3 text-muted">{c.lastOrderAt ? formatDate(c.lastOrderAt) : "—"}</td>
+                <td className="px-4 py-3 text-ink">{formatPrice(c.totalSpent, locale)}</td>
+                <td className="px-4 py-3 text-muted">{c.lastOrderAt ? formatDate(c.lastOrderAt, locale) : "—"}</td>
                 <td className="px-4 py-3"><Badge tone={c.isActive ? "sage" : "neutral"}>{c.isActive ? t("active") : t("inactive")}</Badge></td>
               </tr>
             ))}

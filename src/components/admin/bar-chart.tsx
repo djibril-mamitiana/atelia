@@ -1,6 +1,6 @@
 import { formatPrice } from "@/lib/format";
 
-export function BarChart({ data }: { data: { label: string; value: number }[] }) {
+export function BarChart({ data, locale }: { data: { label: string; value: number }[]; locale: string }) {
   const max = Math.max(1, ...data.map((d) => d.value));
 
   return (
@@ -8,7 +8,7 @@ export function BarChart({ data }: { data: { label: string; value: number }[] })
       {data.map((d) => (
         <div key={d.label} className="group relative flex flex-1 flex-col items-center justify-end gap-1.5">
           <div className="pointer-events-none absolute bottom-full mb-1.5 hidden whitespace-nowrap rounded-sm bg-ink px-2 py-1 text-xs text-white group-hover:block">
-            {formatPrice(d.value)}
+            {formatPrice(d.value, locale)}
           </div>
           <div
             className="w-full rounded-t-sm bg-accent/80 transition-colors group-hover:bg-accent"

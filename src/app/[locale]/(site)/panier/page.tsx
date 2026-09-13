@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ShoppingCart } from "lucide-react";
 import { getCurrentCart } from "@/server/services/cart";
 import { getSession } from "@/lib/auth/session";
@@ -24,7 +24,7 @@ export default async function CartPage({
   searchParams: Promise<{ promo?: string }>;
 }) {
   const { promo } = await searchParams;
-  const [cart, session, t] = await Promise.all([getCurrentCart(), getSession(), getTranslations("Cart")]);
+  const [cart, session, t, locale] = await Promise.all([getCurrentCart(), getSession(), getTranslations("Cart"), getLocale()]);
 
   if (!cart || cart.items.length === 0) {
     return (
@@ -74,7 +74,7 @@ export default async function CartPage({
 
       {remainingForFreeShipping > 0 ? (
         <p className="mt-3 rounded-md bg-sage-soft px-4 py-2.5 text-sm text-sage">
-          {t("freeShippingRemaining", { amount: formatPrice(remainingForFreeShipping) })}
+          {t("freeShippingRemaining", { amount: formatPrice(remainingForFreeShipping, locale) })}
         </p>
       ) : (
         <p className="mt-3 rounded-md bg-sage-soft px-4 py-2.5 text-sm text-sage">{t("freeShippingUnlocked")}</p>
@@ -104,25 +104,25 @@ export default async function CartPage({
             <dl className="flex flex-col gap-2.5 text-sm">
               <div className="flex justify-between">
                 <dt className="text-muted">{t("subtotal")}</dt>
-                <dd className="text-ink">{formatPrice(pricing.subtotal)}</dd>
+                <dd className="text-ink">{formatPrice(pricing.subtotal, locale)}</dd>
               </div>
               {pricing.discount > 0 && (
                 <div className="flex justify-between text-sage">
                   <dt>{t("discount")}</dt>
-                  <dd>-{formatPrice(pricing.discount)}</dd>
+                  <dd>-{formatPrice(pricing.discount, locale)}</dd>
                 </div>
               )}
               <div className="flex justify-between">
                 <dt className="text-muted">{t("estimatedShipping")}</dt>
-                <dd className="text-ink">{pricing.shippingCost === 0 ? t("free") : formatPrice(pricing.shippingCost)}</dd>
+                <dd className="text-ink">{pricing.shippingCost === 0 ? t("free") : formatPrice(pricing.shippingCost, locale)}</dd>
               </div>
               <div className="flex justify-between text-xs text-muted">
                 <dt>{t("vatIncludedLabel")}</dt>
-                <dd>{formatPrice(pricing.tax)}</dd>
+                <dd>{formatPrice(pricing.tax, locale)}</dd>
               </div>
               <div className="mt-1 flex justify-between border-t border-border pt-3 text-base font-semibold text-ink">
                 <dt>{t("total")}</dt>
-                <dd>{formatPrice(pricing.total)}</dd>
+                <dd>{formatPrice(pricing.total, locale)}</dd>
               </div>
             </dl>
 

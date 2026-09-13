@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { formatDateTime } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ export function OrderStatusTimeline({
   history: { status: string; comment: string | null; createdAt: Date }[];
 }) {
   const t = useTranslations("Order");
+  const locale = useLocale();
 
   const TIMELINE_STEPS: { status: string; label: string }[] = [
     { status: "PENDING", label: t("stepCreated") },
@@ -26,7 +27,7 @@ export function OrderStatusTimeline({
     return (
       <div className="rounded-md bg-danger-soft px-4 py-3 text-sm text-danger">
         <p className="font-medium">{currentStatus === "CANCELLED" ? t("orderCancelled") : t("orderRefunded")}</p>
-        {entry && <p className="mt-1 text-xs">{formatDateTime(entry.createdAt)} — {entry.comment}</p>}
+        {entry && <p className="mt-1 text-xs">{formatDateTime(entry.createdAt, locale)} — {entry.comment}</p>}
       </div>
     );
   }
@@ -55,7 +56,7 @@ export function OrderStatusTimeline({
             </div>
             <div className="pb-6">
               <p className={cn("text-sm font-medium", reached ? "text-ink" : "text-muted")}>{step.label}</p>
-              {entry && <p className="text-xs text-muted">{formatDateTime(entry.createdAt)}{entry.comment ? ` — ${entry.comment}` : ""}</p>}
+              {entry && <p className="text-xs text-muted">{formatDateTime(entry.createdAt, locale)}{entry.comment ? ` — ${entry.comment}` : ""}</p>}
             </div>
           </li>
         );

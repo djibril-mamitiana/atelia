@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { formatPrice } from "@/lib/format";
@@ -14,6 +14,7 @@ export async function SpecialProductsMarquee({ products }: { products: ProductCa
   if (products.length === 0) return null;
 
   const t = await getTranslations("SpecialProducts");
+  const locale = await getLocale();
   const items = [...products, ...products];
 
   return (
@@ -46,7 +47,7 @@ export async function SpecialProductsMarquee({ products }: { products: ProductCa
                 )}
               </div>
               <p className="line-clamp-2 text-sm font-medium text-ink group-hover:text-accent-dark">{product.name}</p>
-              <p className="text-sm font-semibold text-ink">{formatPrice(Number(product.price))}</p>
+              <p className="text-sm font-semibold text-ink">{formatPrice(Number(product.price), locale)}</p>
             </Link>
           );
         })}

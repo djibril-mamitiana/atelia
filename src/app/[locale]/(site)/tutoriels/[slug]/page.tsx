@@ -2,7 +2,7 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Clock, BarChart3 } from "lucide-react";
 import { getTutorialBySlug } from "@/server/queries/tutorials.queries";
 import { LinkButton } from "@/components/ui/button";
@@ -22,6 +22,7 @@ export default async function TutorialPage({ params }: { params: Promise<Params>
   const tutorial = await getTutorialBySlug(slug);
   if (!tutorial) notFound();
   const t = await getTranslations("Tutorials");
+  const locale = await getLocale();
 
   const LEVEL_LABELS: Record<string, string> = {
     BEGINNER: t("levelBeginner"),
@@ -68,7 +69,7 @@ export default async function TutorialPage({ params }: { params: Promise<Params>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs uppercase tracking-wide text-muted">{tp.product.brand.name}</p>
                     <p className="truncate text-sm font-medium text-ink">{tp.product.name}</p>
-                    <p className="text-sm text-ink">{formatPrice(Number(tp.product.price))}</p>
+                    <p className="text-sm text-ink">{formatPrice(Number(tp.product.price), locale)}</p>
                   </div>
                   <LinkButton href={`/produits/${tp.product.slug}`} size="sm" variant="outline">
                     {t("view")}

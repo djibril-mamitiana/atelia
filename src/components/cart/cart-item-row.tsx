@@ -1,7 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Trash2 } from "lucide-react";
@@ -32,6 +32,7 @@ export function CartItemRow({
   stock: number;
 }) {
   const t = useTranslations("Cart");
+  const locale = useLocale();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
 
@@ -66,7 +67,7 @@ export function CartItemRow({
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
           <QuantityStepper value={quantity} onChange={updateQuantity} max={Math.max(1, stock)} disabled={pending} />
           <div className="flex items-center gap-4">
-            <span className="text-sm font-semibold text-ink">{formatPrice(unitPrice * quantity)}</span>
+            <span className="text-sm font-semibold text-ink">{formatPrice(unitPrice * quantity, locale)}</span>
             <button onClick={remove} aria-label={t("removeFromCart")} className="text-muted hover:text-danger">
               <Trash2 size={17} />
             </button>

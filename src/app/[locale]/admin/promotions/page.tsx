@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminCoupons } from "@/server/queries/admin.queries";
 import { db } from "@/lib/db";
 import { CouponForm } from "@/components/admin/coupon-form";
@@ -11,6 +11,7 @@ export const metadata: Metadata = { title: "Promotions — Admin" };
 
 export default async function AdminPromotionsPage() {
   const t = await getTranslations("Admin.Promotions");
+  const locale = await getLocale();
   const [coupons, categories, products] = await Promise.all([
     getAdminCoupons(),
     db.category.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true } }),
@@ -43,8 +44,8 @@ export default async function AdminPromotionsPage() {
             {coupons.map((c) => (
               <tr key={c.id}>
                 <td className="px-4 py-3 font-medium text-ink">{c.code}</td>
-                <td className="px-4 py-3 text-ink">{c.type === "PERCENT" ? `-${Number(c.value)}%` : `-${formatPrice(Number(c.value))}`}</td>
-                <td className="px-4 py-3 text-muted">{formatDate(c.startsAt)} → {formatDate(c.endsAt)}</td>
+                <td className="px-4 py-3 text-ink">{c.type === "PERCENT" ? `-${Number(c.value)}%` : `-${formatPrice(Number(c.value), locale)}`}</td>
+                <td className="px-4 py-3 text-muted">{formatDate(c.startsAt, locale)} → {formatDate(c.endsAt, locale)}</td>
                 <td className="px-4 py-3 text-muted">{c.usageCount}{c.usageLimit ? ` / ${c.usageLimit}` : ""}</td>
                 <td className="px-4 py-3">
                   <Badge tone={c.isActive && c.endsAt > new Date() ? "sage" : "neutral"}>

@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Package } from "lucide-react";
 import { requireUser } from "@/lib/auth/session";
 import { getUserOrders } from "@/server/queries/orders.queries";
@@ -22,6 +22,7 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
   const t = await getTranslations("Account");
   const tOrder = await getTranslations("Order");
   const tCart = await getTranslations("Cart");
+  const locale = await getLocale();
 
   const STATUS_LABELS: Record<string, string> = {
     PENDING: tOrder("statusPending"),
@@ -54,10 +55,10 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
           <Link key={order.id} href={`/compte/commandes/${order.id}`} className="flex flex-wrap items-center justify-between gap-3 p-4 hover:bg-paper">
             <div>
               <p className="text-sm font-medium text-ink">{order.orderNumber}</p>
-              <p className="text-xs text-muted">{formatDate(order.createdAt)} · {t("itemsCount", { count: order.items.length })}</p>
+              <p className="text-xs text-muted">{formatDate(order.createdAt, locale)} · {t("itemsCount", { count: order.items.length })}</p>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium text-ink">{formatPrice(Number(order.total))}</span>
+              <span className="text-sm font-medium text-ink">{formatPrice(Number(order.total), locale)}</span>
               <Badge tone={order.status === "DELIVERED" ? "sage" : order.status === "CANCELLED" || order.status === "REFUNDED" ? "danger" : "accent"}>
                 {STATUS_LABELS[order.status]}
               </Badge>

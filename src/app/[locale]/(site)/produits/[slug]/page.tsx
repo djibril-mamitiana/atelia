@@ -2,7 +2,7 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { PlayCircle } from "lucide-react";
 import { getProductBySlug } from "@/server/queries/catalog.queries";
 import { getSession } from "@/lib/auth/session";
@@ -40,6 +40,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   const product = await getProductBySlug(slug);
   if (!product) notFound();
   const t = await getTranslations("Product");
+  const locale = await getLocale();
 
   const session = await getSession();
   const [isFavorite, canReview] = await Promise.all([
@@ -126,7 +127,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           </div>
 
           {compareAtPrice && (
-            <p className="mt-4 text-sm text-muted line-through">{formatPrice(compareAtPrice)}</p>
+            <p className="mt-4 text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</p>
           )}
 
           <div className="mt-4">

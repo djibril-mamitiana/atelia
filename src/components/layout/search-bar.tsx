@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition, type ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import Image from "next/image";
 import { Search, X } from "lucide-react";
@@ -21,6 +21,7 @@ export function SearchBar({
   onNavigate?: () => void;
 }) {
   const t = useTranslations("SearchBar");
+  const locale = useLocale();
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
@@ -119,7 +120,7 @@ export function SearchBar({
                         <p className="truncate text-sm text-ink">{p.name}</p>
                         <p className="text-xs text-muted">{p.brand.name}</p>
                       </div>
-                      <span className="shrink-0 text-sm font-medium text-ink">{formatPrice(Number(p.price))}</span>
+                      <span className="shrink-0 text-sm font-medium text-ink">{formatPrice(Number(p.price), locale)}</span>
                     </Link>
                   ))}
                 </SuggestionSection>

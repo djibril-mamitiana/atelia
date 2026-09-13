@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";
 import { getAdminProducts } from "@/server/queries/admin.queries";
 import { AdminSearchBar } from "@/components/admin/admin-search-bar";
@@ -14,6 +14,7 @@ export const metadata: Metadata = { title: "Produits — Admin" };
 
 export default async function AdminProductsPage({ searchParams }: { searchParams: Promise<{ q?: string; page?: string }> }) {
   const t = await getTranslations("Admin.Products");
+  const locale = await getLocale();
   const { q, page } = await searchParams;
   const { products, total, pageCount } = await getAdminProducts({ q, page: page ? Number(page) : 1 });
 
@@ -57,7 +58,7 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
                 </td>
                 <td className="px-4 py-3 text-muted">{p.category.name}</td>
                 <td className="px-4 py-3 text-muted">{p.brand.name}</td>
-                <td className="px-4 py-3 text-ink">{formatPrice(Number(p.price))}</td>
+                <td className="px-4 py-3 text-ink">{formatPrice(Number(p.price), locale)}</td>
                 <td className="px-4 py-3">
                   {p.stock === 0 ? (
                     <Badge tone="danger">{t("outOfStock")}</Badge>

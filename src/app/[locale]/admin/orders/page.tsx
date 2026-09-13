@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminOrders } from "@/server/queries/admin.queries";
 import { AdminSearchBar } from "@/components/admin/admin-search-bar";
 import { Pagination } from "@/components/catalog/pagination";
@@ -28,6 +28,7 @@ export default async function AdminOrdersPage({
 }) {
   const t = await getTranslations("Admin.Orders");
   const tStatus = await getTranslations("Admin.OrderStatus");
+  const locale = await getLocale();
   const { q, status, page } = await searchParams;
   const { orders, total, pageCount } = await getAdminOrders({
     q,
@@ -78,8 +79,8 @@ export default async function AdminOrdersPage({
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-muted">{order.user.firstName} {order.user.lastName}</td>
-                <td className="px-4 py-3 text-muted">{formatDate(order.createdAt)}</td>
-                <td className="px-4 py-3 text-ink">{formatPrice(Number(order.total))}</td>
+                <td className="px-4 py-3 text-muted">{formatDate(order.createdAt, locale)}</td>
+                <td className="px-4 py-3 text-ink">{formatPrice(Number(order.total), locale)}</td>
                 <td className="px-4 py-3 text-muted">{order.payment?.status ?? "—"}</td>
                 <td className="px-4 py-3">
                   <Badge tone={order.status === "DELIVERED" ? "sage" : order.status === "CANCELLED" || order.status === "REFUNDED" ? "danger" : "accent"}>

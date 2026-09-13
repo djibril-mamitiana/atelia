@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Heart, ShoppingCart } from "lucide-react";
@@ -24,6 +24,7 @@ export function ProductCard({
   className?: string;
 }) {
   const t = useTranslations("Product");
+  const locale = useLocale();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [favorite, setFavorite] = useState(isFavorite);
@@ -101,9 +102,9 @@ export function ProductCard({
         )}
 
         <div className="mt-1 flex items-baseline gap-2">
-          <span className="text-base font-semibold text-ink">{formatPrice(price)}</span>
+          <span className="text-base font-semibold text-ink">{formatPrice(price, locale)}</span>
           {compareAtPrice && (
-            <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice)}</span>
+            <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
           )}
         </div>
 

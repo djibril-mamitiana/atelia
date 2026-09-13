@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
@@ -20,6 +20,7 @@ export function CatalogFilters({
   priceBounds: { min: number; max: number };
 }) {
   const t = useTranslations("Catalog");
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -105,7 +106,7 @@ export function CatalogFilters({
       <div>
         <p className="mb-3 text-sm font-medium text-ink">{t("price")}</p>
         <p className="mb-2 text-xs text-muted">
-          {formatPrice(priceBounds.min)} — {formatPrice(priceBounds.max)}
+          {formatPrice(priceBounds.min, locale)} — {formatPrice(priceBounds.max, locale)}
         </p>
         <div className="flex items-center gap-2">
           <input

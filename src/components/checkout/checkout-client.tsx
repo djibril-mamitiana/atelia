@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition, type ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "@/i18n/navigation";
 import { Check, MapPin, Truck, Landmark } from "lucide-react";
@@ -55,6 +55,7 @@ export function CheckoutClient({
 }) {
   const t = useTranslations("Checkout");
   const tCart = useTranslations("Cart");
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -224,7 +225,7 @@ export function CheckoutClient({
               </div>
               <p className="text-xs text-muted">{t("bankTransferNotice")}</p>
               <Button size="lg" onClick={handlePay} disabled={pending}>
-                {pending ? t("validating") : t("confirmOrder", { total: formatPrice(estimatedTotal) })}
+                {pending ? t("validating") : t("confirmOrder", { total: formatPrice(estimatedTotal, locale) })}
               </Button>
             </div>
           )}
@@ -243,7 +244,7 @@ export function CheckoutClient({
                 <p className="truncate text-sm text-ink">{line.name}</p>
                 <p className="text-xs text-muted">{tCart("quantity", { quantity: line.quantity })}</p>
               </div>
-              <span className="text-sm font-medium text-ink">{formatPrice(line.unitPrice * line.quantity)}</span>
+              <span className="text-sm font-medium text-ink">{formatPrice(line.unitPrice * line.quantity, locale)}</span>
             </div>
           ))}
         </div>
@@ -251,15 +252,15 @@ export function CheckoutClient({
         <dl className="mt-5 flex flex-col gap-2 border-t border-border pt-4 text-sm">
           <div className="flex justify-between">
             <dt className="text-muted">{t("subtotal")}</dt>
-            <dd className="text-ink">{formatPrice(subtotal)}</dd>
+            <dd className="text-ink">{formatPrice(subtotal, locale)}</dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-muted">{t("shipping")}</dt>
-            <dd className="text-ink">{shippingCost === 0 ? tCart("free") : formatPrice(shippingCost)}</dd>
+            <dd className="text-ink">{shippingCost === 0 ? tCart("free") : formatPrice(shippingCost, locale)}</dd>
           </div>
           <div className="flex justify-between border-t border-border pt-3 text-base font-semibold text-ink">
             <dt>{t("estimatedTotal")}</dt>
-            <dd>{formatPrice(estimatedTotal)}</dd>
+            <dd>{formatPrice(estimatedTotal, locale)}</dd>
           </div>
         </dl>
       </div>

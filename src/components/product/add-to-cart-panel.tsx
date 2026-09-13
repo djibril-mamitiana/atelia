@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { ShoppingCart, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,7 @@ export function AddToCartPanel({
   variants: Variant[];
 }) {
   const t = useTranslations("Product");
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -75,7 +76,7 @@ export function AddToCartPanel({
       )}
 
       <div className="flex items-baseline gap-2">
-        <span className="text-2xl font-semibold text-ink">{formatPrice(price)}</span>
+        <span className="text-2xl font-semibold text-ink">{formatPrice(price, locale)}</span>
         <span className="text-xs text-muted">{t("vatIncluded")}</span>
       </div>
 
