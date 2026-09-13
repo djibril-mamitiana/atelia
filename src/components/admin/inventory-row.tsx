@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { Select, Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +25,7 @@ export function InventoryRow({
   lowStockThreshold: number;
   isActive: boolean;
 }) {
+  const t = useTranslations("Admin.Inventory");
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
@@ -32,7 +34,13 @@ export function InventoryRow({
   const [quantity, setQuantity] = useState(1);
   const [reason, setReason] = useState("");
 
-  const status = !isActive ? null : stock === 0 ? { tone: "danger" as const, label: "Rupture" } : stock <= lowStockThreshold ? { tone: "gold" as const, label: "Stock faible" } : { tone: "sage" as const, label: "En stock" };
+  const status = !isActive
+    ? null
+    : stock === 0
+      ? { tone: "danger" as const, label: t("statusOutOfStock") }
+      : stock <= lowStockThreshold
+        ? { tone: "gold" as const, label: t("statusLowStock") }
+        : { tone: "sage" as const, label: t("statusInStock") };
 
   function submit() {
     startTransition(async () => {
@@ -44,7 +52,7 @@ export function InventoryRow({
       setCurrentStock((s) => (type === "IN" || type === "RETURN" ? s + quantity : s - quantity));
       setOpen(false);
       setReason("");
-      toast("Stock mis à jour.", "success");
+      toast(t("toastUpdated"), "success");
     });
   }
 
@@ -60,7 +68,7 @@ export function InventoryRow({
         <td className="px-4 py-3">{status && <Badge tone={status.tone}>{status.label}</Badge>}</td>
         <td className="px-4 py-3">
           <button onClick={() => setOpen((o) => !o)} className="text-xs font-medium text-accent-dark hover:underline">
-            Ajuster
+            {t("adjust")}
           </button>
         </td>
       </tr>
@@ -69,14 +77,14 @@ export function InventoryRow({
           <td colSpan={5} className="bg-paper px-4 py-3">
             <div className="flex flex-wrap items-end gap-3">
               <Select value={type} onChange={(e) => setType(e.target.value as MovementType)} className="w-40">
-                <option value="IN">Entrée (IN)</option>
-                <option value="OUT">Sortie (OUT)</option>
-                <option value="ADJUSTMENT">Ajustement</option>
-                <option value="RETURN">Retour</option>
+                <option value="IN">{t("typeIn")}</option>
+                <option value="OUT">{t("typeOut")}</option>
+                <option value="ADJUSTMENT">{t("typeAdjustment")}</option>
+                <option value="RETURN">{t("typeReturn")}</option>
               </Select>
               <Input type="number" min={1} value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className="w-24" />
-              <Input placeholder="Motif (optionnel)" value={reason} onChange={(e) => setReason(e.target.value)} className="flex-1" />
-              <Button size="sm" onClick={submit} disabled={pending}>Valider</Button>
+              <Input placeholder={t("reasonPlaceholder")} value={reason} onChange={(e) => setReason(e.target.value)} className="flex-1" />
+              <Button size="sm" onClick={submit} disabled={pending}>{t("validate")}</Button>
             </div>
           </td>
         </tr>

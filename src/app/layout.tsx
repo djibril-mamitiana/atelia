@@ -21,18 +21,12 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-// Root layout — the only place <html>/<body> is rendered, for every route
-// including the unlocalized /admin.
-//
-// The i18n provider (NextIntlClientProvider) deliberately does NOT live
-// here: this layout sits *above* the `[locale]` segment, so on a
-// client-side navigation between two locales (e.g. clicking a link while
-// on /de/... that leads to /fr/...) Next.js treats this shell as
-// unaffected and does not re-render it — any locale/messages captured here
-// would stay frozen at whichever locale first loaded the tab. The provider
-// lives in `[locale]/(site)/layout.tsx` instead, which *is* part of the
-// segment that changes and re-renders on every such navigation. See
-// HtmlLangSync for the same reasoning applied to <html lang>.
+// Root layout — the only place <html>/<body> is rendered. Everything else
+// (including the NextIntlClientProvider) lives in `[locale]/layout.tsx`:
+// this shell sits *above* the `[locale]` segment, so on a client-side
+// navigation between two locales Next.js treats it as unaffected and
+// doesn't re-render it — any locale/messages captured here would stay
+// frozen at whichever locale first loaded the tab.
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>

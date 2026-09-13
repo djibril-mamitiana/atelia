@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Select, Input, Label } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
@@ -19,17 +20,6 @@ const VALID_TRANSITIONS: Record<OrderStatus, OrderStatus[]> = {
   REFUNDED: [],
 };
 
-const LABELS: Record<OrderStatus, string> = {
-  PENDING: "En attente",
-  CONFIRMED: "Confirmée",
-  PROCESSING: "Préparation",
-  SHIPPED: "Expédiée",
-  OUT_FOR_DELIVERY: "En livraison",
-  DELIVERED: "Livrée",
-  CANCELLED: "Annulée",
-  REFUNDED: "Remboursée",
-};
-
 export function OrderStatusControl({
   orderId,
   currentStatus,
@@ -45,6 +35,8 @@ export function OrderStatusControl({
   carrier?: string | null;
   trackingNumber?: string | null;
 }) {
+  const t = useTranslations("Admin.OrderStatusControl");
+  const tStatus = useTranslations("Admin.OrderStatus");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -61,7 +53,7 @@ export function OrderStatusControl({
     startTransition(async () => {
       const result = await updateOrderStatusAction(orderId, nextStatus, comment);
       if (!result.success) return toast(result.error, "error");
-      toast("Statut mis à jour.", "success");
+      toast(t("toastStatusUpdated"), "success");
       setNextStatus("");
       setComment("");
       router.refresh();
@@ -72,7 +64,7 @@ export function OrderStatusControl({
     startTransition(async () => {
       const result = await updateTrackingAction(orderId, carrierValue, trackingValue);
       if (!result.success) return toast(result.error, "error");
-      toast("Suivi mis à jour.", "success");
+      toast(t("toastTrackingUpdated"), "success");
       router.refresh();
     });
   }
@@ -81,42 +73,42 @@ export function OrderStatusControl({
     <div className="flex flex-col gap-5">
       {awaitingBankTransfer && (
         <div className="rounded-md border border-accent/30 bg-accent-soft p-4 text-sm text-ink-soft">
-          En attente du virement bancaire du client. Passez la commande en <strong>Confirmée</strong>{" "}
-          dès réception des fonds — le paiement sera automatiquement marqué comme reçu.
+          {t("bankTransferPrefix")} <strong>{t("bankTransferStrong")}</strong>{" "}
+          {t("bankTransferSuffix")}
         </div>
       )}
 
       {options.length > 0 && (
         <div className="rounded-md border border-border bg-surface p-4">
-          <p className="mb-3 text-sm font-medium text-ink">Changer le statut</p>
+          <p className="mb-3 text-sm font-medium text-ink">{t("changeStatus")}</p>
           <Select value={nextStatus} onChange={(e) => setNextStatus(e.target.value as OrderStatus)}>
-            <option value="">Choisir un nouveau statut…</option>
+            <option value="">{t("chooseNewStatus")}</option>
             {options.map((s) => (
               <option key={s} value={s}>
-                {s === "CONFIRMED" && awaitingBankTransfer ? "Confirmée (virement reçu)" : LABELS[s]}
+                {s === "CONFIRMED" && awaitingBankTransfer ? t("confirmedBankReceived") : tStatus(s)}
               </option>
             ))}
           </Select>
-          <Input className="mt-2" placeholder="Commentaire (optionnel)" value={comment} onChange={(e) => setComment(e.target.value)} />
+          <Input className="mt-2" placeholder={t("commentPlaceholder")} value={comment} onChange={(e) => setComment(e.target.value)} />
           <Button size="sm" className="mt-3" onClick={submitStatus} disabled={!nextStatus || pending}>
-            Valider
+            {t("validate")}
           </Button>
         </div>
       )}
 
       <div className="rounded-md border border-border bg-surface p-4">
-        <p className="mb-3 text-sm font-medium text-ink">Transporteur &amp; suivi</p>
+        <p className="mb-3 text-sm font-medium text-ink">{t("carrierTracking")}</p>
         <div className="flex flex-col gap-2">
           <div>
-            <Label>Transporteur</Label>
+            <Label>{t("labelCarrier")}</Label>
             <Input value={carrierValue} onChange={(e) => setCarrierValue(e.target.value)} />
           </div>
           <div>
-            <Label>Numéro de suivi</Label>
+            <Label>{t("labelTracking")}</Label>
             <Input value={trackingValue} onChange={(e) => setTrackingValue(e.target.value)} />
           </div>
           <Button size="sm" variant="outline" className="self-start" onClick={submitTracking} disabled={pending}>
-            Enregistrer
+            {t("save")}
           </Button>
         </div>
       </div>

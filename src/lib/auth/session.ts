@@ -2,8 +2,9 @@ import "server-only";
 
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import type { Role } from "@prisma/client";
+import { getLocale } from "next-intl/server";
+import { redirect } from "@/i18n/navigation";
 import { SESSION_COOKIE_NAME } from "@/lib/constants";
 
 export type SessionPayload = {
@@ -85,7 +86,9 @@ export async function requireUser(nextPath?: string): Promise<SessionPayload> {
   const session = await getSession();
   if (!session) {
     const suffix = nextPath ? `?next=${encodeURIComponent(nextPath)}` : "";
-    redirect(`/connexion${suffix}`);
+    const locale = await getLocale();
+    redirect({ href: `/connexion${suffix}`, locale });
+    throw new Error("unreachable"); // redirect() above always throws — this just satisfies TS's narrowing
   }
   return session;
 }
@@ -94,7 +97,8 @@ export async function requireUser(nextPath?: string): Promise<SessionPayload> {
 export async function requireRole(roles: Role[], nextPath?: string): Promise<SessionPayload> {
   const session = await requireUser(nextPath);
   if (!roles.includes(session.role)) {
-    redirect("/");
+    const locale = await getLocale();
+    redirect({ href: "/", locale });
   }
   return session;
 }

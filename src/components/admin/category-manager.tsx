@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import slugify from "slugify";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { Input, Label, Textarea, Select } from "@/components/ui/input";
@@ -15,6 +16,7 @@ type Category = CategoryInput & { id: string; parentName?: string | null; produc
 const EMPTY: CategoryInput = { name: "", slug: "", description: "", imageUrl: "", parentId: null, order: 0, isActive: true };
 
 export function CategoryManager({ initialCategories }: { initialCategories: Category[] }) {
+  const t = useTranslations("Admin.Categories");
   const { toast } = useToast();
   const [categories, setCategories] = useState(initialCategories);
   const [pending, startTransition] = useTransition();
@@ -41,7 +43,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
       setCategories((prev) => [...prev, { ...form, id: result.id, productCount: 0 }]);
       setAdding(false);
       setForm(EMPTY);
-      toast("Catégorie créée.", "success");
+      toast(t("toastCreated"), "success");
     });
   }
 
@@ -52,17 +54,17 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
       if (!result.success) return toast(result.error, "error");
       setCategories((prev) => prev.map((c) => (c.id === editingId ? { ...c, ...form } : c)));
       setEditingId(null);
-      toast("Catégorie mise à jour.", "success");
+      toast(t("toastUpdated"), "success");
     });
   }
 
   function handleDelete(id: string) {
-    if (!confirm("Supprimer cette catégorie ?")) return;
+    if (!confirm(t("deleteConfirm"))) return;
     startTransition(async () => {
       const result = await deleteCategoryAction(id);
       if (!result.success) return toast(result.error, "error");
       setCategories((prev) => prev.filter((c) => c.id !== id));
-      toast("Catégorie supprimée.", "success");
+      toast(t("toastDeleted"), "success");
     });
   }
 
@@ -71,7 +73,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
       <div className="flex flex-col gap-3 rounded-md border border-ink p-4">
         <div className="grid gap-3 sm:grid-cols-2">
           <div>
-            <Label>Nom</Label>
+            <Label>{t("labelName")}</Label>
             <Input
               value={form.name}
               onChange={(e) => {
@@ -81,7 +83,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
             />
           </div>
           <div>
-            <Label>Slug</Label>
+            <Label>{t("labelSlug")}</Label>
             <Input
               value={form.slug}
               onChange={(e) => {
@@ -91,34 +93,34 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
             />
           </div>
           <div>
-            <Label>Catégorie parente</Label>
+            <Label>{t("labelParent")}</Label>
             <Select value={form.parentId ?? ""} onChange={(e) => set("parentId", e.target.value || null)}>
-              <option value="">Aucune (catégorie racine)</option>
+              <option value="">{t("noneRoot")}</option>
               {categories.filter((c) => c.id !== editingId).map((c) => (
                 <option key={c.id} value={c.id}>{c.name}</option>
               ))}
             </Select>
           </div>
           <div>
-            <Label>Ordre d&apos;affichage</Label>
+            <Label>{t("labelOrder")}</Label>
             <Input type="number" value={form.order} onChange={(e) => set("order", Number(e.target.value))} />
           </div>
           <div className="sm:col-span-2">
-            <Label>Image (URL)</Label>
+            <Label>{t("labelImage")}</Label>
             <Input value={form.imageUrl ?? ""} onChange={(e) => set("imageUrl", e.target.value)} />
           </div>
           <div className="sm:col-span-2">
-            <Label>Description</Label>
+            <Label>{t("labelDescription")}</Label>
             <Textarea rows={2} value={form.description ?? ""} onChange={(e) => set("description", e.target.value)} />
           </div>
         </div>
         <label className="flex items-center gap-2 text-sm text-ink-soft">
           <input type="checkbox" checked={form.isActive} onChange={(e) => set("isActive", e.target.checked)} className="h-4 w-4 accent-accent" />
-          Active
+          {t("activeCheckbox")}
         </label>
         <div className="flex gap-2">
-          <Button size="sm" onClick={onSave} disabled={pending}>Enregistrer</Button>
-          {onCancel && <Button size="sm" variant="ghost" onClick={onCancel}>Annuler</Button>}
+          <Button size="sm" onClick={onSave} disabled={pending}>{t("save")}</Button>
+          {onCancel && <Button size="sm" variant="ghost" onClick={onCancel}>{t("cancel")}</Button>}
         </div>
       </div>
     );
@@ -134,9 +136,9 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
             <div className="text-sm">
               <p className="font-medium text-ink">
                 {cat.parentName && <span className="text-muted">{cat.parentName} / </span>}
-                {cat.name} <Badge tone={cat.isActive ? "sage" : "neutral"} className="ml-2">{cat.isActive ? "Active" : "Inactive"}</Badge>
+                {cat.name} <Badge tone={cat.isActive ? "sage" : "neutral"} className="ml-2">{cat.isActive ? t("activeBadge") : t("inactiveBadge")}</Badge>
               </p>
-              <p className="text-xs text-muted">{cat.productCount} produits · /{cat.slug}</p>
+              <p className="text-xs text-muted">{t("productsCount", { count: cat.productCount, slug: cat.slug })}</p>
             </div>
             <div className="flex gap-2">
               <button onClick={() => startEdit(cat)} className="text-muted hover:text-ink"><Pencil size={15} /></button>
@@ -158,7 +160,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
             setAdding(true);
           }}
         >
-          <Plus size={16} /> Nouvelle catégorie
+          <Plus size={16} /> {t("newCategory")}
         </Button>
       )}
     </div>

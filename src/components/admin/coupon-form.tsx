@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Input, Label, Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
@@ -12,6 +13,7 @@ function toDateInputValue(d: Date) {
 }
 
 export function CouponForm({ categories, products }: { categories: { id: string; name: string }[]; products: { id: string; name: string }[] }) {
+  const t = useTranslations("Admin.Promotions");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -49,67 +51,67 @@ export function CouponForm({ categories, products }: { categories: { id: string;
         productId: form.productId || null,
       });
       if (!result.success) return toast(result.error, "error");
-      toast("Code promo créé.", "success");
+      toast(t("toastCreated"), "success");
       setOpen(false);
       router.refresh();
     });
   }
 
   if (!open) {
-    return <Button onClick={() => setOpen(true)}>Nouveau code promo</Button>;
+    return <Button onClick={() => setOpen(true)}>{t("newCoupon")}</Button>;
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-md border border-ink bg-surface p-5">
       <div className="grid gap-3 sm:grid-cols-3">
         <div>
-          <Label>Code</Label>
+          <Label>{t("code")}</Label>
           <Input required value={form.code} onChange={(e) => setForm((f) => ({ ...f, code: e.target.value.toUpperCase() }))} />
         </div>
         <div>
-          <Label>Type</Label>
+          <Label>{t("type")}</Label>
           <Select value={form.type} onChange={(e) => setForm((f) => ({ ...f, type: e.target.value as "PERCENT" | "FIXED" }))}>
-            <option value="PERCENT">Pourcentage (%)</option>
-            <option value="FIXED">Montant fixe (€)</option>
+            <option value="PERCENT">{t("percentOption")}</option>
+            <option value="FIXED">{t("fixedOption")}</option>
           </Select>
         </div>
         <div>
-          <Label>Valeur</Label>
+          <Label>{t("value")}</Label>
           <Input type="number" step="0.01" required value={form.value} onChange={(e) => setForm((f) => ({ ...f, value: Number(e.target.value) }))} />
         </div>
         <div>
-          <Label>Achat minimum (€, optionnel)</Label>
+          <Label>{t("minPurchase")}</Label>
           <Input type="number" value={form.minPurchase} onChange={(e) => setForm((f) => ({ ...f, minPurchase: e.target.value }))} />
         </div>
         <div>
-          <Label>Début</Label>
+          <Label>{t("startsAt")}</Label>
           <Input type="date" value={form.startsAt} onChange={(e) => setForm((f) => ({ ...f, startsAt: e.target.value }))} />
         </div>
         <div>
-          <Label>Fin</Label>
+          <Label>{t("endsAt")}</Label>
           <Input type="date" value={form.endsAt} onChange={(e) => setForm((f) => ({ ...f, endsAt: e.target.value }))} />
         </div>
         <div>
-          <Label>Limite d&apos;utilisation totale (optionnel)</Label>
+          <Label>{t("usageLimit")}</Label>
           <Input type="number" value={form.usageLimit} onChange={(e) => setForm((f) => ({ ...f, usageLimit: e.target.value }))} />
         </div>
         <div>
-          <Label>Limite par client</Label>
+          <Label>{t("usageLimitPerUser")}</Label>
           <Input type="number" value={form.usageLimitPerUser} onChange={(e) => setForm((f) => ({ ...f, usageLimitPerUser: e.target.value }))} />
         </div>
         <div>
-          <Label>Catégorie ciblée (optionnel)</Label>
+          <Label>{t("targetCategory")}</Label>
           <Select value={form.categoryId} onChange={(e) => setForm((f) => ({ ...f, categoryId: e.target.value }))}>
-            <option value="">Toutes catégories</option>
+            <option value="">{t("allCategories")}</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
           </Select>
         </div>
         <div>
-          <Label>Produit ciblé (optionnel)</Label>
+          <Label>{t("targetProduct")}</Label>
           <Select value={form.productId} onChange={(e) => setForm((f) => ({ ...f, productId: e.target.value }))}>
-            <option value="">Tous produits</option>
+            <option value="">{t("allProducts")}</option>
             {products.map((p) => (
               <option key={p.id} value={p.id}>{p.name}</option>
             ))}
@@ -117,8 +119,8 @@ export function CouponForm({ categories, products }: { categories: { id: string;
         </div>
       </div>
       <div className="flex gap-2">
-        <Button type="submit" disabled={pending}>Créer</Button>
-        <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Annuler</Button>
+        <Button type="submit" disabled={pending}>{t("create")}</Button>
+        <Button type="button" variant="ghost" onClick={() => setOpen(false)}>{t("cancel")}</Button>
       </div>
     </form>
   );

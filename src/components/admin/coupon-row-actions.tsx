@@ -1,12 +1,14 @@
 "use client";
 
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Trash2 } from "lucide-react";
 import { useToast } from "@/components/ui/toast";
 import { toggleCouponActiveAction, deleteCouponAction } from "@/server/actions/admin/coupon.actions";
 
 export function CouponRowActions({ id, isActive }: { id: string; isActive: boolean }) {
+  const t = useTranslations("Admin.Promotions");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -20,7 +22,7 @@ export function CouponRowActions({ id, isActive }: { id: string; isActive: boole
   }
 
   function remove() {
-    if (!confirm("Supprimer ce code promo ?")) return;
+    if (!confirm(t("deleteConfirm"))) return;
     startTransition(async () => {
       const result = await deleteCouponAction(id);
       if (!result.success) return toast(result.error, "error");
@@ -31,7 +33,7 @@ export function CouponRowActions({ id, isActive }: { id: string; isActive: boole
   return (
     <div className="flex items-center gap-3">
       <button onClick={toggle} disabled={pending} className="text-xs font-medium text-accent-dark hover:underline">
-        {isActive ? "Désactiver" : "Activer"}
+        {isActive ? t("deactivateAction") : t("activateAction")}
       </button>
       <button onClick={remove} disabled={pending} className="text-muted hover:text-danger">
         <Trash2 size={15} />

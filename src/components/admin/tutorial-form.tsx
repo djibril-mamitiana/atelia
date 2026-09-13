@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import slugify from "slugify";
 import { Input, Label, Textarea, Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -34,6 +35,7 @@ export function TutorialForm({
   tutorialId?: string;
   initial?: Partial<TutorialFormInput>;
 }) {
+  const t = useTranslations("Admin.TutorialForm");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -49,7 +51,7 @@ export function TutorialForm({
     startTransition(async () => {
       const result = tutorialId ? await updateTutorialAction(tutorialId, form) : await createTutorialAction(form);
       if (!result.success) return toast(result.error, "error");
-      toast(tutorialId ? "Tutoriel mis à jour." : "Tutoriel créé.", "success");
+      toast(tutorialId ? t("toastUpdated") : t("toastCreated"), "success");
       router.push("/admin/tutorials");
     });
   }
@@ -57,7 +59,7 @@ export function TutorialForm({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-w-2xl">
       <div>
-        <Label>Titre</Label>
+        <Label>{t("labelTitle")}</Label>
         <Input
           required
           value={form.title}
@@ -68,42 +70,42 @@ export function TutorialForm({
         />
       </div>
       <div>
-        <Label>Slug</Label>
+        <Label>{t("labelSlug")}</Label>
         <Input required value={form.slug} onChange={(e) => { setSlugEdited(true); set("slug", e.target.value); }} />
       </div>
       <div>
-        <Label>Description</Label>
+        <Label>{t("labelDescription")}</Label>
         <Textarea required rows={2} value={form.description} onChange={(e) => set("description", e.target.value)} />
       </div>
       <div>
-        <Label>Contenu (étapes)</Label>
+        <Label>{t("labelContent")}</Label>
         <Textarea required rows={6} value={form.content} onChange={(e) => set("content", e.target.value)} />
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <Label>Miniature (URL)</Label>
+          <Label>{t("labelThumbnail")}</Label>
           <Input value={form.thumbnailUrl} onChange={(e) => set("thumbnailUrl", e.target.value)} />
         </div>
         <div>
-          <Label>Vidéo (URL)</Label>
+          <Label>{t("labelVideo")}</Label>
           <Input required value={form.videoUrl} onChange={(e) => set("videoUrl", e.target.value)} />
         </div>
         <div>
-          <Label>Durée (minutes)</Label>
+          <Label>{t("labelDuration")}</Label>
           <Input type="number" required value={form.durationMinutes} onChange={(e) => set("durationMinutes", Number(e.target.value))} />
         </div>
         <div>
-          <Label>Niveau</Label>
+          <Label>{t("labelLevel")}</Label>
           <Select value={form.level} onChange={(e) => set("level", e.target.value as TutorialFormInput["level"])}>
-            <option value="BEGINNER">Débutant</option>
-            <option value="INTERMEDIATE">Intermédiaire</option>
-            <option value="ADVANCED">Avancé</option>
+            <option value="BEGINNER">{t("levelBeginner")}</option>
+            <option value="INTERMEDIATE">{t("levelIntermediate")}</option>
+            <option value="ADVANCED">{t("levelAdvanced")}</option>
           </Select>
         </div>
         <div>
-          <Label>Catégorie</Label>
+          <Label>{t("labelCategory")}</Label>
           <Select value={form.categoryId} onChange={(e) => set("categoryId", e.target.value)}>
-            <option value="">Aucune</option>
+            <option value="">{t("noneOption")}</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
@@ -111,19 +113,19 @@ export function TutorialForm({
         </div>
       </div>
       <div>
-        <Label>Tags (séparés par des virgules)</Label>
-        <Input value={form.tagsText} onChange={(e) => set("tagsText", e.target.value)} placeholder="bricolage, diy, débutant" />
+        <Label>{t("labelTags")}</Label>
+        <Input value={form.tagsText} onChange={(e) => set("tagsText", e.target.value)} placeholder={t("tagsPlaceholder")} />
       </div>
       <div>
-        <Label>IDs des produits associés (un par ligne, voir la fiche produit)</Label>
+        <Label>{t("labelProductIds")}</Label>
         <Textarea rows={3} value={form.productIdsText} onChange={(e) => set("productIdsText", e.target.value)} />
       </div>
       <label className="flex items-center gap-2 text-sm text-ink-soft">
         <input type="checkbox" checked={form.isPublished} onChange={(e) => set("isPublished", e.target.checked)} className="h-4 w-4 accent-accent" />
-        Publié
+        {t("publishedCheckbox")}
       </label>
       <Button type="submit" size="lg" disabled={pending} className="self-start">
-        {pending ? "Enregistrement…" : tutorialId ? "Mettre à jour" : "Créer le tutoriel"}
+        {pending ? t("saving") : tutorialId ? t("submitUpdate") : t("submitCreate")}
       </Button>
     </form>
   );

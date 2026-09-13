@@ -1,12 +1,14 @@
 "use client";
 
 import { useTransition } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Pencil, Trash2 } from "lucide-react";
 import { useToast } from "@/components/ui/toast";
 import { toggleProductActiveAction, deleteProductAction } from "@/server/actions/admin/product.actions";
 
 export function ProductRowActions({ id, isActive }: { id: string; isActive: boolean }) {
+  const t = useTranslations("Admin.Products");
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
 
@@ -18,17 +20,17 @@ export function ProductRowActions({ id, isActive }: { id: string; isActive: bool
   }
 
   function remove() {
-    if (!confirm("Supprimer définitivement ce produit ?")) return;
+    if (!confirm(t("deleteConfirm"))) return;
     startTransition(async () => {
       const result = await deleteProductAction(id);
-      toast(result.success ? "Produit supprimé." : result.error, result.success ? "success" : "error");
+      toast(result.success ? t("toastDeleted") : result.error, result.success ? "success" : "error");
     });
   }
 
   return (
     <div className="flex items-center gap-3">
       <button onClick={toggle} disabled={pending} className="text-xs font-medium text-accent-dark hover:underline">
-        {isActive ? "Désactiver" : "Activer"}
+        {isActive ? t("deactivate") : t("activate")}
       </button>
       <Link href={`/admin/products/${id}`} className="text-muted hover:text-ink">
         <Pencil size={15} />

@@ -7,9 +7,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // /admin and /api aren't localized (no /{locale} prefix); /compte
-        // and /checkout live under every /{locale}/** storefront route.
-        disallow: ["/admin", "/api", "/*/compte", "/*/checkout"],
+        // /api isn't localized (no /{locale} prefix); /admin, /compte and
+        // /checkout all live under every /{locale}/** route now.
+        disallow: ["/api", "/*/admin", "/*/compte", "/*/checkout"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
