@@ -29,6 +29,7 @@ export function ProductCard({
   const [pending, startTransition] = useTransition();
   const [favorite, setFavorite] = useState(isFavorite);
 
+  const grouped = product.groupSize > 1;
   const price = Number(product.price);
   const compareAtPrice = product.compareAtPrice ? Number(product.compareAtPrice) : null;
   const discount = discountPercent(price, compareAtPrice);
@@ -101,25 +102,48 @@ export function ProductCard({
           </div>
         )}
 
-        <div className="mt-1 flex items-baseline gap-2">
-          <span className="text-base font-semibold text-ink">{formatPrice(price, locale)}</span>
-          {compareAtPrice && (
-            <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
-          )}
-        </div>
+        {grouped ? (
+          <div className="mt-1 flex flex-col">
+            <span className="text-base font-semibold text-ink">
+              {t("fromPrice", { price: formatPrice(product.fromPrice ?? price, locale) })}
+            </span>
+            <span className="text-xs text-muted">{t("sizesCount", { count: product.groupSize })}</span>
+          </div>
+        ) : (
+          <div className="mt-1 flex items-baseline gap-2">
+            <span className="text-base font-semibold text-ink">{formatPrice(price, locale)}</span>
+            {compareAtPrice && (
+              <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
+            )}
+          </div>
+        )}
 
-        <button
-          type="button"
-          onClick={handleAddToCart}
-          disabled={outOfStock || pending}
-          className={cn(
-            "mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors",
-            "bg-ink text-white hover:bg-ink-soft disabled:opacity-40"
-          )}
-        >
-          <ShoppingCart size={15} />
-          {outOfStock ? t("unavailable") : t("addToCart")}
-        </button>
+        {grouped ? (
+          // Several sizes: the size has to be picked on the product page.
+          <Link
+            href={`/produits/${product.slug}`}
+            className={cn(
+              "mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors",
+              outOfStock ? "pointer-events-none bg-ink text-white opacity-40" : "bg-ink text-white hover:bg-ink-soft"
+            )}
+          >
+            <ShoppingCart size={15} />
+            {outOfStock ? t("unavailable") : t("chooseSizeCta")}
+          </Link>
+        ) : (
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            disabled={outOfStock || pending}
+            className={cn(
+              "mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors",
+              "bg-ink text-white hover:bg-ink-soft disabled:opacity-40"
+            )}
+          >
+            <ShoppingCart size={15} />
+            {outOfStock ? t("unavailable") : t("addToCart")}
+          </button>
+        )}
       </div>
     </div>
   );

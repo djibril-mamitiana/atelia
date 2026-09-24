@@ -12,6 +12,7 @@ import slugify from "slugify";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { computeProductGroups } from "../src/lib/product-grouping";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -206,6 +207,11 @@ async function seedProducts(
     readFileSync(path.join(__dirname, "data/description-translations.json"), "utf8")
   );
 
+  // Rows that only differ by size are shown as one product with a size
+  // selector — see src/lib/product-grouping.ts (same logic as
+  // scripts/backfill-product-groups.ts for an already-seeded database).
+  const sizeGroups = computeProductGroups(catalog);
+
   const used = new Set<string>();
   const products: { id: string; name: string; slug: string; categorySlug: string }[] = [];
 
@@ -277,6 +283,7 @@ async function seedProducts(
         isFeatured,
         isNew,
         isBestSeller,
+        ...sizeGroups.get(item.sku),
         seoTitle: `${item.name} | ${brand.name}`,
         seoDescription: description.slice(0, 150),
         images: { create: pickImages(2).map((url, i) => ({ url, alt: item.name, position: i })) },
@@ -319,15 +326,15 @@ async function seedProductRelations(products: { id: string; categorySlug: string
 // 5. Tutorials — 9, one per diamond-tool category, linked to real products
 // ─────────────────────────────────────────────────────────────
 const TUTORIALS: { title: string; categorySlug: string; level: "BEGINNER" | "INTERMEDIATE" | "ADVANCED"; minutes: number }[] = [
-  { title: "Comment choisir son disque diamant pour meuleuse d'angle ?", categorySlug: "disques-diamant-115-230", level: "BEGINNER", minutes: 6 },
-  { title: "Tronçonner du béton armé avec une découpeuse thermique", categorySlug: "disques-diamant-250-1000", level: "INTERMEDIATE", minutes: 10 },
-  { title: "Couper l'asphalte et l'enrobé : bien choisir son disque", categorySlug: "disques-diamant-asphalte", level: "INTERMEDIATE", minutes: 8 },
-  { title: "Percer du béton avec une couronne diamant", categorySlug: "forets-diamant", level: "INTERMEDIATE", minutes: 12 },
-  { title: "Bien poncer une chape béton avec une meule diamant", categorySlug: "meules-diamant", level: "BEGINNER", minutes: 7 },
-  { title: "Découper du marbre et de la pierre naturelle sans éclats", categorySlug: "disques-diamant-pierre-naturelle", level: "ADVANCED", minutes: 15 },
-  { title: "Disques galvanisés : quand les préférer aux disques frittés ?", categorySlug: "autres-disques-diamant", level: "INTERMEDIATE", minutes: 9 },
+  { title: "Comment choisir son disque diamant pour meuleuse d'angle ?", categorySlug: "disques-meuleuse-tronconneuse", level: "BEGINNER", minutes: 6 },
+  { title: "Tronçonner du béton armé avec une découpeuse thermique", categorySlug: "disques-scie-sol", level: "INTERMEDIATE", minutes: 10 },
+  { title: "Couper l'asphalte et l'enrobé : bien choisir son disque", categorySlug: "disques-scie-sol", level: "INTERMEDIATE", minutes: 8 },
+  { title: "Percer du béton avec une couronne diamant", categorySlug: "couronnes-carottage-eau", level: "INTERMEDIATE", minutes: 12 },
+  { title: "Bien poncer une chape béton avec une meule diamant", categorySlug: "disques-poncage", level: "BEGINNER", minutes: 7 },
+  { title: "Découper du marbre et de la pierre naturelle sans éclats", categorySlug: "disques-scie-table", level: "ADVANCED", minutes: 15 },
+  { title: "Disques galvanisés : quand les préférer aux disques frittés ?", categorySlug: "disques-meuleuse-tronconneuse", level: "INTERMEDIATE", minutes: 9 },
   { title: "Bien entretenir et refroidir ses outils diamant", categorySlug: "accessoires-diamant", level: "BEGINNER", minutes: 5 },
-  { title: "Interflex : disques abrasifs pour métal et inox", categorySlug: "interflex", level: "BEGINNER", minutes: 6 },
+  { title: "Interflex : disques abrasifs pour métal et inox", categorySlug: "disques-meuleuse-tronconneuse", level: "BEGINNER", minutes: 6 },
 ];
 
 // See prisma/data/tutorial-translations.json — hand-translated (only 9

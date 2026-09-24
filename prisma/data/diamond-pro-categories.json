@@ -1,38 +1,54 @@
 [
   {
-    "slug": "disques-diamant-115-230",
-    "name": "Disques diamant Ø115 – Ø230 mm"
+    "slug": "disques-meuleuse-tronconneuse",
+    "name": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)"
   },
   {
-    "slug": "disques-diamant-250-1000",
-    "name": "Disques diamant Ø250 – Ø1000 mm"
+    "slug": "disques-scie-table",
+    "name": "Disques scie sur table"
   },
   {
-    "slug": "disques-diamant-asphalte",
-    "name": "Disques diamant pour asphalte"
+    "slug": "disques-scie-sol",
+    "name": "Disques scie à sol"
   },
   {
-    "slug": "forets-diamant",
-    "name": "Forets et trépans diamant"
+    "slug": "couronnes-carottage-eau",
+    "name": "Couronnes de carottage à eau"
   },
   {
-    "slug": "meules-diamant",
-    "name": "Meules et outils de meulage diamant"
+    "slug": "carottage-sec",
+    "name": "Outils et couronnes de carottage à sec"
   },
   {
-    "slug": "disques-diamant-pierre-naturelle",
-    "name": "Disques diamant pour pierre naturelle"
+    "slug": "segments-bagues-carottage",
+    "name": "Segments et bagues de carottage"
   },
   {
-    "slug": "autres-disques-diamant",
-    "name": "Autres disques diamant"
+    "slug": "disques-scie-murale",
+    "name": "Disques scie murale"
+  },
+  {
+    "slug": "fixation-machine",
+    "name": "Fixation machine"
+  },
+  {
+    "slug": "disques-poncage",
+    "name": "Disques de ponçage"
+  },
+  {
+    "slug": "disques-decoupeuse-couronne",
+    "name": "Disques découpeuse béton à couronne"
+  },
+  {
+    "slug": "blocs-poncage",
+    "name": "Blocs de ponçage"
   },
   {
     "slug": "accessoires-diamant",
     "name": "Accessoires"
   },
   {
-    "slug": "interflex",
-    "name": "Interflex"
+    "slug": "nettoyage",
+    "name": "Nettoyage"
   }
 ]

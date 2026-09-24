@@ -13,130 +13,186 @@
       "description": "Dischi, punte e mole diamantate per il taglio e la foratura di cemento, asfalto e pietra naturale."
     }
   },
-  "disques-diamant-115-230": {
+  "disques-meuleuse-tronconneuse": {
     "de": {
-      "name": "Diamantscheiben Ø115 – Ø230 mm",
-      "description": "Diamantscheiben Ø115 – Ø230 mm — professionelle Diamond Pro Produktreihe."
+      "name": "Trennscheiben für Winkelschleifer & Trennschleifer (Ø115 – Ø400 mm)",
+      "description": "Diamant-Trennscheiben für Winkelschleifer und Trennschleifer, Ø115 bis Ø400 mm."
     },
     "en": {
-      "name": "Diamond blades Ø115 – Ø230 mm",
-      "description": "Diamond blades Ø115 – Ø230 mm — professional Diamond Pro range."
+      "name": "Angle grinder & cut-off saw blades (Ø115 – Ø400 mm)",
+      "description": "Diamond cutting blades for angle grinders and cut-off saws, Ø115 to Ø400 mm."
     },
     "it": {
-      "name": "Dischi diamantati Ø115 – Ø230 mm",
-      "description": "Dischi diamantati Ø115 – Ø230 mm — gamma professionale Diamond Pro."
+      "name": "Dischi per smerigliatrice e troncatrice (Ø115 – Ø400 mm)",
+      "description": "Dischi diamantati da taglio per smerigliatrici angolari e troncatrici, da Ø115 a Ø400 mm."
     }
   },
-  "disques-diamant-250-1000": {
+  "disques-scie-table": {
     "de": {
-      "name": "Diamantscheiben Ø250 – Ø1000 mm",
-      "description": "Diamantscheiben Ø250 – Ø1000 mm — professionelle Diamond Pro Produktreihe."
+      "name": "Trennscheiben für Tischsägen",
+      "description": "Diamant-Trennscheiben mit geschlossenem Rand für Tischsägen und Nasssägen: Fliesen, Feinsteinzeug, Naturstein."
     },
     "en": {
-      "name": "Diamond blades Ø250 – Ø1000 mm",
-      "description": "Diamond blades Ø250 – Ø1000 mm — professional Diamond Pro range."
+      "name": "Table saw blades",
+      "description": "Continuous-rim diamond blades for table saws and wet saws: tile, porcelain, natural stone."
     },
     "it": {
-      "name": "Dischi diamantati Ø250 – Ø1000 mm",
-      "description": "Dischi diamantati Ø250 – Ø1000 mm — gamma professionale Diamond Pro."
+      "name": "Dischi per seghe da banco",
+      "description": "Dischi diamantati a bordo continuo per seghe da banco e taglio ad acqua: piastrelle, gres, pietra."
     }
   },
-  "disques-diamant-asphalte": {
+  "disques-scie-sol": {
     "de": {
-      "name": "Diamantscheiben für Asphalt",
-      "description": "Diamantscheiben für Asphalt — professionelle Diamond Pro Produktreihe."
+      "name": "Trennscheiben für Bodensägen",
+      "description": "Diamant-Trennscheiben für Bodensägen: Beton, Stahlbeton und Asphalt."
     },
     "en": {
-      "name": "Diamond blades for asphalt",
-      "description": "Diamond blades for asphalt — professional Diamond Pro range."
+      "name": "Floor saw blades",
+      "description": "Diamond blades for floor saws: concrete, reinforced concrete and asphalt."
     },
     "it": {
-      "name": "Dischi diamantati per asfalto",
-      "description": "Dischi diamantati per asfalto — gamma professionale Diamond Pro."
+      "name": "Dischi per seghe da pavimento",
+      "description": "Dischi diamantati per seghe da pavimento: calcestruzzo, cemento armato e asfalto."
     }
   },
-  "forets-diamant": {
+  "couronnes-carottage-eau": {
     "de": {
-      "name": "Diamantbohrer und -bohrkronen",
-      "description": "Diamantbohrer und -bohrkronen — professionelle Diamond Pro Produktreihe."
+      "name": "Bohrkronen für Nassbohren",
+      "description": "Diamant-Bohrkronen und -Bohrer für das Nassbohren von Beton, Mauerwerk und Stein."
     },
     "en": {
-      "name": "Diamond drills and core bits",
-      "description": "Diamond drills and core bits — professional Diamond Pro range."
+      "name": "Wet core drill bits",
+      "description": "Diamond core bits and drills for wet drilling of concrete, masonry and stone."
     },
     "it": {
-      "name": "Punte e corone diamantate",
-      "description": "Punte e corone diamantate — gamma professionale Diamond Pro."
+      "name": "Corone per carotaggio ad acqua",
+      "description": "Corone e punte diamantate per il carotaggio ad acqua di calcestruzzo, muratura e pietra."
     }
   },
-  "meules-diamant": {
+  "carottage-sec": {
     "de": {
-      "name": "Diamantschleifscheiben und -werkzeuge",
-      "description": "Diamantschleifscheiben und -werkzeuge — professionelle Diamond Pro Produktreihe."
+      "name": "Werkzeuge und Bohrkronen für Trockenbohren",
+      "description": "Bohrkronen, Bohrer, Dosensenker und Diamantwerkzeuge für das Trockenbohren."
     },
     "en": {
-      "name": "Diamond grinding wheels and tools",
-      "description": "Diamond grinding wheels and tools — professional Diamond Pro range."
+      "name": "Dry core drilling tools and bits",
+      "description": "Core bits, drills, box cutters and diamond tools for dry drilling."
     },
     "it": {
-      "name": "Mole e utensili diamantati per levigatura",
-      "description": "Mole e utensili diamantati per levigatura — gamma professionale Diamond Pro."
+      "name": "Utensili e corone per carotaggio a secco",
+      "description": "Corone, punte, fresa per scatole e utensili diamantati per la foratura a secco."
     }
   },
-  "disques-diamant-pierre-naturelle": {
+  "segments-bagues-carottage": {
     "de": {
-      "name": "Diamantscheiben für Naturstein",
-      "description": "Diamantscheiben für Naturstein — professionelle Diamond Pro Produktreihe."
+      "name": "Segmente und Ringe für Bohrkronen",
+      "description": "Diamantsegmente und Ersatzringe für Bohrkronen."
     },
     "en": {
-      "name": "Diamond blades for natural stone",
-      "description": "Diamond blades for natural stone — professional Diamond Pro range."
+      "name": "Core bit segments and rings",
+      "description": "Diamond segments and replacement rings for core bits."
     },
     "it": {
-      "name": "Dischi diamantati per pietra naturale",
-      "description": "Dischi diamantati per pietra naturale — gamma professionale Diamond Pro."
+      "name": "Segmenti e anelli per corone da carotaggio",
+      "description": "Segmenti diamantati e anelli di ricambio per corone da carotaggio."
     }
   },
-  "autres-disques-diamant": {
+  "disques-scie-murale": {
     "de": {
-      "name": "Weitere Diamantscheiben",
-      "description": "Weitere Diamantscheiben — professionelle Diamond Pro Produktreihe."
+      "name": "Trennscheiben für Wandsägen",
+      "description": "Diamant-Trennscheiben mit Sandwichkern für Wandsägen und das Schneiden von Stahlbeton."
     },
     "en": {
-      "name": "Other diamond blades",
-      "description": "Other diamond blades — professional Diamond Pro range."
+      "name": "Wall saw blades",
+      "description": "Sandwich-core diamond blades for wall saws and cutting reinforced concrete."
     },
     "it": {
-      "name": "Altri dischi diamantati",
-      "description": "Altri dischi diamantati — gamma professionale Diamond Pro."
+      "name": "Dischi per seghe a parete",
+      "description": "Dischi diamantati con anima sandwich per seghe a parete e taglio di cemento armato."
+    }
+  },
+  "fixation-machine": {
+    "de": {
+      "name": "Maschinenaufnahmen",
+      "description": "Adapter, Aufnahmen und Befestigungen zur Montage von Diamantwerkzeugen an der Maschine."
+    },
+    "en": {
+      "name": "Machine fittings",
+      "description": "Adapters, connectors and fixings for mounting diamond tools onto the machine."
+    },
+    "it": {
+      "name": "Attacchi macchina",
+      "description": "Adattatori, raccordi e fissaggi per montare gli utensili diamantati sulla macchina."
+    }
+  },
+  "disques-poncage": {
+    "de": {
+      "name": "Schleifscheiben",
+      "description": "Diamant-Schleifteller, -scheiben und -fräser zum Schleifen von Beton, Estrich und Stein."
+    },
+    "en": {
+      "name": "Grinding discs",
+      "description": "Diamond cup wheels, discs and groove cutters for grinding concrete, screed and stone."
+    },
+    "it": {
+      "name": "Dischi abrasivi per levigatura",
+      "description": "Piatti, dischi e frese diamantate per levigare calcestruzzo, massetto e pietra."
+    }
+  },
+  "disques-decoupeuse-couronne": {
+    "de": {
+      "name": "Trennscheiben für Ringsägen (Beton)",
+      "description": "Trennscheiben und Segmente für Betonringsägen."
+    },
+    "en": {
+      "name": "Concrete ring saw blades",
+      "description": "Blades and segments for concrete ring saws."
+    },
+    "it": {
+      "name": "Dischi per troncatrici ad anello (calcestruzzo)",
+      "description": "Dischi e segmenti per troncatrici ad anello per calcestruzzo."
+    }
+  },
+  "blocs-poncage": {
+    "de": {
+      "name": "Schleifblöcke",
+      "description": "Diamant-Schleifblöcke und -segmente für Bodenschleifmaschinen."
+    },
+    "en": {
+      "name": "Grinding blocks",
+      "description": "Diamond grinding blocks and segments for floor grinding machines."
+    },
+    "it": {
+      "name": "Blocchi abrasivi",
+      "description": "Blocchi e segmenti abrasivi diamantati per levigatrici da pavimento."
     }
   },
   "accessoires-diamant": {
     "de": {
       "name": "Zubehör",
-      "description": "Zubehör — professionelle Diamond Pro Produktreihe."
+      "description": "Zubehör zum Bohren und Trennen: Spülköpfe, Koffer, Zentrierhilfen, Kühlung."
     },
     "en": {
       "name": "Accessories",
-      "description": "Accessories — professional Diamond Pro range."
+      "description": "Accessories for drilling and cutting: flush heads, cases, centring aids, coolant."
     },
     "it": {
       "name": "Accessori",
-      "description": "Accessori — gamma professionale Diamond Pro."
+      "description": "Accessori per foratura e taglio: teste di lavaggio, valigette, guide di centraggio, refrigerante."
     }
   },
-  "interflex": {
+  "nettoyage": {
     "de": {
-      "name": "Interflex",
-      "description": "Interflex — professionelle Diamond Pro Produktreihe."
+      "name": "Reinigung",
+      "description": "Schärfsteine und -platten zum Reinigen und Schärfen von Diamantwerkzeugen."
     },
     "en": {
-      "name": "Interflex",
-      "description": "Interflex — professional Diamond Pro range."
+      "name": "Cleaning",
+      "description": "Dressing stones and plates to clean and re-sharpen diamond tools."
     },
     "it": {
-      "name": "Interflex",
-      "description": "Interflex — gamma professionale Diamond Pro."
+      "name": "Pulizia",
+      "description": "Pietre e piastre di affilatura per pulire e riattivare gli utensili diamantati."
     }
   }
 }

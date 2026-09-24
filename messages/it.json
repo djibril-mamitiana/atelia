@@ -174,7 +174,17 @@
     "similar": "Prodotti simili",
     "home": "Home",
     "photoUnavailable": "Foto non disponibile",
-    "photoUnavailableShort": "Foto non disponibile"
+    "photoUnavailableShort": "Foto non disponibile",
+    "fromPrice": "Da {price}",
+    "sizesCount": "{count} misure",
+    "chooseSizeCta": "Scegli la misura",
+    "sizeTableTitle": "Scegli la tua misura",
+    "colSize": "Misura",
+    "colSpecs": "Caratteristiche",
+    "colRef": "Rif.",
+    "colPrice": "Prezzo",
+    "colStock": "Disponibilità",
+    "selectedSize": "Misura selezionata: {size}"
   },
   "Catalog": {
     "allProducts": "Tutti i prodotti",

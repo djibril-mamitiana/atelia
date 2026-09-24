@@ -2,6 +2,7 @@ import "server-only";
 import { getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
 import { PAGE_SIZE_CATALOG } from "@/lib/constants";
+import { stripSizeSuffix } from "@/lib/product-grouping";
 import type { Prisma } from "@prisma/client";
 
 export type SortOption = "pertinence" | "prix-asc" | "prix-desc" | "nouveaute" | "note";
@@ -118,6 +119,7 @@ const PRODUCT_CARD_SELECT = {
   nameIt: true,
   slug: true,
   sku: true,
+  groupKey: true,
   price: true,
   compareAtPrice: true,
   stock: true,
@@ -131,23 +133,96 @@ const PRODUCT_CARD_SELECT = {
 
 type RawProductCard = Prisma.ProductGetPayload<{ select: typeof PRODUCT_CARD_SELECT }>;
 
+// Stats for a size group (several Product rows shown as one card).
+type GroupStats = { size: number; fromPrice: number; inStock: boolean };
+
 // Server Components may pass this straight into a "use client" component
 // (ProductCard) — React's Flight serialization can't cross that boundary
 // with Prisma's Decimal instances, so every product-card query converts
 // them to plain numbers before returning. Also resolves the localized name
 // and drops the raw nameFr/nameEn/nameIt columns from the payload.
-function serializeProductCard(p: RawProductCard, locale: Locale) {
+//
+// When `group` describes a real size group (size > 1) the card represents
+// the whole group: name without the size suffix, "from" price, and no
+// per-size promo price.
+function serializeProductCard(p: RawProductCard, locale: Locale, group?: GroupStats) {
   const { nameFr, nameEn, nameIt, ...rest } = p;
   void nameFr;
   void nameEn;
   void nameIt;
+  const grouped = group != null && group.size > 1;
+  const localizedName = localizedField(p, "name", locale);
   return {
     ...rest,
-    name: localizedField(p, "name", locale),
+    name: grouped ? stripSizeSuffix(localizedName) : localizedName,
     price: Number(p.price),
-    compareAtPrice: p.compareAtPrice != null ? Number(p.compareAtPrice) : null,
+    compareAtPrice: grouped ? null : p.compareAtPrice != null ? Number(p.compareAtPrice) : null,
+    stock: grouped ? (group.inStock ? Math.max(p.stock, 1) : 0) : p.stock,
     avgRating: Number(p.avgRating),
+    groupSize: grouped ? group.size : 1,
+    fromPrice: grouped ? group.fromPrice : null,
   };
+}
+
+async function loadGroupStats(groupKeys: (string | null)[]): Promise<Map<string, GroupStats>> {
+  const keys = [...new Set(groupKeys.filter((k): k is string => !!k))];
+  if (keys.length === 0) return new Map();
+  const rows = await db.product.groupBy({
+    by: ["groupKey"],
+    where: { groupKey: { in: keys }, isActive: true },
+    _count: { _all: true },
+    _min: { price: true },
+    _sum: { stock: true },
+  });
+  return new Map(
+    rows.map((r) => [
+      r.groupKey as string,
+      { size: r._count._all, fromPrice: Number(r._min.price ?? 0), inStock: (r._sum.stock ?? 0) > 0 },
+    ])
+  );
+}
+
+/** One row per size group (first occurrence wins, so the best-ranked size that
+ *  matched the filters represents its group); ungrouped rows are kept as-is. */
+function dedupeByGroup<T extends { id: string; groupKey: string | null }>(rows: T[]): T[] {
+  const seen = new Set<string>();
+  return rows.filter((r) => {
+    const key = r.groupKey ?? r.id;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+async function toGroupedCards(rows: RawProductCard[], locale: Locale) {
+  const stats = await loadGroupStats(rows.map((r) => r.groupKey));
+  return rows.map((r) => serializeProductCard(r, locale, r.groupKey ? stats.get(r.groupKey) : undefined));
+}
+
+/** Home-page style shelf: newest/best/… rows, one card per size group. */
+async function pickGroupedCards(
+  where: Prisma.ProductWhereInput,
+  orderBy: Prisma.ProductOrderByWithRelationInput,
+  limit: number,
+  locale: Locale
+) {
+  const rows = await db.product.findMany({ where, select: PRODUCT_CARD_SELECT, orderBy, take: limit * 4 });
+  return toGroupedCards(dedupeByGroup(rows).slice(0, limit), locale);
+}
+
+/** Number of listing entries (size groups count once) per category id. */
+async function countListingEntriesByCategory(): Promise<Map<string, number>> {
+  const rows = await db.product.findMany({ where: { isActive: true }, select: { categoryId: true, groupKey: true } });
+  const seen = new Set<string>();
+  const counts = new Map<string, number>();
+  for (const r of rows) {
+    if (r.groupKey) {
+      if (seen.has(r.groupKey)) continue;
+      seen.add(r.groupKey);
+    }
+    counts.set(r.categoryId, (counts.get(r.categoryId) ?? 0) + 1);
+  }
+  return counts;
 }
 
 export async function getCatalogPage(filters: CatalogFilters) {
@@ -155,15 +230,15 @@ export async function getCatalogPage(filters: CatalogFilters) {
   const where = buildWhere(filters);
   const locale = (await getLocale()) as Locale;
 
-  const [products, total, categories, brands, priceBounds] = await Promise.all([
+  const [ranked, categories, brands, priceBounds, categoryCounts] = await Promise.all([
+    // Lightweight ranking pass over every matching row; sizes of one product
+    // are folded into a single entry below, then only the current page is
+    // loaded in full.
     db.product.findMany({
       where,
-      select: PRODUCT_CARD_SELECT,
-      orderBy: buildOrderBy(filters.sort),
-      skip: (page - 1) * PAGE_SIZE_CATALOG,
-      take: PAGE_SIZE_CATALOG,
+      select: { id: true, groupKey: true },
+      orderBy: [buildOrderBy(filters.sort), { id: "asc" }],
     }),
-    db.product.count({ where }),
     db.category.findMany({
       where: { isActive: true },
       select: CATEGORY_FILTER_SELECT,
@@ -175,14 +250,27 @@ export async function getCatalogPage(filters: CatalogFilters) {
       orderBy: { name: "asc" },
     }),
     db.product.aggregate({ where: { isActive: true }, _min: { price: true }, _max: { price: true } }),
+    countListingEntriesByCategory(),
   ]);
 
+  const entryIds = dedupeByGroup(ranked).map((r) => r.id);
+  const total = entryIds.length;
+  const pageIds = entryIds.slice((page - 1) * PAGE_SIZE_CATALOG, page * PAGE_SIZE_CATALOG);
+  const rows = pageIds.length
+    ? await db.product.findMany({ where: { id: { in: pageIds } }, select: PRODUCT_CARD_SELECT })
+    : [];
+  const byId = new Map(rows.map((r) => [r.id, r]));
+  const ordered = pageIds.map((id) => byId.get(id)).filter((r): r is RawProductCard => r != null);
+
   return {
-    products: products.map((p) => serializeProductCard(p, locale)),
+    products: await toGroupedCards(ordered, locale),
     total,
     page,
     pageCount: Math.max(1, Math.ceil(total / PAGE_SIZE_CATALOG)),
-    categories: categories.map((c) => localizeCategory(c, locale)),
+    categories: categories.map((c) => ({
+      ...localizeCategory(c, locale),
+      _count: { products: categoryCounts.get(c.id) ?? 0 },
+    })),
     brands,
     priceBounds: {
       min: priceBounds._min.price ? Number(priceBounds._min.price) : 0,
@@ -229,10 +317,75 @@ export async function getProductBySlug(slug: string) {
   });
   if (!product) return null;
 
+  // Sizes of the same product (same groupKey), ordered small → large. A
+  // group with a single active member behaves like a standalone product.
+  const siblings = product.groupKey
+    ? await db.product.findMany({
+        where: { groupKey: product.groupKey, isActive: true },
+        orderBy: [{ sizeOrder: "asc" }, { sku: "asc" }],
+        select: {
+          id: true,
+          slug: true,
+          sku: true,
+          sizeLabel: true,
+          sizeSpecs: true,
+          price: true,
+          compareAtPrice: true,
+          stock: true,
+          avgRating: true,
+          reviewCount: true,
+        },
+      })
+    : [];
+  const sizes = siblings.length > 1
+    ? siblings.map((s) => ({
+        id: s.id,
+        slug: s.slug,
+        sku: s.sku,
+        sizeLabel: s.sizeLabel ?? s.sku,
+        specs: s.sizeSpecs,
+        price: Number(s.price),
+        compareAtPrice: s.compareAtPrice != null ? Number(s.compareAtPrice) : null,
+        stock: s.stock,
+      }))
+    : [];
+
+  // Reviews and rating belong to the product as a whole, not to one size.
+  let reviews = product.reviews;
+  let reviewCount = product.reviewCount;
+  let avgRating = Number(product.avgRating);
+  if (sizes.length > 0) {
+    reviews = await db.review.findMany({
+      where: { status: "APPROVED", product: { groupKey: product.groupKey } },
+      include: { user: { select: { firstName: true, lastName: true } } },
+      orderBy: { createdAt: "desc" },
+      take: 20,
+    });
+    reviewCount = siblings.reduce((sum, s) => sum + s.reviewCount, 0);
+    avgRating =
+      reviewCount > 0
+        ? siblings.reduce((sum, s) => sum + Number(s.avgRating) * s.reviewCount, 0) / reviewCount
+        : avgRating;
+  }
+
+  const localizedName = localizedField(product, "name", locale);
+
   return {
     ...product,
-    name: localizedField(product, "name", locale),
-    description: localizedField(product, "description", locale),
+    sizes,
+    reviews,
+    reviewCount,
+    avgRating,
+    name: sizes.length > 0 ? stripSizeSuffix(localizedName) : localizedName,
+    // The per-size "Caractéristiques : …" line describes only one size — for a
+    // size group those figures live in the size table instead.
+    description:
+      sizes.length > 0
+        ? localizedField(product, "description", locale)
+            .split("\n")
+            .filter((line) => !/^(Caractéristiques|Features|Caratteristiche)\s*:/i.test(line))
+            .join("\n")
+        : localizedField(product, "description", locale),
     shortDescription: product.shortDescription != null ? localizedField(product, "shortDescription", locale) : product.shortDescription,
     category: {
       ...product.category,
@@ -258,46 +411,22 @@ export async function getProductBySlug(slug: string) {
 
 export async function getFeaturedProducts(limit = 8) {
   const locale = (await getLocale()) as Locale;
-  const products = await db.product.findMany({
-    where: { isActive: true, isFeatured: true },
-    select: PRODUCT_CARD_SELECT,
-    take: limit,
-    orderBy: { createdAt: "desc" },
-  });
-  return products.map((p) => serializeProductCard(p, locale));
+  return pickGroupedCards({ isActive: true, isFeatured: true }, { createdAt: "desc" }, limit, locale);
 }
 
 export async function getBestSellers(limit = 8) {
   const locale = (await getLocale()) as Locale;
-  const products = await db.product.findMany({
-    where: { isActive: true, isBestSeller: true },
-    select: PRODUCT_CARD_SELECT,
-    take: limit,
-    orderBy: { reviewCount: "desc" },
-  });
-  return products.map((p) => serializeProductCard(p, locale));
+  return pickGroupedCards({ isActive: true, isBestSeller: true }, { reviewCount: "desc" }, limit, locale);
 }
 
 export async function getNewProducts(limit = 8) {
   const locale = (await getLocale()) as Locale;
-  const products = await db.product.findMany({
-    where: { isActive: true, isNew: true },
-    select: PRODUCT_CARD_SELECT,
-    take: limit,
-    orderBy: { createdAt: "desc" },
-  });
-  return products.map((p) => serializeProductCard(p, locale));
+  return pickGroupedCards({ isActive: true, isNew: true }, { createdAt: "desc" }, limit, locale);
 }
 
 export async function getPromotedProducts(limit = 8) {
   const locale = (await getLocale()) as Locale;
-  const products = await db.product.findMany({
-    where: { isActive: true, compareAtPrice: { not: null } },
-    select: PRODUCT_CARD_SELECT,
-    take: limit,
-    orderBy: { createdAt: "desc" },
-  });
-  return products.map((p) => serializeProductCard(p, locale));
+  return pickGroupedCards({ isActive: true, compareAtPrice: { not: null } }, { createdAt: "desc" }, limit, locale);
 }
 
 export async function getPopularCategories(limit = 8) {
@@ -308,7 +437,8 @@ export async function getPopularCategories(limit = 8) {
     orderBy: { order: "asc" },
     take: limit,
   });
-  return categories.map((c) => localizeCategory(c, locale));
+  const counts = await countListingEntriesByCategory();
+  return categories.map((c) => ({ ...localizeCategory(c, locale), _count: { products: counts.get(c.id) ?? 0 } }));
 }
 
 export async function getActiveBrands(limit = 12) {
@@ -374,7 +504,7 @@ export async function searchAll(q: string) {
         ],
       },
       select: PRODUCT_CARD_SELECT,
-      take: 6,
+      take: 30,
     }),
     db.category.findMany({
       where: {
@@ -410,7 +540,7 @@ export async function searchAll(q: string) {
   ]);
 
   return {
-    products: products.map((p) => serializeProductCard(p, locale)),
+    products: await toGroupedCards(dedupeByGroup(products).slice(0, 6), locale),
     categories: categories.map((c) => localizeCategory(c, locale)),
     brands,
     tutorials: tutorials.map((t) => ({ ...t, title: localizedFrBasedField(t, "title", locale) })),

@@ -12,16 +12,31 @@ import { formatPrice } from "@/lib/format";
 
 type Variant = { id: string; name: string; sku: string; priceDelta: number; stock: number };
 
+/** One size of a size group — each is its own product row (own SKU, price, stock). */
+export type SizeOption = {
+  id: string;
+  sku: string;
+  sizeLabel: string;
+  specs: string | null;
+  price: number;
+  compareAtPrice: number | null;
+  stock: number;
+};
+
 export function AddToCartPanel({
   productId,
   basePrice,
   baseStock,
   variants,
+  sizes = [],
+  initialSizeId,
 }: {
   productId: string;
   basePrice: number;
   baseStock: number;
   variants: Variant[];
+  sizes?: SizeOption[];
+  initialSizeId?: string;
 }) {
   const t = useTranslations("Product");
   const locale = useLocale();
@@ -31,16 +46,24 @@ export function AddToCartPanel({
   const [variantId, setVariantId] = useState<string | null>(variants[0]?.id ?? null);
   const [quantity, setQuantity] = useState(1);
 
-  const selectedVariant = variants.find((v) => v.id === variantId) ?? null;
-  const stock = selectedVariant ? selectedVariant.stock : baseStock;
-  const price = basePrice + (selectedVariant?.priceDelta ?? 0);
+  const hasSizes = sizes.length > 1;
+  const [sizeId, setSizeId] = useState<string>(initialSizeId ?? sizes[0]?.id ?? productId);
+  const selectedSize = hasSizes ? (sizes.find((sz) => sz.id === sizeId) ?? sizes[0]) : null;
+
+  // With a size table each size is its own product: it supplies the id,
+  // price and stock. Otherwise the (optional) variant chips apply as before.
+  const selectedVariant = hasSizes ? null : (variants.find((v) => v.id === variantId) ?? null);
+  const targetProductId = selectedSize ? selectedSize.id : productId;
+  const stock = selectedSize ? selectedSize.stock : selectedVariant ? selectedVariant.stock : baseStock;
+  const price = selectedSize ? selectedSize.price : basePrice + (selectedVariant?.priceDelta ?? 0);
+  const compareAtPrice = selectedSize?.compareAtPrice ?? null;
   const outOfStock = stock <= 0;
 
   const maxQuantity = useMemo(() => Math.max(1, Math.min(stock, 99)), [stock]);
 
   function add(redirectToCheckout: boolean) {
     startTransition(async () => {
-      const result = await addToCartAction(productId, quantity, variantId);
+      const result = await addToCartAction(targetProductId, quantity, hasSizes ? null : variantId);
       if (!result.success) {
         toast(result.error, "error");
         return;
@@ -55,7 +78,63 @@ export function AddToCartPanel({
 
   return (
     <div className="flex flex-col gap-4 rounded-md border border-border p-5">
-      {variants.length > 0 && (
+      {hasSizes && (
+        <div>
+          <p className="mb-2 text-sm font-medium text-ink">{t("sizeTableTitle")}</p>
+          <div className="max-h-72 overflow-auto rounded-md border border-border">
+            <table className="w-full min-w-[420px] text-left text-sm">
+              <thead className="sticky top-0 bg-paper text-xs uppercase tracking-wide text-muted">
+                <tr>
+                  <th className="px-3 py-2 font-medium">{t("colSize")}</th>
+                  <th className="px-3 py-2 font-medium">{t("colSpecs")}</th>
+                  <th className="px-3 py-2 font-medium">{t("colRef")}</th>
+                  <th className="px-3 py-2 text-right font-medium">{t("colPrice")}</th>
+                  <th className="px-3 py-2 font-medium">{t("colStock")}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {sizes.map((sz) => {
+                  const active = sz.id === selectedSize?.id;
+                  return (
+                    <tr
+                      key={sz.id}
+                      onClick={() => {
+                        setSizeId(sz.id);
+                        setQuantity(1);
+                      }}
+                      className={`cursor-pointer transition-colors ${active ? "bg-accent-soft" : "hover:bg-paper"}`}
+                    >
+                      <td className="whitespace-nowrap px-3 py-2 font-medium text-ink">
+                        <label className="flex cursor-pointer items-center gap-2">
+                          <input
+                            type="radio"
+                            name="size"
+                            checked={active}
+                            onChange={() => {
+                              setSizeId(sz.id);
+                              setQuantity(1);
+                            }}
+                            className="accent-accent"
+                          />
+                          {sz.sizeLabel}
+                        </label>
+                      </td>
+                      <td className="px-3 py-2 text-xs text-muted">{sz.specs ?? "—"}</td>
+                      <td className="whitespace-nowrap px-3 py-2 text-xs text-muted">{sz.sku}</td>
+                      <td className="whitespace-nowrap px-3 py-2 text-right font-medium text-ink">{formatPrice(sz.price, locale)}</td>
+                      <td className={`whitespace-nowrap px-3 py-2 text-xs ${sz.stock > 0 ? "text-sage" : "text-danger"}`}>
+                        {sz.stock > 0 ? t("inStock") : t("outOfStockBadge")}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {!hasSizes && variants.length > 0 && (
         <div>
           <p className="mb-2 text-sm font-medium text-ink">{t("choice")}</p>
           <div className="flex flex-wrap gap-2">
@@ -77,8 +156,16 @@ export function AddToCartPanel({
 
       <div className="flex items-baseline gap-2">
         <span className="text-2xl font-semibold text-ink">{formatPrice(price, locale)}</span>
+        {compareAtPrice && (
+          <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
+        )}
         <span className="text-xs text-muted">{t("vatIncluded")}</span>
       </div>
+      {selectedSize && (
+        <p className="-mt-2 text-xs text-muted">
+          {t("selectedSize", { size: selectedSize.sizeLabel })} · {t("ref", { sku: selectedSize.sku })}
+        </p>
+      )}
 
       <p className={outOfStock ? "text-sm font-medium text-danger" : "text-sm text-sage"}>
         {outOfStock ? t("outOfStockStatus") : stock <= 5 ? t("lowStock", { count: stock }) : t("inStock")}

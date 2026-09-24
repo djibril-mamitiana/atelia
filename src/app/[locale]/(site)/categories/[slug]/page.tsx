@@ -1,7 +1,8 @@
-import { Link } from "@/i18n/navigation";
+import { Link, redirect } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { RETIRED_CATEGORY_REDIRECTS } from "@/lib/category-redirects";
 import { getCategoryBySlug } from "@/server/queries/categories.queries";
 import { getCatalogPage, type SortOption } from "@/server/queries/catalog.queries";
 import { ProductCard } from "@/components/product/product-card";
@@ -25,7 +26,7 @@ type SearchParams = {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   const category = await getCategoryBySlug(slug);
-  if (!category) return {};
+  if (!category || !category.isActive) return {};
   return {
     // category.name/description are already locale-resolved by
     // getCategoryBySlug — seoTitle/seoDescription are French-only.
@@ -44,7 +45,11 @@ export default async function CategoryPage({
   const { slug } = await params;
   const sp = await searchParams;
   const category = await getCategoryBySlug(slug);
-  if (!category) notFound();
+  if (!category || !category.isActive) {
+    const replacement = RETIRED_CATEGORY_REDIRECTS[slug];
+    if (replacement) redirect({ href: `/categories/${replacement}`, locale: await getLocale() });
+    notFound();
+  }
   const t = await getTranslations("Catalog");
 
   const result = await getCatalogPage({

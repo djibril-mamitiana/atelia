@@ -71,13 +71,24 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
     description: product.shortDescription || product.description,
     sku: product.sku,
     brand: { "@type": "Brand", name: product.brand.name },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "EUR",
-      price: price.toFixed(2),
-      availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-      url: `${SITE_URL}/produits/${product.slug}`,
-    },
+    offers:
+      product.sizes.length > 1
+        ? {
+            "@type": "AggregateOffer",
+            priceCurrency: "EUR",
+            lowPrice: Math.min(...product.sizes.map((sz) => sz.price)).toFixed(2),
+            highPrice: Math.max(...product.sizes.map((sz) => sz.price)).toFixed(2),
+            offerCount: product.sizes.length,
+            availability: product.sizes.some((sz) => sz.stock > 0) ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            url: `${SITE_URL}/produits/${product.slug}`,
+          }
+        : {
+            "@type": "Offer",
+            priceCurrency: "EUR",
+            price: price.toFixed(2),
+            availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            url: `${SITE_URL}/produits/${product.slug}`,
+          },
     ...(product.reviewCount > 0
       ? { aggregateRating: { "@type": "AggregateRating", ratingValue: Number(product.avgRating), reviewCount: product.reviewCount } }
       : {}),
@@ -110,7 +121,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         <div>
           <p className="text-sm uppercase tracking-wide text-muted">{product.brand.name}</p>
           <h1 className="mt-1 font-display text-3xl text-ink">{product.name}</h1>
-          <p className="mt-1 text-xs text-muted">{t("ref", { sku: product.sku })}</p>
+          {product.sizes.length === 0 && <p className="mt-1 text-xs text-muted">{t("ref", { sku: product.sku })}</p>}
 
           <div className="mt-3 flex items-center gap-2">
             {product.reviewCount > 0 && (
@@ -119,14 +130,14 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
                 <span className="text-sm text-muted">{t("reviewsCount", { count: product.reviewCount })}</span>
               </>
             )}
-            {discount && <Badge tone="accent">-{discount}%</Badge>}
+            {discount && product.sizes.length === 0 && <Badge tone="accent">-{discount}%</Badge>}
           </div>
 
           <div className="mt-3">
             <FavoriteButton productId={product.id} initialFavorite={isFavorite} />
           </div>
 
-          {compareAtPrice && (
+          {compareAtPrice && product.sizes.length === 0 && (
             <p className="mt-4 text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</p>
           )}
 
@@ -136,6 +147,16 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
               basePrice={price}
               baseStock={product.stock}
               variants={product.variants.map((v) => ({ id: v.id, name: v.name, sku: v.sku, priceDelta: Number(v.priceDelta), stock: v.stock }))}
+              sizes={product.sizes.map((sz) => ({
+                id: sz.id,
+                sku: sz.sku,
+                sizeLabel: sz.sizeLabel,
+                specs: sz.specs,
+                price: sz.price,
+                compareAtPrice: sz.compareAtPrice,
+                stock: sz.stock,
+              }))}
+              initialSizeId={product.id}
             />
           </div>
         </div>
