@@ -29,11 +29,11 @@ export function UserMenu({
     return (
       <Link
         href="/connexion"
-        className="flex flex-col items-center gap-0.5 text-ink-soft hover:text-ink"
+        className="flex h-10 items-center gap-2 rounded-full px-3 text-ink transition-colors hover:bg-ink/5"
         aria-label={t("login")}
       >
-        <User size={20} strokeWidth={1.6} />
-        <span className="hidden text-[11px] sm:block">{t("accountLabel")}</span>
+        <User size={20} strokeWidth={1.7} />
+        <span className="hidden text-sm font-medium xl:block">{t("accountLabel")}</span>
       </Link>
     );
   }
@@ -42,16 +42,16 @@ export function UserMenu({
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex flex-col items-center gap-0.5 text-ink-soft hover:text-ink"
+        className="flex h-10 items-center gap-2 rounded-full px-3 text-ink transition-colors hover:bg-ink/5"
         aria-haspopup="menu"
         aria-expanded={open}
       >
-        <User size={20} strokeWidth={1.6} />
-        <span className="hidden text-[11px] sm:block">{session.firstName}</span>
+        <User size={20} strokeWidth={1.7} />
+        <span className="hidden text-sm font-medium xl:block">{session.firstName}</span>
       </button>
 
       {open && (
-        <div role="menu" className="absolute right-0 top-[calc(100%+10px)] z-40 w-60 rounded-md border border-border bg-surface py-1.5 shadow-xl">
+        <div role="menu" className="absolute right-0 top-[calc(100%+10px)] z-50 w-64 rounded-2xl border border-border bg-surface py-2 shadow-[0_30px_60px_-20px_rgba(13,15,18,0.4)]">
           <p className="px-4 pb-2 pt-1 text-sm text-muted">
             {t("greetingPrefix")} <span className="font-medium text-ink">{session.firstName}</span>
           </p>

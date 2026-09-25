@@ -105,23 +105,25 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   };
 
   return (
-    <div className="container-page py-10">
+    <div className="container-page py-8 lg:py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
-      <nav className="mb-6 flex gap-1.5 text-sm text-muted">
-        <Link href="/" className="hover:text-ink">{t("home")}</Link> /
-        <Link href={`/categories/${product.category.slug}`} className="hover:text-ink">{product.category.name}</Link> /
-        <span className="text-ink">{product.name}</span>
+      <nav aria-label="Breadcrumb" className="mb-6 flex min-w-0 items-center gap-2 text-[13px] text-muted lg:mb-8">
+        <Link href="/" className="shrink-0 transition-colors hover:text-ink">{t("home")}</Link>
+        <span aria-hidden="true">/</span>
+        <Link href={`/categories/${product.category.slug}`} className="min-w-0 truncate transition-colors hover:text-ink">{product.category.name}</Link>
+        <span aria-hidden="true" className="max-sm:hidden">/</span>
+        <span className="min-w-0 truncate text-ink max-sm:hidden">{product.name}</span>
       </nav>
 
-      <div className="grid gap-10 lg:grid-cols-2">
+      <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
         <ProductGallery media={media} productName={product.name} />
 
-        <div>
-          <p className="text-sm uppercase tracking-wide text-muted">{product.brand.name}</p>
-          <h1 className="mt-1 font-display text-3xl text-ink">{product.name}</h1>
-          {product.sizes.length === 0 && <p className="mt-1 text-xs text-muted">{t("ref", { sku: product.sku })}</p>}
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="eyebrow text-muted">{product.brand.name}</p>
+          <h1 className="mt-3 font-display text-[2rem] leading-[1.08] tracking-[-0.01em] text-balance text-ink lg:text-[2.6rem]">{product.name}</h1>
+          {product.sizes.length === 0 && <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">{t("ref", { sku: product.sku })}</p>}
 
           <div className="mt-3 flex items-center gap-2">
             {product.reviewCount > 0 && (
@@ -162,17 +164,17 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         </div>
       </div>
 
-      <div className="mt-14 grid gap-10 lg:grid-cols-[2fr_1fr]">
+      <div className="mt-16 grid gap-10 lg:mt-24 lg:grid-cols-[2fr_1fr] lg:gap-14">
         <div className="flex flex-col gap-10">
           <section>
-            <h2 className="mb-3 font-display text-xl text-ink">{t("description")}</h2>
+            <h2 className="mb-4 font-display text-2xl text-ink">{t("description")}</h2>
             <p className="whitespace-pre-line text-sm leading-relaxed text-ink-soft">{product.description}</p>
           </section>
 
           {product.attributes.length > 0 && (
             <section>
-              <h2 className="mb-3 font-display text-xl text-ink">{t("specs")}</h2>
-              <dl className="divide-y divide-border rounded-md border border-border">
+              <h2 className="mb-4 font-display text-2xl text-ink">{t("specs")}</h2>
+              <dl className="divide-y divide-border overflow-hidden rounded-2xl border border-border">
                 {product.attributes.map((attr) => (
                   <div key={attr.id} className="flex justify-between gap-4 px-4 py-2.5 text-sm odd:bg-paper/60">
                     <dt className="text-muted">{attr.name}</dt>
@@ -185,11 +187,11 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
 
           {product.tutorials.length > 0 && (
             <section>
-              <h2 className="mb-3 font-display text-xl text-ink">{t("relatedTutorials")}</h2>
+              <h2 className="mb-4 font-display text-2xl text-ink">{t("relatedTutorials")}</h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 {product.tutorials.map((tp) => (
-                  <Link key={tp.tutorial.id} href={`/tutoriels/${tp.tutorial.slug}`} className="group flex gap-3 rounded-md border border-border p-3">
-                    <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-sm bg-paper">
+                  <Link key={tp.tutorial.id} href={`/tutoriels/${tp.tutorial.slug}`} className="group flex gap-3 rounded-2xl border border-border bg-surface p-3 transition-colors hover:border-ink/30">
+                    <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-paper">
                       {tp.tutorial.thumbnailUrl && (
                         <Image src={tp.tutorial.thumbnailUrl} alt="" fill sizes="96px" className="object-cover" />
                       )}
@@ -206,7 +208,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           )}
 
           <section>
-            <h2 className="mb-3 font-display text-xl text-ink">{t("customerReviews")}</h2>
+            <h2 className="mb-4 font-display text-2xl text-ink">{t("customerReviews")}</h2>
             <ReviewList reviews={product.reviews} />
           </section>
         </div>
@@ -215,7 +217,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           {canReview ? (
             <ReviewForm productId={product.id} />
           ) : (
-            <p className="rounded-md border border-border bg-paper/60 p-4 text-sm text-muted">
+            <p className="rounded-2xl border border-border bg-surface p-5 text-sm text-muted">
               {session ? t("reviewGateDelivered") : t("reviewGateLogin")}
             </p>
           )}
@@ -223,9 +225,9 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
       </div>
 
       {product.complementaryTo.length > 0 && (
-        <section className="mt-14">
-          <h2 className="mb-6 font-display text-2xl text-ink">{t("complementary")}</h2>
-          <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-4">
+        <section className="mt-16 lg:mt-24">
+          <h2 className="h-section mb-8 !text-3xl lg:!text-4xl">{t("complementary")}</h2>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4 sm:gap-x-6">
             {product.complementaryTo.map((rel) => (
               <ProductCard key={rel.relatedProduct.id} product={rel.relatedProduct} />
             ))}
@@ -234,9 +236,9 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
       )}
 
       {product.relatedFrom.length > 0 && (
-        <section className="mt-14">
-          <h2 className="mb-6 font-display text-2xl text-ink">{t("similar")}</h2>
-          <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-4">
+        <section className="mt-16 lg:mt-24">
+          <h2 className="h-section mb-8 !text-3xl lg:!text-4xl">{t("similar")}</h2>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4 sm:gap-x-6">
             {product.relatedFrom.map((rel) => (
               <ProductCard key={rel.baseProduct.id} product={rel.baseProduct} />
             ))}

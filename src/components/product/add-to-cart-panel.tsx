@@ -77,11 +77,11 @@ export function AddToCartPanel({
   }
 
   return (
-    <div className="flex flex-col gap-4 rounded-md border border-border p-5">
+    <div className="flex flex-col gap-5 rounded-3xl border border-border bg-surface p-5 sm:p-7">
       {hasSizes && (
         <div>
-          <p className="mb-2 text-sm font-medium text-ink">{t("sizeTableTitle")}</p>
-          <div className="max-h-72 overflow-auto rounded-md border border-border">
+          <p className="eyebrow mb-3 text-muted">{t("sizeTableTitle")}</p>
+          <div className="max-h-72 overflow-auto rounded-2xl border border-border">
             <table className="w-full min-w-[420px] text-left text-sm">
               <thead className="sticky top-0 bg-paper text-xs uppercase tracking-wide text-muted">
                 <tr>
@@ -136,14 +136,14 @@ export function AddToCartPanel({
 
       {!hasSizes && variants.length > 0 && (
         <div>
-          <p className="mb-2 text-sm font-medium text-ink">{t("choice")}</p>
+          <p className="eyebrow mb-3 text-muted">{t("choice")}</p>
           <div className="flex flex-wrap gap-2">
             {variants.map((v) => (
               <button
                 key={v.id}
                 onClick={() => setVariantId(v.id)}
                 disabled={v.stock <= 0}
-                className={`rounded-md border px-3 py-1.5 text-sm transition-colors disabled:opacity-40 ${
+                className={`rounded-full border px-4 py-2 text-sm transition-colors disabled:opacity-40 ${
                   variantId === v.id ? "border-ink bg-ink text-white" : "border-border-strong text-ink-soft hover:border-ink"
                 }`}
               >
@@ -155,7 +155,7 @@ export function AddToCartPanel({
       )}
 
       <div className="flex items-baseline gap-2">
-        <span className="text-2xl font-semibold text-ink">{formatPrice(price, locale)}</span>
+        <span className="font-display text-4xl leading-none text-ink">{formatPrice(price, locale)}</span>
         {compareAtPrice && (
           <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
         )}
@@ -176,10 +176,10 @@ export function AddToCartPanel({
       </div>
 
       <div className="flex flex-col gap-2.5">
-        <Button onClick={() => add(false)} disabled={outOfStock || pending} variant="outline" size="lg">
+        <Button onClick={() => add(false)} disabled={outOfStock || pending} size="lg">
           <ShoppingCart size={17} /> {t("addToCart")}
         </Button>
-        <Button onClick={() => add(true)} disabled={outOfStock || pending} size="lg">
+        <Button onClick={() => add(true)} disabled={outOfStock || pending} variant="outline" size="lg">
           <Zap size={17} /> {t("buyNow")}
         </Button>
       </div>

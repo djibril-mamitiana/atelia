@@ -5,6 +5,7 @@ import { useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { ChevronDown, SlidersHorizontal } from "lucide-react";
 import { formatPrice } from "@/lib/format";
 
 type Category = { id: string; name: string; slug: string; _count: { products: number } };
@@ -33,6 +34,9 @@ export function CatalogFilters({
   const onSaleOnly = searchParams.get("promotion") === "1";
   const [minPrice, setMinPrice] = useState(searchParams.get("prix_min") ?? "");
   const [maxPrice, setMaxPrice] = useState(searchParams.get("prix_max") ?? "");
+  const [open, setOpen] = useState(false);
+  const activeCount =
+    (currentCategory ? 1 : 0) + currentBrands.length + (inStockOnly ? 1 : 0) + (onSaleOnly ? 1 : 0) + (searchParams.get("prix_min") ? 1 : 0) + (searchParams.get("prix_max") ? 1 : 0);
 
   function updateParams(updates: Record<string, string | null>) {
     const params = new URLSearchParams(searchParams.toString());
@@ -50,9 +54,30 @@ export function CatalogFilters({
   }
 
   return (
-    <aside className="flex flex-col gap-8">
+    <aside className="lg:sticky lg:top-28 lg:self-start">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="flex h-12 w-full items-center justify-between rounded-full border border-ink/20 bg-surface px-5 text-sm font-medium text-ink lg:hidden"
+      >
+        <span className="flex items-center gap-2.5">
+          <SlidersHorizontal size={17} />
+          {t("filters")}
+          {activeCount > 0 && (
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1.5 font-mono text-[10.5px] font-semibold text-graphite">
+              {activeCount}
+            </span>
+          )}
+        </span>
+        <ChevronDown size={18} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      <div
+        className={`${open ? "flex" : "hidden"} mt-3 flex-col gap-8 rounded-3xl border border-border bg-surface p-6 lg:mt-0 lg:flex`}
+      >
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">{t("sortBy")}</p>
+        <p className="eyebrow mb-3 text-muted">{t("sortBy")}</p>
         <Select value={currentSort} onChange={(e) => updateParams({ tri: e.target.value })}>
           <option value="pertinence">{t("sortRelevance")}</option>
           <option value="prix-asc">{t("sortPriceAsc")}</option>
@@ -63,8 +88,8 @@ export function CatalogFilters({
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">{t("category")}</p>
-        <div className="flex flex-col gap-2">
+        <p className="eyebrow mb-3 text-muted">{t("category")}</p>
+        <div className="flex max-h-72 flex-col gap-2 overflow-y-auto pr-1">
           <button
             onClick={() => updateParams({ categorie: null })}
             className={`text-left text-sm ${!currentCategory ? "font-medium text-accent-dark" : "text-muted hover:text-ink"}`}
@@ -87,7 +112,7 @@ export function CatalogFilters({
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">{t("brand")}</p>
+        <p className="eyebrow mb-3 text-muted">{t("brand")}</p>
         <div className="flex flex-col gap-2">
           {brands.map((brand) => (
             <label key={brand.id} className="flex items-center gap-2 text-sm text-ink-soft">
@@ -104,7 +129,7 @@ export function CatalogFilters({
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-ink">{t("price")}</p>
+        <p className="eyebrow mb-3 text-muted">{t("price")}</p>
         <p className="mb-2 text-xs text-muted">
           {formatPrice(priceBounds.min, locale)} — {formatPrice(priceBounds.max, locale)}
         </p>
@@ -115,7 +140,7 @@ export function CatalogFilters({
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
             onBlur={() => updateParams({ prix_min: minPrice || null })}
-            className="h-9 w-full rounded-md border border-border-strong px-2.5 text-sm"
+            className="h-10 w-full rounded-xl border border-border-strong bg-paper px-3 text-sm"
           />
           <span className="text-muted">–</span>
           <input
@@ -124,7 +149,7 @@ export function CatalogFilters({
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             onBlur={() => updateParams({ prix_max: maxPrice || null })}
-            className="h-9 w-full rounded-md border border-border-strong px-2.5 text-sm"
+            className="h-10 w-full rounded-xl border border-border-strong bg-paper px-3 text-sm"
           />
         </div>
       </div>
@@ -153,6 +178,7 @@ export function CatalogFilters({
       <Button variant="outline" size="sm" onClick={() => router.push(pathname)}>
         {t("resetFilters")}
       </Button>
+      </div>
     </aside>
   );
 }

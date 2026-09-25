@@ -15,10 +15,12 @@ export function SearchBar({
   className,
   placeholder,
   onNavigate,
+  autoFocus,
 }: {
   className?: string;
   placeholder?: string;
   onNavigate?: () => void;
+  autoFocus?: boolean;
 }) {
   const t = useTranslations("SearchBar");
   const locale = useLocale();
@@ -73,7 +75,7 @@ export function SearchBar({
           e.preventDefault();
           goToSearchPage();
         }}
-        className="flex h-11 items-center gap-2 rounded-md border border-border-strong bg-surface px-3.5"
+        className="flex h-11 items-center gap-2.5 rounded-full border border-ink/15 bg-surface/80 px-4 transition-[border-color,box-shadow] duration-300 focus-within:border-ink focus-within:shadow-[0_0_0_4px_rgba(255,90,31,0.18)]"
       >
         <Search size={17} className="text-muted" />
         <input
@@ -81,6 +83,7 @@ export function SearchBar({
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => query.trim().length >= 2 && setOpen(true)}
           type="search"
+          autoFocus={autoFocus}
           placeholder={placeholder ?? t("placeholder")}
           className="h-full flex-1 bg-transparent text-sm outline-none placeholder:text-muted"
         />
@@ -92,7 +95,7 @@ export function SearchBar({
       </form>
 
       {open && query.trim().length >= 2 && (
-        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-40 max-h-[70vh] overflow-y-auto rounded-md border border-border bg-surface shadow-xl">
+        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-40 max-h-[70vh] overflow-y-auto rounded-2xl border border-border bg-surface shadow-[0_30px_60px_-20px_rgba(13,15,18,0.4)]">
           {!results ? (
             <p className="px-4 py-6 text-center text-sm text-muted">{t("searching")}</p>
           ) : !hasResults ? (

@@ -41,11 +41,16 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
   });
 
   return (
-    <div className="container-page py-10">
-      <h1 className="font-display text-3xl text-ink">{t("allProducts")}</h1>
-      <p className="mt-1.5 text-sm text-muted">{t("productsCount", { count: result.total })}</p>
+    <div className="container-page py-10 lg:py-16">
+      <header className="flex flex-wrap items-end justify-between gap-x-8 gap-y-2">
+        <div>
+          <p className="eyebrow text-accent-dark">{t("catalogEyebrow")}</p>
+          <h1 className="h-section mt-4">{t("allProducts")}</h1>
+        </div>
+        <p className="font-mono text-xs uppercase tracking-[0.1em] text-muted">{t("productsCount", { count: result.total })}</p>
+      </header>
 
-      <div className="mt-8 grid gap-10 lg:grid-cols-[240px_1fr]">
+      <div className="mt-8 grid gap-6 lg:mt-12 lg:grid-cols-[260px_1fr] lg:gap-12">
         <CatalogFilters categories={result.categories} brands={result.brands} priceBounds={result.priceBounds} />
 
         <div>
@@ -56,7 +61,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
               description={t("noResultsDescription")}
             />
           ) : (
-            <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6">
               {result.products.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter, Fraunces } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ToastProvider } from "@/components/ui/toast";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
-const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], axes: ["opsz"] });
+const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: `${SITE_NAME} — ${SITE_TAGLINE}`, template: `%s | ${SITE_NAME}` },
   description:
-    "Outillage, jardin, électricité, plomberie, peinture et décoration : des produits de qualité, des conseils et des tutoriels pour réussir tous vos projets.",
+    "Outils diamant professionnels : disques, couronnes de carottage, segments et ponçage pour le béton, l’asphalte et la pierre naturelle.",
   openGraph: {
     siteName: SITE_NAME,
     type: "website",
@@ -29,7 +35,7 @@ export const metadata: Metadata = {
 // frozen at whichever locale first loaded the tab.
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
+    <html lang="fr" className={`${geist.variable} ${geistMono.variable} ${instrument.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <ToastProvider>{children}</ToastProvider>
       </body>

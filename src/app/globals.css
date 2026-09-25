@@ -1,34 +1,45 @@
 @import "tailwindcss";
 
 /*
-  Atelia — design tokens.
-  Warm, editorial palette: ink/paper neutrals + a terracotta accent.
-  Deliberately avoids saturated SaaS blues/purples and heavy gradients.
+  Atelia — design system.
+
+  Concept: "atelier de précision". A bone-white page and a graphite ink,
+  with one hot signal colour — the orange of a spark thrown off a diamond
+  blade. Big, calm serif headlines (Instrument Serif) set against a
+  technical sans (Geist) and a mono for specs (Geist Mono).
 */
 :root {
-  --color-paper: #faf8f4;
-  --color-surface: #ffffff;
-  --color-ink: #1c1a17;
-  --color-ink-soft: #454138;
-  --color-muted: #756e62;
-  --color-border: #e6e0d6;
-  --color-border-strong: #d3cabb;
+  --color-paper: #f3f0ea;
+  --color-surface: #fbfaf7;
+  --color-ink: #0d0f12;
+  --color-ink-soft: #3a3e45;
+  --color-muted: #6a6f78;
+  --color-border: #ddd8ce;
+  --color-border-strong: #c3bdaf;
 
-  --color-accent: #b1502c;
-  --color-accent-dark: #8f3d22;
-  --color-accent-soft: #f4e3d8;
+  --color-graphite: #0d0f12;
+  --color-graphite-2: #171a1f;
+  --color-graphite-3: #22262d;
+  --color-steel: #a0a6b0;
 
-  --color-sage: #55624c;
-  --color-sage-soft: #e7ebe0;
+  --color-accent: #ff5a1f;
+  --color-accent-dark: #c2410c;
+  --color-accent-soft: #ffe8dc;
 
-  --color-gold: #b8862e;
+  --color-sage: #3d6b55;
+  --color-sage-soft: #e2eee7;
 
-  --color-danger: #a4342a;
-  --color-danger-soft: #f6e2df;
+  --color-gold: #9a6b12;
 
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 10px;
+  --color-danger: #b42318;
+  --color-danger-soft: #fde7e4;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 @theme inline {
@@ -39,6 +50,10 @@
   --color-muted: var(--color-muted);
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);
+  --color-graphite: var(--color-graphite);
+  --color-graphite-2: var(--color-graphite-2);
+  --color-graphite-3: var(--color-graphite-3);
+  --color-steel: var(--color-steel);
   --color-accent: var(--color-accent);
   --color-accent-dark: var(--color-accent-dark);
   --color-accent-soft: var(--color-accent-soft);
@@ -48,18 +63,28 @@
   --color-danger: var(--color-danger);
   --color-danger-soft: var(--color-danger-soft);
 
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-fraunces);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --font-sans: var(--font-geist);
+  --font-display: var(--font-instrument);
+  --font-mono: var(--font-geist-mono);
 }
 
 html {
   color-scheme: light;
+  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -67,8 +92,75 @@ body {
 }
 
 ::selection {
-  background: var(--color-accent-soft);
-  color: var(--color-accent-dark);
+  background: var(--color-accent);
+  color: var(--color-graphite);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Headline scale — fluid, from phone to 1920px. */
+.h-hero {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.75rem, 1.6rem + 5.4vw, 6.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.h-section {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.h-hero em,
+.h-section em {
+  font-style: italic;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.container-page {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    padding-inline: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    padding-inline: 2.5rem;
+  }
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 /* Skeleton shimmer used across loading states */
@@ -82,69 +174,125 @@ body {
 }
 
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--color-border) 25%,
-    #f0ebe1 37%,
-    var(--color-border) 63%
-  );
+  background: linear-gradient(90deg, var(--color-border) 25%, #ebe7de 37%, var(--color-border) 63%);
   background-size: 400% 100%;
   animation: shimmer 1.4s ease infinite;
   border-radius: var(--radius-sm);
 }
 
-.container-page {
-  width: 100%;
-  max-width: 1360px;
-  margin-inline: auto;
-  padding-inline: 1rem;
+/* ------------------------------------------------------------------ */
+/* Motion                                                              */
+/* ------------------------------------------------------------------ */
+
+/* Scroll reveal. Content is visible by default (no-JS / SSR safe); the
+   RevealObserver adds `.reveal-ready` to <html> only once it is running,
+   and marks anything already on screen as visible before doing so. */
+[data-reveal] {
+  transition:
+    opacity 0.9s var(--ease-out) var(--reveal-delay, 0ms),
+    transform 0.9s var(--ease-out) var(--reveal-delay, 0ms);
 }
 
-@media (min-width: 640px) {
-  .container-page {
-    padding-inline: 1.5rem;
-  }
+.reveal-ready [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
 }
 
-@media (min-width: 1024px) {
-  .container-page {
-    padding-inline: 2rem;
-  }
-}
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-
-/* Marquee — auto-scrolling ticker / product carousel. Content is duplicated
-   once by the component so translating by exactly -50% loops seamlessly. */
-@keyframes marquee-scroll {
+/* Hero entrance — plays once on load, staggered with --d. */
+@keyframes rise {
   from {
-    transform: translateX(0);
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
   }
   to {
-    transform: translateX(-50%);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
-.marquee-track {
-  animation: marquee-scroll 26s linear infinite;
+.rise {
+  animation: rise 1s var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
 }
 
-.marquee-track.marquee-slow {
-  animation-duration: 60s;
+@keyframes blade-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Pauses on hover, i.e. as soon as the cursor moves onto it. */
-.marquee-track:hover {
-  animation-play-state: paused;
+.blade-spin {
+  animation: blade-spin 120s linear infinite;
+  transform-origin: 300px 300px;
+}
+
+@keyframes spark-fly {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--sx, 40px), var(--sy, -30px), 0) scale(1);
+  }
+}
+
+.spark {
+  animation: spark-fly 2.6s var(--ease-out) infinite;
+  animation-delay: var(--sd, 0s);
+  opacity: 0;
+}
+
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.glow-breathe {
+  animation: glow-breathe 5s ease-in-out infinite;
+}
+
+/* Underline that draws itself on hover. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-out);
+}
+
+.link-underline:hover {
+  background-size: 100% 1px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal],
+  .rise,
+  .blade-spin,
+  .spark,
+  .glow-breathe {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal-ready [data-reveal]:not(.is-in) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .spark {
+    display: none;
   }
 }

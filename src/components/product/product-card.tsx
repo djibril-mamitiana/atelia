@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ArrowRight, Heart, ShoppingBag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { cn } from "@/lib/utils";
@@ -54,27 +54,30 @@ export function ProductCard({
     });
   }
 
+  const ctaBase =
+    "mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-medium transition-[background-color,color,border-color,transform] duration-300 active:scale-[0.98]";
+
   return (
-    <div className={cn("group relative flex flex-col", className)}>
-      <div className="relative aspect-square w-full overflow-hidden rounded-md bg-paper">
-        <Link href={`/produits/${product.slug}`} className="relative block h-full w-full">
+    <div className={cn("group relative flex h-full flex-col", className)}>
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#e8e4db] ring-1 ring-inset ring-black/[0.04]">
+        <Link href={`/produits/${product.slug}`} className="relative block h-full w-full" tabIndex={-1} aria-hidden="true">
           {image ? (
             <Image
               src={image.url}
               alt={image.alt ?? product.name}
               fill
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              sizes="(min-width: 1280px) 22vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
             />
           ) : (
-            <div className="flex h-full items-center justify-center text-muted text-sm">{t("photoUnavailable")}</div>
+            <div className="flex h-full items-center justify-center text-sm text-muted">{t("photoUnavailable")}</div>
           )}
         </Link>
 
-        <div className="absolute left-2 top-2 flex flex-col gap-1.5">
-          {product.isNew && <Badge tone="sage">{t("newBadge")}</Badge>}
-          {product.isBestSeller && <Badge tone="gold">{t("bestSellerBadge")}</Badge>}
+        <div className="pointer-events-none absolute left-3 top-3 flex max-w-[calc(100%-4.25rem)] flex-col items-start gap-1.5">
+          {product.isNew && <Badge tone="dark">{t("newBadge")}</Badge>}
           {discount && <Badge tone="accent">-{discount}%</Badge>}
+          {product.isBestSeller && !discount && <Badge tone="gold" className="max-w-full">{t("bestSellerBadge")}</Badge>}
           {outOfStock && <Badge tone="danger">{t("outOfStockBadge")}</Badge>}
         </div>
 
@@ -83,64 +86,68 @@ export function ProductCard({
           onClick={handleToggleFavorite}
           aria-label={favorite ? t("removeFromFavorites") : t("addToFavorites")}
           aria-pressed={favorite}
-          className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-surface/90 text-ink-soft shadow-sm transition-colors hover:text-accent"
+          className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-ink shadow-sm backdrop-blur transition-[transform,color] duration-300 hover:scale-105 hover:text-accent-dark"
         >
           <Heart size={17} className={favorite ? "fill-accent text-accent" : ""} />
         </button>
       </div>
 
-      <div className="mt-3 flex flex-1 flex-col gap-1">
-        <p className="text-xs uppercase tracking-wide text-muted">{product.brand.name}</p>
-        <Link href={`/produits/${product.slug}`} className="line-clamp-2 text-sm font-medium text-ink hover:text-accent-dark">
+      <div className="mt-4 flex flex-1 flex-col">
+        <p className="eyebrow text-muted">{product.brand.name}</p>
+        <Link
+          href={`/produits/${product.slug}`}
+          className="mt-1.5 line-clamp-2 text-[15px] font-medium leading-snug text-ink transition-colors hover:text-accent-dark"
+        >
           {product.name}
         </Link>
 
         {product.reviewCount > 0 && (
-          <div className="flex items-center gap-1.5">
+          <div className="mt-1.5 flex items-center gap-1.5">
             <RatingStars rating={Number(product.avgRating)} size={12} />
             <span className="text-xs text-muted">{t("reviewsCount", { count: product.reviewCount })}</span>
           </div>
         )}
 
-        {grouped ? (
-          <div className="mt-1 flex flex-col">
-            <span className="text-base font-semibold text-ink">
-              {t("fromPrice", { price: formatPrice(product.fromPrice ?? price, locale) })}
-            </span>
-            <span className="text-xs text-muted">{t("sizesCount", { count: product.groupSize })}</span>
-          </div>
-        ) : (
-          <div className="mt-1 flex items-baseline gap-2">
-            <span className="text-base font-semibold text-ink">{formatPrice(price, locale)}</span>
-            {compareAtPrice && (
-              <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
-            )}
-          </div>
-        )}
+        <div className="mt-auto pt-3">
+          {grouped ? (
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="text-[17px] font-semibold tabular-nums text-ink">
+                {t("fromPrice", { price: formatPrice(product.fromPrice ?? price, locale) })}
+              </span>
+              <span className="font-mono text-[11px] text-muted">{t("sizesCount", { count: product.groupSize })}</span>
+            </div>
+          ) : (
+            <div className="flex items-baseline gap-2">
+              <span className="text-[17px] font-semibold tabular-nums text-ink">{formatPrice(price, locale)}</span>
+              {compareAtPrice && (
+                <span className="text-sm tabular-nums text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
+              )}
+            </div>
+          )}
+        </div>
 
         {grouped ? (
           // Several sizes: the size has to be picked on the product page.
           <Link
             href={`/produits/${product.slug}`}
             className={cn(
-              "mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors",
-              outOfStock ? "pointer-events-none bg-ink text-white opacity-40" : "bg-ink text-white hover:bg-ink-soft"
+              ctaBase,
+              outOfStock
+                ? "pointer-events-none border border-ink/15 text-muted"
+                : "border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-white"
             )}
           >
-            <ShoppingCart size={15} />
             {outOfStock ? t("unavailable") : t("chooseSizeCta")}
+            {!outOfStock && <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />}
           </Link>
         ) : (
           <button
             type="button"
             onClick={handleAddToCart}
             disabled={outOfStock || pending}
-            className={cn(
-              "mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors",
-              "bg-ink text-white hover:bg-ink-soft disabled:opacity-40"
-            )}
+            className={cn(ctaBase, "bg-graphite text-white hover:bg-accent hover:text-graphite disabled:opacity-40")}
           >
-            <ShoppingCart size={15} />
+            <ShoppingBag size={15} />
             {outOfStock ? t("unavailable") : t("addToCart")}
           </button>
         )}

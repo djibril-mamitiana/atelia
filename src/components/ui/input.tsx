@@ -6,7 +6,7 @@ export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttribute
     <input
       ref={ref}
       className={cn(
-        "h-11 w-full rounded-md border border-border-strong bg-surface px-3.5 text-sm text-ink placeholder:text-muted",
+        "h-11 w-full rounded-xl border border-border-strong bg-surface px-4 text-sm text-ink placeholder:text-muted",
         "focus:outline-2 focus:outline-offset-1 focus:outline-accent",
         "disabled:opacity-50 disabled:bg-paper",
         className
@@ -22,7 +22,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTML
     <textarea
       ref={ref}
       className={cn(
-        "w-full rounded-md border border-border-strong bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-muted",
+        "w-full rounded-xl border border-border-strong bg-surface px-4 py-3 text-sm text-ink placeholder:text-muted",
         "focus:outline-2 focus:outline-offset-1 focus:outline-accent",
         "disabled:opacity-50 disabled:bg-paper",
         className
@@ -38,7 +38,7 @@ export const Select = React.forwardRef<HTMLSelectElement, React.SelectHTMLAttrib
     <select
       ref={ref}
       className={cn(
-        "h-11 w-full rounded-md border border-border-strong bg-surface px-3.5 text-sm text-ink",
+        "h-11 w-full rounded-xl border border-border-strong bg-surface px-4 text-sm text-ink",
         "focus:outline-2 focus:outline-offset-1 focus:outline-accent",
         "disabled:opacity-50 disabled:bg-paper",
         className

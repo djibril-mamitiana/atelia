@@ -1,14 +1,17 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart, ShoppingBag } from "lucide-react";
 import { getSession } from "@/lib/auth/session";
 import { getCurrentCart, cartItemCount } from "@/server/services/cart";
 import { getCategoryTree } from "@/server/queries/categories.queries";
 import { SearchBar } from "@/components/layout/search-bar";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { MobileSearch } from "@/components/layout/mobile-search";
 import { UserMenu } from "@/components/layout/user-menu";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import { SITE_NAME } from "@/lib/constants";
+import { CatalogMenu } from "@/components/layout/catalog-menu";
+import { HeaderShell } from "@/components/layout/header-shell";
+import { Logo } from "@/components/layout/logo";
 
 export async function Header() {
   const [session, cart, categories, t] = await Promise.all([
@@ -19,16 +22,30 @@ export async function Header() {
   ]);
   const count = cartItemCount(cart);
 
+  // The tree has a single root ("Outils diamant") holding the real families;
+  // the menu lists the families that actually contain products.
+  const families = categories
+    .flatMap((root) => (root.children.length > 0 ? root.children : [root]))
+    .filter((c) => c._count.products > 0)
+    .sort((a, b) => b._count.products - a._count.products)
+    .map((c) => ({ id: c.id, name: c.name, slug: c.slug, count: c._count.products }));
+
+  const navLink =
+    "flex h-10 items-center rounded-full px-4 text-sm font-medium text-ink transition-colors hover:bg-ink/5";
+
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="hidden border-b border-border bg-ink text-paper/90 lg:block">
-        <div className="container-page flex h-9 items-center justify-between text-xs">
-          <p>{t("announcement")}</p>
-          <div className="flex items-center gap-5">
-            <Link href="/tutoriels" className="hover:text-white">
-              {t("tutorials")}
+    <>
+      <div className="hidden bg-graphite text-[12.5px] text-steel lg:block">
+        <div className="container-page flex h-9 items-center justify-between">
+          <p className="flex items-center gap-2.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            {t("announcement")}
+          </p>
+          <div className="flex items-center gap-6">
+            <Link href="/faq" className="transition-colors hover:text-white">
+              {t("help")}
             </Link>
-            <Link href="/contact" className="hover:text-white">
+            <Link href="/contact" className="transition-colors hover:text-white">
               {t("contact")}
             </Link>
             <LanguageSwitcher />
@@ -36,53 +53,55 @@ export async function Header() {
         </div>
       </div>
 
-      <div className="container-page flex h-16 items-center gap-3 lg:h-20 lg:gap-6">
-        <MobileNav categories={categories} />
+      <HeaderShell>
+        <div className="container-page relative flex h-16 items-center gap-2 lg:h-[76px] lg:gap-6">
+          <MobileNav categories={categories} loggedIn={Boolean(session)} />
 
-        <Link href="/" className="font-display text-2xl tracking-tight text-ink shrink-0">
-          {SITE_NAME}
-        </Link>
+          <Logo className="max-lg:mr-auto" />
 
-        <SearchBar className="hidden max-w-xl flex-1 lg:block" />
+          <nav className="hidden h-full items-center gap-1 lg:flex" aria-label="Principal">
+            <CatalogMenu items={families} />
+            <Link href="/produits?promotion=1" className={navLink}>
+              {t("promotions")}
+            </Link>
+            <Link href="/tutoriels" className={navLink}>
+              {t("guides")}
+            </Link>
+          </nav>
 
-        <div className="ml-auto flex items-center gap-5 lg:gap-6">
-          <UserMenu session={session ? { firstName: session.firstName, role: session.role } : null} />
+          <div className="ml-auto hidden w-full max-w-[300px] lg:block xl:max-w-[340px]">
+            <SearchBar />
+          </div>
 
-          <Link href="/compte/favoris" className="hidden flex-col items-center gap-0.5 text-ink-soft hover:text-ink sm:flex">
-            <Heart size={20} strokeWidth={1.6} />
-            <span className="hidden text-[11px] lg:block">{t("favorites")}</span>
-          </Link>
+          <div className="flex items-center gap-0.5">
+            <MobileSearch />
+            <div className="max-sm:hidden">
+              <UserMenu session={session ? { firstName: session.firstName, role: session.role } : null} />
+            </div>
 
-          <Link href="/panier" className="relative flex flex-col items-center gap-0.5 text-ink-soft hover:text-ink">
-            <span className="relative">
-              <ShoppingCart size={20} strokeWidth={1.6} />
+            <Link
+              href="/compte/favoris"
+              aria-label={t("favorites")}
+              className="hidden h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/5 sm:flex"
+            >
+              <Heart size={20} strokeWidth={1.7} />
+            </Link>
+
+            <Link
+              href="/panier"
+              aria-label={t("cart")}
+              className="relative flex h-10 items-center gap-2 rounded-full px-3 text-ink transition-colors hover:bg-ink/5"
+            >
+              <ShoppingBag size={20} strokeWidth={1.7} />
               {count > 0 && (
-                <span className="absolute -right-2 -top-2 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-medium text-white">
+                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1.5 font-mono text-[10.5px] font-semibold text-graphite">
                   {count}
                 </span>
               )}
-            </span>
-            <span className="hidden text-[11px] lg:block">{t("cart")}</span>
-          </Link>
-        </div>
-      </div>
-
-      <div className="border-t border-border px-4 pb-3 lg:hidden">
-        <SearchBar />
-      </div>
-
-      <nav className="hidden border-t border-border lg:block">
-        <div className="container-page flex h-11 items-center gap-7 overflow-x-auto text-sm">
-          {categories.map((cat) => (
-            <Link key={cat.id} href={`/categories/${cat.slug}`} className="whitespace-nowrap text-ink-soft hover:text-accent-dark">
-              {cat.name}
             </Link>
-          ))}
-          <Link href="/produits?promotion=1" className="whitespace-nowrap font-medium text-accent-dark">
-            {t("promotions")}
-          </Link>
+          </div>
         </div>
-      </nav>
-    </header>
+      </HeaderShell>
+    </>
   );
 }

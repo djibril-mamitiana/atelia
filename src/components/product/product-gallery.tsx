@@ -12,12 +12,12 @@ export function ProductGallery({ media, productName }: { media: Media[]; product
   const active = media[activeIndex] ?? media[0];
 
   if (!active) {
-    return <div className="aspect-square w-full rounded-md bg-paper" />;
+    return <div className="aspect-square w-full rounded-3xl bg-paper" />;
   }
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative aspect-square w-full overflow-hidden rounded-md bg-paper">
+      <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-surface border border-border">
         {active.type === "video" ? (
           <video src={active.url} controls className="h-full w-full object-cover" />
         ) : (
@@ -26,14 +26,14 @@ export function ProductGallery({ media, productName }: { media: Media[]; product
       </div>
 
       {media.length > 1 && (
-        <div className="flex gap-2.5 overflow-x-auto">
+        <div className="flex gap-2.5 overflow-x-auto pb-1">
           {media.map((m, i) => (
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border",
-                i === activeIndex ? "border-accent" : "border-border"
+                "relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border-2",
+                i === activeIndex ? "border-accent" : "border-transparent opacity-70 hover:opacity-100"
               )}
             >
               {m.type === "video" ? (

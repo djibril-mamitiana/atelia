@@ -1,5 +1,5 @@
 export const SITE_NAME = "Atelia";
-export const SITE_TAGLINE = "Tout pour réaliser vos projets";
+export const SITE_TAGLINE = "Outils diamant professionnels";
 export const SITE_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export const DEFAULT_TAX_RATE = 20; // percent, used as a fallback only

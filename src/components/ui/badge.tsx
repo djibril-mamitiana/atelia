@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type Tone = "accent" | "sage" | "gold" | "danger" | "neutral";
+type Tone = "accent" | "sage" | "gold" | "danger" | "neutral" | "dark";
 
 const toneClasses: Record<Tone, string> = {
-  accent: "bg-accent-soft text-accent-dark",
+  accent: "bg-accent text-graphite",
   sage: "bg-sage-soft text-sage",
-  gold: "bg-[#f5ecd7] text-gold",
+  gold: "bg-[#f3e6c8] text-gold",
   danger: "bg-danger-soft text-danger",
   neutral: "bg-paper text-muted border border-border",
+  dark: "bg-graphite text-white",
 };
 
 export function Badge({
@@ -23,7 +24,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-sm px-2 py-0.5 text-xs font-medium tracking-wide",
+        "inline-flex items-center rounded-full px-2.5 py-1 font-mono text-[10.5px] font-medium uppercase leading-[1.15] tracking-[0.08em]",
         toneClasses[tone],
         className
       )}

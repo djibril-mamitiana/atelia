@@ -1,7 +1,8 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { HtmlLangSync } from "@/components/layout/html-lang-sync";
 
@@ -12,6 +13,15 @@ import { HtmlLangSync } from "@/components/layout/html-lang-sync";
 // same reasoning applied to <html lang>.
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+const OG_LOCALE: Record<string, string> = { fr: "fr_FR", de: "de_DE", en: "en_GB", it: "it_IT" };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) return {};
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  return { description: t("description"), openGraph: { locale: OG_LOCALE[locale], description: t("description") } };
 }
 
 export default async function LocaleLayout({

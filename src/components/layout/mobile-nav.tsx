@@ -1,86 +1,124 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { Menu, X, ChevronRight } from "lucide-react";
-import { SearchBar } from "@/components/layout/search-bar";
+import { Link, usePathname } from "@/i18n/navigation";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { Logo } from "@/components/layout/logo";
 
-type CategoryNode = { id: string; name: string; slug: string; children: CategoryNode[] };
+type CategoryNode = {
+  id: string;
+  name: string;
+  slug: string;
+  children: CategoryNode[];
+  _count: { products: number };
+};
 
-export function MobileNav({ categories }: { categories: CategoryNode[] }) {
+export function MobileNav({ categories, loggedIn }: { categories: CategoryNode[]; loggedIn: boolean }) {
   const t = useTranslations("MobileNav");
+  const tHeader = useTranslations("Header");
+  const tUser = useTranslations("UserMenu");
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close on navigation (state adjusted during render, not in an effect).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (lastPath !== pathname) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const families = categories
+    .flatMap((root) => (root.children.length > 0 ? root.children : [root]))
+    .filter((c) => c._count.products > 0)
+    .sort((a, b) => b._count.products - a._count.products);
+
+  const secondary = "flex items-center justify-between border-b border-border py-4 text-lg text-ink";
 
   return (
     <>
-      <button onClick={() => setOpen(true)} aria-label={t("openMenu")} className="text-ink lg:hidden">
-        <Menu size={24} />
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label={t("openMenu")}
+        className="-ml-2 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/5 lg:hidden"
+      >
+        <Menu size={22} strokeWidth={1.7} />
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-ink/40" onClick={() => setOpen(false)} />
-          <div className="absolute inset-y-0 left-0 flex w-[86%] max-w-sm flex-col bg-surface shadow-2xl">
-            <div className="flex items-center justify-between border-b border-border px-4 py-4">
-              <span className="font-display text-lg text-ink">{t("menu")}</span>
-              <div className="flex items-center gap-4">
-                <LanguageSwitcher variant="light" />
-                <button onClick={() => setOpen(false)} aria-label={t("closeMenu")}>
-                  <X size={22} />
-                </button>
-              </div>
+      <div className={`fixed inset-0 z-50 lg:hidden ${open ? "" : "pointer-events-none"}`} aria-hidden={!open}>
+        <div
+          className={`absolute inset-0 bg-graphite/55 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
+          onClick={() => setOpen(false)}
+        />
+        <div
+          className={`absolute inset-y-0 left-0 flex w-[92%] max-w-[420px] flex-col bg-paper shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${open ? "translate-x-0" : "-translate-x-full"}`}
+        >
+          <div className="flex items-center justify-between px-5 py-4">
+            <Logo />
+            <div className="flex items-center gap-3">
+              <LanguageSwitcher variant="light" />
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label={t("closeMenu")}
+                className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink/5"
+              >
+                <X size={22} />
+              </button>
             </div>
-
-            <div className="border-b border-border p-4">
-              <SearchBar onNavigate={() => setOpen(false)} />
-            </div>
-
-            <nav className="flex-1 overflow-y-auto py-2">
-              {categories.map((cat) => (
-                <details key={cat.id} className="border-b border-border px-4 py-1 open:pb-2">
-                  <summary className="flex cursor-pointer list-none items-center justify-between py-2.5 text-sm font-medium text-ink">
-                    <Link href={`/categories/${cat.slug}`} onClick={() => setOpen(false)}>
-                      {cat.name}
-                    </Link>
-                    {cat.children.length > 0 && <ChevronRight size={16} className="text-muted" />}
-                  </summary>
-                  {cat.children.length > 0 && (
-                    <ul className="ml-2 flex flex-col gap-2 pb-1 pl-2">
-                      {cat.children.map((child) => (
-                        <li key={child.id}>
-                          <Link
-                            href={`/categories/${child.slug}`}
-                            onClick={() => setOpen(false)}
-                            className="text-sm text-muted hover:text-ink"
-                          >
-                            {child.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </details>
-              ))}
-              <div className="flex flex-col gap-1 px-4 py-3">
-                <Link href="/tutoriels" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  {t("tutorials")}
-                </Link>
-                <Link href="/produits?promotion=1" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  {t("promotions")}
-                </Link>
-                <Link href="/contact" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  {t("contact")}
-                </Link>
-                <Link href="/faq" onClick={() => setOpen(false)} className="py-1.5 text-sm text-ink-soft">
-                  {t("faq")}
-                </Link>
-              </div>
-            </nav>
           </div>
+
+          <nav className="flex-1 overflow-y-auto px-5 pb-8">
+            <p className="eyebrow mb-1 mt-4 text-muted">{tHeader("catalog")}</p>
+            <ul>
+              {families.map((cat) => (
+                <li key={cat.id}>
+                  <Link href={`/categories/${cat.slug}`} className="flex items-center justify-between gap-4 border-b border-border py-3.5 text-[15px] text-ink">
+                    <span>{cat.name}</span>
+                    <ArrowUpRight size={15} className="text-muted" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/produits"
+              className="mt-5 flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-sm font-medium text-graphite"
+            >
+              {tHeader("viewCatalog")} <ArrowUpRight size={16} />
+            </Link>
+
+            <div className="mt-8">
+              <Link href="/produits?promotion=1" className={secondary}>
+                {t("promotions")}
+              </Link>
+              <Link href="/tutoriels" className={secondary}>
+                {tHeader("guides")}
+              </Link>
+              <Link href={loggedIn ? "/compte" : "/connexion"} className={secondary}>
+                {loggedIn ? tUser("myAccount") : tUser("login")}
+              </Link>
+              <Link href="/compte/favoris" className={secondary}>
+                {tHeader("favorites")}
+              </Link>
+              <Link href="/faq" className={secondary}>
+                {t("faq")}
+              </Link>
+              <Link href="/contact" className={secondary}>
+                {t("contact")}
+              </Link>
+            </div>
+          </nav>
         </div>
-      )}
+      </div>
     </>
   );
 }
