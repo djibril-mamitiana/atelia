@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { adminTitle } from "@/lib/admin-metadata";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getSalesByDay, getSalesByMonth, getTopProducts, getTopCategories } from "@/server/queries/admin-dashboard.queries";
 import { BarChart } from "@/components/admin/bar-chart";
 import { formatPrice } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Statistiques — Admin" };
+export const generateMetadata = () => adminTitle("navAnalytics");
 
 export default async function AdminAnalyticsPage() {
   const t = await getTranslations("Admin.Analytics");

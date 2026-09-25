@@ -32,7 +32,7 @@ export async function proxy(request: NextRequest) {
 
     const redirectToLogin = () => {
       const url = new URL(`${localePrefix}/connexion`, request.url);
-      url.searchParams.set("next", pathname);
+      url.searchParams.set("next", bare);
       return NextResponse.redirect(url);
     };
 

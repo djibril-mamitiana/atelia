@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { adminTitle } from "@/lib/admin-metadata";
 import { getTranslations } from "next-intl/server";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { requireRole } from "@/lib/auth/session";
@@ -7,7 +7,7 @@ import { ProfileForm, ChangePasswordForm } from "@/components/account/profile-fo
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
 import { isBankTransferConfigured } from "@/lib/bank";
 
-export const metadata: Metadata = { title: "Paramètres — Admin" };
+export const generateMetadata = () => adminTitle("navSettings");
 
 export default async function AdminSettingsPage() {
   const t = await getTranslations("Admin.Settings");

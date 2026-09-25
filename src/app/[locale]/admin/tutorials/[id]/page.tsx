@@ -1,11 +1,11 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
 import { getAdminTutorialById } from "@/server/queries/admin.queries";
 import { TutorialForm } from "@/components/admin/tutorial-form";
 
-export const metadata: Metadata = { title: "Modifier le tutoriel — Admin" };
+export const generateMetadata = () => adminTitle("navTutorials");
 
 export default async function EditTutorialPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

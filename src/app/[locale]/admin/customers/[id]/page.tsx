@@ -1,12 +1,12 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminCustomerById } from "@/server/queries/admin.queries";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, formatPrice } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Client — Admin" };
+export const generateMetadata = () => adminTitle("navCustomers");
 
 export default async function AdminCustomerDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

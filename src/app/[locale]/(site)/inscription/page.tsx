@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { RegisterForm } from "@/components/auth/register-form";
+import { sanitizeNextPath } from "@/lib/safe-next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Auth.register");
@@ -13,7 +14,8 @@ export default async function RegisterPage({
 }: {
   searchParams: Promise<{ next?: string }>;
 }) {
-  const { next } = await searchParams;
+  const { next: rawNext } = await searchParams;
+  const next = sanitizeNextPath(rawNext);
   const t = await getTranslations("Auth");
 
   return (

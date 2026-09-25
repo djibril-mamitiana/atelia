@@ -134,7 +134,7 @@ const PRODUCT_CARD_SELECT = {
 type RawProductCard = Prisma.ProductGetPayload<{ select: typeof PRODUCT_CARD_SELECT }>;
 
 // Stats for a size group (several Product rows shown as one card).
-type GroupStats = { size: number; fromPrice: number; inStock: boolean };
+type GroupStats = { size: number; fromPrice: number; inStock: boolean; localizedName?: string };
 
 // Server Components may pass this straight into a "use client" component
 // (ProductCard) — React's Flight serialization can't cross that boundary
@@ -151,7 +151,7 @@ function serializeProductCard(p: RawProductCard, locale: Locale, group?: GroupSt
   void nameEn;
   void nameIt;
   const grouped = group != null && group.size > 1;
-  const localizedName = localizedField(p, "name", locale);
+  const localizedName = grouped && group.localizedName ? group.localizedName : localizedField(p, "name", locale);
   return {
     ...rest,
     name: grouped ? stripSizeSuffix(localizedName) : localizedName,
@@ -164,20 +164,42 @@ function serializeProductCard(p: RawProductCard, locale: Locale, group?: GroupSt
   };
 }
 
-async function loadGroupStats(groupKeys: (string | null)[]): Promise<Map<string, GroupStats>> {
+// A size added by hand in the admin has no translated name, but its siblings
+// do — so a family is titled with the first translated name found in it,
+// instead of flipping to German depending on which size happens to lead.
+async function loadFamilyNames(keys: string[], locale: Locale): Promise<Map<string, string>> {
+  if (locale === "de" || keys.length === 0) return new Map();
+  const has = locale === "fr" ? { nameFr: { not: null } } : locale === "en" ? { nameEn: { not: null } } : { nameIt: { not: null } };
+  const rows = await db.product.findMany({
+    where: { groupKey: { in: keys }, ...has },
+    distinct: ["groupKey"],
+    select: { groupKey: true, name: true, nameFr: true, nameEn: true, nameIt: true },
+  });
+  return new Map(rows.map((r) => [r.groupKey as string, localizedField(r, "name", locale)]));
+}
+
+async function loadGroupStats(groupKeys: (string | null)[], locale: Locale): Promise<Map<string, GroupStats>> {
   const keys = [...new Set(groupKeys.filter((k): k is string => !!k))];
   if (keys.length === 0) return new Map();
-  const rows = await db.product.groupBy({
-    by: ["groupKey"],
-    where: { groupKey: { in: keys }, isActive: true },
-    _count: { _all: true },
-    _min: { price: true },
-    _sum: { stock: true },
-  });
+  const [rows, names] = await Promise.all([
+    db.product.groupBy({
+      by: ["groupKey"],
+      where: { groupKey: { in: keys }, isActive: true },
+      _count: { _all: true },
+      _min: { price: true },
+      _sum: { stock: true },
+    }),
+    loadFamilyNames(keys, locale),
+  ]);
   return new Map(
     rows.map((r) => [
       r.groupKey as string,
-      { size: r._count._all, fromPrice: Number(r._min.price ?? 0), inStock: (r._sum.stock ?? 0) > 0 },
+      {
+        size: r._count._all,
+        fromPrice: Number(r._min.price ?? 0),
+        inStock: (r._sum.stock ?? 0) > 0,
+        localizedName: names.get(r.groupKey as string),
+      },
     ])
   );
 }
@@ -195,7 +217,7 @@ function dedupeByGroup<T extends { id: string; groupKey: string | null }>(rows: 
 }
 
 async function toGroupedCards(rows: RawProductCard[], locale: Locale) {
-  const stats = await loadGroupStats(rows.map((r) => r.groupKey));
+  const stats = await loadGroupStats(rows.map((r) => r.groupKey), locale);
   return rows.map((r) => serializeProductCard(r, locale, r.groupKey ? stats.get(r.groupKey) : undefined));
 }
 
@@ -267,10 +289,11 @@ export async function getCatalogPage(filters: CatalogFilters) {
     total,
     page,
     pageCount: Math.max(1, Math.ceil(total / PAGE_SIZE_CATALOG)),
-    categories: categories.map((c) => ({
-      ...localizeCategory(c, locale),
-      _count: { products: categoryCounts.get(c.id) ?? 0 },
-    })),
+    // Empty categories (e.g. the "Outils diamant" root, which only groups its
+    // children) would show up as a useless "(0)" filter entry.
+    categories: categories
+      .map((c) => ({ ...localizeCategory(c, locale), _count: { products: categoryCounts.get(c.id) ?? 0 } }))
+      .filter((c) => c._count.products > 0),
     brands,
     priceBounds: {
       min: priceBounds._min.price ? Number(priceBounds._min.price) : 0,
@@ -368,7 +391,24 @@ export async function getProductBySlug(slug: string) {
         : avgRating;
   }
 
-  const localizedName = localizedField(product, "name", locale);
+  // Same idea for the product page: if this size has no translation, borrow
+  // the name/description of a sibling that does.
+  const donor =
+    sizes.length > 0 && locale !== "de" && localizedField(product, "name", locale) === product.name
+      ? await db.product.findFirst({
+          where: {
+            groupKey: product.groupKey,
+            ...(locale === "fr" ? { nameFr: { not: null } } : locale === "en" ? { nameEn: { not: null } } : { nameIt: { not: null } }),
+          },
+          select: {
+            name: true, nameFr: true, nameEn: true, nameIt: true,
+            description: true, descriptionFr: true, descriptionEn: true, descriptionIt: true,
+            shortDescription: true, shortDescriptionFr: true, shortDescriptionEn: true, shortDescriptionIt: true,
+          },
+        })
+      : null;
+  const source = donor ?? product;
+  const localizedName = localizedField(source, "name", locale);
 
   return {
     ...product,
@@ -386,7 +426,7 @@ export async function getProductBySlug(slug: string) {
             .filter((line) => !/^(Caractéristiques|Features|Caratteristiche)\s*:/i.test(line))
             .join("\n")
         : localizedField(product, "description", locale),
-    shortDescription: product.shortDescription != null ? localizedField(product, "shortDescription", locale) : product.shortDescription,
+    shortDescription: source.shortDescription != null ? localizedField(source, "shortDescription", locale) : source.shortDescription,
     category: {
       ...product.category,
       name: localizedFrBasedField(product.category, "name", locale),

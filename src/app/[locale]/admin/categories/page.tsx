@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import { adminTitle } from "@/lib/admin-metadata";
 import { getTranslations } from "next-intl/server";
 import { getAdminCategories } from "@/server/queries/admin.queries";
 import { CategoryManager } from "@/components/admin/category-manager";
 
-export const metadata: Metadata = { title: "Catégories — Admin" };
+export const generateMetadata = () => adminTitle("navCategories");
 
 export default async function AdminCategoriesPage() {
   const t = await getTranslations("Admin.Categories");

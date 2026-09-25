@@ -11,6 +11,7 @@ import { ProductCard } from "@/components/product/product-card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { LinkButton } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
+import { localizedProductName } from "@/lib/product-name";
 import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -87,7 +88,7 @@ export default async function CartPage({
               key={item.id}
               id={item.id}
               productSlug={item.product.slug}
-              productName={item.product.name}
+              productName={localizedProductName(item.product, locale)}
               brandName={item.product.brand.name}
               imageUrl={item.product.images[0]?.url}
               variantName={item.variant?.name}

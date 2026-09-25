@@ -1,5 +1,5 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import Image from "next/image";
-import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";
 import { getAdminProducts } from "@/server/queries/admin.queries";
@@ -10,13 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import { LinkButton } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Produits — Admin" };
+export const generateMetadata = () => adminTitle("navProducts");
 
 export default async function AdminProductsPage({ searchParams }: { searchParams: Promise<{ q?: string; page?: string }> }) {
   const t = await getTranslations("Admin.Products");
   const locale = await getLocale();
   const { q, page } = await searchParams;
-  const { products, total, pageCount } = await getAdminProducts({ q, page: page ? Number(page) : 1 });
+  const { products, total, pageCount, familySizes } = await getAdminProducts({ q, page: page ? Number(page) : 1 });
 
   return (
     <div>
@@ -53,7 +53,13 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
                   </div>
                   <div>
                     <p className="font-medium text-ink">{p.name}</p>
-                    <p className="text-xs text-muted">{p.sku}</p>
+                    <p className="text-xs text-muted">
+                      {p.sku}
+                      {p.sizeLabel && <span className="ml-2 whitespace-nowrap rounded-sm bg-accent-soft px-1.5 py-0.5 text-accent-dark">{p.sizeLabel}</span>}
+                      {p.groupKey && (familySizes.get(p.groupKey) ?? 0) > 1 && (
+                        <span className="ml-2">{t("familySizes", { count: familySizes.get(p.groupKey) ?? 0 })}</span>
+                      )}
+                    </p>
                   </div>
                 </td>
                 <td className="px-4 py-3 text-muted">{p.category.name}</td>

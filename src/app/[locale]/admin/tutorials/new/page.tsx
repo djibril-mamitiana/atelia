@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import { adminTitle } from "@/lib/admin-metadata";
 import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
 import { TutorialForm } from "@/components/admin/tutorial-form";
 
-export const metadata: Metadata = { title: "Nouveau tutoriel — Admin" };
+export const generateMetadata = () => adminTitle("navTutorials");
 
 export default async function NewTutorialPage() {
   const t = await getTranslations("Admin.Tutorials");

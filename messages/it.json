@@ -350,7 +350,17 @@
     "paymentPaid": "Bonifico ricevuto",
     "paymentPending": "In attesa di bonifico",
     "shippingAddressTitle": "Indirizzo di consegna",
-    "confirmationTitle": "Conferma dell'ordine"
+    "confirmationTitle": "Conferma dell'ordine",
+    "historyCreatedPayment": "Ordine creato, in attesa di pagamento.",
+    "historyCreatedTransfer": "Ordine creato, in attesa del bonifico bancario.",
+    "historyPaymentConfirmed": "Pagamento confermato.",
+    "historyPreparing": "Ordine in preparazione.",
+    "historyShipped": "Pacco consegnato al corriere.",
+    "historyOutForDelivery": "Pacco in consegna.",
+    "historyDelivered": "Pacco consegnato.",
+    "historyPaymentFailed": "Pagamento non riuscito o scaduto — ordine annullato.",
+    "historyRefunded": "Ordine rimborsato.",
+    "historyTransferReceived": "Bonifico bancario ricevuto — ordine confermato."
   },
   "Contact": {
     "title": "Contatti",
@@ -472,7 +482,12 @@
       "deleteConfirm": "Eliminare definitivamente questo prodotto?",
       "toastDeleted": "Prodotto eliminato.",
       "editTitle": "Modifica «{name}»",
-      "newTitle": "Nuovo prodotto"
+      "newTitle": "Nuovo prodotto",
+      "addSize": "Aggiungi una misura",
+      "familySizes": "{count} misure",
+      "familyTitle": "Misure di questo prodotto ({count})",
+      "colSize": "Misura",
+      "newSizeTitle": "Nuova misura di «{name}»"
     },
     "ProductForm": {
       "sectionGeneral": "Informazioni generali",
@@ -508,7 +523,14 @@
       "submitUpdate": "Aggiorna prodotto",
       "submitCreate": "Crea prodotto",
       "toastUpdated": "Prodotto aggiornato.",
-      "toastCreated": "Prodotto creato."
+      "toastCreated": "Prodotto creato.",
+      "sectionSizes": "Misure",
+      "sizesHint": "Più misure dello stesso prodotto compaiono in un'unica scheda con selezione della misura. Per aggiungere una misura: crea la scheda e indica lo SKU di una misura esistente.",
+      "currentFamily": "Questa scheda fa parte di un prodotto con {count} misure.",
+      "labelSizeLabel": "Misura (es. Ø125 mm)",
+      "labelGroupWithSku": "Collega al prodotto (SKU di una misura esistente)",
+      "labelSizeSpecs": "Caratteristiche di questa misura",
+      "detachFromFamily": "Scollega questa scheda dal prodotto (torna a essere una scheda singola)"
     },
     "Categories": {
       "title": "Categorie",

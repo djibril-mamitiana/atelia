@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import { adminTitle } from "@/lib/admin-metadata";
 import { getTranslations } from "next-intl/server";
 import { getAdminBrands } from "@/server/queries/admin.queries";
 import { BrandManager } from "@/components/admin/brand-manager";
 
-export const metadata: Metadata = { title: "Marques — Admin" };
+export const generateMetadata = () => adminTitle("navBrands");
 
 export default async function AdminBrandsPage() {
   const t = await getTranslations("Admin.Brands");

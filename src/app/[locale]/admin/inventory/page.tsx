@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import { adminTitle } from "@/lib/admin-metadata";
 import { getTranslations } from "next-intl/server";
 import { getAdminInventory } from "@/server/queries/admin.queries";
 import { AdminSearchBar } from "@/components/admin/admin-search-bar";
 import { InventoryRow } from "@/components/admin/inventory-row";
 import { Pagination } from "@/components/catalog/pagination";
 
-export const metadata: Metadata = { title: "Stocks — Admin" };
+export const generateMetadata = () => adminTitle("navInventory");
 
 export default async function AdminInventoryPage({ searchParams }: { searchParams: Promise<{ q?: string; page?: string }> }) {
   const t = await getTranslations("Admin.Inventory");

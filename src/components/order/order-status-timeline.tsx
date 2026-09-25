@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { formatDateTime } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { SYSTEM_HISTORY_COMMENTS } from "@/lib/order-history";
 
 export function OrderStatusTimeline({
   currentStatus,
@@ -12,6 +13,13 @@ export function OrderStatusTimeline({
 }) {
   const t = useTranslations("Order");
   const locale = useLocale();
+
+  // System-written comments are stored in French — show them translated.
+  function comment(raw: string | null) {
+    if (!raw) return raw;
+    const key = SYSTEM_HISTORY_COMMENTS[raw];
+    return key ? t(key) : raw;
+  }
 
   const TIMELINE_STEPS: { status: string; label: string }[] = [
     { status: "PENDING", label: t("stepCreated") },
@@ -27,7 +35,7 @@ export function OrderStatusTimeline({
     return (
       <div className="rounded-md bg-danger-soft px-4 py-3 text-sm text-danger">
         <p className="font-medium">{currentStatus === "CANCELLED" ? t("orderCancelled") : t("orderRefunded")}</p>
-        {entry && <p className="mt-1 text-xs">{formatDateTime(entry.createdAt, locale)} — {entry.comment}</p>}
+        {entry && <p className="mt-1 text-xs">{formatDateTime(entry.createdAt, locale)} — {comment(entry.comment)}</p>}
       </div>
     );
   }
@@ -56,7 +64,7 @@ export function OrderStatusTimeline({
             </div>
             <div className="pb-6">
               <p className={cn("text-sm font-medium", reached ? "text-ink" : "text-muted")}>{step.label}</p>
-              {entry && <p className="text-xs text-muted">{formatDateTime(entry.createdAt, locale)}{entry.comment ? ` — ${entry.comment}` : ""}</p>}
+              {entry && <p className="text-xs text-muted">{formatDateTime(entry.createdAt, locale)}{entry.comment ? ` — ${comment(entry.comment)}` : ""}</p>}
             </div>
           </li>
         );

@@ -1,12 +1,12 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
-import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";
 import { getAdminTutorials } from "@/server/queries/admin.queries";
 import { LinkButton } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-export const metadata: Metadata = { title: "Tutoriels — Admin" };
+export const generateMetadata = () => adminTitle("navTutorials");
 
 export default async function AdminTutorialsPage() {
   const t = await getTranslations("Admin.Tutorials");

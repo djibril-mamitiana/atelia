@@ -1,12 +1,13 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getOrderForAdmin } from "@/server/queries/orders.queries";
 import { OrderStatusTimeline } from "@/components/order/order-status-timeline";
 import { OrderStatusControl } from "@/components/admin/order-status-control";
 import { formatDate, formatPrice } from "@/lib/format";
+import { localizedProductName } from "@/lib/product-name";
 
-export const metadata: Metadata = { title: "Détail commande — Admin" };
+export const generateMetadata = () => adminTitle("navOrders");
 
 export default async function AdminOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -35,7 +36,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
             <div className="flex flex-col divide-y divide-border">
               {order.items.map((item) => (
                 <div key={item.id} className="flex items-center justify-between py-2.5 text-sm">
-                  <span className="text-ink">{item.productName}</span>
+                  <span className="text-ink">{localizedProductName({ ...item.product, name: item.productName }, locale)}</span>
                   <span className="text-muted">{t("qtyLine", { qty: item.quantity, price: formatPrice(Number(item.unitPrice), locale) })}</span>
                   <span className="font-medium text-ink">{formatPrice(Number(item.total), locale)}</span>
                 </div>

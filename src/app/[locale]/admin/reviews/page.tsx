@@ -1,10 +1,10 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
-import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getAdminReviews } from "@/server/queries/admin.queries";
 import { ReviewModerationRow } from "@/components/admin/review-moderation-row";
 
-export const metadata: Metadata = { title: "Avis — Admin" };
+export const generateMetadata = () => adminTitle("navReviews");
 
 export default async function AdminReviewsPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
   const t = await getTranslations("Admin.Reviews");

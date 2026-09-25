@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { adminTitle } from "@/lib/admin-metadata";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminCoupons } from "@/server/queries/admin.queries";
 import { db } from "@/lib/db";
@@ -7,7 +7,7 @@ import { CouponRowActions } from "@/components/admin/coupon-row-actions";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, formatPrice } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Promotions — Admin" };
+export const generateMetadata = () => adminTitle("navPromotions");
 
 export default async function AdminPromotionsPage() {
   const t = await getTranslations("Admin.Promotions");

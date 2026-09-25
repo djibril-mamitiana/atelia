@@ -5,6 +5,7 @@ import { Landmark } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { OrderStatusTimeline } from "@/components/order/order-status-timeline";
 import { formatDate, formatPrice } from "@/lib/format";
+import { localizedProductName } from "@/lib/product-name";
 import { getBankTransferDetails } from "@/lib/bank";
 import type { getOrderForUser } from "@/server/queries/orders.queries";
 
@@ -97,7 +98,7 @@ export async function OrderDetail({ order }: { order: Order }) {
                   </div>
                   <div className="min-w-0 flex-1">
                     <Link href={`/produits/${item.product.slug}`} className="truncate text-sm text-ink hover:text-accent-dark">
-                      {item.productName}
+                      {localizedProductName({ ...item.product, name: item.productName }, locale)}
                     </Link>
                     <p className="text-xs text-muted">{item.quantity} × {formatPrice(Number(item.unitPrice), locale)}</p>
                   </div>

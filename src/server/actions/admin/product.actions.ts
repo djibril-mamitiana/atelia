@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { requireRole } from "@/lib/auth/session";
 import { productSchema } from "@/validations/product.schema";
 import { z } from "zod";
+import { applySizeFamily } from "@/server/services/product-family";
 
 export type AdminActionResult = { success: true; id: string } | { success: false; error: string };
 
@@ -71,6 +72,11 @@ const formSchema = z.object({
   imagesText: z.string().optional(),
   attributesText: z.string().optional(),
   variantsText: z.string().optional(),
+  // Size family (same product in several sizes) — see product-family.ts.
+  sizeLabel: z.string().optional(),
+  sizeSpecs: z.string().optional(),
+  groupWithSku: z.string().optional(),
+  detachFromFamily: z.boolean().optional(),
 });
 export type AdminProductFormInput = z.infer<typeof formSchema>;
 
@@ -97,6 +103,11 @@ export async function createProductAction(input: AdminProductFormInput): Promise
   ]);
   if (slugTaken) return { success: false, error: "Ce slug est déjà utilisé." };
   if (skuTaken) return { success: false, error: "Ce SKU est déjà utilisé." };
+
+  const joinSku = raw.data.groupWithSku?.trim();
+  if (joinSku && !(await db.product.findUnique({ where: { sku: joinSku }, select: { id: true } }))) {
+    return { success: false, error: `Aucun produit avec le SKU « ${joinSku} » pour la famille de tailles.` };
+  }
 
   const product = await db.product.create({
     data: {
@@ -131,6 +142,14 @@ export async function createProductAction(input: AdminProductFormInput): Promise
       data: { productId: product.id, type: "IN", quantity: data.stock, reason: "Stock initial à la création du produit" },
     });
   }
+
+  await db.$transaction((tx) =>
+    applySizeFamily(tx, product.id, {
+      sizeLabel: raw.data.sizeLabel,
+      sizeSpecs: raw.data.sizeSpecs,
+      groupWithSku: raw.data.groupWithSku,
+    })
+  );
 
   revalidatePath("/admin/products");
   revalidatePath("/produits");
@@ -168,51 +187,66 @@ export async function updateProductAction(id: string, input: AdminProductFormInp
 
   const stockDelta = data.stock - existing.stock;
 
-  await db.$transaction(async (tx) => {
-    await tx.productImage.deleteMany({ where: { productId: id } });
-    await tx.productAttribute.deleteMany({ where: { productId: id } });
-    await tx.productVariant.deleteMany({ where: { productId: id } });
+  class FamilyError extends Error {}
 
-    await tx.product.update({
-      where: { id },
-      data: {
-        name: data.name,
-        slug: data.slug,
-        sku: data.sku,
-        description: data.description,
-        shortDescription: data.shortDescription || null,
-        price: data.price,
-        compareAtPrice: data.compareAtPrice || null,
-        taxRate: data.taxRate ?? 20,
-        stock: data.stock ?? 0,
-        lowStockThreshold: data.lowStockThreshold ?? 5,
-        categoryId: data.categoryId,
-        brandId: data.brandId,
-        isActive: data.isActive ?? true,
-        isFeatured: data.isFeatured ?? false,
-        isNew: data.isNew ?? false,
-        isBestSeller: data.isBestSeller ?? false,
-        seoTitle: data.seoTitle || null,
-        seoDescription: data.seoDescription || null,
-        images: { create: data.images },
-        attributes: {
-          create: data.attributes.map((a) => ({ name: a.name, values: { create: a.values.map((v) => ({ value: v })) } })),
-        },
-        variants: { create: data.variants },
-      },
-    });
+  try {
+    await db.$transaction(async (tx) => {
+      await tx.productImage.deleteMany({ where: { productId: id } });
+      await tx.productAttribute.deleteMany({ where: { productId: id } });
+      await tx.productVariant.deleteMany({ where: { productId: id } });
 
-    if (stockDelta !== 0) {
-      await tx.inventoryMovement.create({
+      await tx.product.update({
+        where: { id },
         data: {
-          productId: id,
-          type: "ADJUSTMENT",
-          quantity: Math.abs(stockDelta),
-          reason: `Ajustement manuel via la fiche produit (${stockDelta > 0 ? "+" : ""}${stockDelta})`,
+          name: data.name,
+          slug: data.slug,
+          sku: data.sku,
+          description: data.description,
+          shortDescription: data.shortDescription || null,
+          price: data.price,
+          compareAtPrice: data.compareAtPrice || null,
+          taxRate: data.taxRate ?? 20,
+          stock: data.stock ?? 0,
+          lowStockThreshold: data.lowStockThreshold ?? 5,
+          categoryId: data.categoryId,
+          brandId: data.brandId,
+          isActive: data.isActive ?? true,
+          isFeatured: data.isFeatured ?? false,
+          isNew: data.isNew ?? false,
+          isBestSeller: data.isBestSeller ?? false,
+          seoTitle: data.seoTitle || null,
+          seoDescription: data.seoDescription || null,
+          images: { create: data.images },
+          attributes: {
+            create: data.attributes.map((a) => ({ name: a.name, values: { create: a.values.map((v) => ({ value: v })) } })),
+          },
+          variants: { create: data.variants },
         },
       });
-    }
-  });
+
+      if (stockDelta !== 0) {
+        await tx.inventoryMovement.create({
+          data: {
+            productId: id,
+            type: "ADJUSTMENT",
+            quantity: Math.abs(stockDelta),
+            reason: `Ajustement manuel via la fiche produit (${stockDelta > 0 ? "+" : ""}${stockDelta})`,
+          },
+        });
+      }
+
+      const family = await applySizeFamily(tx, id, {
+        sizeLabel: raw.data.sizeLabel,
+        sizeSpecs: raw.data.sizeSpecs,
+        groupWithSku: raw.data.groupWithSku,
+        detach: raw.data.detachFromFamily,
+      });
+      if (!family.ok) throw new FamilyError(family.error);
+    });
+  } catch (err) {
+    if (err instanceof FamilyError) return { success: false, error: err.message };
+    throw err;
+  }
 
   revalidatePath("/admin/products");
   revalidatePath(`/produits/${data.slug}`);

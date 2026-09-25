@@ -122,6 +122,9 @@ type DiamondProProduct = {
   specs: string[];
   specLabels: string[] | null;
   lowConfidence: boolean;
+  // Explicit translated names for rows whose supplier title was unusable
+  // (see scripts/fix-placeholder-names.ts) — takes priority over the dictionary.
+  names?: { fr: string; en: string; it: string };
 };
 
 const DIAMOND_PRO_CATEGORIES: { slug: string; name: string }[] = JSON.parse(
@@ -263,9 +266,9 @@ async function seedProducts(
         sku: item.sku,
         description,
         shortDescription,
-        nameFr: translation && suffix !== null ? `${translation.fr}${suffix}` : undefined,
-        nameEn: translation && suffix !== null ? `${translation.en}${suffix}` : undefined,
-        nameIt: translation && suffix !== null ? `${translation.it}${suffix}` : undefined,
+        nameFr: item.names?.fr ?? (translation && suffix !== null ? `${translation.fr}${suffix}` : undefined),
+        nameEn: item.names?.en ?? (translation && suffix !== null ? `${translation.en}${suffix}` : undefined),
+        nameIt: item.names?.it ?? (translation && suffix !== null ? `${translation.it}${suffix}` : undefined),
         descriptionFr: localizedDescription("fr"),
         descriptionEn: localizedDescription("en"),
         descriptionIt: localizedDescription("it"),

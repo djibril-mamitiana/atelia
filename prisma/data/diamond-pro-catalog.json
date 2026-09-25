@@ -415,7 +415,7 @@
   },
   {
     "sku": "BT104-B1-1152212",
-    "name": "⍟⍟ STANDARD",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — BT104-B1-1152212",
     "descriptionDe": "⍟⍟ STANDARD",
     "descriptionEn": "",
     "typeModel": "",
@@ -428,11 +428,16 @@
       "8"
     ],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — BT104-B1-1152212",
+      "en": "Angle grinder & cut-off saw blades — BT104-B1-1152212",
+      "it": "Dischi per smerigliatrice e troncatrice — BT104-B1-1152212"
+    }
   },
   {
     "sku": "BT104-B1-1252212",
-    "name": "⍟⍟ STANDARD",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — BT104-B1-1252212",
     "descriptionDe": "⍟⍟ STANDARD",
     "descriptionEn": "",
     "typeModel": "",
@@ -445,11 +450,16 @@
       "9"
     ],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — BT104-B1-1252212",
+      "en": "Angle grinder & cut-off saw blades — BT104-B1-1252212",
+      "it": "Dischi per smerigliatrice e troncatrice — BT104-B1-1252212"
+    }
   },
   {
     "sku": "BT104-B1-2302212",
-    "name": "⍟⍟ STANDARD Ø16mm",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — BT104-B1-2302212",
     "descriptionDe": "⍟⍟ STANDARD",
     "descriptionEn": "",
     "typeModel": "",
@@ -462,7 +472,12 @@
       "16"
     ],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — BT104-B1-2302212",
+      "en": "Angle grinder & cut-off saw blades — BT104-B1-2302212",
+      "it": "Dischi per smerigliatrice e troncatrice — BT104-B1-2302212"
+    }
   },
   {
     "sku": "AB101-1152210",
@@ -1212,7 +1227,7 @@
   },
   {
     "sku": "HP-503-2302212",
-    "name": "Disques diamant Ø115 – Ø230 mm — HP-503-2302212",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — HP-503-2302212",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -1225,7 +1240,12 @@
       "15"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — HP-503-2302212",
+      "en": "Angle grinder & cut-off saw blades — HP-503-2302212",
+      "it": "Dischi per smerigliatrice e troncatrice — HP-503-2302212"
+    }
   },
   {
     "sku": "LS503-115-KL",
@@ -3190,7 +3210,7 @@
   },
   {
     "sku": "FK-S-K-115-SW",
-    "name": "Disques diamant Ø115 – Ø230 mm — FK-S-K-115-SW",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — FK-S-K-115-SW",
     "descriptionDe": "⍟⍟⍟ PRO",
     "descriptionEn": "",
     "typeModel": "",
@@ -3203,11 +3223,16 @@
       "Vollrand"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — FK-S-K-115-SW",
+      "en": "Angle grinder & cut-off saw blades — FK-S-K-115-SW",
+      "it": "Dischi per smerigliatrice e troncatrice — FK-S-K-115-SW"
+    }
   },
   {
     "sku": "FK-S-K-125-SW",
-    "name": "Disques diamant Ø115 – Ø230 mm — FK-S-K-125-SW",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — FK-S-K-125-SW",
     "descriptionDe": "⍟⍟⍟ PRO",
     "descriptionEn": "",
     "typeModel": "",
@@ -3220,7 +3245,12 @@
       "Vollrand"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — FK-S-K-125-SW",
+      "en": "Angle grinder & cut-off saw blades — FK-S-K-125-SW",
+      "it": "Dischi per smerigliatrice e troncatrice — FK-S-K-125-SW"
+    }
   },
   {
     "sku": "FK-S-HF-115-BL",
@@ -4870,7 +4900,7 @@
   },
   {
     "sku": "TBO510-3002012",
-    "name": "Leistung max. 7,5 kW Ø300mm",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-3002012",
     "descriptionDe": "Leistung max. 7,5 kW",
     "descriptionEn": "Power max. 7,5 kW",
     "typeModel": "",
@@ -4889,11 +4919,16 @@
       "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-3002012",
+      "en": "Angle grinder & cut-off saw blades — TBO510-3002012",
+      "it": "Dischi per smerigliatrice e troncatrice — TBO510-3002012"
+    }
   },
   {
     "sku": "TBO510-3502012",
-    "name": "Leistung max. 7,5 kW Ø350mm",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-3502012",
     "descriptionDe": "Leistung max. 7,5 kW",
     "descriptionEn": "Power max. 7,5 kW",
     "typeModel": "",
@@ -4912,11 +4947,16 @@
       "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-3502012",
+      "en": "Angle grinder & cut-off saw blades — TBO510-3502012",
+      "it": "Dischi per smerigliatrice e troncatrice — TBO510-3502012"
+    }
   },
   {
     "sku": "TBO510-3502512",
-    "name": "Leistung max. 7,5 kW Ø350mm",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-3502512",
     "descriptionDe": "Leistung max. 7,5 kW",
     "descriptionEn": "Power max. 7,5 kW",
     "typeModel": "",
@@ -4935,11 +4975,16 @@
       "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-3502512",
+      "en": "Angle grinder & cut-off saw blades — TBO510-3502512",
+      "it": "Dischi per smerigliatrice e troncatrice — TBO510-3502512"
+    }
   },
   {
     "sku": "TBO510-4002512",
-    "name": "Leistung max. 7,5 kW Ø400mm",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-4002512",
     "descriptionDe": "Leistung max. 7,5 kW",
     "descriptionEn": "Power max. 7,5 kW",
     "typeModel": "",
@@ -4958,7 +5003,12 @@
       "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-4002512",
+      "en": "Angle grinder & cut-off saw blades — TBO510-4002512",
+      "it": "Dischi per smerigliatrice e troncatrice — TBO510-4002512"
+    }
   },
   {
     "sku": "TBO700-300-20",
@@ -9859,7 +9909,7 @@
   },
   {
     "sku": "FK704-3502010",
-    "name": "Disques diamant Ø250 – Ø1000 mm — FK704-3502010",
+    "name": "Trennscheiben für Bodensägen — FK704-3502010",
     "descriptionDe": "350 2,6x10 20",
     "descriptionEn": "",
     "typeModel": "",
@@ -9868,7 +9918,12 @@
     "categoryName": "Disques scie à sol",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques scie à sol — FK704-3502010",
+      "en": "Floor saw blades — FK704-3502010",
+      "it": "Dischi per seghe da pavimento — FK704-3502010"
+    }
   },
   {
     "sku": "FK704-3502510",
@@ -11362,7 +11417,7 @@
   },
   {
     "sku": "DST-68-blau",
-    "name": "Forets et trépans diamant — DST-68-blau",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — DST-68-blau",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11371,11 +11426,16 @@
     "categoryName": "Outils et couronnes de carottage à sec",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — DST-68-blau",
+      "en": "Dry core drilling tools and bits — DST-68-blau",
+      "it": "Utensili e corone per carotaggio a secco — DST-68-blau"
+    }
   },
   {
     "sku": "DST-82-blau",
-    "name": "Forets et trépans diamant — DST-82-blau",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — DST-82-blau",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11384,11 +11444,16 @@
     "categoryName": "Outils et couronnes de carottage à sec",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — DST-82-blau",
+      "en": "Dry core drilling tools and bits — DST-82-blau",
+      "it": "Utensili e corone per carotaggio a secco — DST-82-blau"
+    }
   },
   {
     "sku": "DST-68-GR",
-    "name": "Forets et trépans diamant — DST-68-GR",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — DST-68-GR",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11401,11 +11466,16 @@
       "3"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — DST-68-GR",
+      "en": "Dry core drilling tools and bits — DST-68-GR",
+      "it": "Utensili e corone per carotaggio a secco — DST-68-GR"
+    }
   },
   {
     "sku": "DST-82-GR",
-    "name": "Forets et trépans diamant — DST-82-GR",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — DST-82-GR",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11418,11 +11488,16 @@
       "4"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — DST-82-GR",
+      "en": "Dry core drilling tools and bits — DST-82-GR",
+      "it": "Utensili e corone per carotaggio a secco — DST-82-GR"
+    }
   },
   {
     "sku": "DST-K-68",
-    "name": "Forets et trépans diamant — DST-K-68",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — DST-K-68",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11435,11 +11510,16 @@
       "3"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — DST-K-68",
+      "en": "Dry core drilling tools and bits — DST-K-68",
+      "it": "Utensili e corone per carotaggio a secco — DST-K-68"
+    }
   },
   {
     "sku": "DST-K-82",
-    "name": "Forets et trépans diamant — DST-K-82",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — DST-K-82",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11452,7 +11532,12 @@
       "4"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — DST-K-82",
+      "en": "Dry core drilling tools and bits — DST-K-82",
+      "it": "Utensili e corone per carotaggio a secco — DST-K-82"
+    }
   },
   {
     "sku": "DST-68-4D",
@@ -11700,7 +11785,7 @@
   },
   {
     "sku": "GVV-82-M16",
-    "name": "Länge 70 mm/length 70 mm",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-82-M16",
     "descriptionDe": "Länge 70 mm/length 70 mm",
     "descriptionEn": "",
     "typeModel": "",
@@ -11709,7 +11794,12 @@
     "categoryName": "Outils et couronnes de carottage à sec",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-82-M16",
+      "en": "Dry core drilling tools and bits — GVV-82-M16",
+      "it": "Utensili e corone per carotaggio a secco — GVV-82-M16"
+    }
   },
   {
     "sku": "LSBTK-D-68-8",
@@ -11774,7 +11864,7 @@
   },
   {
     "sku": "LSBTK-D-82-10-OR",
-    "name": "Länge 70 mm/length 70 mm",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — LSBTK-D-82-10-OR",
     "descriptionDe": "Länge 70 mm/length 70 mm",
     "descriptionEn": "Orange/orange",
     "typeModel": "",
@@ -11783,11 +11873,16 @@
     "categoryName": "Outils et couronnes de carottage à sec",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — LSBTK-D-82-10-OR",
+      "en": "Dry core drilling tools and bits — LSBTK-D-82-10-OR",
+      "it": "Utensili e corone per carotaggio a secco — LSBTK-D-82-10-OR"
+    }
   },
   {
     "sku": "LSBTK-68-6-HE",
-    "name": "Forets et trépans diamant — LSBTK-68-6-HE",
+    "name": "Bohrkronen für Nassbohren — LSBTK-68-6-HE",
     "descriptionDe": "12x3,5x8 M16 10",
     "descriptionEn": "",
     "typeModel": "",
@@ -11800,11 +11895,16 @@
       "6"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Couronnes de carottage à eau — LSBTK-68-6-HE",
+      "en": "Wet core drill bits — LSBTK-68-6-HE",
+      "it": "Corone per carotaggio ad acqua — LSBTK-68-6-HE"
+    }
   },
   {
     "sku": "LSBTK-82-HE",
-    "name": "Forets et trépans diamant — LSBTK-82-HE",
+    "name": "Bohrkronen für Nassbohren — LSBTK-82-HE",
     "descriptionDe": "12x3,5x8 M16 10",
     "descriptionEn": "",
     "typeModel": "",
@@ -11817,11 +11917,16 @@
       "10"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Couronnes de carottage à eau — LSBTK-82-HE",
+      "en": "Wet core drill bits — LSBTK-82-HE",
+      "it": "Corone per carotaggio ad acqua — LSBTK-82-HE"
+    }
   },
   {
     "sku": "LSBTK-K-D-68-8-OR",
-    "name": "Forets et trépans diamant — LSBTK-K-D-68-8-OR",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — LSBTK-K-D-68-8-OR",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11834,11 +11939,16 @@
       "8"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — LSBTK-K-D-68-8-OR",
+      "en": "Dry core drilling tools and bits — LSBTK-K-D-68-8-OR",
+      "it": "Utensili e corone per carotaggio a secco — LSBTK-K-D-68-8-OR"
+    }
   },
   {
     "sku": "LSBTK-K-D-82-10-OR",
-    "name": "Forets et trépans diamant — LSBTK-K-D-82-10-OR",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — LSBTK-K-D-82-10-OR",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11851,11 +11961,16 @@
       "10"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — LSBTK-K-D-82-10-OR",
+      "en": "Dry core drilling tools and bits — LSBTK-K-D-82-10-OR",
+      "it": "Utensili e corone per carotaggio a secco — LSBTK-K-D-82-10-OR"
+    }
   },
   {
     "sku": "LSBTK-A-68-8Bayonett",
-    "name": "Bajonett-Anschluss/bayonet connection",
+    "name": "Bohrkronen für Nassbohren — LSBTK-A-68-8Bayonett",
     "descriptionDe": "Bajonett-Anschluss/bayonet connection",
     "descriptionEn": "",
     "typeModel": "",
@@ -11864,11 +11979,16 @@
     "categoryName": "Couronnes de carottage à eau",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Couronnes de carottage à eau — LSBTK-A-68-8Bayonett",
+      "en": "Wet core drill bits — LSBTK-A-68-8Bayonett",
+      "it": "Corone per carotaggio ad acqua — LSBTK-A-68-8Bayonett"
+    }
   },
   {
     "sku": "LSBTK-A-82-10Bayonet",
-    "name": "Bajonett-Anschluss/bayonet connection",
+    "name": "Bohrkronen für Nassbohren — LSBTK-A-82-10Bayonet",
     "descriptionDe": "Bajonett-Anschluss/bayonet connection",
     "descriptionEn": "",
     "typeModel": "",
@@ -11877,7 +11997,12 @@
     "categoryName": "Couronnes de carottage à eau",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Couronnes de carottage à eau — LSBTK-A-82-10Bayonet",
+      "en": "Wet core drill bits — LSBTK-A-82-10Bayonet",
+      "it": "Corone per carotaggio ad acqua — LSBTK-A-82-10Bayonet"
+    }
   },
   {
     "sku": "LSAB-701-68",
@@ -11961,7 +12086,7 @@
   },
   {
     "sku": "LSAB-K-701-68-B",
-    "name": "Forets et trépans diamant — LSAB-K-701-68-B",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — LSAB-K-701-68-B",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11974,11 +12099,16 @@
       "3"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — LSAB-K-701-68-B",
+      "en": "Dry core drilling tools and bits — LSAB-K-701-68-B",
+      "it": "Utensili e corone per carotaggio a secco — LSAB-K-701-68-B"
+    }
   },
   {
     "sku": "LSAB-K-701-82-B",
-    "name": "Forets et trépans diamant — LSAB-K-701-82-B",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — LSAB-K-701-82-B",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -11991,11 +12121,16 @@
       "4"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — LSAB-K-701-82-B",
+      "en": "Dry core drilling tools and bits — LSAB-K-701-82-B",
+      "it": "Utensili e corone per carotaggio a secco — LSAB-K-701-82-B"
+    }
   },
   {
     "sku": "LSAB-701-68-WS",
-    "name": "Forets et trépans diamant — LSAB-701-68-WS",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — LSAB-701-68-WS",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -12008,11 +12143,16 @@
       "3"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — LSAB-701-68-WS",
+      "en": "Dry core drilling tools and bits — LSAB-701-68-WS",
+      "it": "Utensili e corone per carotaggio a secco — LSAB-701-68-WS"
+    }
   },
   {
     "sku": "LSAB-701-82-WS",
-    "name": "Forets et trépans diamant — LSAB-701-82-WS",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — LSAB-701-82-WS",
     "descriptionDe": "68",
     "descriptionEn": "",
     "typeModel": "",
@@ -12025,7 +12165,12 @@
       "4"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — LSAB-701-82-WS",
+      "en": "Dry core drilling tools and bits — LSAB-701-82-WS",
+      "it": "Utensili e corone per carotaggio a secco — LSAB-701-82-WS"
+    }
   },
   {
     "sku": "FK-TR-4",
@@ -14153,7 +14298,7 @@
   },
   {
     "sku": "GVV-701-6",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-6",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14166,11 +14311,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-6",
+      "en": "Dry core drilling tools and bits — GVV-701-6",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-6"
+    }
   },
   {
     "sku": "GVV-701-8",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-8",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14183,11 +14333,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-8",
+      "en": "Dry core drilling tools and bits — GVV-701-8",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-8"
+    }
   },
   {
     "sku": "GVV-701-10",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-10",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14200,11 +14355,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-10",
+      "en": "Dry core drilling tools and bits — GVV-701-10",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-10"
+    }
   },
   {
     "sku": "GVV-701-12",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-12",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14217,11 +14377,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-12",
+      "en": "Dry core drilling tools and bits — GVV-701-12",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-12"
+    }
   },
   {
     "sku": "GVV-701-15",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-15",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14234,11 +14399,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-15",
+      "en": "Dry core drilling tools and bits — GVV-701-15",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-15"
+    }
   },
   {
     "sku": "GVV-701-16",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-16",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14251,11 +14421,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-16",
+      "en": "Dry core drilling tools and bits — GVV-701-16",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-16"
+    }
   },
   {
     "sku": "GVV-701-18",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-18",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14268,11 +14443,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-18",
+      "en": "Dry core drilling tools and bits — GVV-701-18",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-18"
+    }
   },
   {
     "sku": "GVV-701-20",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-20",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14285,11 +14465,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-20",
+      "en": "Dry core drilling tools and bits — GVV-701-20",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-20"
+    }
   },
   {
     "sku": "GVV-701-22",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-22",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14302,11 +14487,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-22",
+      "en": "Dry core drilling tools and bits — GVV-701-22",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-22"
+    }
   },
   {
     "sku": "GVV-701-25",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-25",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14319,11 +14509,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-25",
+      "en": "Dry core drilling tools and bits — GVV-701-25",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-25"
+    }
   },
   {
     "sku": "GVV-701-28",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-28",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14336,11 +14531,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-28",
+      "en": "Dry core drilling tools and bits — GVV-701-28",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-28"
+    }
   },
   {
     "sku": "GVV-701-30",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-30",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14353,11 +14553,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-30",
+      "en": "Dry core drilling tools and bits — GVV-701-30",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-30"
+    }
   },
   {
     "sku": "GVV-701-32",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-32",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14371,11 +14576,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-32",
+      "en": "Dry core drilling tools and bits — GVV-701-32",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-32"
+    }
   },
   {
     "sku": "GVV-701-35",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-35",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14388,11 +14598,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-35",
+      "en": "Dry core drilling tools and bits — GVV-701-35",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-35"
+    }
   },
   {
     "sku": "GVV-701-38",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-38",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14405,11 +14620,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-38",
+      "en": "Dry core drilling tools and bits — GVV-701-38",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-38"
+    }
   },
   {
     "sku": "GVV-701-40",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-40",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14422,11 +14642,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-40",
+      "en": "Dry core drilling tools and bits — GVV-701-40",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-40"
+    }
   },
   {
     "sku": "GVV-701-43",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-43",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14439,11 +14664,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-43",
+      "en": "Dry core drilling tools and bits — GVV-701-43",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-43"
+    }
   },
   {
     "sku": "GVV-701-45",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-45",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14456,11 +14686,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-45",
+      "en": "Dry core drilling tools and bits — GVV-701-45",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-45"
+    }
   },
   {
     "sku": "GVV-701-50",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-50",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14473,11 +14708,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-50",
+      "en": "Dry core drilling tools and bits — GVV-701-50",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-50"
+    }
   },
   {
     "sku": "GVV-701-55",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-55",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14490,11 +14730,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-55",
+      "en": "Dry core drilling tools and bits — GVV-701-55",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-55"
+    }
   },
   {
     "sku": "GVV-701-60",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-60",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14507,11 +14752,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-60",
+      "en": "Dry core drilling tools and bits — GVV-701-60",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-60"
+    }
   },
   {
     "sku": "GVV-701-65",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-65",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14524,11 +14774,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-65",
+      "en": "Dry core drilling tools and bits — GVV-701-65",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-65"
+    }
   },
   {
     "sku": "GVV-701-68",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-68",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14541,11 +14796,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-68",
+      "en": "Dry core drilling tools and bits — GVV-701-68",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-68"
+    }
   },
   {
     "sku": "GVV-701-70",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-70",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14558,11 +14818,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-70",
+      "en": "Dry core drilling tools and bits — GVV-701-70",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-70"
+    }
   },
   {
     "sku": "GVV-701-80",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-80",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14575,11 +14840,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-80",
+      "en": "Dry core drilling tools and bits — GVV-701-80",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-80"
+    }
   },
   {
     "sku": "GVV-701-90",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-90",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14592,11 +14862,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-90",
+      "en": "Dry core drilling tools and bits — GVV-701-90",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-90"
+    }
   },
   {
     "sku": "GVV-701-100",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-100",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14609,11 +14884,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-100",
+      "en": "Dry core drilling tools and bits — GVV-701-100",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-100"
+    }
   },
   {
     "sku": "GVV-701-110",
-    "name": "Ø Aufnahme",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-110",
     "descriptionDe": "Ø Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -14626,11 +14906,16 @@
     "specLabels": [
       "length mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-110",
+      "en": "Dry core drilling tools and bits — GVV-701-110",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-110"
+    }
   },
   {
     "sku": "GVV-701-120",
-    "name": "Forets et trépans diamant — GVV-701-120",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-120",
     "descriptionDe": "6 M 14",
     "descriptionEn": "",
     "typeModel": "",
@@ -14641,11 +14926,16 @@
       "73/45"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-120",
+      "en": "Dry core drilling tools and bits — GVV-701-120",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-120"
+    }
   },
   {
     "sku": "GVV-701-140",
-    "name": "Forets et trépans diamant — GVV-701-140",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — GVV-701-140",
     "descriptionDe": "6 M 14",
     "descriptionEn": "",
     "typeModel": "",
@@ -14656,7 +14946,12 @@
       "73/45"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — GVV-701-140",
+      "en": "Dry core drilling tools and bits — GVV-701-140",
+      "it": "Utensili e corone per carotaggio a secco — GVV-701-140"
+    }
   },
   {
     "sku": "GVV-SP-6",
@@ -15147,7 +15442,7 @@
   },
   {
     "sku": "3D-Set-112",
-    "name": "Ø Segment Aufnahme Länge mm",
+    "name": "Segmente und Ringe für Bohrkronen — 3D-Set-112",
     "descriptionDe": "Ø Segment Aufnahme Länge mm",
     "descriptionEn": "mm mm Connection Length mm",
     "typeModel": "",
@@ -15156,11 +15451,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — 3D-Set-112",
+      "en": "Core bit segments and rings — 3D-Set-112",
+      "it": "Segmenti e anelli per corone da carotaggio — 3D-Set-112"
+    }
   },
   {
     "sku": "3D-Set-132",
-    "name": "Ø Segment Aufnahme Länge mm",
+    "name": "Segmente und Ringe für Bohrkronen — 3D-Set-132",
     "descriptionDe": "Ø Segment Aufnahme Länge mm",
     "descriptionEn": "mm mm Connection Length mm",
     "typeModel": "",
@@ -15169,7 +15469,12 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — 3D-Set-132",
+      "en": "Core bit segments and rings — 3D-Set-132",
+      "it": "Segmenti e anelli per corone da carotaggio — 3D-Set-132"
+    }
   },
   {
     "sku": "FK-Bohrer-60-5-1,3",
@@ -15805,7 +16110,7 @@
   },
   {
     "sku": "Koffer-Plus",
-    "name": "6-Kant/hex",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — Koffer-Plus",
     "descriptionDe": "6-Kant/hex",
     "descriptionEn": "",
     "typeModel": "",
@@ -15814,7 +16119,12 @@
     "categoryName": "Outils et couronnes de carottage à sec",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — Koffer-Plus",
+      "en": "Dry core drilling tools and bits — Koffer-Plus",
+      "it": "Utensili e corone per carotaggio a secco — Koffer-Plus"
+    }
   },
   {
     "sku": "Alukoffer-5",
@@ -15857,7 +16167,7 @@
   },
   {
     "sku": "Koffer-Plus-3D",
-    "name": "6-Kant/hex",
+    "name": "Werkzeuge und Bohrkronen für Trockenbohren — Koffer-Plus-3D",
     "descriptionDe": "6-Kant/hex",
     "descriptionEn": "",
     "typeModel": "",
@@ -15866,7 +16176,12 @@
     "categoryName": "Outils et couronnes de carottage à sec",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Outils et couronnes de carottage à sec — Koffer-Plus-3D",
+      "en": "Dry core drilling tools and bits — Koffer-Plus-3D",
+      "it": "Utensili e corone per carotaggio a secco — Koffer-Plus-3D"
+    }
   },
   {
     "sku": "BK-Laser-25",
@@ -20323,7 +20638,7 @@
   },
   {
     "sku": "Ring-10",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-10",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20332,11 +20647,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-10",
+      "en": "Core bit segments and rings — Ring-10",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-10"
+    }
   },
   {
     "sku": "Ring-12",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-12",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20345,11 +20665,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-12",
+      "en": "Core bit segments and rings — Ring-12",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-12"
+    }
   },
   {
     "sku": "Ring-14",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-14",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20358,11 +20683,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-14",
+      "en": "Core bit segments and rings — Ring-14",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-14"
+    }
   },
   {
     "sku": "Ring-16",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-16",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20371,11 +20701,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-16",
+      "en": "Core bit segments and rings — Ring-16",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-16"
+    }
   },
   {
     "sku": "Ring-18",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-18",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20384,11 +20719,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-18",
+      "en": "Core bit segments and rings — Ring-18",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-18"
+    }
   },
   {
     "sku": "Ring-20",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-20",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20397,11 +20737,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-20",
+      "en": "Core bit segments and rings — Ring-20",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-20"
+    }
   },
   {
     "sku": "Ring-22",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-22",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20410,11 +20755,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-22",
+      "en": "Core bit segments and rings — Ring-22",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-22"
+    }
   },
   {
     "sku": "Ring-24",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-24",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20423,11 +20773,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-24",
+      "en": "Core bit segments and rings — Ring-24",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-24"
+    }
   },
   {
     "sku": "Ring-25",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-25",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20436,11 +20791,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-25",
+      "en": "Core bit segments and rings — Ring-25",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-25"
+    }
   },
   {
     "sku": "Ring-26",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-26",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20449,11 +20809,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-26",
+      "en": "Core bit segments and rings — Ring-26",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-26"
+    }
   },
   {
     "sku": "Ring-28",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-28",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20462,11 +20827,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-28",
+      "en": "Core bit segments and rings — Ring-28",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-28"
+    }
   },
   {
     "sku": "Ring-30",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-30",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20475,11 +20845,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-30",
+      "en": "Core bit segments and rings — Ring-30",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-30"
+    }
   },
   {
     "sku": "Ring-32",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-32",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20488,11 +20863,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-32",
+      "en": "Core bit segments and rings — Ring-32",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-32"
+    }
   },
   {
     "sku": "Ring-35",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-35",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20501,11 +20881,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-35",
+      "en": "Core bit segments and rings — Ring-35",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-35"
+    }
   },
   {
     "sku": "Ring-40",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-40",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20514,11 +20899,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-40",
+      "en": "Core bit segments and rings — Ring-40",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-40"
+    }
   },
   {
     "sku": "Ring-42",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-42",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "10 10x2,5",
     "typeModel": "",
@@ -20527,11 +20917,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-42",
+      "en": "Core bit segments and rings — Ring-42",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-42"
+    }
   },
   {
     "sku": "Ring-GR-5",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-5",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20540,11 +20935,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-5",
+      "en": "Core bit segments and rings — Ring-GR-5",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-5"
+    }
   },
   {
     "sku": "Ring-GR-6",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-6",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20553,11 +20953,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-6",
+      "en": "Core bit segments and rings — Ring-GR-6",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-6"
+    }
   },
   {
     "sku": "Ring-GR-8",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-8",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20566,11 +20971,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-8",
+      "en": "Core bit segments and rings — Ring-GR-8",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-8"
+    }
   },
   {
     "sku": "Ring-GR-10",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-10",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20579,11 +20989,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-10",
+      "en": "Core bit segments and rings — Ring-GR-10",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-10"
+    }
   },
   {
     "sku": "Ring-GR-12",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-12",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20592,11 +21007,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-12",
+      "en": "Core bit segments and rings — Ring-GR-12",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-12"
+    }
   },
   {
     "sku": "Ring-GR-14",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-14",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20605,11 +21025,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-14",
+      "en": "Core bit segments and rings — Ring-GR-14",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-14"
+    }
   },
   {
     "sku": "Ring-GR-16",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-16",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20618,11 +21043,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-16",
+      "en": "Core bit segments and rings — Ring-GR-16",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-16"
+    }
   },
   {
     "sku": "Ring-GR-18",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-18",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20631,11 +21061,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-18",
+      "en": "Core bit segments and rings — Ring-GR-18",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-18"
+    }
   },
   {
     "sku": "Ring-GR-20",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-20",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20644,11 +21079,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-20",
+      "en": "Core bit segments and rings — Ring-GR-20",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-20"
+    }
   },
   {
     "sku": "Ring-GR-22",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-22",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20657,11 +21097,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-22",
+      "en": "Core bit segments and rings — Ring-GR-22",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-22"
+    }
   },
   {
     "sku": "Ring-GR-24",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-24",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20670,11 +21115,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-24",
+      "en": "Core bit segments and rings — Ring-GR-24",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-24"
+    }
   },
   {
     "sku": "Ring-GR-25",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-25",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20683,11 +21133,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-25",
+      "en": "Core bit segments and rings — Ring-GR-25",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-25"
+    }
   },
   {
     "sku": "Ring-GR-26",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-26",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20696,11 +21151,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-26",
+      "en": "Core bit segments and rings — Ring-GR-26",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-26"
+    }
   },
   {
     "sku": "Ring-GR-28",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-28",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20709,11 +21169,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-28",
+      "en": "Core bit segments and rings — Ring-GR-28",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-28"
+    }
   },
   {
     "sku": "Ring-GR-30",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-30",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20722,11 +21187,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-30",
+      "en": "Core bit segments and rings — Ring-GR-30",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-30"
+    }
   },
   {
     "sku": "Ring-GR-32",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-32",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20735,11 +21205,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-32",
+      "en": "Core bit segments and rings — Ring-GR-32",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-32"
+    }
   },
   {
     "sku": "Ring-GR-35",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-35",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20748,11 +21223,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-35",
+      "en": "Core bit segments and rings — Ring-GR-35",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-35"
+    }
   },
   {
     "sku": "Ring-GR-40",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-40",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20761,11 +21241,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-40",
+      "en": "Core bit segments and rings — Ring-GR-40",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-40"
+    }
   },
   {
     "sku": "Ring-GR-50",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-50",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20774,11 +21259,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-50",
+      "en": "Core bit segments and rings — Ring-GR-50",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-50"
+    }
   },
   {
     "sku": "Ring-GR-55",
-    "name": "10 mm Segmenthöhe/segment height",
+    "name": "Segmente und Ringe für Bohrkronen — Ring-GR-55",
     "descriptionDe": "10 mm Segmenthöhe/segment height",
     "descriptionEn": "5 10x1,5",
     "typeModel": "",
@@ -20787,11 +21277,16 @@
     "categoryName": "Segments et bagues de carottage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Segments et bagues de carottage — Ring-GR-55",
+      "en": "Core bit segments and rings — Ring-GR-55",
+      "it": "Segmenti e anelli per corone da carotaggio — Ring-GR-55"
+    }
   },
   {
     "sku": "GVV-40-50-7x3,2",
-    "name": "Forets et trépans diamant — GVV-40-50-7x3,2",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-40-50-7x3,2",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20804,11 +21299,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-40-50-7x3,2",
+      "en": "Core bit segments and rings — GVV-40-50-7x3,2",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-40-50-7x3,2"
+    }
   },
   {
     "sku": "GVV-50-60-7x3,7",
-    "name": "Forets et trépans diamant — GVV-50-60-7x3,7",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-50-60-7x3,7",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20821,11 +21321,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-50-60-7x3,7",
+      "en": "Core bit segments and rings — GVV-50-60-7x3,7",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-50-60-7x3,7"
+    }
   },
   {
     "sku": "GVV-70-80-7x3,7",
-    "name": "Forets et trépans diamant — GVV-70-80-7x3,7",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-70-80-7x3,7",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20838,11 +21343,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-70-80-7x3,7",
+      "en": "Core bit segments and rings — GVV-70-80-7x3,7",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-70-80-7x3,7"
+    }
   },
   {
     "sku": "GVV-90-110-7x3,7",
-    "name": "Forets et trépans diamant — GVV-90-110-7x3,7",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-90-110-7x3,7",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20855,11 +21365,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-90-110-7x3,7",
+      "en": "Core bit segments and rings — GVV-90-110-7x3,7",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-90-110-7x3,7"
+    }
   },
   {
     "sku": "GVV-120-140-7x3,7",
-    "name": "Forets et trépans diamant — GVV-120-140-7x3,7",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-120-140-7x3,7",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20872,11 +21387,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-120-140-7x3,7",
+      "en": "Core bit segments and rings — GVV-120-140-7x3,7",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-120-140-7x3,7"
+    }
   },
   {
     "sku": "GVV-150-180-7x4,2",
-    "name": "Forets et trépans diamant — GVV-150-180-7x4,2",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-150-180-7x4,2",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20889,11 +21409,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-150-180-7x4,2",
+      "en": "Core bit segments and rings — GVV-150-180-7x4,2",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-150-180-7x4,2"
+    }
   },
   {
     "sku": "GVV-180-250-7x4,7",
-    "name": "Forets et trépans diamant — GVV-180-250-7x4,7",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-180-250-7x4,7",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20906,11 +21431,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-180-250-7x4,7",
+      "en": "Core bit segments and rings — GVV-180-250-7x4,7",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-180-250-7x4,7"
+    }
   },
   {
     "sku": "GVV-250-300-7x5",
-    "name": "Forets et trépans diamant — GVV-250-300-7x5",
+    "name": "Segmente und Ringe für Bohrkronen — GVV-250-300-7x5",
     "descriptionDe": "Segment",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -20923,7 +21453,12 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Segments et bagues de carottage — GVV-250-300-7x5",
+      "en": "Core bit segments and rings — GVV-250-300-7x5",
+      "it": "Segmenti e anelli per corone da carotaggio — GVV-250-300-7x5"
+    }
   },
   {
     "sku": "STD-100-E-SI",
@@ -22071,7 +22606,7 @@
   },
   {
     "sku": "STBO-100-M14",
-    "name": "Meules et outils de meulage diamant — STBO-100-M14",
+    "name": "Schleifscheiben — STBO-100-M14",
     "descriptionDe": "100 5 22,2 20",
     "descriptionEn": "",
     "typeModel": "",
@@ -22080,11 +22615,16 @@
     "categoryName": "Disques de ponçage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — STBO-100-M14",
+      "en": "Grinding discs — STBO-100-M14",
+      "it": "Dischi abrasivi per levigatura — STBO-100-M14"
+    }
   },
   {
     "sku": "STBO-115",
-    "name": "Meules et outils de meulage diamant — STBO-115",
+    "name": "Schleifscheiben — STBO-115",
     "descriptionDe": "100 5 22,2 20",
     "descriptionEn": "",
     "typeModel": "",
@@ -22093,11 +22633,16 @@
     "categoryName": "Disques de ponçage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — STBO-115",
+      "en": "Grinding discs — STBO-115",
+      "it": "Dischi abrasivi per levigatura — STBO-115"
+    }
   },
   {
     "sku": "STBO-125",
-    "name": "Meules et outils de meulage diamant — STBO-125",
+    "name": "Schleifscheiben — STBO-125",
     "descriptionDe": "100 5 22,2 20",
     "descriptionEn": "",
     "typeModel": "",
@@ -22106,7 +22651,12 @@
     "categoryName": "Disques de ponçage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — STBO-125",
+      "en": "Grinding discs — STBO-125",
+      "it": "Dischi abrasivi per levigatura — STBO-125"
+    }
   },
   {
     "sku": "Alu-100-22",
@@ -22982,7 +23532,7 @@
   },
   {
     "sku": "STD-FS-3Set 2x44+35",
-    "name": "Ø Segment Bohrung/Arbor",
+    "name": "Schleifscheiben — STD-FS-3Set 2x44+35",
     "descriptionDe": "Ø Segment Bohrung/Arbor",
     "descriptionEn": "mm mm mm",
     "typeModel": "STD-FS-3Set",
@@ -22993,7 +23543,12 @@
     "specLabels": [
       "Typ STD-FS-3Set"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — STD-FS-3Set 2x44+35",
+      "en": "Grinding discs — STD-FS-3Set 2x44+35",
+      "it": "Dischi abrasivi per levigatura — STD-FS-3Set 2x44+35"
+    }
   },
   {
     "sku": "RF-90-6-E",
@@ -24145,7 +24700,7 @@
   },
   {
     "sku": "Schleifblock-GR-18",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-GR-18",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24158,11 +24713,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-GR-18",
+      "en": "Grinding blocks — Schleifblock-GR-18",
+      "it": "Blocchi abrasivi — Schleifblock-GR-18"
+    }
   },
   {
     "sku": "Schleifblock-GR-30",
-    "name": "Meules et outils de meulage diamant — Schleifblock-GR-30",
+    "name": "Schleifblöcke — Schleifblock-GR-30",
     "descriptionDe": "40x10x12 M 6",
     "descriptionEn": "",
     "typeModel": "",
@@ -24174,11 +24734,16 @@
       "M 6"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-GR-30",
+      "en": "Grinding blocks — Schleifblock-GR-30",
+      "it": "Blocchi abrasivi — Schleifblock-GR-30"
+    }
   },
   {
     "sku": "Schleifblock-GR-60",
-    "name": "Meules et outils de meulage diamant — Schleifblock-GR-60",
+    "name": "Schleifblöcke — Schleifblock-GR-60",
     "descriptionDe": "40x10x12 M 6",
     "descriptionEn": "",
     "typeModel": "",
@@ -24189,11 +24754,16 @@
       "# 60/80"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-GR-60",
+      "en": "Grinding blocks — Schleifblock-GR-60",
+      "it": "Blocchi abrasivi — Schleifblock-GR-60"
+    }
   },
   {
     "sku": "Schleifblock-GR-120",
-    "name": "Meules et outils de meulage diamant — Schleifblock-GR-120",
+    "name": "Schleifblöcke — Schleifblock-GR-120",
     "descriptionDe": "40x10x12 M 6",
     "descriptionEn": "",
     "typeModel": "",
@@ -24204,11 +24774,16 @@
       "#120/150"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-GR-120",
+      "en": "Grinding blocks — Schleifblock-GR-120",
+      "it": "Blocchi abrasivi — Schleifblock-GR-120"
+    }
   },
   {
     "sku": "Schleifblock-ROT-18",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-ROT-18",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24221,11 +24796,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-ROT-18",
+      "en": "Grinding blocks — Schleifblock-ROT-18",
+      "it": "Blocchi abrasivi — Schleifblock-ROT-18"
+    }
   },
   {
     "sku": "Schleifblock-ROT-30",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-ROT-30",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24239,11 +24819,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-ROT-30",
+      "en": "Grinding blocks — Schleifblock-ROT-30",
+      "it": "Blocchi abrasivi — Schleifblock-ROT-30"
+    }
   },
   {
     "sku": "Schleifblock-ROT-60",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-ROT-60",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24256,11 +24841,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-ROT-60",
+      "en": "Grinding blocks — Schleifblock-ROT-60",
+      "it": "Blocchi abrasivi — Schleifblock-ROT-60"
+    }
   },
   {
     "sku": "Schleifblock-ROT-120",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-ROT-120",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24273,11 +24863,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-ROT-120",
+      "en": "Grinding blocks — Schleifblock-ROT-120",
+      "it": "Blocchi abrasivi — Schleifblock-ROT-120"
+    }
   },
   {
     "sku": "Schleifblock-Blau-18",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-Blau-18",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24290,11 +24885,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-Blau-18",
+      "en": "Grinding blocks — Schleifblock-Blau-18",
+      "it": "Blocchi abrasivi — Schleifblock-Blau-18"
+    }
   },
   {
     "sku": "Schleifblock-Blau-30",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-Blau-30",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24308,7 +24908,12 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-Blau-30",
+      "en": "Grinding blocks — Schleifblock-Blau-30",
+      "it": "Blocchi abrasivi — Schleifblock-Blau-30"
+    }
   },
   {
     "sku": "PKD-2",
@@ -24342,7 +24947,7 @@
   },
   {
     "sku": "PKD-SP-3-M6",
-    "name": "Aufnahme M6",
+    "name": "Schleifblöcke — PKD-SP-3-M6",
     "descriptionDe": "Aufnahme M6",
     "descriptionEn": "connection M6",
     "typeModel": "",
@@ -24353,7 +24958,12 @@
       "Aufnahme M6"
     ],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — PKD-SP-3-M6",
+      "en": "Grinding blocks — PKD-SP-3-M6",
+      "it": "Blocchi abrasivi — PKD-SP-3-M6"
+    }
   },
   {
     "sku": "PKD-4",
@@ -24372,7 +24982,7 @@
   },
   {
     "sku": "Schleifblock-Grün-M8",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-Grün-M8",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24385,11 +24995,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-Grün-M8",
+      "en": "Grinding blocks — Schleifblock-Grün-M8",
+      "it": "Blocchi abrasivi — Schleifblock-Grün-M8"
+    }
   },
   {
     "sku": "Schleifblock-Rot-M8",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-Rot-M8",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24402,11 +25017,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-Rot-M8",
+      "en": "Grinding blocks — Schleifblock-Rot-M8",
+      "it": "Blocchi abrasivi — Schleifblock-Rot-M8"
+    }
   },
   {
     "sku": "Schleifblock-Blau-M8",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-Blau-M8",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24419,7 +25039,12 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-Blau-M8",
+      "en": "Grinding blocks — Schleifblock-Blau-M8",
+      "it": "Blocchi abrasivi — Schleifblock-Blau-M8"
+    }
   },
   {
     "sku": "PKD-2-L-M8",
@@ -24496,7 +25121,7 @@
   },
   {
     "sku": "Schleifblock-HC-B-18",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-HC-B-18",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24509,11 +25134,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-HC-B-18",
+      "en": "Grinding blocks — Schleifblock-HC-B-18",
+      "it": "Blocchi abrasivi — Schleifblock-HC-B-18"
+    }
   },
   {
     "sku": "Schleifblock-HC-A-18",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-HC-A-18",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24526,11 +25156,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-HC-A-18",
+      "en": "Grinding blocks — Schleifblock-HC-A-18",
+      "it": "Blocchi abrasivi — Schleifblock-HC-A-18"
+    }
   },
   {
     "sku": "Schleifblock-HC-A-30",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-HC-A-30",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24543,11 +25178,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-HC-A-30",
+      "en": "Grinding blocks — Schleifblock-HC-A-30",
+      "it": "Blocchi abrasivi — Schleifblock-HC-A-30"
+    }
   },
   {
     "sku": "Schleifblock-HC-A-60",
-    "name": "Segment Aufnahme",
+    "name": "Schleifblöcke — Schleifblock-HC-A-60",
     "descriptionDe": "Segment Aufnahme",
     "descriptionEn": "mm Connection",
     "typeModel": "",
@@ -24560,11 +25200,16 @@
     "specLabels": [
       "Grit"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-HC-A-60",
+      "en": "Grinding blocks — Schleifblock-HC-A-60",
+      "it": "Blocchi abrasivi — Schleifblock-HC-A-60"
+    }
   },
   {
     "sku": "HC-PCD-2-R",
-    "name": "Meules et outils de meulage diamant — HC-PCD-2-R",
+    "name": "Schleifblöcke — HC-PCD-2-R",
     "descriptionDe": "PKD",
     "descriptionEn": "",
     "typeModel": "",
@@ -24575,11 +25220,16 @@
       "rechts/right"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Blocs de ponçage — HC-PCD-2-R",
+      "en": "Grinding blocks — HC-PCD-2-R",
+      "it": "Blocchi abrasivi — HC-PCD-2-R"
+    }
   },
   {
     "sku": "HC-PCD-2-L",
-    "name": "Meules et outils de meulage diamant — HC-PCD-2-L",
+    "name": "Schleifblöcke — HC-PCD-2-L",
     "descriptionDe": "PKD",
     "descriptionEn": "",
     "typeModel": "",
@@ -24590,11 +25240,16 @@
       "links/left"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Blocs de ponçage — HC-PCD-2-L",
+      "en": "Grinding blocks — HC-PCD-2-L",
+      "it": "Blocchi abrasivi — HC-PCD-2-L"
+    }
   },
   {
     "sku": "Schleifblock-HC-PKD3",
-    "name": "Meules et outils de meulage diamant — Schleifblock-HC-PKD3",
+    "name": "Schleifblöcke — Schleifblock-HC-PKD3",
     "descriptionDe": "PKD",
     "descriptionEn": "",
     "typeModel": "",
@@ -24605,11 +25260,16 @@
       "rechts/right"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Blocs de ponçage — Schleifblock-HC-PKD3",
+      "en": "Grinding blocks — Schleifblock-HC-PKD3",
+      "it": "Blocchi abrasivi — Schleifblock-HC-PKD3"
+    }
   },
   {
     "sku": "TS-105-22",
-    "name": "Ø Segment",
+    "name": "Schleifscheiben — TS-105-22",
     "descriptionDe": "Ø Segment",
     "descriptionEn": "mm mm",
     "typeModel": "",
@@ -24622,11 +25282,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — TS-105-22",
+      "en": "Grinding discs — TS-105-22",
+      "it": "Dischi abrasivi per levigatura — TS-105-22"
+    }
   },
   {
     "sku": "TS-125-22",
-    "name": "Ø Segment",
+    "name": "Schleifscheiben — TS-125-22",
     "descriptionDe": "Ø Segment",
     "descriptionEn": "mm mm",
     "typeModel": "",
@@ -24639,11 +25304,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — TS-125-22",
+      "en": "Grinding discs — TS-125-22",
+      "it": "Dischi abrasivi per levigatura — TS-125-22"
+    }
   },
   {
     "sku": "TS-125-M14",
-    "name": "Ø Segment",
+    "name": "Schleifscheiben — TS-125-M14",
     "descriptionDe": "Ø Segment",
     "descriptionEn": "mm mm",
     "typeModel": "",
@@ -24656,11 +25326,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — TS-125-M14",
+      "en": "Grinding discs — TS-125-M14",
+      "it": "Dischi abrasivi per levigatura — TS-125-M14"
+    }
   },
   {
     "sku": "TS-230-22",
-    "name": "Ø Segment",
+    "name": "Schleifscheiben — TS-230-22",
     "descriptionDe": "Ø Segment",
     "descriptionEn": "mm mm",
     "typeModel": "",
@@ -24673,11 +25348,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — TS-230-22",
+      "en": "Grinding discs — TS-230-22",
+      "it": "Dischi abrasivi per levigatura — TS-230-22"
+    }
   },
   {
     "sku": "TS-230-M14",
-    "name": "Ø Segment",
+    "name": "Schleifscheiben — TS-230-M14",
     "descriptionDe": "Ø Segment",
     "descriptionEn": "mm mm",
     "typeModel": "",
@@ -24690,11 +25370,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — TS-230-M14",
+      "en": "Grinding discs — TS-230-M14",
+      "it": "Dischi abrasivi per levigatura — TS-230-M14"
+    }
   },
   {
     "sku": "GVV-SPF-115",
-    "name": "Ø Segment",
+    "name": "Schleifscheiben — GVV-SPF-115",
     "descriptionDe": "Ø Segment",
     "descriptionEn": "mm mm",
     "typeModel": "",
@@ -24707,11 +25392,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — GVV-SPF-115",
+      "en": "Grinding discs — GVV-SPF-115",
+      "it": "Dischi abrasivi per levigatura — GVV-SPF-115"
+    }
   },
   {
     "sku": "GVV-SPF-125",
-    "name": "Ø Segment",
+    "name": "Schleifscheiben — GVV-SPF-125",
     "descriptionDe": "Ø Segment",
     "descriptionEn": "mm mm",
     "typeModel": "",
@@ -24724,11 +25414,16 @@
     "specLabels": [
       "mm"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — GVV-SPF-125",
+      "en": "Grinding discs — GVV-SPF-125",
+      "it": "Dischi abrasivi per levigatura — GVV-SPF-125"
+    }
   },
   {
     "sku": "GVV-SPF-230",
-    "name": "Meules et outils de meulage diamant — GVV-SPF-230",
+    "name": "Schleifscheiben — GVV-SPF-230",
     "descriptionDe": "105 2,9",
     "descriptionEn": "",
     "typeModel": "",
@@ -24739,7 +25434,12 @@
       "M14"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — GVV-SPF-230",
+      "en": "Grinding discs — GVV-SPF-230",
+      "it": "Dischi abrasivi per levigatura — GVV-SPF-230"
+    }
   },
   {
     "sku": "DIA-FÄCHERSCHEIBE-115-60",
@@ -25094,7 +25794,7 @@
   },
   {
     "sku": "HD-50",
-    "name": "Meules et outils de meulage diamant — HD-50",
+    "name": "Schleifscheiben — HD-50",
     "descriptionDe": "# 50",
     "descriptionEn": "",
     "typeModel": "",
@@ -25105,11 +25805,16 @@
       "Grün/green"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — HD-50",
+      "en": "Grinding discs — HD-50",
+      "it": "Dischi abrasivi per levigatura — HD-50"
+    }
   },
   {
     "sku": "HD-100",
-    "name": "Meules et outils de meulage diamant — HD-100",
+    "name": "Schleifscheiben — HD-100",
     "descriptionDe": "# 100",
     "descriptionEn": "",
     "typeModel": "",
@@ -25120,11 +25825,16 @@
       "Schwarz/black"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — HD-100",
+      "en": "Grinding discs — HD-100",
+      "it": "Dischi abrasivi per levigatura — HD-100"
+    }
   },
   {
     "sku": "HD-200",
-    "name": "Meules et outils de meulage diamant — HD-200",
+    "name": "Schleifscheiben — HD-200",
     "descriptionDe": "# 200",
     "descriptionEn": "",
     "typeModel": "",
@@ -25135,11 +25845,16 @@
       "Rot/red"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — HD-200",
+      "en": "Grinding discs — HD-200",
+      "it": "Dischi abrasivi per levigatura — HD-200"
+    }
   },
   {
     "sku": "HD-800",
-    "name": "Meules et outils de meulage diamant — HD-800",
+    "name": "Schleifscheiben — HD-800",
     "descriptionDe": "# 800",
     "descriptionEn": "",
     "typeModel": "",
@@ -25150,11 +25865,16 @@
       "Blau/blue"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — HD-800",
+      "en": "Grinding discs — HD-800",
+      "it": "Dischi abrasivi per levigatura — HD-800"
+    }
   },
   {
     "sku": "HD-Koffer-PL-6",
-    "name": "Meules et outils de meulage diamant — HD-Koffer-PL-6",
+    "name": "Schleifscheiben — HD-Koffer-PL-6",
     "descriptionDe": "2 x #50, 2 x #100, 2 x #200",
     "descriptionEn": "",
     "typeModel": "",
@@ -25165,11 +25885,16 @@
       "Koffer Set"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — HD-Koffer-PL-6",
+      "en": "Grinding discs — HD-Koffer-PL-6",
+      "it": "Dischi abrasivi per levigatura — HD-Koffer-PL-6"
+    }
   },
   {
     "sku": "GM-4",
-    "name": "Meules et outils de meulage diamant — GM-4",
+    "name": "Schleifscheiben — GM-4",
     "descriptionDe": "M 14",
     "descriptionEn": "",
     "typeModel": "",
@@ -25178,11 +25903,16 @@
     "categoryName": "Disques de ponçage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques de ponçage — GM-4",
+      "en": "Grinding discs — GM-4",
+      "it": "Dischi abrasivi per levigatura — GM-4"
+    }
   },
   {
     "sku": "4TR3-100-50",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-50",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25193,11 +25923,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-50",
+      "en": "Grinding discs — 4TR3-100-50",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-50"
+    }
   },
   {
     "sku": "4TR3-100-100",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-100",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25208,11 +25943,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-100",
+      "en": "Grinding discs — 4TR3-100-100",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-100"
+    }
   },
   {
     "sku": "4TR3-100-200",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-200",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25223,11 +25963,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-200",
+      "en": "Grinding discs — 4TR3-100-200",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-200"
+    }
   },
   {
     "sku": "4TR3-100-400",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-400",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25238,11 +25983,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-400",
+      "en": "Grinding discs — 4TR3-100-400",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-400"
+    }
   },
   {
     "sku": "4TR3-100-800",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-800",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25253,11 +26003,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-800",
+      "en": "Grinding discs — 4TR3-100-800",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-800"
+    }
   },
   {
     "sku": "4TR3-100-1500",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-1500",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25268,11 +26023,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-1500",
+      "en": "Grinding discs — 4TR3-100-1500",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-1500"
+    }
   },
   {
     "sku": "4TR3-100-3000",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-3000",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25283,11 +26043,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-3000",
+      "en": "Grinding discs — 4TR3-100-3000",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-3000"
+    }
   },
   {
     "sku": "4TR3-100-Buff",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4TR3-100-Buff",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4TR3",
@@ -25298,11 +26063,16 @@
     "specLabels": [
       "Typ 4TR3"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-100-Buff",
+      "en": "Grinding discs — 4TR3-100-Buff",
+      "it": "Dischi abrasivi per levigatura — 4TR3-100-Buff"
+    }
   },
   {
     "sku": "4TR3-125-50",
-    "name": "# 50 125 Klett/hook and loop",
+    "name": "Schleifscheiben — 4TR3-125-50",
     "descriptionDe": "# 50 125 Klett/hook and loop",
     "descriptionEn": "# 100 125 Klett/hook and loop",
     "typeModel": "",
@@ -25311,11 +26081,16 @@
     "categoryName": "Disques de ponçage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-125-50",
+      "en": "Grinding discs — 4TR3-125-50",
+      "it": "Dischi abrasivi per levigatura — 4TR3-125-50"
+    }
   },
   {
     "sku": "4TR3-125-100",
-    "name": "# 50 125 Klett/hook and loop",
+    "name": "Schleifscheiben — 4TR3-125-100",
     "descriptionDe": "# 50 125 Klett/hook and loop",
     "descriptionEn": "# 100 125 Klett/hook and loop",
     "typeModel": "",
@@ -25324,11 +26099,16 @@
     "categoryName": "Disques de ponçage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-125-100",
+      "en": "Grinding discs — 4TR3-125-100",
+      "it": "Dischi abrasivi per levigatura — 4TR3-125-100"
+    }
   },
   {
     "sku": "4TR3-125-200",
-    "name": "# 50 125 Klett/hook and loop",
+    "name": "Schleifscheiben — 4TR3-125-200",
     "descriptionDe": "# 50 125 Klett/hook and loop",
     "descriptionEn": "# 100 125 Klett/hook and loop",
     "typeModel": "",
@@ -25337,11 +26117,16 @@
     "categoryName": "Disques de ponçage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-125-200",
+      "en": "Grinding discs — 4TR3-125-200",
+      "it": "Dischi abrasivi per levigatura — 4TR3-125-200"
+    }
   },
   {
     "sku": "4TR3-SET",
-    "name": "# 50 125 Klett/hook and loop",
+    "name": "Schleifscheiben — 4TR3-SET",
     "descriptionDe": "# 50 125 Klett/hook and loop",
     "descriptionEn": "# 100 125 Klett/hook and loop",
     "typeModel": "",
@@ -25352,11 +26137,16 @@
       "Ø 100 mm"
     ],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4TR3-SET",
+      "en": "Grinding discs — 4TR3-SET",
+      "it": "Dischi abrasivi per levigatura — 4TR3-SET"
+    }
   },
   {
     "sku": "4DS2-50",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-50",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25367,11 +26157,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-50",
+      "en": "Grinding discs — 4DS2-50",
+      "it": "Dischi abrasivi per levigatura — 4DS2-50"
+    }
   },
   {
     "sku": "4DS2-100",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-100",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25382,11 +26177,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-100",
+      "en": "Grinding discs — 4DS2-100",
+      "it": "Dischi abrasivi per levigatura — 4DS2-100"
+    }
   },
   {
     "sku": "4DS2-200",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-200",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25397,11 +26197,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-200",
+      "en": "Grinding discs — 4DS2-200",
+      "it": "Dischi abrasivi per levigatura — 4DS2-200"
+    }
   },
   {
     "sku": "4DS2-400",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-400",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25412,11 +26217,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-400",
+      "en": "Grinding discs — 4DS2-400",
+      "it": "Dischi abrasivi per levigatura — 4DS2-400"
+    }
   },
   {
     "sku": "4DS2-800",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-800",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25427,11 +26237,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-800",
+      "en": "Grinding discs — 4DS2-800",
+      "it": "Dischi abrasivi per levigatura — 4DS2-800"
+    }
   },
   {
     "sku": "4DS2-1500",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-1500",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25442,11 +26257,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-1500",
+      "en": "Grinding discs — 4DS2-1500",
+      "it": "Dischi abrasivi per levigatura — 4DS2-1500"
+    }
   },
   {
     "sku": "4DS2-3000",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-3000",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25457,11 +26277,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-3000",
+      "en": "Grinding discs — 4DS2-3000",
+      "it": "Dischi abrasivi per levigatura — 4DS2-3000"
+    }
   },
   {
     "sku": "4DS2-Buff",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-Buff",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25472,11 +26297,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-Buff",
+      "en": "Grinding discs — 4DS2-Buff",
+      "it": "Dischi abrasivi per levigatura — 4DS2-Buff"
+    }
   },
   {
     "sku": "4DS2-Set",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — 4DS2-Set",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "4DS2",
@@ -25487,11 +26317,16 @@
     "specLabels": [
       "Typ 4DS2"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — 4DS2-Set",
+      "en": "Grinding discs — 4DS2-Set",
+      "it": "Dischi abrasivi per levigatura — 4DS2-Set"
+    }
   },
   {
     "sku": "Beton-80-50",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Beton-80-50",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Beton-80",
@@ -25502,11 +26337,16 @@
     "specLabels": [
       "Typ Beton-80"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Beton-80-50",
+      "en": "Grinding discs — Beton-80-50",
+      "it": "Dischi abrasivi per levigatura — Beton-80-50"
+    }
   },
   {
     "sku": "Beton-80-100",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Beton-80-100",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Beton-80",
@@ -25517,11 +26357,16 @@
     "specLabels": [
       "Typ Beton-80"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Beton-80-100",
+      "en": "Grinding discs — Beton-80-100",
+      "it": "Dischi abrasivi per levigatura — Beton-80-100"
+    }
   },
   {
     "sku": "Beton-80-200",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Beton-80-200",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Beton-80",
@@ -25532,11 +26377,16 @@
     "specLabels": [
       "Typ Beton-80"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Beton-80-200",
+      "en": "Grinding discs — Beton-80-200",
+      "it": "Dischi abrasivi per levigatura — Beton-80-200"
+    }
   },
   {
     "sku": "Beton-80-400",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Beton-80-400",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Beton-80",
@@ -25547,11 +26397,16 @@
     "specLabels": [
       "Typ Beton-80"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Beton-80-400",
+      "en": "Grinding discs — Beton-80-400",
+      "it": "Dischi abrasivi per levigatura — Beton-80-400"
+    }
   },
   {
     "sku": "Beton-80-800",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Beton-80-800",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Beton-80",
@@ -25562,11 +26417,16 @@
     "specLabels": [
       "Typ Beton-80"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Beton-80-800",
+      "en": "Grinding discs — Beton-80-800",
+      "it": "Dischi abrasivi per levigatura — Beton-80-800"
+    }
   },
   {
     "sku": "Beton-80-1500",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Beton-80-1500",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Beton-80",
@@ -25577,11 +26437,16 @@
     "specLabels": [
       "Typ Beton-80"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Beton-80-1500",
+      "en": "Grinding discs — Beton-80-1500",
+      "it": "Dischi abrasivi per levigatura — Beton-80-1500"
+    }
   },
   {
     "sku": "Marmor-Pad-P-200",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Marmor-Pad-P-200",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Marmor-Pad-P",
@@ -25592,11 +26457,16 @@
     "specLabels": [
       "Typ Marmor-Pad-P"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Marmor-Pad-P-200",
+      "en": "Grinding discs — Marmor-Pad-P-200",
+      "it": "Dischi abrasivi per levigatura — Marmor-Pad-P-200"
+    }
   },
   {
     "sku": "Marmor-Pad-P-400",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Marmor-Pad-P-400",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Marmor-Pad-P",
@@ -25607,11 +26477,16 @@
     "specLabels": [
       "Typ Marmor-Pad-P"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Marmor-Pad-P-400",
+      "en": "Grinding discs — Marmor-Pad-P-400",
+      "it": "Dischi abrasivi per levigatura — Marmor-Pad-P-400"
+    }
   },
   {
     "sku": "Marmor-Pad-P-800",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Marmor-Pad-P-800",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Marmor-Pad-P",
@@ -25622,11 +26497,16 @@
     "specLabels": [
       "Typ Marmor-Pad-P"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Marmor-Pad-P-800",
+      "en": "Grinding discs — Marmor-Pad-P-800",
+      "it": "Dischi abrasivi per levigatura — Marmor-Pad-P-800"
+    }
   },
   {
     "sku": "Marmor-Pad-P-1500",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Marmor-Pad-P-1500",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Marmor-Pad-P",
@@ -25637,11 +26517,16 @@
     "specLabels": [
       "Typ Marmor-Pad-P"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Marmor-Pad-P-1500",
+      "en": "Grinding discs — Marmor-Pad-P-1500",
+      "it": "Dischi abrasivi per levigatura — Marmor-Pad-P-1500"
+    }
   },
   {
     "sku": "Marmor-Pad-P-3000",
-    "name": "Körnung Ø Anschluss",
+    "name": "Schleifscheiben — Marmor-Pad-P-3000",
     "descriptionDe": "Körnung Ø Anschluss",
     "descriptionEn": "Grit mm Connection",
     "typeModel": "Marmor-Pad-P",
@@ -25652,7 +26537,12 @@
     "specLabels": [
       "Typ Marmor-Pad-P"
     ],
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques de ponçage — Marmor-Pad-P-3000",
+      "en": "Grinding discs — Marmor-Pad-P-3000",
+      "it": "Dischi abrasivi per levigatura — Marmor-Pad-P-3000"
+    }
   },
   {
     "sku": "Mamor Spezial 300-20",
@@ -27162,7 +28052,7 @@
   },
   {
     "sku": "HM-125",
-    "name": "Autres disques diamant — HM-125",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — HM-125",
     "descriptionDe": "Ø",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -27177,11 +28067,16 @@
       "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — HM-125",
+      "en": "Angle grinder & cut-off saw blades — HM-125",
+      "it": "Dischi per smerigliatrice e troncatrice — HM-125"
+    }
   },
   {
     "sku": "HM-230",
-    "name": "Autres disques diamant — HM-230",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — HM-230",
     "descriptionDe": "Ø",
     "descriptionEn": "mm",
     "typeModel": "",
@@ -27196,11 +28091,16 @@
       "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — HM-230",
+      "en": "Angle grinder & cut-off saw blades — HM-230",
+      "it": "Dischi per smerigliatrice e troncatrice — HM-230"
+    }
   },
   {
     "sku": "PR-BT-350",
-    "name": "Block-Segment",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-BT-350",
     "descriptionDe": "Block-Segment",
     "descriptionEn": "10 mm",
     "typeModel": "",
@@ -27209,11 +28109,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-BT-350",
+      "en": "Concrete ring saw blades — PR-BT-350",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-BT-350"
+    }
   },
   {
     "sku": "PR-Antriebsrolle",
-    "name": "Block-Segment",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-Antriebsrolle",
     "descriptionDe": "Block-Segment",
     "descriptionEn": "10 mm",
     "typeModel": "",
@@ -27222,7 +28127,12 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-Antriebsrolle",
+      "en": "Concrete ring saw blades — PR-Antriebsrolle",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-Antriebsrolle"
+    }
   },
   {
     "sku": "PR-KS-350",
@@ -27241,7 +28151,7 @@
   },
   {
     "sku": "PR-Antriebsrolle-v2",
-    "name": "Block-Segment",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-Antriebsrolle-v2",
     "descriptionDe": "Block-Segment",
     "descriptionEn": "10 mm",
     "typeModel": "",
@@ -27250,11 +28160,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-Antriebsrolle-v2",
+      "en": "Concrete ring saw blades — PR-Antriebsrolle-v2",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-Antriebsrolle-v2"
+    }
   },
   {
     "sku": "PR-BTT-350",
-    "name": "Autres disques diamant — PR-BTT-350",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-BTT-350",
     "descriptionDe": "10 mm",
     "descriptionEn": "33x4.3x10 22",
     "typeModel": "",
@@ -27263,11 +28178,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-BTT-350",
+      "en": "Concrete ring saw blades — PR-BTT-350",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-BTT-350"
+    }
   },
   {
     "sku": "PR-Antriebsrolle-v3",
-    "name": "Autres disques diamant — PR-Antriebsrolle",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-Antriebsrolle-v3",
     "descriptionDe": "10 mm",
     "descriptionEn": "33x4.3x10 22",
     "typeModel": "",
@@ -27276,11 +28196,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-Antriebsrolle-v3",
+      "en": "Concrete ring saw blades — PR-Antriebsrolle-v3",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-Antriebsrolle-v3"
+    }
   },
   {
     "sku": "PR-503-350",
-    "name": "Autres disques diamant — PR-503-350",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-503-350",
     "descriptionDe": "10 mm",
     "descriptionEn": "33x4.3x10 22",
     "typeModel": "",
@@ -27289,11 +28214,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-503-350",
+      "en": "Concrete ring saw blades — PR-503-350",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-503-350"
+    }
   },
   {
     "sku": "PR-Antriebsrolle-v4",
-    "name": "Autres disques diamant — PR-Antriebsrolle",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-Antriebsrolle-v4",
     "descriptionDe": "10 mm",
     "descriptionEn": "33x4.3x10 22",
     "typeModel": "",
@@ -27302,11 +28232,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-Antriebsrolle-v4",
+      "en": "Concrete ring saw blades — PR-Antriebsrolle-v4",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-Antriebsrolle-v4"
+    }
   },
   {
     "sku": "PR-LS-3D-350",
-    "name": "Autres disques diamant — PR-LS-3D-350",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-LS-3D-350",
     "descriptionDe": "10 mm",
     "descriptionEn": "33x4.3x10 22",
     "typeModel": "",
@@ -27315,11 +28250,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-LS-3D-350",
+      "en": "Concrete ring saw blades — PR-LS-3D-350",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-LS-3D-350"
+    }
   },
   {
     "sku": "PR-Antriebsrolle-v5",
-    "name": "Autres disques diamant — PR-Antriebsrolle",
+    "name": "Trennscheiben für Ringsägen (Beton) — PR-Antriebsrolle-v5",
     "descriptionDe": "10 mm",
     "descriptionEn": "33x4.3x10 22",
     "typeModel": "",
@@ -27328,11 +28268,16 @@
     "categoryName": "Disques découpeuse béton à couronne",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques découpeuse béton à couronne — PR-Antriebsrolle-v5",
+      "en": "Concrete ring saw blades — PR-Antriebsrolle-v5",
+      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-Antriebsrolle-v5"
+    }
   },
   {
     "sku": "VL-100-11/4",
-    "name": "Accessoires — VL-100-11/4",
+    "name": "Maschinenaufnahmen — VL-100-11/4",
     "descriptionDe": "100 1 1/4\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27341,11 +28286,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-100-11/4",
+      "en": "Machine fittings — VL-100-11/4",
+      "it": "Attacchi macchina — VL-100-11/4"
+    }
   },
   {
     "sku": "VL-200-11/4",
-    "name": "Accessoires — VL-200-11/4",
+    "name": "Maschinenaufnahmen — VL-200-11/4",
     "descriptionDe": "100 1 1/4\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27354,11 +28304,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-200-11/4",
+      "en": "Machine fittings — VL-200-11/4",
+      "it": "Attacchi macchina — VL-200-11/4"
+    }
   },
   {
     "sku": "VL-300-11/4",
-    "name": "Accessoires — VL-300-11/4",
+    "name": "Maschinenaufnahmen — VL-300-11/4",
     "descriptionDe": "100 1 1/4\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27367,11 +28322,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-300-11/4",
+      "en": "Machine fittings — VL-300-11/4",
+      "it": "Attacchi macchina — VL-300-11/4"
+    }
   },
   {
     "sku": "VL-400-11/4",
-    "name": "Accessoires — VL-400-11/4",
+    "name": "Maschinenaufnahmen — VL-400-11/4",
     "descriptionDe": "100 1 1/4\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27380,11 +28340,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-400-11/4",
+      "en": "Machine fittings — VL-400-11/4",
+      "it": "Attacchi macchina — VL-400-11/4"
+    }
   },
   {
     "sku": "VL-500-11/4",
-    "name": "Accessoires — VL-500-11/4",
+    "name": "Maschinenaufnahmen — VL-500-11/4",
     "descriptionDe": "100 1 1/4\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27393,11 +28358,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-500-11/4",
+      "en": "Machine fittings — VL-500-11/4",
+      "it": "Attacchi macchina — VL-500-11/4"
+    }
   },
   {
     "sku": "VL-1000-11/4",
-    "name": "Accessoires — VL-1000-11/4",
+    "name": "Maschinenaufnahmen — VL-1000-11/4",
     "descriptionDe": "100 1 1/4\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27406,11 +28376,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-1000-11/4",
+      "en": "Machine fittings — VL-1000-11/4",
+      "it": "Attacchi macchina — VL-1000-11/4"
+    }
   },
   {
     "sku": "VL-100-R1/2",
-    "name": "Accessoires — VL-100-R1/2",
+    "name": "Maschinenaufnahmen — VL-100-R1/2",
     "descriptionDe": "100 R 1/2\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27419,11 +28394,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-100-R1/2",
+      "en": "Machine fittings — VL-100-R1/2",
+      "it": "Attacchi macchina — VL-100-R1/2"
+    }
   },
   {
     "sku": "VL-200-R1/2",
-    "name": "Accessoires — VL-200-R1/2",
+    "name": "Maschinenaufnahmen — VL-200-R1/2",
     "descriptionDe": "100 R 1/2\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27432,11 +28412,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-200-R1/2",
+      "en": "Machine fittings — VL-200-R1/2",
+      "it": "Attacchi macchina — VL-200-R1/2"
+    }
   },
   {
     "sku": "VL-300-R1/2",
-    "name": "Accessoires — VL-300-R1/2",
+    "name": "Maschinenaufnahmen — VL-300-R1/2",
     "descriptionDe": "100 R 1/2\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27445,11 +28430,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-300-R1/2",
+      "en": "Machine fittings — VL-300-R1/2",
+      "it": "Attacchi macchina — VL-300-R1/2"
+    }
   },
   {
     "sku": "VL-400-R1/2",
-    "name": "Accessoires — VL-400-R1/2",
+    "name": "Maschinenaufnahmen — VL-400-R1/2",
     "descriptionDe": "100 R 1/2\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27458,11 +28448,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-400-R1/2",
+      "en": "Machine fittings — VL-400-R1/2",
+      "it": "Attacchi macchina — VL-400-R1/2"
+    }
   },
   {
     "sku": "VL-500-R1/2",
-    "name": "Accessoires — VL-500-R1/2",
+    "name": "Maschinenaufnahmen — VL-500-R1/2",
     "descriptionDe": "100 R 1/2\"",
     "descriptionEn": "",
     "typeModel": "",
@@ -27471,7 +28466,12 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — VL-500-R1/2",
+      "en": "Machine fittings — VL-500-R1/2",
+      "it": "Attacchi macchina — VL-500-R1/2"
+    }
   },
   {
     "sku": "Zentrierbohrer",
@@ -27540,7 +28540,7 @@
   },
   {
     "sku": "6kant Aufnahme-200",
-    "name": "6-Kant-Aufnahme-200/M16",
+    "name": "Maschinenaufnahmen — 6kant Aufnahme-200",
     "descriptionDe": "6-Kant-Aufnahme-200/M16",
     "descriptionEn": "Hex connection-200/M16",
     "typeModel": "",
@@ -27549,7 +28549,12 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Fixation machine — 6kant Aufnahme-200",
+      "en": "Machine fittings — 6kant Aufnahme-200",
+      "it": "Attacchi macchina — 6kant Aufnahme-200"
+    }
   },
   {
     "sku": "SDS-Aufnahme-200",
@@ -27566,7 +28571,7 @@
   },
   {
     "sku": "6kant-Aufnahme kurz",
-    "name": "6-Kant-Aufnahme Chrom/M16",
+    "name": "Maschinenaufnahmen — 6kant-Aufnahme kurz",
     "descriptionDe": "6-Kant-Aufnahme Chrom/M16",
     "descriptionEn": "Hex connection crome/M16",
     "typeModel": "",
@@ -27575,7 +28580,12 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Fixation machine — 6kant-Aufnahme kurz",
+      "en": "Machine fittings — 6kant-Aufnahme kurz",
+      "it": "Attacchi macchina — 6kant-Aufnahme kurz"
+    }
   },
   {
     "sku": "SDS-Aufnahme kurz",
@@ -27618,7 +28628,7 @@
   },
   {
     "sku": "PH-B-Hänger",
-    "name": "Accessoires — PH-B-Hänger",
+    "name": "Maschinenaufnahmen — PH-B-Hänger",
     "descriptionDe": "Typ PH",
     "descriptionEn": "",
     "typeModel": "",
@@ -27629,11 +28639,16 @@
       "Plastik-Hänger für Zentrierbohrer"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — PH-B-Hänger",
+      "en": "Machine fittings — PH-B-Hänger",
+      "it": "Attacchi macchina — PH-B-Hänger"
+    }
   },
   {
     "sku": "PH-ROT",
-    "name": "Accessoires — PH-ROT",
+    "name": "Maschinenaufnahmen — PH-ROT",
     "descriptionDe": "Typ PH",
     "descriptionEn": "",
     "typeModel": "",
@@ -27645,7 +28660,12 @@
       "1 1/4\" UNC Zapfen/R 1/2\" Muffe"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Fixation machine — PH-ROT",
+      "en": "Machine fittings — PH-ROT",
+      "it": "Attacchi macchina — PH-ROT"
+    }
   },
   {
     "sku": "PH-M14",
@@ -27662,7 +28682,7 @@
   },
   {
     "sku": "PH-GRAU-M16",
-    "name": "Grau/grey",
+    "name": "Maschinenaufnahmen — PH-GRAU-M16",
     "descriptionDe": "Grau/grey",
     "descriptionEn": "Kunststoff-Hänger",
     "typeModel": "",
@@ -27671,7 +28691,12 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Fixation machine — PH-GRAU-M16",
+      "en": "Machine fittings — PH-GRAU-M16",
+      "it": "Attacchi macchina — PH-GRAU-M16"
+    }
   },
   {
     "sku": "PH-DS-Hänger",
@@ -27688,7 +28713,7 @@
   },
   {
     "sku": "RDZ + Ø + Stärke",
-    "name": "Accessoires — RDZ + Ø + Stärke",
+    "name": "Zubehör — RDZ + Ø + Stärke",
     "descriptionDe": "20 bis 30 mm",
     "descriptionEn": "35 bis 60 mm",
     "typeModel": "",
@@ -27697,11 +28722,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — RDZ + Ø + Stärke",
+      "en": "Accessories — RDZ + Ø + Stärke",
+      "it": "Accessori — RDZ + Ø + Stärke"
+    }
   },
   {
     "sku": "RDZ + Ø + Stärke-v2",
-    "name": "Accessoires — RDZ + Ø + Stärke",
+    "name": "Zubehör — RDZ + Ø + Stärke-v2",
     "descriptionDe": "20 bis 30 mm",
     "descriptionEn": "35 bis 60 mm",
     "typeModel": "",
@@ -27710,11 +28740,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — RDZ + Ø + Stärke-v2",
+      "en": "Accessories — RDZ + Ø + Stärke-v2",
+      "it": "Accessori — RDZ + Ø + Stärke-v2"
+    }
   },
   {
     "sku": "rdz 25,4x20,0x9,0",
-    "name": "Accessoires — rdz 25,4x20,0x9,0",
+    "name": "Zubehör — rdz 25,4x20,0x9,0",
     "descriptionDe": "20 bis 30 mm",
     "descriptionEn": "35 bis 60 mm",
     "typeModel": "",
@@ -27723,11 +28758,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — rdz 25,4x20,0x9,0",
+      "en": "Accessories — rdz 25,4x20,0x9,0",
+      "it": "Accessori — rdz 25,4x20,0x9,0"
+    }
   },
   {
     "sku": "Messing-Flansch",
-    "name": "Accessoires — Messing-Flansch",
+    "name": "Zubehör — Messing-Flansch",
     "descriptionDe": "115-150 mm",
     "descriptionEn": "115-150 mm",
     "typeModel": "",
@@ -27739,11 +28779,16 @@
       "M14"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Messing-Flansch",
+      "en": "Accessories — Messing-Flansch",
+      "it": "Accessori — Messing-Flansch"
+    }
   },
   {
     "sku": "Alu-Flansch-40",
-    "name": "Accessoires — Alu-Flansch-40",
+    "name": "Zubehör — Alu-Flansch-40",
     "descriptionDe": "115-150 mm",
     "descriptionEn": "115-150 mm",
     "typeModel": "",
@@ -27755,11 +28800,16 @@
       "M14"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Alu-Flansch-40",
+      "en": "Accessories — Alu-Flansch-40",
+      "it": "Accessori — Alu-Flansch-40"
+    }
   },
   {
     "sku": "Stahlflansch M14",
-    "name": "Accessoires — Stahlflansch M14",
+    "name": "Zubehör — Stahlflansch M14",
     "descriptionDe": "115-150 mm",
     "descriptionEn": "",
     "typeModel": "",
@@ -27771,11 +28821,16 @@
       "M14"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Stahlflansch M14",
+      "en": "Accessories — Stahlflansch M14",
+      "it": "Accessori — Stahlflansch M14"
+    }
   },
   {
     "sku": "Alu-Flansch-80",
-    "name": "Accessoires — Alu-Flansch-80",
+    "name": "Zubehör — Alu-Flansch-80",
     "descriptionDe": "115-150 mm",
     "descriptionEn": "",
     "typeModel": "",
@@ -27787,11 +28842,16 @@
       "M14"
     ],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Alu-Flansch-80",
+      "en": "Accessories — Alu-Flansch-80",
+      "it": "Accessori — Alu-Flansch-80"
+    }
   },
   {
     "sku": "Anbohrhilfe-Klein",
-    "name": "Kleine Version",
+    "name": "Zubehör — Anbohrhilfe-Klein",
     "descriptionDe": "Kleine Version",
     "descriptionEn": "small version",
     "typeModel": "",
@@ -27800,11 +28860,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Accessoires — Anbohrhilfe-Klein",
+      "en": "Accessories — Anbohrhilfe-Klein",
+      "it": "Accessori — Anbohrhilfe-Klein"
+    }
   },
   {
     "sku": "Anbohrhilfe-Groß",
-    "name": "Kleine Version",
+    "name": "Zubehör — Anbohrhilfe-Groß",
     "descriptionDe": "Kleine Version",
     "descriptionEn": "small version",
     "typeModel": "",
@@ -27813,11 +28878,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Accessoires — Anbohrhilfe-Groß",
+      "en": "Accessories — Anbohrhilfe-Groß",
+      "it": "Accessori — Anbohrhilfe-Groß"
+    }
   },
   {
     "sku": "Anbohrhilfe-Metall",
-    "name": "Material",
+    "name": "Zubehör — Anbohrhilfe-Metall",
     "descriptionDe": "Material",
     "descriptionEn": "",
     "typeModel": "",
@@ -27826,11 +28896,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Accessoires — Anbohrhilfe-Metall",
+      "en": "Accessories — Anbohrhilfe-Metall",
+      "it": "Accessori — Anbohrhilfe-Metall"
+    }
   },
   {
     "sku": "Anbohrhilfe-Orange",
-    "name": "Große Version",
+    "name": "Zubehör — Anbohrhilfe-Orange",
     "descriptionDe": "Große Version",
     "descriptionEn": "big version",
     "typeModel": "",
@@ -27839,11 +28914,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Accessoires — Anbohrhilfe-Orange",
+      "en": "Accessories — Anbohrhilfe-Orange",
+      "it": "Accessori — Anbohrhilfe-Orange"
+    }
   },
   {
     "sku": "Wasserbehälter",
-    "name": "Zubehör für Bohrungen",
+    "name": "Zubehör — Wasserbehälter",
     "descriptionDe": "Zubehör für Bohrungen",
     "descriptionEn": "Drilling accessories",
     "typeModel": "",
@@ -27852,7 +28932,12 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Accessoires — Wasserbehälter",
+      "en": "Accessories — Wasserbehälter",
+      "it": "Accessori — Wasserbehälter"
+    }
   },
   {
     "sku": "Spülkopf",
@@ -27895,7 +28980,7 @@
   },
   {
     "sku": "AD-6KANT/AGM14",
-    "name": "6-Kant/hex",
+    "name": "Maschinenaufnahmen — AD-6KANT/AGM14",
     "descriptionDe": "6-Kant/hex",
     "descriptionEn": "",
     "typeModel": "",
@@ -27904,11 +28989,16 @@
     "categoryName": "Fixation machine",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Fixation machine — AD-6KANT/AGM14",
+      "en": "Machine fittings — AD-6KANT/AGM14",
+      "it": "Attacchi macchina — AD-6KANT/AGM14"
+    }
   },
   {
     "sku": "Alukoffer-5-v2",
-    "name": "Typ Zubehör",
+    "name": "Zubehör — Alukoffer-5-v2",
     "descriptionDe": "Typ Zubehör",
     "descriptionEn": "",
     "typeModel": "",
@@ -27917,7 +29007,12 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Alukoffer-5-v2",
+      "en": "Accessories — Alukoffer-5-v2",
+      "it": "Accessori — Alukoffer-5-v2"
+    }
   },
   {
     "sku": "GVV-Koffer-7-v2",
@@ -28025,7 +29120,7 @@
   },
   {
     "sku": "Lackarbeiten ab115mm",
-    "name": "Accessoires — Lackarbeiten ab115mm",
+    "name": "Zubehör — Lackarbeiten ab115mm",
     "descriptionDe": "Ø 115-250 mm",
     "descriptionEn": "",
     "typeModel": "",
@@ -28034,11 +29129,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Lackarbeiten ab115mm",
+      "en": "Accessories — Lackarbeiten ab115mm",
+      "it": "Accessori — Lackarbeiten ab115mm"
+    }
   },
   {
     "sku": "Lackarbeiten ab300mm",
-    "name": "Accessoires — Lackarbeiten ab300mm",
+    "name": "Zubehör — Lackarbeiten ab300mm",
     "descriptionDe": "Ø 300-500 mm",
     "descriptionEn": "",
     "typeModel": "",
@@ -28047,11 +29147,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Lackarbeiten ab300mm",
+      "en": "Accessories — Lackarbeiten ab300mm",
+      "it": "Accessori — Lackarbeiten ab300mm"
+    }
   },
   {
     "sku": "Lackarbeiten ab600mm",
-    "name": "Accessoires — Lackarbeiten ab600mm",
+    "name": "Zubehör — Lackarbeiten ab600mm",
     "descriptionDe": "Ø 600-1000 mm",
     "descriptionEn": "",
     "typeModel": "",
@@ -28060,11 +29165,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — Lackarbeiten ab600mm",
+      "en": "Accessories — Lackarbeiten ab600mm",
+      "it": "Accessori — Lackarbeiten ab600mm"
+    }
   },
   {
     "sku": "VP-115-Blau",
-    "name": "Accessoires — VP-115-Blau",
+    "name": "Zubehör — VP-115-Blau",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28073,11 +29183,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-115-Blau",
+      "en": "Accessories — VP-115-Blau",
+      "it": "Accessori — VP-115-Blau"
+    }
   },
   {
     "sku": "VP-125-Blau",
-    "name": "Accessoires — VP-125-Blau",
+    "name": "Zubehör — VP-125-Blau",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28086,11 +29201,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-125-Blau",
+      "en": "Accessories — VP-125-Blau",
+      "it": "Accessori — VP-125-Blau"
+    }
   },
   {
     "sku": "VP-150-Blau",
-    "name": "Accessoires — VP-150-Blau",
+    "name": "Zubehör — VP-150-Blau",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28099,11 +29219,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-150-Blau",
+      "en": "Accessories — VP-150-Blau",
+      "it": "Accessori — VP-150-Blau"
+    }
   },
   {
     "sku": "VP-180-Blau",
-    "name": "Accessoires — VP-180-Blau",
+    "name": "Zubehör — VP-180-Blau",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28112,11 +29237,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-180-Blau",
+      "en": "Accessories — VP-180-Blau",
+      "it": "Accessori — VP-180-Blau"
+    }
   },
   {
     "sku": "VP-230-Blau",
-    "name": "Accessoires — VP-230-Blau",
+    "name": "Zubehör — VP-230-Blau",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28125,11 +29255,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-230-Blau",
+      "en": "Accessories — VP-230-Blau",
+      "it": "Accessori — VP-230-Blau"
+    }
   },
   {
     "sku": "VP-300-Blau",
-    "name": "Accessoires — VP-300-Blau",
+    "name": "Zubehör — VP-300-Blau",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28138,11 +29273,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-300-Blau",
+      "en": "Accessories — VP-300-Blau",
+      "it": "Accessori — VP-300-Blau"
+    }
   },
   {
     "sku": "VP-350-Blau",
-    "name": "Accessoires — VP-350-Blau",
+    "name": "Zubehör — VP-350-Blau",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28151,11 +29291,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-350-Blau",
+      "en": "Accessories — VP-350-Blau",
+      "it": "Accessori — VP-350-Blau"
+    }
   },
   {
     "sku": "VP-Schwarz-115",
-    "name": "Accessoires — VP-Schwarz-115",
+    "name": "Zubehör — VP-Schwarz-115",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28164,11 +29309,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-115",
+      "en": "Accessories — VP-Schwarz-115",
+      "it": "Accessori — VP-Schwarz-115"
+    }
   },
   {
     "sku": "VP-Schwarz-125",
-    "name": "Accessoires — VP-Schwarz-125",
+    "name": "Zubehör — VP-Schwarz-125",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28177,11 +29327,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-125",
+      "en": "Accessories — VP-Schwarz-125",
+      "it": "Accessori — VP-Schwarz-125"
+    }
   },
   {
     "sku": "VP-Schwarz-150",
-    "name": "Accessoires — VP-Schwarz-150",
+    "name": "Zubehör — VP-Schwarz-150",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28190,11 +29345,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-150",
+      "en": "Accessories — VP-Schwarz-150",
+      "it": "Accessori — VP-Schwarz-150"
+    }
   },
   {
     "sku": "VP-Schwarz-180",
-    "name": "Accessoires — VP-Schwarz-180",
+    "name": "Zubehör — VP-Schwarz-180",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28203,11 +29363,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-180",
+      "en": "Accessories — VP-Schwarz-180",
+      "it": "Accessori — VP-Schwarz-180"
+    }
   },
   {
     "sku": "VP-Schwarz-230",
-    "name": "Accessoires — VP-Schwarz-230",
+    "name": "Zubehör — VP-Schwarz-230",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28216,11 +29381,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-230",
+      "en": "Accessories — VP-Schwarz-230",
+      "it": "Accessori — VP-Schwarz-230"
+    }
   },
   {
     "sku": "VP-Schwarz-300",
-    "name": "Accessoires — VP-Schwarz-300",
+    "name": "Zubehör — VP-Schwarz-300",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28229,11 +29399,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-300",
+      "en": "Accessories — VP-Schwarz-300",
+      "it": "Accessori — VP-Schwarz-300"
+    }
   },
   {
     "sku": "VP-Schwarz-350",
-    "name": "Accessoires — VP-Schwarz-350",
+    "name": "Zubehör — VP-Schwarz-350",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28242,11 +29417,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-350",
+      "en": "Accessories — VP-Schwarz-350",
+      "it": "Accessori — VP-Schwarz-350"
+    }
   },
   {
     "sku": "VP-Schwarz-400",
-    "name": "Accessoires — VP-Schwarz-400",
+    "name": "Zubehör — VP-Schwarz-400",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -28255,11 +29435,16 @@
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Accessoires — VP-Schwarz-400",
+      "en": "Accessories — VP-Schwarz-400",
+      "it": "Accessori — VP-Schwarz-400"
+    }
   },
   {
     "sku": "Schärfplatte",
-    "name": "Accessoires — Schärfplatte",
+    "name": "Reinigung — Schärfplatte",
     "descriptionDe": "320x160x30",
     "descriptionEn": "",
     "typeModel": "",
@@ -28268,11 +29453,16 @@
     "categoryName": "Nettoyage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Nettoyage — Schärfplatte",
+      "en": "Cleaning — Schärfplatte",
+      "it": "Pulizia — Schärfplatte"
+    }
   },
   {
     "sku": "Schärfstein",
-    "name": "Accessoires — Schärfstein",
+    "name": "Reinigung — Schärfstein",
     "descriptionDe": "200x50x50",
     "descriptionEn": "",
     "typeModel": "",
@@ -28281,11 +29471,16 @@
     "categoryName": "Nettoyage",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Nettoyage — Schärfstein",
+      "en": "Cleaning — Schärfstein",
+      "it": "Pulizia — Schärfstein"
+    }
   },
   {
     "sku": "Spannmutter",
-    "name": "Winkelschleifer",
+    "name": "Maschinenaufnahmen — Spannmutter",
     "descriptionDe": "Winkelschleifer",
     "descriptionEn": "Angle grinder",
     "typeModel": "",
@@ -28297,7 +29492,12 @@
       "M 14"
     ],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Fixation machine — Spannmutter",
+      "en": "Machine fittings — Spannmutter",
+      "it": "Attacchi macchina — Spannmutter"
+    }
   },
   {
     "sku": "Adapter-M14",
@@ -28434,7 +29634,7 @@
   },
   {
     "sku": "C5233",
-    "name": "Interflex — C5233",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — C5233",
     "descriptionDe": "10 Stück",
     "descriptionEn": "10 Stück",
     "typeModel": "",
@@ -28443,11 +29643,16 @@
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — C5233",
+      "en": "Angle grinder & cut-off saw blades — C5233",
+      "it": "Dischi per smerigliatrice e troncatrice — C5233"
+    }
   },
   {
     "sku": "C5236",
-    "name": "Interflex — C5236",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — C5236",
     "descriptionDe": "10 Stück",
     "descriptionEn": "10 Stück",
     "typeModel": "",
@@ -28456,11 +29661,16 @@
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — C5236",
+      "en": "Angle grinder & cut-off saw blades — C5236",
+      "it": "Dischi per smerigliatrice e troncatrice — C5236"
+    }
   },
   {
     "sku": "C5222",
-    "name": "Interflex — C5222",
+    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — C5222",
     "descriptionDe": "10 Stück",
     "descriptionEn": "10 Stück",
     "typeModel": "",
@@ -28469,7 +29679,12 @@
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": true
+    "lowConfidence": true,
+    "names": {
+      "fr": "Disques meuleuse d'angle & tronçonneuse — C5222",
+      "en": "Angle grinder & cut-off saw blades — C5222",
+      "it": "Dischi per smerigliatrice e troncatrice — C5222"
+    }
   },
   {
     "sku": "V1713",

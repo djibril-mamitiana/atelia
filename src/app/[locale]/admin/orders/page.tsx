@@ -1,5 +1,5 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
-import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminOrders } from "@/server/queries/admin.queries";
 import { AdminSearchBar } from "@/components/admin/admin-search-bar";
@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatDate, formatPrice } from "@/lib/format";
 import type { OrderStatus } from "@prisma/client";
 
-export const metadata: Metadata = { title: "Commandes — Admin" };
+export const generateMetadata = () => adminTitle("navOrders");
 
 const STATUSES: OrderStatus[] = [
   "PENDING",

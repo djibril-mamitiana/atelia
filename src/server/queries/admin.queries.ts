@@ -25,7 +25,24 @@ export async function getAdminProducts(opts: { q?: string; page?: number }) {
     db.product.count({ where }),
   ]);
 
-  return { products, total, page, pageCount: Math.max(1, Math.ceil(total / PAGE_SIZE_ADMIN_TABLE)) };
+  // How many sizes each listed product's family has (for the "N tailles" hint).
+  const keys = [...new Set(products.map((p) => p.groupKey).filter((k): k is string => !!k))];
+  const familyRows = keys.length
+    ? await db.product.groupBy({ by: ["groupKey"], where: { groupKey: { in: keys } }, _count: { _all: true } })
+    : [];
+  const familySizes = new Map(familyRows.map((r) => [r.groupKey as string, r._count._all]));
+
+  return { products, total, page, pageCount: Math.max(1, Math.ceil(total / PAGE_SIZE_ADMIN_TABLE)), familySizes };
+}
+
+/** Every size of a product family, smallest first (admin edit page). */
+export async function getProductFamily(groupKey: string | null) {
+  if (!groupKey) return [];
+  return db.product.findMany({
+    where: { groupKey },
+    orderBy: [{ sizeOrder: "asc" }, { sku: "asc" }],
+    select: { id: true, sku: true, sizeLabel: true, price: true, stock: true, isActive: true },
+  });
 }
 
 export async function getAdminProductById(id: string) {

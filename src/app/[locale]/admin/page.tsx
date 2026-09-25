@@ -1,12 +1,12 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
-import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Euro, ShoppingBag, Users, Package, AlertTriangle, Clock } from "lucide-react";
 import { getDashboardKpis, getSalesByDay, getTopProducts, getTopCategories } from "@/server/queries/admin-dashboard.queries";
 import { BarChart } from "@/components/admin/bar-chart";
 import { formatPrice } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Dashboard" };
+export const generateMetadata = () => adminTitle("navDashboard");
 
 export default async function AdminDashboardPage() {
   const t = await getTranslations("Admin.Dashboard");

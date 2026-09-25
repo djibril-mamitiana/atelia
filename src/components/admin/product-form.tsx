@@ -34,6 +34,10 @@ const EMPTY: AdminProductFormInput = {
   imagesText: "",
   attributesText: "",
   variantsText: "",
+  sizeLabel: "",
+  sizeSpecs: "",
+  groupWithSku: "",
+  detachFromFamily: false,
 };
 
 export function ProductForm({
@@ -41,18 +45,28 @@ export function ProductForm({
   brands,
   productId,
   initial,
+  familyCount = 0,
 }: {
   categories: Category[];
   brands: Brand[];
   productId?: string;
   initial?: Partial<AdminProductFormInput>;
+  /** How many sizes the product's family has (0 = standalone). */
+  familyCount?: number;
 }) {
   const t = useTranslations("Admin.ProductForm");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [form, setForm] = useState<AdminProductFormInput>({ ...EMPTY, ...initial });
+  const [form, setForm] = useState<AdminProductFormInput>(() => {
+    const start = { ...EMPTY, ...initial };
+    // "Add a size" prefills the name but not the slug — derive it so the
+    // slug field isn't left empty (it keeps following the name until edited).
+    if (start.name && !start.slug) start.slug = slugify(start.name, { lower: true, strict: true, locale: "fr" });
+    return start;
+  });
   const [slugEdited, setSlugEdited] = useState(Boolean(initial?.slug));
+  const inFamily = familyCount > 1;
 
   function set<K extends keyof AdminProductFormInput>(key: K, value: AdminProductFormInput[K]) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -170,6 +184,37 @@ export function ProductForm({
             <Input id="lowStockThreshold" type="number" value={form.lowStockThreshold} onChange={(e) => set("lowStockThreshold", Number(e.target.value))} />
           </div>
         </div>
+      </section>
+
+      <section className="rounded-md border border-border bg-surface p-5">
+        <p className="mb-1 font-medium text-ink">{t("sectionSizes")}</p>
+        <p className="mb-4 text-xs text-muted">{t("sizesHint")}</p>
+        {inFamily && <p className="mb-4 text-sm text-ink-soft">{t("currentFamily", { count: familyCount })}</p>}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="sizeLabel">{t("labelSizeLabel")}</Label>
+            <Input id="sizeLabel" value={form.sizeLabel ?? ""} onChange={(e) => set("sizeLabel", e.target.value)} placeholder="Ø125 mm" />
+          </div>
+          <div>
+            <Label htmlFor="groupWithSku">{t("labelGroupWithSku")}</Label>
+            <Input id="groupWithSku" value={form.groupWithSku ?? ""} onChange={(e) => set("groupWithSku", e.target.value)} placeholder="Uni105-115-WS-1" />
+          </div>
+        </div>
+        <div className="mt-4">
+          <Label htmlFor="sizeSpecs">{t("labelSizeSpecs")}</Label>
+          <Input id="sizeSpecs" value={form.sizeSpecs ?? ""} onChange={(e) => set("sizeSpecs", e.target.value)} placeholder="37x2,0x7 mm · 22,2 mm · 9 seg." />
+        </div>
+        {inFamily && productId && (
+          <label className="mt-4 flex items-center gap-2 text-sm text-ink-soft">
+            <input
+              type="checkbox"
+              checked={Boolean(form.detachFromFamily)}
+              onChange={(e) => set("detachFromFamily", e.target.checked)}
+              className="h-4 w-4 accent-accent"
+            />
+            {t("detachFromFamily")}
+          </label>
+        )}
       </section>
 
       <section className="rounded-md border border-border bg-surface p-5">

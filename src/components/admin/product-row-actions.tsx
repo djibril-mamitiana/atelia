@@ -3,7 +3,7 @@
 import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Plus, Trash2 } from "lucide-react";
 import { useToast } from "@/components/ui/toast";
 import { toggleProductActiveAction, deleteProductAction } from "@/server/actions/admin/product.actions";
 
@@ -34,6 +34,9 @@ export function ProductRowActions({ id, isActive }: { id: string; isActive: bool
       </button>
       <Link href={`/admin/products/${id}`} className="text-muted hover:text-ink">
         <Pencil size={15} />
+      </Link>
+      <Link href={`/admin/products/new?from=${id}`} title={t("addSize")} aria-label={t("addSize")} className="text-muted hover:text-ink">
+        <Plus size={15} />
       </Link>
       <button onClick={remove} disabled={pending} className="text-muted hover:text-danger">
         <Trash2 size={15} />

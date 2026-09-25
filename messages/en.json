@@ -350,7 +350,17 @@
     "paymentPaid": "Transfer received",
     "paymentPending": "Transfer pending",
     "shippingAddressTitle": "Shipping address",
-    "confirmationTitle": "Order confirmation"
+    "confirmationTitle": "Order confirmation",
+    "historyCreatedPayment": "Order created, awaiting payment.",
+    "historyCreatedTransfer": "Order created, awaiting bank transfer.",
+    "historyPaymentConfirmed": "Payment confirmed.",
+    "historyPreparing": "Order is being prepared.",
+    "historyShipped": "Parcel handed to the carrier.",
+    "historyOutForDelivery": "Parcel is out for delivery.",
+    "historyDelivered": "Parcel delivered.",
+    "historyPaymentFailed": "Payment failed or expired — order cancelled.",
+    "historyRefunded": "Order refunded.",
+    "historyTransferReceived": "Bank transfer received — order confirmed."
   },
   "Contact": {
     "title": "Contact",
@@ -472,7 +482,12 @@
       "deleteConfirm": "Permanently delete this product?",
       "toastDeleted": "Product deleted.",
       "editTitle": "Edit “{name}”",
-      "newTitle": "New product"
+      "newTitle": "New product",
+      "addSize": "Add a size",
+      "familySizes": "{count} sizes",
+      "familyTitle": "Sizes of this product ({count})",
+      "colSize": "Size",
+      "newSizeTitle": "New size of “{name}”"
     },
     "ProductForm": {
       "sectionGeneral": "General information",
@@ -508,7 +523,14 @@
       "submitUpdate": "Update product",
       "submitCreate": "Create product",
       "toastUpdated": "Product updated.",
-      "toastCreated": "Product created."
+      "toastCreated": "Product created.",
+      "sectionSizes": "Sizes",
+      "sizesHint": "Several sizes of the same product appear as a single product page with a size selector. To add a size: create the item and enter the SKU of an existing size.",
+      "currentFamily": "This item belongs to a product with {count} sizes.",
+      "labelSizeLabel": "Size (e.g. Ø125 mm)",
+      "labelGroupWithSku": "Attach to product (SKU of an existing size)",
+      "labelSizeSpecs": "Specifications of this size",
+      "detachFromFamily": "Detach this item from its product (it becomes a standalone item again)"
     },
     "Categories": {
       "title": "Categories",

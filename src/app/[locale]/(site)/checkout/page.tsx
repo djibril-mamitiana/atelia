@@ -1,6 +1,7 @@
-import { redirect } from "next/navigation";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { redirect } from "@/i18n/navigation";
+import { localizedProductName } from "@/lib/product-name";
 import { requireUser } from "@/lib/auth/session";
 import { getCurrentCart } from "@/server/services/cart";
 import { db } from "@/lib/db";
@@ -15,9 +16,11 @@ export default async function CheckoutPage() {
   const session = await requireUser("/checkout");
   const cart = await getCurrentCart();
   const t = await getTranslations("Checkout");
+  const locale = await getLocale();
 
   if (!cart || cart.items.length === 0) {
-    redirect("/panier");
+    redirect({ href: "/panier", locale });
+    throw new Error("unreachable"); // redirect() always throws — this only narrows `cart` for TS
   }
 
   const addresses = await db.address.findMany({
@@ -27,7 +30,7 @@ export default async function CheckoutPage() {
 
   const lines = cart.items.map((item) => ({
     id: item.id,
-    name: item.product.name,
+    name: localizedProductName(item.product, locale),
     imageUrl: item.product.images[0]?.url,
     quantity: item.quantity,
     unitPrice: Number(item.product.price) + Number(item.variant?.priceDelta ?? 0),

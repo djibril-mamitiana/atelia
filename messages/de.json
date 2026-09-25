@@ -350,7 +350,17 @@
     "paymentPaid": "Überweisung erhalten",
     "paymentPending": "Überweisung ausstehend",
     "shippingAddressTitle": "Lieferadresse",
-    "confirmationTitle": "Bestellbestätigung"
+    "confirmationTitle": "Bestellbestätigung",
+    "historyCreatedPayment": "Bestellung angelegt, wartet auf Zahlung.",
+    "historyCreatedTransfer": "Bestellung angelegt, wartet auf Banküberweisung.",
+    "historyPaymentConfirmed": "Zahlung bestätigt.",
+    "historyPreparing": "Bestellung wird vorbereitet.",
+    "historyShipped": "Paket an den Spediteur übergeben.",
+    "historyOutForDelivery": "Paket ist in Zustellung.",
+    "historyDelivered": "Paket zugestellt.",
+    "historyPaymentFailed": "Zahlung fehlgeschlagen oder abgelaufen — Bestellung storniert.",
+    "historyRefunded": "Bestellung erstattet.",
+    "historyTransferReceived": "Banküberweisung eingegangen — Bestellung bestätigt."
   },
   "Contact": {
     "title": "Kontakt",
@@ -472,7 +482,12 @@
       "deleteConfirm": "Dieses Produkt endgültig löschen?",
       "toastDeleted": "Produkt gelöscht.",
       "editTitle": "„{name}“ bearbeiten",
-      "newTitle": "Neues Produkt"
+      "newTitle": "Neues Produkt",
+      "addSize": "Größe hinzufügen",
+      "familySizes": "{count} Größen",
+      "familyTitle": "Größen dieses Produkts ({count})",
+      "colSize": "Größe",
+      "newSizeTitle": "Neue Größe von „{name}“"
     },
     "ProductForm": {
       "sectionGeneral": "Allgemeine Informationen",
@@ -508,7 +523,14 @@
       "submitUpdate": "Produkt aktualisieren",
       "submitCreate": "Produkt erstellen",
       "toastUpdated": "Produkt aktualisiert.",
-      "toastCreated": "Produkt erstellt."
+      "toastCreated": "Produkt erstellt.",
+      "sectionSizes": "Größen",
+      "sizesHint": "Mehrere Größen desselben Produkts erscheinen als eine Produktseite mit Größenauswahl. Neue Größe: Produkt anlegen und die Artikelnummer (SKU) einer vorhandenen Größe angeben.",
+      "currentFamily": "Dieser Artikel gehört zu einem Produkt mit {count} Größen.",
+      "labelSizeLabel": "Größe (z. B. Ø125 mm)",
+      "labelGroupWithSku": "Zu Produkt zuordnen (SKU einer vorhandenen Größe)",
+      "labelSizeSpecs": "Merkmale dieser Größe",
+      "detachFromFamily": "Diesen Artikel vom Produkt lösen (wird wieder ein einzelner Artikel)"
     },
     "Categories": {
       "title": "Kategorien",

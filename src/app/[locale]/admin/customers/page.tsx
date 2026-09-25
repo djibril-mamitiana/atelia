@@ -1,5 +1,5 @@
+import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
-import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminCustomers } from "@/server/queries/admin.queries";
 import { AdminSearchBar } from "@/components/admin/admin-search-bar";
@@ -7,7 +7,7 @@ import { Pagination } from "@/components/catalog/pagination";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, formatPrice } from "@/lib/format";
 
-export const metadata: Metadata = { title: "Clients — Admin" };
+export const generateMetadata = () => adminTitle("navCustomers");
 
 export default async function AdminCustomersPage({ searchParams }: { searchParams: Promise<{ q?: string; page?: string }> }) {
   const t = await getTranslations("Admin.Customers");
