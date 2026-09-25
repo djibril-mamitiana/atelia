@@ -9,6 +9,8 @@ import { Pagination } from "@/components/catalog/pagination";
 import { Badge } from "@/components/ui/badge";
 import { LinkButton } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
+import { stripSizeSuffix } from "@/lib/product-grouping";
+import { localizedProductName } from "@/lib/product-name";
 
 export const generateMetadata = () => adminTitle("navProducts");
 
@@ -16,7 +18,7 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
   const t = await getTranslations("Admin.Products");
   const locale = await getLocale();
   const { q, page } = await searchParams;
-  const { products, total, pageCount, familySizes } = await getAdminProducts({ q, page: page ? Number(page) : 1 });
+  const { products, total, pageCount } = await getAdminProducts({ q, page: page ? Number(page) : 1 });
 
   return (
     <div>
@@ -52,33 +54,33 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
                     {p.images[0] && <Image src={p.images[0].url} alt="" fill sizes="40px" className="object-cover" />}
                   </div>
                   <div>
-                    <p className="font-medium text-ink">{p.name}</p>
+                    <p className="font-medium text-ink">{p.family.sizes > 1 ? stripSizeSuffix(localizedProductName(p, locale), p.sizeLabel) : localizedProductName(p, locale)}</p>
                     <p className="text-xs text-muted">
-                      {p.sku}
-                      {p.sizeLabel && <span className="ml-2 whitespace-nowrap rounded-sm bg-accent-soft px-1.5 py-0.5 text-accent-dark">{p.sizeLabel}</span>}
-                      {p.groupKey && (familySizes.get(p.groupKey) ?? 0) > 1 && (
-                        <span className="ml-2">{t("familySizes", { count: familySizes.get(p.groupKey) ?? 0 })}</span>
-                      )}
+                      {p.family.sizes > 1 ? t("familySizes", { count: p.family.sizes }) : p.sku}
                     </p>
                   </div>
                 </td>
                 <td className="px-4 py-3 text-muted">{p.category.name}</td>
                 <td className="px-4 py-3 text-muted">{p.brand.name}</td>
-                <td className="px-4 py-3 text-ink">{formatPrice(Number(p.price), locale)}</td>
+                <td className="px-4 py-3 text-ink">
+                  {p.family.minPrice === p.family.maxPrice
+                    ? formatPrice(p.family.minPrice, locale)
+                    : `${formatPrice(p.family.minPrice, locale)} – ${formatPrice(p.family.maxPrice, locale)}`}
+                </td>
                 <td className="px-4 py-3">
-                  {p.stock === 0 ? (
+                  {p.family.stock === 0 ? (
                     <Badge tone="danger">{t("outOfStock")}</Badge>
-                  ) : p.stock <= p.lowStockThreshold ? (
+                  ) : p.family.sizes === 1 && p.stock <= p.lowStockThreshold ? (
                     <Badge tone="gold">{t("lowStock", { stock: p.stock })}</Badge>
                   ) : (
-                    p.stock
+                    p.family.stock
                   )}
                 </td>
                 <td className="px-4 py-3">
-                  <Badge tone={p.isActive ? "sage" : "neutral"}>{p.isActive ? t("active") : t("inactive")}</Badge>
+                  <Badge tone={p.family.active ? "sage" : "neutral"}>{p.family.active ? t("active") : t("inactive")}</Badge>
                 </td>
                 <td className="px-4 py-3">
-                  <ProductRowActions id={p.id} isActive={p.isActive} />
+                  <ProductRowActions id={p.id} isActive={p.family.active} />
                 </td>
               </tr>
             ))}

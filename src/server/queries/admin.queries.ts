@@ -3,53 +3,70 @@ import { db } from "@/lib/db";
 import { PAGE_SIZE_ADMIN_TABLE } from "@/lib/constants";
 import type { Prisma, OrderStatus } from "@prisma/client";
 
+/**
+ * Admin product list: one entry per product — the sizes of a product (rows
+ * sharing a groupKey) are folded into a single row, like on the storefront.
+ */
 export async function getAdminProducts(opts: { q?: string; page?: number }) {
   const page = Math.max(1, opts.page ?? 1);
   const where: Prisma.ProductWhereInput = opts.q
     ? {
         OR: [
           { name: { contains: opts.q, mode: "insensitive" } },
+          { nameFr: { contains: opts.q, mode: "insensitive" } },
           { sku: { contains: opts.q, mode: "insensitive" } },
         ],
       }
     : {};
 
-  const [products, total] = await Promise.all([
-    db.product.findMany({
-      where,
-      include: { category: { select: { name: true } }, brand: { select: { name: true } }, images: { take: 1, orderBy: { position: "asc" } } },
-      orderBy: { updatedAt: "desc" },
-      skip: (page - 1) * PAGE_SIZE_ADMIN_TABLE,
-      take: PAGE_SIZE_ADMIN_TABLE,
-    }),
-    db.product.count({ where }),
-  ]);
+  // Rank every matching row cheaply, fold sizes together, then load only the page.
+  const ranked = await db.product.findMany({ where, select: { id: true, groupKey: true }, orderBy: [{ updatedAt: "desc" }, { id: "asc" }] });
+  const seen = new Set<string>();
+  const entries = ranked.filter((r) => {
+    const key = r.groupKey ?? r.id;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  const pageIds = entries.slice((page - 1) * PAGE_SIZE_ADMIN_TABLE, page * PAGE_SIZE_ADMIN_TABLE).map((e) => e.id);
 
-  // How many sizes each listed product's family has (for the "N tailles" hint).
-  const keys = [...new Set(products.map((p) => p.groupKey).filter((k): k is string => !!k))];
-  const familyRows = keys.length
-    ? await db.product.groupBy({ by: ["groupKey"], where: { groupKey: { in: keys } }, _count: { _all: true } })
+  const rows = pageIds.length
+    ? await db.product.findMany({
+        where: { id: { in: pageIds } },
+        include: { category: { select: { name: true } }, brand: { select: { name: true } }, images: { take: 1, orderBy: { position: "asc" } } },
+      })
     : [];
-  const familySizes = new Map(familyRows.map((r) => [r.groupKey as string, r._count._all]));
+  const byId = new Map(rows.map((r) => [r.id, r]));
 
-  return { products, total, page, pageCount: Math.max(1, Math.ceil(total / PAGE_SIZE_ADMIN_TABLE)), familySizes };
-}
+  const keys = rows.map((r) => r.groupKey).filter((k): k is string => !!k);
+  const [totals, actives] = keys.length
+    ? await Promise.all([
+        db.product.groupBy({ by: ["groupKey"], where: { groupKey: { in: keys } }, _count: { _all: true }, _min: { price: true }, _max: { price: true }, _sum: { stock: true } }),
+        db.product.groupBy({ by: ["groupKey"], where: { groupKey: { in: keys }, isActive: true }, _count: { _all: true } }),
+      ])
+    : [[], []];
+  const totalByKey = new Map(totals.map((t) => [t.groupKey as string, t]));
+  const activeByKey = new Map(actives.map((a) => [a.groupKey as string, a._count._all]));
 
-/** Every size of a product family, smallest first (admin edit page). */
-export async function getProductFamily(groupKey: string | null) {
-  if (!groupKey) return [];
-  return db.product.findMany({
-    where: { groupKey },
-    orderBy: [{ sizeOrder: "asc" }, { sku: "asc" }],
-    select: { id: true, sku: true, sizeLabel: true, price: true, stock: true, isActive: true },
+  const products = pageIds.flatMap((id) => {
+    const row = byId.get(id);
+    if (!row) return [];
+    const t = row.groupKey ? totalByKey.get(row.groupKey) : undefined;
+    return [
+      {
+        ...row,
+        family: {
+          sizes: t?._count._all ?? 1,
+          minPrice: Number(t?._min.price ?? row.price),
+          maxPrice: Number(t?._max.price ?? row.price),
+          stock: t?._sum.stock ?? row.stock,
+          active: row.groupKey ? (activeByKey.get(row.groupKey) ?? 0) > 0 : row.isActive,
+        },
+      },
+    ];
   });
-}
 
-export async function getAdminProductById(id: string) {
-  return db.product.findUnique({
-    where: { id },
-    include: { images: { orderBy: { position: "asc" } }, attributes: { include: { values: true } }, variants: true },
-  });
+  return { products, total: entries.length, page, pageCount: Math.max(1, Math.ceil(entries.length / PAGE_SIZE_ADMIN_TABLE)) };
 }
 
 export async function getAdminCategories() {

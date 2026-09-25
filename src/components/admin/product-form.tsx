@@ -2,30 +2,50 @@
 
 import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
+import { Plus, Trash2 } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import slugify from "slugify";
 import { Input, Label, Textarea, Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
-import { createProductAction, updateProductAction, type AdminProductFormInput } from "@/server/actions/admin/product.actions";
+import {
+  createProductAction,
+  updateProductAction,
+  type AdminProductFormInput,
+  type AdminSizeInput,
+} from "@/server/actions/admin/product.actions";
 
 type Category = { id: string; name: string };
 type Brand = { id: string; name: string };
 
-const EMPTY: AdminProductFormInput = {
-  name: "",
-  slug: "",
+const EMPTY_SIZE: AdminSizeInput = {
   sku: "",
-  description: "",
-  shortDescription: "",
+  sizeLabel: "",
+  sizeSpecs: "",
   price: 0,
   compareAtPrice: null,
-  taxRate: 20,
   stock: 0,
   lowStockThreshold: 5,
+  isActive: true,
+};
+
+const EMPTY: AdminProductFormInput = {
+  slug: "",
+  name: "",
+  description: "",
+  shortDescription: "",
+  nameFr: "",
+  nameEn: "",
+  nameIt: "",
+  descriptionFr: "",
+  descriptionEn: "",
+  descriptionIt: "",
+  shortDescriptionFr: "",
+  shortDescriptionEn: "",
+  shortDescriptionIt: "",
+  taxRate: 20,
   categoryId: "",
   brandId: "",
-  isActive: true,
   isFeatured: false,
   isNew: false,
   isBestSeller: false,
@@ -34,66 +54,90 @@ const EMPTY: AdminProductFormInput = {
   imagesText: "",
   attributesText: "",
   variantsText: "",
-  sizeLabel: "",
-  sizeSpecs: "",
-  groupWithSku: "",
-  detachFromFamily: false,
+  sizes: [EMPTY_SIZE],
 };
 
+// The storefront shows the fr/en/it columns when filled and falls back to the
+// source-language (German) columns otherwise — one tab per language.
+type Lang = "fr" | "de" | "en" | "it";
+const LANGS: Lang[] = ["fr", "de", "en", "it"];
+const TEXT_FIELDS = {
+  fr: { name: "nameFr", description: "descriptionFr", short: "shortDescriptionFr" },
+  de: { name: "name", description: "description", short: "shortDescription" },
+  en: { name: "nameEn", description: "descriptionEn", short: "shortDescriptionEn" },
+  it: { name: "nameIt", description: "descriptionIt", short: "shortDescriptionIt" },
+} as const;
+
+function firstName(f: Partial<AdminProductFormInput>) {
+  return [f.name, f.nameFr, f.nameEn, f.nameIt].map((v) => v?.trim()).find(Boolean) ?? "";
+}
+
+/**
+ * One form = one product with all its sizes. `familyOf` is the id of any size of
+ * the product being edited (omitted when creating).
+ */
 export function ProductForm({
   categories,
   brands,
-  productId,
+  familyOf,
   initial,
-  familyCount = 0,
 }: {
   categories: Category[];
   brands: Brand[];
-  productId?: string;
+  familyOf?: string;
   initial?: Partial<AdminProductFormInput>;
-  /** How many sizes the product's family has (0 = standalone). */
-  familyCount?: number;
 }) {
   const t = useTranslations("Admin.ProductForm");
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [form, setForm] = useState<AdminProductFormInput>(() => {
-    const start = { ...EMPTY, ...initial };
-    // "Add a size" prefills the name but not the slug — derive it so the
-    // slug field isn't left empty (it keeps following the name until edited).
-    if (start.name && !start.slug) start.slug = slugify(start.name, { lower: true, strict: true, locale: "fr" });
-    return start;
-  });
+  const [form, setForm] = useState<AdminProductFormInput>(() => ({ ...EMPTY, ...initial }));
   const [slugEdited, setSlugEdited] = useState(Boolean(initial?.slug));
-  const inFamily = familyCount > 1;
+  const [lang, setLang] = useState<Lang>("fr");
+  const fields = TEXT_FIELDS[lang];
+  const multi = form.sizes.length > 1;
 
   function set<K extends keyof AdminProductFormInput>(key: K, value: AdminProductFormInput[K]) {
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  function handleNameChange(name: string) {
-    set("name", name);
-    if (!slugEdited) {
-      set("slug", slugify(name, { lower: true, strict: true, locale: "fr" }));
-    }
+  function handleNameChange(value: string) {
+    setForm((f) => {
+      const next = { ...f, [fields.name]: value };
+      if (!slugEdited) next.slug = slugify(firstName(next), { lower: true, strict: true, locale: "fr" });
+      return next;
+    });
+  }
+
+  function setSize(index: number, patch: Partial<AdminSizeInput>) {
+    setForm((f) => ({ ...f, sizes: f.sizes.map((s, i) => (i === index ? { ...s, ...patch } : s)) }));
+  }
+
+  function addSize() {
+    setForm((f) => {
+      const last = f.sizes[f.sizes.length - 1];
+      return { ...f, sizes: [...f.sizes, { ...EMPTY_SIZE, price: last?.price ?? 0, lowStockThreshold: last?.lowStockThreshold ?? 5 }] };
+    });
+  }
+
+  function removeSize(index: number) {
+    setForm((f) => ({ ...f, sizes: f.sizes.filter((_, i) => i !== index) }));
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     startTransition(async () => {
-      const result = productId ? await updateProductAction(productId, form) : await createProductAction(form);
+      const result = familyOf ? await updateProductAction(familyOf, form) : await createProductAction(form);
       if (!result.success) {
         toast(result.error, "error");
         return;
       }
-      toast(productId ? t("toastUpdated") : t("toastCreated"), "success");
+      toast(familyOf ? t("toastUpdated") : t("toastCreated"), "success");
       router.push("/admin/products");
     });
   }
 
   const HIGHLIGHT_LABELS = {
-    isActive: t("checkboxActive"),
     isFeatured: t("checkboxFeatured"),
     isNew: t("checkboxNew"),
     isBestSeller: t("checkboxBestSeller"),
@@ -104,9 +148,33 @@ export function ProductForm({
       <section className="rounded-md border border-border bg-surface p-5">
         <p className="mb-4 font-medium text-ink">{t("sectionGeneral")}</p>
         <div className="grid gap-4 sm:grid-cols-2">
-          <div>
+          <div className="sm:col-span-2">
+            <p className="mb-1 text-xs text-muted">{t("languagesHint")}</p>
+            <div role="tablist" className="flex gap-1.5">
+              {LANGS.map((l) => {
+                const f = TEXT_FIELDS[l];
+                const filled = Boolean(form[f.name]?.trim() || form[f.description]?.trim());
+                return (
+                  <button
+                    key={l}
+                    type="button"
+                    role="tab"
+                    aria-selected={lang === l}
+                    onClick={() => setLang(l)}
+                    className={`rounded-full border px-3 py-1 text-xs font-medium ${
+                      lang === l ? "border-ink bg-ink text-white" : "border-border-strong text-muted hover:text-ink"
+                    }`}
+                  >
+                    {t(`lang_${l}`)}
+                    <span className={`ml-1.5 inline-block h-1.5 w-1.5 rounded-full ${filled ? "bg-sage" : "bg-border-strong"}`} />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="sm:col-span-2">
             <Label htmlFor="name">{t("labelName")}</Label>
-            <Input id="name" required value={form.name} onChange={(e) => handleNameChange(e.target.value)} />
+            <Input id="name" value={form[fields.name] ?? ""} onChange={(e) => handleNameChange(e.target.value)} />
           </div>
           <div>
             <Label htmlFor="slug">{t("labelSlug")}</Label>
@@ -119,10 +187,6 @@ export function ProductForm({
                 set("slug", e.target.value);
               }}
             />
-          </div>
-          <div>
-            <Label htmlFor="sku">{t("labelSku")}</Label>
-            <Input id="sku" required value={form.sku} onChange={(e) => set("sku", e.target.value)} />
           </div>
           <div>
             <Label htmlFor="categoryId">{t("labelCategory")}</Label>
@@ -146,81 +210,97 @@ export function ProductForm({
 
         <div className="mt-4">
           <Label htmlFor="shortDescription">{t("labelShortDescription")}</Label>
-          <Input id="shortDescription" value={form.shortDescription ?? ""} onChange={(e) => set("shortDescription", e.target.value)} />
+          <Input id="shortDescription" value={form[fields.short] ?? ""} onChange={(e) => set(fields.short, e.target.value)} />
         </div>
         <div className="mt-4">
           <Label htmlFor="description">{t("labelDescription")}</Label>
-          <Textarea id="description" required rows={5} value={form.description} onChange={(e) => set("description", e.target.value)} />
-        </div>
-      </section>
-
-      <section className="rounded-md border border-border bg-surface p-5">
-        <p className="mb-4 font-medium text-ink">{t("sectionPricing")}</p>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div>
-            <Label htmlFor="price">{t("labelPrice")}</Label>
-            <Input id="price" type="number" step="0.01" required value={form.price} onChange={(e) => set("price", Number(e.target.value))} />
-          </div>
-          <div>
-            <Label htmlFor="compareAtPrice">{t("labelCompareAtPrice")}</Label>
-            <Input
-              id="compareAtPrice"
-              type="number"
-              step="0.01"
-              value={form.compareAtPrice ?? ""}
-              onChange={(e) => set("compareAtPrice", e.target.value ? Number(e.target.value) : null)}
-            />
-          </div>
-          <div>
-            <Label htmlFor="taxRate">{t("labelTaxRate")}</Label>
-            <Input id="taxRate" type="number" step="0.1" value={form.taxRate} onChange={(e) => set("taxRate", Number(e.target.value))} />
-          </div>
-          <div>
-            <Label htmlFor="stock">{t("labelStock")}</Label>
-            <Input id="stock" type="number" value={form.stock} onChange={(e) => set("stock", Number(e.target.value))} />
-          </div>
-          <div>
-            <Label htmlFor="lowStockThreshold">{t("labelLowStockThreshold")}</Label>
-            <Input id="lowStockThreshold" type="number" value={form.lowStockThreshold} onChange={(e) => set("lowStockThreshold", Number(e.target.value))} />
-          </div>
+          <Textarea id="description" rows={5} value={form[fields.description] ?? ""} onChange={(e) => set(fields.description, e.target.value)} />
         </div>
       </section>
 
       <section className="rounded-md border border-border bg-surface p-5">
         <p className="mb-1 font-medium text-ink">{t("sectionSizes")}</p>
-        <p className="mb-4 text-xs text-muted">{t("sizesHint")}</p>
-        {inFamily && <p className="mb-4 text-sm text-ink-soft">{t("currentFamily", { count: familyCount })}</p>}
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <Label htmlFor="sizeLabel">{t("labelSizeLabel")}</Label>
-            <Input id="sizeLabel" value={form.sizeLabel ?? ""} onChange={(e) => set("sizeLabel", e.target.value)} placeholder="Ø125 mm" />
-          </div>
-          <div>
-            <Label htmlFor="groupWithSku">{t("labelGroupWithSku")}</Label>
-            <Input id="groupWithSku" value={form.groupWithSku ?? ""} onChange={(e) => set("groupWithSku", e.target.value)} placeholder="Uni105-115-WS-1" />
+        <p className="mb-4 text-xs text-muted">{multi ? t("sizesHint") : t("singleSizeHint")}</p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[820px] text-sm">
+            <thead>
+              <tr className="text-left text-xs uppercase tracking-wide text-muted">
+                <th className="pb-2 pr-2 font-medium">{t("colSize")}</th>
+                <th className="pb-2 pr-2 font-medium">{t("colSku")}</th>
+                <th className="pb-2 pr-2 font-medium">{t("colSpecs")}</th>
+                <th className="pb-2 pr-2 font-medium">{t("colPrice")}</th>
+                <th className="pb-2 pr-2 font-medium">{t("colComparePrice")}</th>
+                <th className="pb-2 pr-2 font-medium">{t("colStock")}</th>
+                <th className="pb-2 pr-2 font-medium">{t("colActive")}</th>
+                <th className="pb-2" />
+              </tr>
+            </thead>
+            <tbody>
+              {form.sizes.map((s, i) => (
+                <tr key={s.id ?? `new-${i}`} className="align-top">
+                  <td className="py-1 pr-2">
+                    <Input aria-label={t("colSize")} value={s.sizeLabel} onChange={(e) => setSize(i, { sizeLabel: e.target.value })} placeholder={multi ? "Ø125 mm" : ""} className="w-28" />
+                  </td>
+                  <td className="py-1 pr-2">
+                    <Input aria-label={t("colSku")} required value={s.sku} onChange={(e) => setSize(i, { sku: e.target.value })} className="w-40" />
+                  </td>
+                  <td className="py-1 pr-2">
+                    <Input aria-label={t("colSpecs")} value={s.sizeSpecs} onChange={(e) => setSize(i, { sizeSpecs: e.target.value })} placeholder={multi ? "37x2,0x7 mm · 22,2 mm" : ""} className="w-56" />
+                  </td>
+                  <td className="py-1 pr-2">
+                    <Input aria-label={t("colPrice")} type="number" step="0.01" required value={s.price} onChange={(e) => setSize(i, { price: Number(e.target.value) })} className="w-24" />
+                  </td>
+                  <td className="py-1 pr-2">
+                    <Input
+                      aria-label={t("colComparePrice")}
+                      type="number"
+                      step="0.01"
+                      value={s.compareAtPrice ?? ""}
+                      onChange={(e) => setSize(i, { compareAtPrice: e.target.value ? Number(e.target.value) : null })}
+                      className="w-24"
+                    />
+                  </td>
+                  <td className="py-1 pr-2">
+                    <Input aria-label={t("colStock")} type="number" min={0} value={s.stock} onChange={(e) => setSize(i, { stock: Number(e.target.value) })} className="w-20" />
+                  </td>
+                  <td className="py-2.5 pr-2">
+                    <input
+                      type="checkbox"
+                      aria-label={t("colActive")}
+                      checked={s.isActive}
+                      onChange={(e) => setSize(i, { isActive: e.target.checked })}
+                      className="h-4 w-4 accent-accent"
+                    />
+                  </td>
+                  <td className="py-2.5">
+                    {form.sizes.length > 1 && (
+                      <button type="button" onClick={() => removeSize(i)} aria-label={t("removeSize")} title={t("removeSize")} className="text-muted hover:text-danger">
+                        <Trash2 size={15} />
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+          <Button type="button" variant="outline" size="sm" onClick={addSize}>
+            <Plus size={15} /> {t("addSizeRow")}
+          </Button>
+          <div className="w-32">
+            <Label htmlFor="taxRate">{t("labelTaxRate")}</Label>
+            <Input id="taxRate" type="number" step="0.1" value={form.taxRate} onChange={(e) => set("taxRate", Number(e.target.value))} />
           </div>
         </div>
-        <div className="mt-4">
-          <Label htmlFor="sizeSpecs">{t("labelSizeSpecs")}</Label>
-          <Input id="sizeSpecs" value={form.sizeSpecs ?? ""} onChange={(e) => set("sizeSpecs", e.target.value)} placeholder="37x2,0x7 mm · 22,2 mm · 9 seg." />
-        </div>
-        {inFamily && productId && (
-          <label className="mt-4 flex items-center gap-2 text-sm text-ink-soft">
-            <input
-              type="checkbox"
-              checked={Boolean(form.detachFromFamily)}
-              onChange={(e) => set("detachFromFamily", e.target.checked)}
-              className="h-4 w-4 accent-accent"
-            />
-            {t("detachFromFamily")}
-          </label>
-        )}
       </section>
 
       <section className="rounded-md border border-border bg-surface p-5">
         <p className="mb-4 font-medium text-ink">{t("sectionHighlight")}</p>
         <div className="flex flex-wrap gap-5">
-          {(["isActive", "isFeatured", "isNew", "isBestSeller"] as const).map((key) => (
+          {(["isFeatured", "isNew", "isBestSeller"] as const).map((key) => (
             <label key={key} className="flex items-center gap-2 text-sm text-ink-soft">
               <input type="checkbox" checked={Boolean(form[key])} onChange={(e) => set(key, e.target.checked)} className="h-4 w-4 accent-accent" />
               {HIGHLIGHT_LABELS[key]}
@@ -241,11 +321,13 @@ export function ProductForm({
         <Textarea rows={4} value={form.attributesText} onChange={(e) => set("attributesText", e.target.value)} placeholder="Puissance: 18V" />
       </section>
 
-      <section className="rounded-md border border-border bg-surface p-5">
-        <p className="mb-1 font-medium text-ink">{t("sectionVariants")}</p>
-        <p className="mb-3 text-xs text-muted">{t("variantsHint")}</p>
-        <Textarea rows={4} value={form.variantsText} onChange={(e) => set("variantsText", e.target.value)} placeholder="Rouge | ABC-RED | 0 | 10" />
-      </section>
+      {!multi && (
+        <section className="rounded-md border border-border bg-surface p-5">
+          <p className="mb-1 font-medium text-ink">{t("sectionVariants")}</p>
+          <p className="mb-3 text-xs text-muted">{t("variantsHint")}</p>
+          <Textarea rows={4} value={form.variantsText} onChange={(e) => set("variantsText", e.target.value)} placeholder="Rouge | ABC-RED | 0 | 10" />
+        </section>
+      )}
 
       <section className="rounded-md border border-border bg-surface p-5">
         <p className="mb-4 font-medium text-ink">{t("sectionSeo")}</p>
@@ -260,7 +342,7 @@ export function ProductForm({
       </section>
 
       <Button type="submit" size="lg" disabled={pending} className="self-start">
-        {pending ? t("saving") : productId ? t("submitUpdate") : t("submitCreate")}
+        {pending ? t("saving") : familyOf ? t("submitUpdate") : t("submitCreate")}
       </Button>
     </form>
   );

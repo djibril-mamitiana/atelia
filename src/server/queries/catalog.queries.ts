@@ -2,7 +2,7 @@ import "server-only";
 import { getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
 import { PAGE_SIZE_CATALOG } from "@/lib/constants";
-import { stripSizeSuffix } from "@/lib/product-grouping";
+import { stripSizeSuffix, stripSpecLines } from "@/lib/product-grouping";
 import type { Prisma } from "@prisma/client";
 
 export type SortOption = "pertinence" | "prix-asc" | "prix-desc" | "nouveaute" | "note";
@@ -120,6 +120,7 @@ const PRODUCT_CARD_SELECT = {
   slug: true,
   sku: true,
   groupKey: true,
+  sizeLabel: true,
   price: true,
   compareAtPrice: true,
   stock: true,
@@ -151,10 +152,11 @@ function serializeProductCard(p: RawProductCard, locale: Locale, group?: GroupSt
   void nameEn;
   void nameIt;
   const grouped = group != null && group.size > 1;
-  const localizedName = grouped && group.localizedName ? group.localizedName : localizedField(p, "name", locale);
+  const title =
+    grouped && group.localizedName ? group.localizedName : grouped ? stripSizeSuffix(localizedField(p, "name", locale), p.sizeLabel) : localizedField(p, "name", locale);
   return {
     ...rest,
-    name: grouped ? stripSizeSuffix(localizedName) : localizedName,
+    name: title,
     price: Number(p.price),
     compareAtPrice: grouped ? null : p.compareAtPrice != null ? Number(p.compareAtPrice) : null,
     stock: grouped ? (group.inStock ? Math.max(p.stock, 1) : 0) : p.stock,
@@ -173,9 +175,10 @@ async function loadFamilyNames(keys: string[], locale: Locale): Promise<Map<stri
   const rows = await db.product.findMany({
     where: { groupKey: { in: keys }, ...has },
     distinct: ["groupKey"],
-    select: { groupKey: true, name: true, nameFr: true, nameEn: true, nameIt: true },
+    select: { groupKey: true, sizeLabel: true, name: true, nameFr: true, nameEn: true, nameIt: true },
   });
-  return new Map(rows.map((r) => [r.groupKey as string, localizedField(r, "name", locale)]));
+  // Already stripped of the donor's own size suffix — the card's row may carry a different size.
+  return new Map(rows.map((r) => [r.groupKey as string, stripSizeSuffix(localizedField(r, "name", locale), r.sizeLabel)]));
 }
 
 async function loadGroupStats(groupKeys: (string | null)[], locale: Locale): Promise<Map<string, GroupStats>> {
@@ -401,6 +404,7 @@ export async function getProductBySlug(slug: string) {
             ...(locale === "fr" ? { nameFr: { not: null } } : locale === "en" ? { nameEn: { not: null } } : { nameIt: { not: null } }),
           },
           select: {
+            sizeLabel: true,
             name: true, nameFr: true, nameEn: true, nameIt: true,
             description: true, descriptionFr: true, descriptionEn: true, descriptionIt: true,
             shortDescription: true, shortDescriptionFr: true, shortDescriptionEn: true, shortDescriptionIt: true,
@@ -409,6 +413,7 @@ export async function getProductBySlug(slug: string) {
       : null;
   const source = donor ?? product;
   const localizedName = localizedField(source, "name", locale);
+  const familyName = sizes.length > 0 ? stripSizeSuffix(localizedName, source.sizeLabel) : localizedName;
 
   return {
     ...product,
@@ -416,16 +421,11 @@ export async function getProductBySlug(slug: string) {
     reviews,
     reviewCount,
     avgRating,
-    name: sizes.length > 0 ? stripSizeSuffix(localizedName) : localizedName,
+    name: familyName,
     // The per-size "Caractéristiques : …" line describes only one size — for a
     // size group those figures live in the size table instead.
     description:
-      sizes.length > 0
-        ? localizedField(product, "description", locale)
-            .split("\n")
-            .filter((line) => !/^(Caractéristiques|Features|Caratteristiche)\s*:/i.test(line))
-            .join("\n")
-        : localizedField(product, "description", locale),
+      sizes.length > 0 ? stripSpecLines(localizedField(source, "description", locale)) : localizedField(source, "description", locale),
     shortDescription: source.shortDescription != null ? localizedField(source, "shortDescription", locale) : source.shortDescription,
     category: {
       ...product.category,

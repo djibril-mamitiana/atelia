@@ -1,13 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { db } from "@/lib/db";
+import { z } from "zod";
 import { requireRole } from "@/lib/auth/session";
 import { productSchema } from "@/validations/product.schema";
-import { z } from "zod";
-import { applySizeFamily } from "@/server/services/product-family";
+import { deleteProduct, saveProduct, setProductActive, type SaveResult } from "@/server/services/admin-product";
 
-export type AdminActionResult = { success: true; id: string } | { success: false; error: string };
+export type AdminActionResult = SaveResult;
 
 /** Text-area shorthand parsers — keep the admin product form simple
  *  (no dynamic field arrays) while still writing real, structured rows. */
@@ -50,213 +49,155 @@ function parseVariants(text: string) {
     .filter((v) => v.name && v.sku);
 }
 
-const formSchema = z.object({
-  name: z.string(),
-  slug: z.string(),
+const sizeSchema = z.object({
+  id: z.string().optional(),
   sku: z.string(),
+  sizeLabel: z.string(),
+  sizeSpecs: z.string(),
+  price: z.coerce.number(),
+  compareAtPrice: z.coerce.number().nullable().optional(),
+  stock: z.coerce.number().int().min(0),
+  lowStockThreshold: z.coerce.number().int().min(0),
+  isActive: z.boolean(),
+});
+
+const formSchema = z.object({
+  slug: z.string(),
+  // Source language (German) texts …
+  name: z.string(),
   description: z.string(),
   shortDescription: z.string().optional(),
-  price: z.coerce.number(),
-  compareAtPrice: z.coerce.number().optional().nullable(),
-  taxRate: z.coerce.number().optional(),
-  stock: z.coerce.number().optional(),
-  lowStockThreshold: z.coerce.number().optional(),
+  // … and the fr/en/it overrides the storefront prefers when filled.
+  nameFr: z.string().optional(),
+  nameEn: z.string().optional(),
+  nameIt: z.string().optional(),
+  descriptionFr: z.string().optional(),
+  descriptionEn: z.string().optional(),
+  descriptionIt: z.string().optional(),
+  shortDescriptionFr: z.string().optional(),
+  shortDescriptionEn: z.string().optional(),
+  shortDescriptionIt: z.string().optional(),
+  taxRate: z.coerce.number(),
   categoryId: z.string(),
   brandId: z.string(),
-  isActive: z.boolean().optional(),
-  isFeatured: z.boolean().optional(),
-  isNew: z.boolean().optional(),
-  isBestSeller: z.boolean().optional(),
+  isFeatured: z.boolean(),
+  isNew: z.boolean(),
+  isBestSeller: z.boolean(),
   seoTitle: z.string().optional(),
   seoDescription: z.string().optional(),
   imagesText: z.string().optional(),
   attributesText: z.string().optional(),
   variantsText: z.string().optional(),
-  // Size family (same product in several sizes) — see product-family.ts.
-  sizeLabel: z.string().optional(),
-  sizeSpecs: z.string().optional(),
-  groupWithSku: z.string().optional(),
-  detachFromFamily: z.boolean().optional(),
+  sizes: z.array(sizeSchema).min(1),
 });
 export type AdminProductFormInput = z.infer<typeof formSchema>;
+export type AdminSizeInput = z.infer<typeof sizeSchema>;
 
-export async function createProductAction(input: AdminProductFormInput): Promise<AdminActionResult> {
-  await requireRole(["ADMIN", "STAFF"]);
-  const raw = formSchema.safeParse(input);
-  if (!raw.success) return { success: false, error: "Formulaire invalide." };
-
-  const parsed = productSchema.safeParse({
-    ...raw.data,
-    images: parseImageUrls(raw.data.imagesText ?? ""),
-    attributes: parseAttributes(raw.data.attributesText ?? ""),
-    variants: parseVariants(raw.data.variantsText ?? ""),
-    videos: [],
-  });
-  if (!parsed.success) {
-    return { success: false, error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
-  }
-  const data = parsed.data;
-
-  const [slugTaken, skuTaken] = await Promise.all([
-    db.product.findUnique({ where: { slug: data.slug } }),
-    db.product.findUnique({ where: { sku: data.sku } }),
-  ]);
-  if (slugTaken) return { success: false, error: "Ce slug est déjà utilisé." };
-  if (skuTaken) return { success: false, error: "Ce SKU est déjà utilisé." };
-
-  const joinSku = raw.data.groupWithSku?.trim();
-  if (joinSku && !(await db.product.findUnique({ where: { sku: joinSku }, select: { id: true } }))) {
-    return { success: false, error: `Aucun produit avec le SKU « ${joinSku} » pour la famille de tailles.` };
-  }
-
-  const product = await db.product.create({
-    data: {
-      name: data.name,
-      slug: data.slug,
-      sku: data.sku,
-      description: data.description,
-      shortDescription: data.shortDescription || null,
-      price: data.price,
-      compareAtPrice: data.compareAtPrice || null,
-      taxRate: data.taxRate ?? 20,
-      stock: data.stock ?? 0,
-      lowStockThreshold: data.lowStockThreshold ?? 5,
-      categoryId: data.categoryId,
-      brandId: data.brandId,
-      isActive: data.isActive ?? true,
-      isFeatured: data.isFeatured ?? false,
-      isNew: data.isNew ?? false,
-      isBestSeller: data.isBestSeller ?? false,
-      seoTitle: data.seoTitle || null,
-      seoDescription: data.seoDescription || null,
-      images: { create: data.images },
-      attributes: {
-        create: data.attributes.map((a) => ({ name: a.name, values: { create: a.values.map((v) => ({ value: v })) } })),
-      },
-      variants: { create: data.variants },
-    },
-  });
-
-  if (data.stock > 0) {
-    await db.inventoryMovement.create({
-      data: { productId: product.id, type: "IN", quantity: data.stock, reason: "Stock initial à la création du produit" },
-    });
-  }
-
-  await db.$transaction((tx) =>
-    applySizeFamily(tx, product.id, {
-      sizeLabel: raw.data.sizeLabel,
-      sizeSpecs: raw.data.sizeSpecs,
-      groupWithSku: raw.data.groupWithSku,
-    })
-  );
-
-  revalidatePath("/admin/products");
-  revalidatePath("/produits");
-  return { success: true, id: product.id };
+/** First non-empty text — the source-language column must never be empty, so it
+ *  falls back to whichever language the admin actually filled in. */
+function firstFilled(...values: (string | undefined)[]) {
+  return values.map((v) => v?.trim()).find(Boolean) ?? "";
 }
 
-export async function updateProductAction(id: string, input: AdminProductFormInput): Promise<AdminActionResult> {
-  await requireRole(["ADMIN", "STAFF"]);
-  const existing = await db.product.findUnique({ where: { id } });
-  if (!existing) return { success: false, error: "Produit introuvable." };
+const orNull = (v: string | undefined) => v?.trim() || null;
 
+/** Validates the form and hands the whole product (all sizes) to the service. */
+async function save(input: AdminProductFormInput, familyOf?: string): Promise<AdminActionResult> {
+  await requireRole(["ADMIN", "STAFF"]);
   const raw = formSchema.safeParse(input);
   if (!raw.success) return { success: false, error: "Formulaire invalide." };
+  const f = raw.data;
 
+  const name = firstFilled(f.name, f.nameFr, f.nameEn, f.nameIt);
+  const description = firstFilled(f.description, f.descriptionFr, f.descriptionEn, f.descriptionIt);
+  const shortDescription = firstFilled(f.shortDescription, f.shortDescriptionFr, f.shortDescriptionEn, f.shortDescriptionIt);
+  const first = f.sizes[0];
+
+  // Reuse the catalogue-wide field rules (name/description length, slug format,
+  // image URLs…) — the per-size fields are checked by the service.
   const parsed = productSchema.safeParse({
-    ...raw.data,
-    images: parseImageUrls(raw.data.imagesText ?? ""),
-    attributes: parseAttributes(raw.data.attributesText ?? ""),
-    variants: parseVariants(raw.data.variantsText ?? ""),
+    name,
+    slug: f.slug,
+    sku: first.sku || "-",
+    description,
+    shortDescription,
+    price: first.price,
+    taxRate: f.taxRate,
+    categoryId: f.categoryId,
+    brandId: f.brandId,
+    isFeatured: f.isFeatured,
+    isNew: f.isNew,
+    isBestSeller: f.isBestSeller,
+    seoTitle: f.seoTitle ?? "",
+    seoDescription: f.seoDescription ?? "",
+    images: parseImageUrls(f.imagesText ?? ""),
+    attributes: parseAttributes(f.attributesText ?? ""),
+    variants: parseVariants(f.variantsText ?? ""),
     videos: [],
   });
-  if (!parsed.success) {
-    return { success: false, error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
-  }
+  if (!parsed.success) return { success: false, error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
   const data = parsed.data;
 
-  if (data.slug !== existing.slug) {
-    const taken = await db.product.findUnique({ where: { slug: data.slug } });
-    if (taken) return { success: false, error: "Ce slug est déjà utilisé." };
+  const result = await saveProduct(
+    {
+      slug: data.slug,
+      name: data.name,
+      nameFr: orNull(f.nameFr),
+      nameEn: orNull(f.nameEn),
+      nameIt: orNull(f.nameIt),
+      description: data.description,
+      descriptionFr: orNull(f.descriptionFr),
+      descriptionEn: orNull(f.descriptionEn),
+      descriptionIt: orNull(f.descriptionIt),
+      shortDescription: data.shortDescription || null,
+      shortDescriptionFr: orNull(f.shortDescriptionFr),
+      shortDescriptionEn: orNull(f.shortDescriptionEn),
+      shortDescriptionIt: orNull(f.shortDescriptionIt),
+      taxRate: data.taxRate,
+      categoryId: data.categoryId,
+      brandId: data.brandId,
+      isFeatured: data.isFeatured,
+      isNew: data.isNew,
+      isBestSeller: data.isBestSeller,
+      seoTitle: data.seoTitle || null,
+      seoDescription: data.seoDescription || null,
+      images: data.images.map((i) => ({ url: i.url, alt: i.alt ?? "", position: i.position })),
+      attributes: data.attributes,
+      variants: data.variants,
+    },
+    f.sizes.map((s) => ({
+      id: s.id,
+      sku: s.sku,
+      sizeLabel: s.sizeLabel,
+      sizeSpecs: s.sizeSpecs,
+      price: s.price,
+      compareAtPrice: s.compareAtPrice ?? null,
+      stock: s.stock,
+      lowStockThreshold: s.lowStockThreshold,
+      isActive: s.isActive,
+    })),
+    familyOf
+  );
+
+  if (result.success) {
+    revalidatePath("/admin/products");
+    revalidatePath("/produits");
   }
-  if (data.sku !== existing.sku) {
-    const taken = await db.product.findUnique({ where: { sku: data.sku } });
-    if (taken) return { success: false, error: "Ce SKU est déjà utilisé." };
-  }
+  return result;
+}
 
-  const stockDelta = data.stock - existing.stock;
+export async function createProductAction(input: AdminProductFormInput): Promise<AdminActionResult> {
+  return save(input);
+}
 
-  class FamilyError extends Error {}
-
-  try {
-    await db.$transaction(async (tx) => {
-      await tx.productImage.deleteMany({ where: { productId: id } });
-      await tx.productAttribute.deleteMany({ where: { productId: id } });
-      await tx.productVariant.deleteMany({ where: { productId: id } });
-
-      await tx.product.update({
-        where: { id },
-        data: {
-          name: data.name,
-          slug: data.slug,
-          sku: data.sku,
-          description: data.description,
-          shortDescription: data.shortDescription || null,
-          price: data.price,
-          compareAtPrice: data.compareAtPrice || null,
-          taxRate: data.taxRate ?? 20,
-          stock: data.stock ?? 0,
-          lowStockThreshold: data.lowStockThreshold ?? 5,
-          categoryId: data.categoryId,
-          brandId: data.brandId,
-          isActive: data.isActive ?? true,
-          isFeatured: data.isFeatured ?? false,
-          isNew: data.isNew ?? false,
-          isBestSeller: data.isBestSeller ?? false,
-          seoTitle: data.seoTitle || null,
-          seoDescription: data.seoDescription || null,
-          images: { create: data.images },
-          attributes: {
-            create: data.attributes.map((a) => ({ name: a.name, values: { create: a.values.map((v) => ({ value: v })) } })),
-          },
-          variants: { create: data.variants },
-        },
-      });
-
-      if (stockDelta !== 0) {
-        await tx.inventoryMovement.create({
-          data: {
-            productId: id,
-            type: "ADJUSTMENT",
-            quantity: Math.abs(stockDelta),
-            reason: `Ajustement manuel via la fiche produit (${stockDelta > 0 ? "+" : ""}${stockDelta})`,
-          },
-        });
-      }
-
-      const family = await applySizeFamily(tx, id, {
-        sizeLabel: raw.data.sizeLabel,
-        sizeSpecs: raw.data.sizeSpecs,
-        groupWithSku: raw.data.groupWithSku,
-        detach: raw.data.detachFromFamily,
-      });
-      if (!family.ok) throw new FamilyError(family.error);
-    });
-  } catch (err) {
-    if (err instanceof FamilyError) return { success: false, error: err.message };
-    throw err;
-  }
-
-  revalidatePath("/admin/products");
-  revalidatePath(`/produits/${data.slug}`);
-  revalidatePath("/produits");
-  return { success: true, id };
+/** `id` is any size of the product being edited. */
+export async function updateProductAction(id: string, input: AdminProductFormInput): Promise<AdminActionResult> {
+  return save(input, id);
 }
 
 export async function toggleProductActiveAction(id: string, isActive: boolean): Promise<{ success: true } | { success: false; error: string }> {
   await requireRole(["ADMIN", "STAFF"]);
-  await db.product.update({ where: { id }, data: { isActive } });
+  await setProductActive(id, isActive);
   revalidatePath("/admin/products");
   revalidatePath("/produits");
   return { success: true };
@@ -264,12 +205,10 @@ export async function toggleProductActiveAction(id: string, isActive: boolean): 
 
 export async function deleteProductAction(id: string): Promise<{ success: true } | { success: false; error: string }> {
   await requireRole(["ADMIN"]);
-  const usedInOrder = await db.orderItem.findFirst({ where: { productId: id } });
-  if (usedInOrder) {
-    return { success: false, error: "Ce produit a déjà été commandé et ne peut pas être supprimé — désactivez-le plutôt." };
+  const result = await deleteProduct(id);
+  if (result.success) {
+    revalidatePath("/admin/products");
+    revalidatePath("/produits");
   }
-  await db.product.delete({ where: { id } });
-  revalidatePath("/admin/products");
-  revalidatePath("/produits");
-  return { success: true };
+  return result;
 }

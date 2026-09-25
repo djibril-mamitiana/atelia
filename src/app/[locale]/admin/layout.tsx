@@ -63,7 +63,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
         </div>
       </aside>
 
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between border-b border-border bg-surface px-4 py-3 lg:hidden">
           <p className="font-display text-lg text-ink">{SITE_NAME} — {t("backoffice")}</p>
           <LanguageSwitcher variant="light" />

@@ -26,9 +26,26 @@ export type GroupInfo = {
 const SIZE_SUFFIX = /\s*Ø\s*(\d+(?:[.,]\d+)?)\s*(?:mm)?\s*$/i;
 const NUMERIC = /^\d+(?:[.,]\d+)?$/;
 
-/** "Diamanttrennscheibe … Ø115mm" → "Diamanttrennscheibe …". Works on any locale's name. */
-export function stripSizeSuffix(name: string): string {
-  return name.replace(SIZE_SUFFIX, "").trim();
+/**
+ * "Diamanttrennscheibe … Ø115mm" → "Diamanttrennscheibe …". Works on any
+ * locale's name. Sizes added in the admin with a non-diameter label
+ * ("Rouge", "M14") are appended verbatim, so pass the row's `sizeLabel` to
+ * strip those too.
+ */
+export function stripSizeSuffix(name: string, sizeLabel?: string | null): string {
+  const stripped = name.replace(SIZE_SUFFIX, "").trim();
+  if (stripped !== name.trim()) return stripped;
+  const label = sizeLabel?.trim();
+  if (label && name.trim().endsWith(` ${label}`)) return name.trim().slice(0, -(label.length + 1)).trim();
+  return name.trim();
+}
+
+/** Inverse of stripSizeSuffix: "Foo" + "Ø135 mm" → "Foo Ø135mm" (catalogue style), "Foo" + "Rouge" → "Foo Rouge". */
+export function nameWithSize(baseName: string, sizeLabel: string | null | undefined): string {
+  const label = sizeLabel?.trim();
+  if (!label) return baseName;
+  const diameter = label.match(/^Ø\s*(\d+(?:[.,]\d+)?)\s*(?:mm)?$/i);
+  return diameter ? `${baseName} Ø${diameter[1]}mm` : `${baseName} ${label}`;
 }
 
 function toNumber(value: string): number {
@@ -128,4 +145,18 @@ export function computeProductGroups(items: GroupableItem[]): Map<string, GroupI
     }
   }
   return result;
+}
+
+/** Per-size "Caractéristiques : …" lines describe one size only; for a size family those figures live in the size table. */
+export function stripSpecLines(description: string): string {
+  return description
+    .split("\n")
+    .filter((line) => !/^(Caractéristiques|Features|Caratteristiche)\s*:/i.test(line))
+    .join("\n");
+}
+
+/** "Ø125 mm" → 125; used to sort sizes small → large. */
+export function parseSizeOrder(label: string): number | null {
+  const m = label.match(/\d+(?:[.,]\d+)?/);
+  return m ? Number(m[0].replace(",", ".")) : null;
 }
