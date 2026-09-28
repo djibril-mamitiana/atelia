@@ -1,13 +1,15 @@
 import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminReviews } from "@/server/queries/admin.queries";
+import { localizedProductName } from "@/lib/product-name";
 import { ReviewModerationRow } from "@/components/admin/review-moderation-row";
 
 export const generateMetadata = () => adminTitle("navReviews");
 
 export default async function AdminReviewsPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
   const t = await getTranslations("Admin.Reviews");
+  const locale = await getLocale();
   const { status } = await searchParams;
   const reviews = await getAdminReviews({ status: status as "PENDING" | "APPROVED" | "REJECTED" | undefined });
 
@@ -42,7 +44,7 @@ export default async function AdminReviewsPage({ searchParams }: { searchParams:
             <ReviewModerationRow
               key={r.id}
               id={r.id}
-              productName={r.product.name}
+              productName={localizedProductName(r.product, locale)}
               userName={`${r.user.firstName} ${r.user.lastName}`}
               rating={r.rating}
               title={r.title}

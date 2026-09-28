@@ -1,8 +1,10 @@
 import { adminTitle } from "@/lib/admin-metadata";
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";
 import { getAdminTutorials } from "@/server/queries/admin.queries";
+import { localizedCategoryName } from "@/lib/category-name";
+import { localizedTutorialTitle } from "@/lib/tutorial-title";
 import { LinkButton } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -10,6 +12,7 @@ export const generateMetadata = () => adminTitle("navTutorials");
 
 export default async function AdminTutorialsPage() {
   const t = await getTranslations("Admin.Tutorials");
+  const locale = await getLocale();
   const tutorials = await getAdminTutorials();
 
   return (
@@ -33,9 +36,9 @@ export default async function AdminTutorialsPage() {
             {tutorials.map((tut) => (
               <tr key={tut.id} className="hover:bg-paper">
                 <td className="px-4 py-3">
-                  <Link href={`/admin/tutorials/${tut.id}`} className="font-medium text-ink hover:text-accent-dark">{tut.title}</Link>
+                  <Link href={`/admin/tutorials/${tut.id}`} className="font-medium text-ink hover:text-accent-dark">{localizedTutorialTitle(tut, locale)}</Link>
                 </td>
-                <td className="px-4 py-3 text-muted">{tut.category?.name ?? "—"}</td>
+                <td className="px-4 py-3 text-muted">{tut.category ? localizedCategoryName(tut.category, locale) : "—"}</td>
                 <td className="px-4 py-3 text-muted">{tut._count.products}</td>
                 <td className="px-4 py-3"><Badge tone={tut.isPublished ? "sage" : "neutral"}>{tut.isPublished ? t("published") : t("draft")}</Badge></td>
               </tr>

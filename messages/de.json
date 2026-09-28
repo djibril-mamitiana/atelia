@@ -622,7 +622,12 @@
       "deleteConfirm": "Diese Kategorie löschen?",
       "toastCreated": "Kategorie erstellt.",
       "toastUpdated": "Kategorie aktualisiert.",
-      "toastDeleted": "Kategorie gelöscht."
+      "toastDeleted": "Kategorie gelöscht.",
+      "languagesHint": "Text in jeder Sprache eingeben: Eine leere Sprache zeigt den Text der Quellsprache (Französisch).",
+      "lang_fr": "Französisch (Quelle)",
+      "lang_de": "Deutsch",
+      "lang_en": "Englisch",
+      "lang_it": "Italienisch"
     },
     "Brands": {
       "title": "Marken",
@@ -641,7 +646,12 @@
       "deleteConfirm": "Diese Marke löschen?",
       "toastCreated": "Marke erstellt.",
       "toastUpdated": "Marke aktualisiert.",
-      "toastDeleted": "Marke gelöscht."
+      "toastDeleted": "Marke gelöscht.",
+      "languagesHint": "Text in jeder Sprache eingeben: Eine leere Sprache zeigt den Text der Quellsprache (Französisch).",
+      "lang_fr": "Französisch (Quelle)",
+      "lang_de": "Deutsch",
+      "lang_en": "Englisch",
+      "lang_it": "Italienisch"
     },
     "Inventory": {
       "title": "Bestand ({count})",
@@ -763,7 +773,8 @@
       "statusInactive": "Inaktiv",
       "deactivateAction": "Deaktivieren",
       "activateAction": "Aktivieren",
-      "deleteConfirm": "Diesen Gutscheincode löschen?"
+      "deleteConfirm": "Diesen Gutscheincode löschen?",
+      "colTarget": "Ziel"
     },
     "Reviews": {
       "title": "Kundenbewertungen",

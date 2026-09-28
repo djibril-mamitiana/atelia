@@ -1,8 +1,11 @@
 import { adminTitle } from "@/lib/admin-metadata";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
 import { getAdminTutorialById } from "@/server/queries/admin.queries";
+import { localizedCategoryName } from "@/lib/category-name";
+import { localizedProductName } from "@/lib/product-name";
+import { localizedTutorialTitle } from "@/lib/tutorial-title";
 import { TutorialForm } from "@/components/admin/tutorial-form";
 
 export const generateMetadata = () => adminTitle("navTutorials");
@@ -10,15 +13,18 @@ export const generateMetadata = () => adminTitle("navTutorials");
 export default async function EditTutorialPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const t = await getTranslations("Admin.Tutorials");
-  const [tutorial, categories] = await Promise.all([
+  const locale = await getLocale();
+  const [tutorial, categoryRows] = await Promise.all([
     getAdminTutorialById(id),
-    db.category.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true } }),
+    db.category.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true } }),
   ]);
   if (!tutorial) notFound();
+  // Dropdown option labels only (the value stays the id) — safe to localize.
+  const categories = categoryRows.map((c) => ({ id: c.id, name: localizedCategoryName(c, locale) }));
 
   return (
     <div>
-      <h1 className="font-display text-2xl text-ink">{t("editTitle", { title: tutorial.title })}</h1>
+      <h1 className="font-display text-2xl text-ink">{t("editTitle", { title: localizedTutorialTitle(tutorial, locale) })}</h1>
       <div className="mt-6">
         <TutorialForm
           tutorialId={tutorial.id}
@@ -44,7 +50,7 @@ export default async function EditTutorialPage({ params }: { params: Promise<{ i
           <p className="mb-2 text-sm font-medium text-ink">{t("linkedProductsNote")}</p>
           <ul className="flex flex-col gap-1 text-sm text-muted">
             {tutorial.products.map((tp) => (
-              <li key={tp.product.id}>{tp.product.id} — {tp.product.name}</li>
+              <li key={tp.product.id}>{tp.product.id} — {localizedProductName(tp.product, locale)}</li>
             ))}
           </ul>
         </div>

@@ -12,7 +12,7 @@ const CART_INCLUDE = {
       product: {
         include: {
           images: { orderBy: { position: "asc" as const }, take: 1 },
-          brand: { select: { name: true } },
+          brand: { select: { name: true, nameDe: true, nameEn: true, nameIt: true } },
         },
       },
       variant: true,

@@ -622,7 +622,12 @@
       "deleteConfirm": "Delete this category?",
       "toastCreated": "Category created.",
       "toastUpdated": "Category updated.",
-      "toastDeleted": "Category deleted."
+      "toastDeleted": "Category deleted.",
+      "languagesHint": "Enter the text in each language: a language left empty shows the source-language (French) text.",
+      "lang_fr": "French (source)",
+      "lang_de": "German",
+      "lang_en": "English",
+      "lang_it": "Italian"
     },
     "Brands": {
       "title": "Brands",
@@ -641,7 +646,12 @@
       "deleteConfirm": "Delete this brand?",
       "toastCreated": "Brand created.",
       "toastUpdated": "Brand updated.",
-      "toastDeleted": "Brand deleted."
+      "toastDeleted": "Brand deleted.",
+      "languagesHint": "Enter the text in each language: a language left empty shows the source-language (French) text.",
+      "lang_fr": "French (source)",
+      "lang_de": "German",
+      "lang_en": "English",
+      "lang_it": "Italian"
     },
     "Inventory": {
       "title": "Inventory ({count})",
@@ -763,7 +773,8 @@
       "statusInactive": "Inactive",
       "deactivateAction": "Deactivate",
       "activateAction": "Activate",
-      "deleteConfirm": "Delete this coupon code?"
+      "deleteConfirm": "Delete this coupon code?",
+      "colTarget": "Target"
     },
     "Reviews": {
       "title": "Customer reviews",

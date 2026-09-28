@@ -69,6 +69,14 @@ export const categorySchema = z.object({
     .toLowerCase()
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug invalide"),
   description: z.string().trim().max(500).optional().or(z.literal("")),
+  // French is the source language; these are the de/en/it overrides —
+  // all optional, empty falls back to the French field above.
+  nameDe: z.string().trim().max(120).optional().or(z.literal("")),
+  nameEn: z.string().trim().max(120).optional().or(z.literal("")),
+  nameIt: z.string().trim().max(120).optional().or(z.literal("")),
+  descriptionDe: z.string().trim().max(500).optional().or(z.literal("")),
+  descriptionEn: z.string().trim().max(500).optional().or(z.literal("")),
+  descriptionIt: z.string().trim().max(500).optional().or(z.literal("")),
   imageUrl: z.string().url().optional().or(z.literal("")),
   parentId: z.string().optional().nullable(),
   order: z.coerce.number().int().default(0),
@@ -87,6 +95,14 @@ export const brandSchema = z.object({
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug invalide"),
   logoUrl: z.string().url().optional().or(z.literal("")),
   description: z.string().trim().max(500).optional().or(z.literal("")),
+  // French is the source language (same convention as Category); these are
+  // the de/en/it overrides — all optional, empty falls back to French.
+  nameDe: z.string().trim().max(120).optional().or(z.literal("")),
+  nameEn: z.string().trim().max(120).optional().or(z.literal("")),
+  nameIt: z.string().trim().max(120).optional().or(z.literal("")),
+  descriptionDe: z.string().trim().max(500).optional().or(z.literal("")),
+  descriptionEn: z.string().trim().max(500).optional().or(z.literal("")),
+  descriptionIt: z.string().trim().max(500).optional().or(z.literal("")),
   website: z.string().url().optional().or(z.literal("")),
   isActive: z.boolean().default(true),
 });

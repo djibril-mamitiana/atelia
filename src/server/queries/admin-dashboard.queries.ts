@@ -1,6 +1,10 @@
 import "server-only";
 import { db } from "@/lib/db";
 import type { OrderStatus } from "@prisma/client";
+import { localizedProductName } from "@/lib/product-name";
+import { localizedCategoryName } from "@/lib/category-name";
+
+
 
 const PAID_STATUSES: OrderStatus[] = ["CONFIRMED", "PROCESSING", "SHIPPED", "OUT_FOR_DELIVERY", "DELIVERED"];
 
@@ -78,7 +82,7 @@ export async function getSalesByMonth(months = 6) {
   return Array.from(buckets.entries()).map(([month, total]) => ({ month, total }));
 }
 
-export async function getTopProducts(limit = 5) {
+export async function getTopProducts(limit = 5, locale = "de") {
   const items = await db.orderItem.groupBy({
     by: ["productId"],
     _sum: { quantity: true, total: true },
@@ -87,9 +91,9 @@ export async function getTopProducts(limit = 5) {
   });
   const products = await db.product.findMany({
     where: { id: { in: items.map((i) => i.productId) } },
-    select: { id: true, name: true, sku: true },
+    select: { id: true, name: true, nameFr: true, nameEn: true, nameIt: true, sku: true },
   });
-  const map = new Map(products.map((p) => [p.id, p]));
+  const map = new Map(products.map((p) => [p.id, { id: p.id, sku: p.sku, name: localizedProductName(p, locale) }]));
   return items.map((i) => ({
     product: map.get(i.productId),
     quantity: i._sum.quantity ?? 0,
@@ -97,14 +101,17 @@ export async function getTopProducts(limit = 5) {
   }));
 }
 
-export async function getTopCategories(limit = 5) {
+export async function getTopCategories(limit = 5, locale = "fr") {
   const items = await db.orderItem.findMany({
-    select: { total: true, product: { select: { categoryId: true, category: { select: { name: true } } } } },
+    select: {
+      total: true,
+      product: { select: { categoryId: true, category: { select: { name: true, nameDe: true, nameEn: true, nameIt: true } } } },
+    },
   });
   const byCategory = new Map<string, { name: string; revenue: number }>();
   for (const item of items) {
     const id = item.product.categoryId;
-    const name = item.product.category.name;
+    const name = localizedCategoryName(item.product.category, locale);
     const existing = byCategory.get(id) ?? { name, revenue: 0 };
     existing.revenue += Number(item.total);
     byCategory.set(id, existing);

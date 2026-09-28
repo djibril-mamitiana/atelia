@@ -14,8 +14,8 @@ export default async function AdminDashboardPage() {
   const [kpis, salesByDay, topProducts, topCategories] = await Promise.all([
     getDashboardKpis(),
     getSalesByDay(14),
-    getTopProducts(5),
-    getTopCategories(5),
+    getTopProducts(5, locale),
+    getTopCategories(5, locale),
   ]);
 
   const cards = [

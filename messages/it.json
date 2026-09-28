@@ -622,7 +622,12 @@
       "deleteConfirm": "Eliminare questa categoria?",
       "toastCreated": "Categoria creata.",
       "toastUpdated": "Categoria aggiornata.",
-      "toastDeleted": "Categoria eliminata."
+      "toastDeleted": "Categoria eliminata.",
+      "languagesHint": "Inserisci il testo in ogni lingua: una lingua lasciata vuota mostra il testo della lingua d'origine (francese).",
+      "lang_fr": "Francese (origine)",
+      "lang_de": "Tedesco",
+      "lang_en": "Inglese",
+      "lang_it": "Italiano"
     },
     "Brands": {
       "title": "Marche",
@@ -641,7 +646,12 @@
       "deleteConfirm": "Eliminare questa marca?",
       "toastCreated": "Marca creata.",
       "toastUpdated": "Marca aggiornata.",
-      "toastDeleted": "Marca eliminata."
+      "toastDeleted": "Marca eliminata.",
+      "languagesHint": "Inserisci il testo in ogni lingua: una lingua lasciata vuota mostra il testo della lingua d'origine (francese).",
+      "lang_fr": "Francese (origine)",
+      "lang_de": "Tedesco",
+      "lang_en": "Inglese",
+      "lang_it": "Italiano"
     },
     "Inventory": {
       "title": "Scorte ({count})",
@@ -763,7 +773,8 @@
       "statusInactive": "Inattivo",
       "deactivateAction": "Disattiva",
       "activateAction": "Attiva",
-      "deleteConfirm": "Eliminare questo codice sconto?"
+      "deleteConfirm": "Eliminare questo codice sconto?",
+      "colTarget": "Destinazione"
     },
     "Reviews": {
       "title": "Recensioni clienti",

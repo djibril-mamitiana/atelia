@@ -19,11 +19,17 @@ export default async function AdminCategoriesPage() {
             name: c.name,
             slug: c.slug,
             description: c.description ?? "",
+            nameDe: c.nameDe ?? "",
+            nameEn: c.nameEn ?? "",
+            nameIt: c.nameIt ?? "",
+            descriptionDe: c.descriptionDe ?? "",
+            descriptionEn: c.descriptionEn ?? "",
+            descriptionIt: c.descriptionIt ?? "",
             imageUrl: c.imageUrl ?? "",
             parentId: c.parentId,
             order: c.order,
             isActive: c.isActive,
-            parentName: c.parent?.name,
+            parent: c.parent,
             productCount: c._count.products,
           }))}
         />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import slugify from "slugify";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { Input, Label, Textarea, Select } from "@/components/ui/input";
@@ -9,14 +9,43 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { createCategoryAction, updateCategoryAction, deleteCategoryAction } from "@/server/actions/admin/category.actions";
+import { localizedCategoryName } from "@/lib/category-name";
 import type { CategoryInput } from "@/validations/product.schema";
 
-type Category = CategoryInput & { id: string; parentName?: string | null; productCount: number };
+type ParentRef = { id: string; name: string; nameDe: string | null; nameEn: string | null; nameIt: string | null };
+type Category = CategoryInput & { id: string; parent?: ParentRef | null; productCount: number };
 
-const EMPTY: CategoryInput = { name: "", slug: "", description: "", imageUrl: "", parentId: null, order: 0, isActive: true };
+const EMPTY: CategoryInput = {
+  name: "",
+  slug: "",
+  description: "",
+  nameDe: "",
+  nameEn: "",
+  nameIt: "",
+  descriptionDe: "",
+  descriptionEn: "",
+  descriptionIt: "",
+  imageUrl: "",
+  parentId: null,
+  order: 0,
+  isActive: true,
+};
+
+// French is the source language here (matches Category/Brand/Tutorial in the
+// schema) — the "fr" tab maps to name/description, the others to the
+// nameDe/nameEn/nameIt overrides.
+type Lang = "fr" | "de" | "en" | "it";
+const LANGS: Lang[] = ["fr", "de", "en", "it"];
+const TEXT_FIELDS = {
+  fr: { name: "name", description: "description" },
+  de: { name: "nameDe", description: "descriptionDe" },
+  en: { name: "nameEn", description: "descriptionEn" },
+  it: { name: "nameIt", description: "descriptionIt" },
+} as const;
 
 export function CategoryManager({ initialCategories }: { initialCategories: Category[] }) {
   const t = useTranslations("Admin.Categories");
+  const locale = useLocale();
   const { toast } = useToast();
   const [categories, setCategories] = useState(initialCategories);
   const [pending, startTransition] = useTransition();
@@ -24,6 +53,8 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
   const [adding, setAdding] = useState(false);
   const [form, setForm] = useState<CategoryInput>(EMPTY);
   const [slugEdited, setSlugEdited] = useState(false);
+  const [lang, setLang] = useState<Lang>("fr");
+  const fields = TEXT_FIELDS[lang];
 
   function set<K extends keyof CategoryInput>(key: K, value: CategoryInput[K]) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -34,6 +65,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
     setForm(cat);
     setSlugEdited(true);
     setAdding(false);
+    setLang("fr");
   }
 
   function handleAdd() {
@@ -72,13 +104,37 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
     return (
       <div className="flex flex-col gap-3 rounded-md border border-ink p-4">
         <div className="grid gap-3 sm:grid-cols-2">
+          <div className="sm:col-span-2">
+            <p className="mb-1 text-xs text-muted">{t("languagesHint")}</p>
+            <div role="tablist" className="flex gap-1.5">
+              {LANGS.map((l) => {
+                const f = TEXT_FIELDS[l];
+                const filled = Boolean(form[f.name]?.trim());
+                return (
+                  <button
+                    key={l}
+                    type="button"
+                    role="tab"
+                    aria-selected={lang === l}
+                    onClick={() => setLang(l)}
+                    className={`rounded-full border px-3 py-1 text-xs font-medium ${
+                      lang === l ? "border-ink bg-ink text-white" : "border-border-strong text-muted hover:text-ink"
+                    }`}
+                  >
+                    {t(`lang_${l}`)}
+                    <span className={`ml-1.5 inline-block h-1.5 w-1.5 rounded-full ${filled ? "bg-sage" : "bg-border-strong"}`} />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
           <div>
             <Label>{t("labelName")}</Label>
             <Input
-              value={form.name}
+              value={form[fields.name] ?? ""}
               onChange={(e) => {
-                set("name", e.target.value);
-                if (!slugEdited) set("slug", slugify(e.target.value, { lower: true, strict: true, locale: "fr" }));
+                set(fields.name, e.target.value);
+                if (!slugEdited && lang === "fr") set("slug", slugify(e.target.value, { lower: true, strict: true, locale: "fr" }));
               }}
             />
           </div>
@@ -97,7 +153,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
             <Select value={form.parentId ?? ""} onChange={(e) => set("parentId", e.target.value || null)}>
               <option value="">{t("noneRoot")}</option>
               {categories.filter((c) => c.id !== editingId).map((c) => (
-                <option key={c.id} value={c.id}>{c.name}</option>
+                <option key={c.id} value={c.id}>{localizedCategoryName(c, locale)}</option>
               ))}
             </Select>
           </div>
@@ -111,7 +167,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
           </div>
           <div className="sm:col-span-2">
             <Label>{t("labelDescription")}</Label>
-            <Textarea rows={2} value={form.description ?? ""} onChange={(e) => set("description", e.target.value)} />
+            <Textarea rows={2} value={form[fields.description] ?? ""} onChange={(e) => set(fields.description, e.target.value)} />
           </div>
         </div>
         <label className="flex items-center gap-2 text-sm text-ink-soft">
@@ -135,8 +191,9 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
           <div key={cat.id} className="flex items-center justify-between gap-3 rounded-md border border-border p-4">
             <div className="text-sm">
               <p className="font-medium text-ink">
-                {cat.parentName && <span className="text-muted">{cat.parentName} / </span>}
-                {cat.name} <Badge tone={cat.isActive ? "sage" : "neutral"} className="ml-2">{cat.isActive ? t("activeBadge") : t("inactiveBadge")}</Badge>
+                {cat.parent && <span className="text-muted">{localizedCategoryName(cat.parent, locale)} / </span>}
+                {localizedCategoryName(cat, locale)}{" "}
+                <Badge tone={cat.isActive ? "sage" : "neutral"} className="ml-2">{cat.isActive ? t("activeBadge") : t("inactiveBadge")}</Badge>
               </p>
               <p className="text-xs text-muted">{t("productsCount", { count: cat.productCount, slug: cat.slug })}</p>
             </div>
@@ -157,6 +214,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
           onClick={() => {
             setForm(EMPTY);
             setSlugEdited(false);
+            setLang("fr");
             setAdding(true);
           }}
         >

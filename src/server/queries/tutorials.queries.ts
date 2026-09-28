@@ -1,6 +1,7 @@
 import "server-only";
 import { getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
+import { localizedCategoryName } from "@/lib/category-name";
 
 // `title`/`description`/`content` are French (the source language for
 // tutorials) — see the schema comment on Tutorial. `locale` picks the
@@ -79,7 +80,7 @@ const TUTORIAL_PRODUCT_SELECT = {
   compareAtPrice: true,
   stock: true,
   images: { take: 1, orderBy: { position: "asc" as const } },
-  brand: { select: { name: true } },
+  brand: { select: { name: true, nameDe: true, nameEn: true, nameIt: true } },
 } as const;
 
 export async function getTutorialBySlug(slug: string) {
@@ -111,6 +112,7 @@ export async function getTutorialBySlug(slug: string) {
       product: {
         ...tp.product,
         name: productLocale === "de" ? tp.product.name : (tp.product[`name${productLocale[0].toUpperCase()}${productLocale.slice(1)}` as "nameFr" | "nameEn" | "nameIt"] ?? tp.product.name),
+        brand: { name: localizedCategoryName(tp.product.brand, locale) },
         price: Number(tp.product.price),
         compareAtPrice: tp.product.compareAtPrice != null ? Number(tp.product.compareAtPrice) : null,
       },

@@ -11,6 +11,7 @@ import { LinkButton } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
 import { stripSizeSuffix } from "@/lib/product-grouping";
 import { localizedProductName } from "@/lib/product-name";
+import { localizedCategoryName } from "@/lib/category-name";
 
 export const generateMetadata = () => adminTitle("navProducts");
 
@@ -60,7 +61,7 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
                     </p>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-muted">{p.category.name}</td>
+                <td className="px-4 py-3 text-muted">{localizedCategoryName(p.category, locale)}</td>
                 <td className="px-4 py-3 text-muted">{p.brand.name}</td>
                 <td className="px-4 py-3 text-ink">
                   {p.family.minPrice === p.family.maxPrice

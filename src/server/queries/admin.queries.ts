@@ -33,7 +33,7 @@ export async function getAdminProducts(opts: { q?: string; page?: number }) {
   const rows = pageIds.length
     ? await db.product.findMany({
         where: { id: { in: pageIds } },
-        include: { category: { select: { name: true } }, brand: { select: { name: true } }, images: { take: 1, orderBy: { position: "asc" } } },
+        include: { category: { select: { name: true, nameDe: true, nameEn: true, nameIt: true } }, brand: { select: { name: true } }, images: { take: 1, orderBy: { position: "asc" } } },
       })
     : [];
   const byId = new Map(rows.map((r) => [r.id, r]));
@@ -72,7 +72,10 @@ export async function getAdminProducts(opts: { q?: string; page?: number }) {
 export async function getAdminCategories() {
   return db.category.findMany({
     orderBy: [{ parentId: "asc" }, { order: "asc" }],
-    include: { parent: { select: { name: true } }, _count: { select: { products: true, children: true } } },
+    include: {
+      parent: { select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true } },
+      _count: { select: { products: true, children: true } },
+    },
   });
 }
 
@@ -201,7 +204,10 @@ export async function getAdminCustomerById(id: string) {
 export async function getAdminCoupons() {
   return db.coupon.findMany({
     orderBy: { createdAt: "desc" },
-    include: { category: { select: { name: true } }, product: { select: { name: true } } },
+    include: {
+      category: { select: { name: true, nameDe: true, nameEn: true, nameIt: true } },
+      product: { select: { name: true, nameFr: true, nameEn: true, nameIt: true } },
+    },
   });
 }
 
@@ -209,7 +215,7 @@ export async function getAdminReviews(opts: { status?: "PENDING" | "APPROVED" | 
   return db.review.findMany({
     where: opts.status ? { status: opts.status } : {},
     orderBy: { createdAt: "desc" },
-    include: { product: { select: { name: true, slug: true } }, user: { select: { firstName: true, lastName: true } } },
+    include: { product: { select: { name: true, nameFr: true, nameEn: true, nameIt: true, slug: true } }, user: { select: { firstName: true, lastName: true } } },
     take: 100,
   });
 }
@@ -217,10 +223,13 @@ export async function getAdminReviews(opts: { status?: "PENDING" | "APPROVED" | 
 export async function getAdminTutorials() {
   return db.tutorial.findMany({
     orderBy: { createdAt: "desc" },
-    include: { category: { select: { name: true } }, _count: { select: { products: true } } },
+    include: { category: { select: { name: true, nameDe: true, nameEn: true, nameIt: true } }, _count: { select: { products: true } } },
   });
 }
 
 export async function getAdminTutorialById(id: string) {
-  return db.tutorial.findUnique({ where: { id }, include: { products: { include: { product: { select: { id: true, name: true } } } } } });
+  return db.tutorial.findUnique({
+    where: { id },
+    include: { products: { include: { product: { select: { id: true, name: true, nameFr: true, nameEn: true, nameIt: true } } } } },
+  });
 }

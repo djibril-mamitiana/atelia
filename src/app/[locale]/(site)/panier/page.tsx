@@ -12,6 +12,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { LinkButton } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
 import { localizedProductName } from "@/lib/product-name";
+import { localizedCategoryName } from "@/lib/category-name";
 import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -89,7 +90,7 @@ export default async function CartPage({
               id={item.id}
               productSlug={item.product.slug}
               productName={localizedProductName(item.product, locale)}
-              brandName={item.product.brand.name}
+              brandName={localizedCategoryName(item.product.brand, locale)}
               imageUrl={item.product.images[0]?.url}
               variantName={item.variant?.name}
               unitPrice={Number(item.product.price) + Number(item.variant?.priceDelta ?? 0)}

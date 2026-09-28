@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import slugify from "slugify";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { Input, Label, Textarea } from "@/components/ui/input";
@@ -9,14 +9,40 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { createBrandAction, updateBrandAction, deleteBrandAction } from "@/server/actions/admin/brand.actions";
+import { localizedCategoryName } from "@/lib/category-name";
 import type { BrandInput } from "@/validations/product.schema";
 
 type Brand = BrandInput & { id: string; productCount: number };
 
-const EMPTY: BrandInput = { name: "", slug: "", logoUrl: "", description: "", website: "", isActive: true };
+const EMPTY: BrandInput = {
+  name: "",
+  slug: "",
+  logoUrl: "",
+  description: "",
+  nameDe: "",
+  nameEn: "",
+  nameIt: "",
+  descriptionDe: "",
+  descriptionEn: "",
+  descriptionIt: "",
+  website: "",
+  isActive: true,
+};
+
+// French is the source language here (matches Category/Tutorial) — the "fr"
+// tab maps to name/description, the others to the nameDe/nameEn/nameIt overrides.
+type Lang = "fr" | "de" | "en" | "it";
+const LANGS: Lang[] = ["fr", "de", "en", "it"];
+const TEXT_FIELDS = {
+  fr: { name: "name", description: "description" },
+  de: { name: "nameDe", description: "descriptionDe" },
+  en: { name: "nameEn", description: "descriptionEn" },
+  it: { name: "nameIt", description: "descriptionIt" },
+} as const;
 
 export function BrandManager({ initialBrands }: { initialBrands: Brand[] }) {
   const t = useTranslations("Admin.Brands");
+  const locale = useLocale();
   const { toast } = useToast();
   const [brands, setBrands] = useState(initialBrands);
   const [pending, startTransition] = useTransition();
@@ -24,6 +50,8 @@ export function BrandManager({ initialBrands }: { initialBrands: Brand[] }) {
   const [adding, setAdding] = useState(false);
   const [form, setForm] = useState<BrandInput>(EMPTY);
   const [slugEdited, setSlugEdited] = useState(false);
+  const [lang, setLang] = useState<Lang>("fr");
+  const fields = TEXT_FIELDS[lang];
 
   function set<K extends keyof BrandInput>(key: K, value: BrandInput[K]) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -65,13 +93,37 @@ export function BrandManager({ initialBrands }: { initialBrands: Brand[] }) {
     return (
       <div className="flex flex-col gap-3 rounded-md border border-ink p-4">
         <div className="grid gap-3 sm:grid-cols-2">
+          <div className="sm:col-span-2">
+            <p className="mb-1 text-xs text-muted">{t("languagesHint")}</p>
+            <div role="tablist" className="flex gap-1.5">
+              {LANGS.map((l) => {
+                const f = TEXT_FIELDS[l];
+                const filled = Boolean(form[f.name]?.trim());
+                return (
+                  <button
+                    key={l}
+                    type="button"
+                    role="tab"
+                    aria-selected={lang === l}
+                    onClick={() => setLang(l)}
+                    className={`rounded-full border px-3 py-1 text-xs font-medium ${
+                      lang === l ? "border-ink bg-ink text-white" : "border-border-strong text-muted hover:text-ink"
+                    }`}
+                  >
+                    {t(`lang_${l}`)}
+                    <span className={`ml-1.5 inline-block h-1.5 w-1.5 rounded-full ${filled ? "bg-sage" : "bg-border-strong"}`} />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
           <div>
             <Label>{t("labelName")}</Label>
             <Input
-              value={form.name}
+              value={form[fields.name] ?? ""}
               onChange={(e) => {
-                set("name", e.target.value);
-                if (!slugEdited) set("slug", slugify(e.target.value, { lower: true, strict: true, locale: "fr" }));
+                set(fields.name, e.target.value);
+                if (!slugEdited && lang === "fr") set("slug", slugify(e.target.value, { lower: true, strict: true, locale: "fr" }));
               }}
             />
           </div>
@@ -89,7 +141,7 @@ export function BrandManager({ initialBrands }: { initialBrands: Brand[] }) {
           </div>
           <div className="sm:col-span-2">
             <Label>{t("labelDescription")}</Label>
-            <Textarea rows={2} value={form.description ?? ""} onChange={(e) => set("description", e.target.value)} />
+            <Textarea rows={2} value={form[fields.description] ?? ""} onChange={(e) => set(fields.description, e.target.value)} />
           </div>
         </div>
         <label className="flex items-center gap-2 text-sm text-ink-soft">
@@ -113,7 +165,8 @@ export function BrandManager({ initialBrands }: { initialBrands: Brand[] }) {
           <div key={brand.id} className="flex items-center justify-between gap-3 rounded-md border border-border p-4">
             <div className="text-sm">
               <p className="font-medium text-ink">
-                {brand.name} <Badge tone={brand.isActive ? "sage" : "neutral"} className="ml-2">{brand.isActive ? t("activeBadge") : t("inactiveBadge")}</Badge>
+                {localizedCategoryName(brand, locale)}{" "}
+                <Badge tone={brand.isActive ? "sage" : "neutral"} className="ml-2">{brand.isActive ? t("activeBadge") : t("inactiveBadge")}</Badge>
               </p>
               <p className="text-xs text-muted">{t("productsCount", { count: brand.productCount })}</p>
             </div>
@@ -124,6 +177,7 @@ export function BrandManager({ initialBrands }: { initialBrands: Brand[] }) {
                   setForm(brand);
                   setSlugEdited(true);
                   setAdding(false);
+                  setLang("fr");
                 }}
                 className="text-muted hover:text-ink"
               >
@@ -144,6 +198,7 @@ export function BrandManager({ initialBrands }: { initialBrands: Brand[] }) {
           onClick={() => {
             setForm(EMPTY);
             setSlugEdited(false);
+            setLang("fr");
             setAdding(true);
           }}
         >

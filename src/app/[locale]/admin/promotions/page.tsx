@@ -6,17 +6,26 @@ import { CouponForm } from "@/components/admin/coupon-form";
 import { CouponRowActions } from "@/components/admin/coupon-row-actions";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, formatPrice } from "@/lib/format";
+import { localizedCategoryName } from "@/lib/category-name";
+import { localizedProductName } from "@/lib/product-name";
 
 export const generateMetadata = () => adminTitle("navPromotions");
 
 export default async function AdminPromotionsPage() {
   const t = await getTranslations("Admin.Promotions");
   const locale = await getLocale();
-  const [coupons, categories, products] = await Promise.all([
+  const [coupons, categoryRows, productRows] = await Promise.all([
     getAdminCoupons(),
-    db.category.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true } }),
-    db.product.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true }, take: 200 }),
+    db.category.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true } }),
+    db.product.findMany({
+      orderBy: { name: "asc" },
+      select: { id: true, name: true, nameFr: true, nameEn: true, nameIt: true },
+      take: 200,
+    }),
   ]);
+  // Dropdown option labels only (the value stays the id) — safe to localize.
+  const categories = categoryRows.map((c) => ({ id: c.id, name: localizedCategoryName(c, locale) }));
+  const products = productRows.map((p) => ({ id: p.id, name: localizedProductName(p, locale) }));
 
   return (
     <div>
@@ -34,6 +43,7 @@ export default async function AdminPromotionsPage() {
             <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted">
               <th className="px-4 py-3">{t("colCode")}</th>
               <th className="px-4 py-3">{t("colDiscount")}</th>
+              <th className="px-4 py-3">{t("colTarget")}</th>
               <th className="px-4 py-3">{t("colValidity")}</th>
               <th className="px-4 py-3">{t("colUsage")}</th>
               <th className="px-4 py-3">{t("colStatus")}</th>
@@ -45,6 +55,9 @@ export default async function AdminPromotionsPage() {
               <tr key={c.id}>
                 <td className="px-4 py-3 font-medium text-ink">{c.code}</td>
                 <td className="px-4 py-3 text-ink">{c.type === "PERCENT" ? `-${Number(c.value)}%` : `-${formatPrice(Number(c.value), locale)}`}</td>
+                <td className="px-4 py-3 text-muted">
+                  {c.category ? localizedCategoryName(c.category, locale) : c.product ? localizedProductName(c.product, locale) : "—"}
+                </td>
                 <td className="px-4 py-3 text-muted">{formatDate(c.startsAt, locale)} → {formatDate(c.endsAt, locale)}</td>
                 <td className="px-4 py-3 text-muted">{c.usageCount}{c.usageLimit ? ` / ${c.usageLimit}` : ""}</td>
                 <td className="px-4 py-3">

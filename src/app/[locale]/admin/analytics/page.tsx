@@ -12,8 +12,8 @@ export default async function AdminAnalyticsPage() {
   const [salesByDay, salesByMonth, topProducts, topCategories] = await Promise.all([
     getSalesByDay(30),
     getSalesByMonth(6),
-    getTopProducts(10),
-    getTopCategories(10),
+    getTopProducts(10, locale),
+    getTopCategories(10, locale),
   ]);
 
   return (

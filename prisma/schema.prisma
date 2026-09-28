@@ -197,6 +197,14 @@ model Brand {
   slug        String   @unique
   logoUrl     String?
   description String?
+  // `name`/`description` are French (the source language, same as Category
+  // and Tutorial). Optional per-locale overrides — null falls back to French.
+  nameDe        String?
+  nameEn        String?
+  nameIt        String?
+  descriptionDe String?
+  descriptionEn String?
+  descriptionIt String?
   website     String?
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())

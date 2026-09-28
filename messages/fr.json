@@ -622,7 +622,12 @@
       "deleteConfirm": "Supprimer cette catégorie ?",
       "toastCreated": "Catégorie créée.",
       "toastUpdated": "Catégorie mise à jour.",
-      "toastDeleted": "Catégorie supprimée."
+      "toastDeleted": "Catégorie supprimée.",
+      "languagesHint": "Saisissez le texte dans chaque langue : une langue laissée vide affiche le texte de la langue source (français).",
+      "lang_fr": "Français (source)",
+      "lang_de": "Allemand",
+      "lang_en": "Anglais",
+      "lang_it": "Italien"
     },
     "Brands": {
       "title": "Marques",
@@ -641,7 +646,12 @@
       "deleteConfirm": "Supprimer cette marque ?",
       "toastCreated": "Marque créée.",
       "toastUpdated": "Marque mise à jour.",
-      "toastDeleted": "Marque supprimée."
+      "toastDeleted": "Marque supprimée.",
+      "languagesHint": "Saisissez le texte dans chaque langue : une langue laissée vide affiche le texte de la langue source (français).",
+      "lang_fr": "Français (source)",
+      "lang_de": "Allemand",
+      "lang_en": "Anglais",
+      "lang_it": "Italien"
     },
     "Inventory": {
       "title": "Stocks ({count})",
@@ -763,7 +773,8 @@
       "statusInactive": "Inactif",
       "deactivateAction": "Désactiver",
       "activateAction": "Activer",
-      "deleteConfirm": "Supprimer ce code promo ?"
+      "deleteConfirm": "Supprimer ce code promo ?",
+      "colTarget": "Cible"
     },
     "Reviews": {
       "title": "Avis clients",

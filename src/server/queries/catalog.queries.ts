@@ -3,6 +3,7 @@ import { getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
 import { PAGE_SIZE_CATALOG } from "@/lib/constants";
 import { stripSizeSuffix, stripSpecLines } from "@/lib/product-grouping";
+import { localizedCategoryName } from "@/lib/category-name";
 import type { Prisma } from "@prisma/client";
 
 export type SortOption = "pertinence" | "prix-asc" | "prix-desc" | "nouveaute" | "note";
@@ -128,7 +129,7 @@ const PRODUCT_CARD_SELECT = {
   isBestSeller: true,
   avgRating: true,
   reviewCount: true,
-  brand: { select: { name: true, slug: true } },
+  brand: { select: { name: true, nameDe: true, nameEn: true, nameIt: true, slug: true } },
   images: { select: { url: true, alt: true }, orderBy: { position: "asc" as const }, take: 1 },
 } as const;
 
@@ -157,6 +158,7 @@ function serializeProductCard(p: RawProductCard, locale: Locale, group?: GroupSt
   return {
     ...rest,
     name: title,
+    brand: { name: localizedCategoryName(p.brand, locale), slug: p.brand.slug },
     price: Number(p.price),
     compareAtPrice: grouped ? null : p.compareAtPrice != null ? Number(p.compareAtPrice) : null,
     stock: grouped ? (group.inStock ? Math.max(p.stock, 1) : 0) : p.stock,
@@ -271,7 +273,7 @@ export async function getCatalogPage(filters: CatalogFilters) {
     }),
     db.brand.findMany({
       where: { isActive: true },
-      select: { id: true, name: true, slug: true },
+      select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true, slug: true },
       orderBy: { name: "asc" },
     }),
     db.product.aggregate({ where: { isActive: true }, _min: { price: true }, _max: { price: true } }),
@@ -297,7 +299,7 @@ export async function getCatalogPage(filters: CatalogFilters) {
     categories: categories
       .map((c) => ({ ...localizeCategory(c, locale), _count: { products: categoryCounts.get(c.id) ?? 0 } }))
       .filter((c) => c._count.products > 0),
-    brands,
+    brands: brands.map((b) => ({ id: b.id, name: localizedCategoryName(b, locale), slug: b.slug })),
     priceBounds: {
       min: priceBounds._min.price ? Number(priceBounds._min.price) : 0,
       max: priceBounds._max.price ? Number(priceBounds._max.price) : 1000,
@@ -427,6 +429,7 @@ export async function getProductBySlug(slug: string) {
     description:
       sizes.length > 0 ? stripSpecLines(localizedField(source, "description", locale)) : localizedField(source, "description", locale),
     shortDescription: source.shortDescription != null ? localizedField(source, "shortDescription", locale) : source.shortDescription,
+    brand: { ...product.brand, name: localizedCategoryName(product.brand, locale) },
     category: {
       ...product.category,
       name: localizedFrBasedField(product.category, "name", locale),
@@ -482,12 +485,14 @@ export async function getPopularCategories(limit = 8) {
 }
 
 export async function getActiveBrands(limit = 12) {
-  return db.brand.findMany({
+  const locale = (await getLocale()) as Locale;
+  const brands = await db.brand.findMany({
     where: { isActive: true },
-    select: { id: true, name: true, slug: true, logoUrl: true },
+    select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true, slug: true, logoUrl: true },
     orderBy: { name: "asc" },
     take: limit,
   });
+  return brands.map((b) => ({ id: b.id, name: localizedCategoryName(b, locale), slug: b.slug, logoUrl: b.logoUrl }));
 }
 
 export type ProductCard = Awaited<ReturnType<typeof getCatalogPage>>["products"][number];
@@ -560,8 +565,16 @@ export async function searchAll(q: string) {
       take: 4,
     }),
     db.brand.findMany({
-      where: { isActive: true, name: { contains: query, mode: "insensitive" } },
-      select: { id: true, name: true, slug: true },
+      where: {
+        isActive: true,
+        OR: [
+          { name: { contains: query, mode: "insensitive" } },
+          { nameDe: { contains: query, mode: "insensitive" } },
+          { nameEn: { contains: query, mode: "insensitive" } },
+          { nameIt: { contains: query, mode: "insensitive" } },
+        ],
+      },
+      select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true, slug: true },
       take: 4,
     }),
     db.tutorial.findMany({
@@ -582,7 +595,7 @@ export async function searchAll(q: string) {
   return {
     products: await toGroupedCards(dedupeByGroup(products).slice(0, 6), locale),
     categories: categories.map((c) => localizeCategory(c, locale)),
-    brands,
+    brands: brands.map((b) => ({ id: b.id, name: localizedCategoryName(b, locale), slug: b.slug })),
     tutorials: tutorials.map((t) => ({ ...t, title: localizedFrBasedField(t, "title", locale) })),
   };
 }
