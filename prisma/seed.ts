@@ -35,8 +35,16 @@ const VIDEOS = [
   "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4",
   "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/coffee.mp4",
 ];
+// Real supplier photos (Hualing site), keyed by SKU — see scripts docs.
+// Falls back to picsum for every SKU not in this mapping.
+const PRODUCT_PHOTOS: Record<string, string[]> = JSON.parse(
+  readFileSync(path.join(__dirname, "data/product-photos.json"), "utf-8")
+);
 function pickImages(n: number) {
   return faker.helpers.arrayElements(IMAGES, n);
+}
+function imagesForSku(sku: string): string[] {
+  return PRODUCT_PHOTOS[sku] ?? pickImages(2);
 }
 function pickVideo() {
   return faker.helpers.arrayElement(VIDEOS);
@@ -282,14 +290,16 @@ async function seedProducts(
         lowStockThreshold: 5,
         categoryId: category.id,
         brandId: brand.id,
-        isActive: true,
+        // Only sell products we have a real supplier photo for — everything
+        // else stays inactive (hidden from the storefront) until photographed.
+        isActive: Boolean(PRODUCT_PHOTOS[item.sku]),
         isFeatured,
         isNew,
         isBestSeller,
         ...sizeGroups.get(item.sku),
         seoTitle: `${item.name} | ${brand.name}`,
         seoDescription: description.slice(0, 150),
-        images: { create: pickImages(2).map((url, i) => ({ url, alt: item.name, position: i })) },
+        images: { create: imagesForSku(item.sku).map((url, i) => ({ url, alt: item.name, position: i })) },
       },
     });
 
