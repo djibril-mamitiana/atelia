@@ -1,4 +1,4 @@
-export const SITE_NAME = "Atelia";
+export const SITE_NAME = "ConcreteToolsPro";
 export const SITE_TAGLINE = "Outils diamant professionnels";
 export const SITE_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 

@@ -9,7 +9,7 @@ import "server-only";
  */
 export async function sendEmail(params: { to: string; subject: string; text: string }) {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM || "Atelia <no-reply@atelia.example>";
+  const from = process.env.EMAIL_FROM || "ConcreteToolsPro <no-reply@concretetoolspro.com>";
 
   if (!apiKey) {
     console.log(`\n[email:dev] To: ${params.to}\nSubject: ${params.subject}\n\n${params.text}\n`);
