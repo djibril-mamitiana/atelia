@@ -67,6 +67,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
             sizes: rows.map((r) => ({
               id: r.id,
               sku: r.sku,
+              publicSku: r.publicSku ?? "",
               sizeLabel: r.sizeLabel ?? "",
               sizeSpecs: r.sizeSpecs ?? "",
               price: Number(r.price),

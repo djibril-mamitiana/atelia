@@ -4,6 +4,7 @@ import slugify from "slugify";
 import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { nameWithSize, parseSizeOrder, stripSizeSuffix } from "@/lib/product-grouping";
+import { generatePublicSku } from "@/server/services/public-sku";
 
 /**
  * Admin view of a product = one entry with N sizes. Storage stays one Product
@@ -135,6 +136,16 @@ export async function saveProduct(shared: SharedInput, sizes: SizeInput[], famil
   const groupKey = multi ? (existing.find((e) => e.groupKey)?.groupKey ?? `manual:${randomUUID()}`) : null;
   const baseName = (n: string | null) => (n ? stripSizeSuffix(n) : n);
 
+  // New rows (no existing id) get a fresh customer-facing reference —
+  // reserved up front so a multi-size batch doesn't generate duplicates.
+  const newCount = sizes.filter((s) => !s.id || !existingById.has(s.id)).length;
+  let nextPublicSkuSeq: number | null = null;
+  if (newCount > 0) {
+    const base = await generatePublicSku();
+    nextPublicSkuSeq = Number(base.slice(4));
+  }
+  const takeNextPublicSku = () => `CTP-${String(nextPublicSkuSeq!++).padStart(5, "0")}`;
+
   try {
     const firstId = await db.$transaction(async (tx) => {
       if (removed.length > 0) await tx.product.deleteMany({ where: { id: { in: removed.map((r) => r.id) } } });
@@ -207,7 +218,7 @@ export async function saveProduct(shared: SharedInput, sizes: SizeInput[], famil
           }
         } else {
           const created = await tx.product.create({
-            data: data as Prisma.ProductUncheckedCreateInput,
+            data: { ...data, publicSku: takeNextPublicSku() } as Prisma.ProductUncheckedCreateInput,
             select: { id: true },
           });
           id = created.id;

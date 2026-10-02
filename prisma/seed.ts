@@ -13,6 +13,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { computeProductGroups } from "../src/lib/product-grouping";
+import { computePublicSkus } from "../src/lib/public-sku";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -222,6 +223,7 @@ async function seedProducts(
   // selector — see src/lib/product-grouping.ts (same logic as
   // scripts/backfill-product-groups.ts for an already-seeded database).
   const sizeGroups = computeProductGroups(catalog);
+  const publicSkus = computePublicSkus(catalog);
 
   const used = new Set<string>();
   const products: { id: string; name: string; slug: string; categorySlug: string }[] = [];
@@ -272,6 +274,7 @@ async function seedProducts(
         name: item.name,
         slug,
         sku: item.sku,
+        publicSku: publicSkus.get(item.sku),
         description,
         shortDescription,
         nameFr: item.names?.fr ?? (translation && suffix !== null ? `${translation.fr}${suffix}` : undefined),

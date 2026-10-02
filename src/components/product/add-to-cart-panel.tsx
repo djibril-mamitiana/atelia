@@ -15,7 +15,7 @@ type Variant = { id: string; name: string; sku: string; priceDelta: number; stoc
 /** One size of a size group — each is its own product row (own SKU, price, stock). */
 export type SizeOption = {
   id: string;
-  sku: string;
+  publicSku: string;
   sizeLabel: string;
   specs: string | null;
   price: number;
@@ -120,7 +120,7 @@ export function AddToCartPanel({
                         </label>
                       </td>
                       <td className="px-3 py-2 text-xs text-muted">{sz.specs ?? "—"}</td>
-                      <td className="whitespace-nowrap px-3 py-2 text-xs text-muted">{sz.sku}</td>
+                      <td className="whitespace-nowrap px-3 py-2 text-xs text-muted">{sz.publicSku}</td>
                       <td className="whitespace-nowrap px-3 py-2 text-right font-medium text-ink">{formatPrice(sz.price, locale)}</td>
                       <td className={`whitespace-nowrap px-3 py-2 text-xs ${sz.stock > 0 ? "text-sage" : "text-danger"}`}>
                         {sz.stock > 0 ? t("inStock") : t("outOfStockBadge")}
@@ -163,7 +163,7 @@ export function AddToCartPanel({
       </div>
       {selectedSize && (
         <p className="-mt-2 text-xs text-muted">
-          {t("selectedSize", { size: selectedSize.sizeLabel })} · {t("ref", { sku: selectedSize.sku })}
+          {t("selectedSize", { size: selectedSize.sizeLabel })} · {t("ref", { sku: selectedSize.publicSku })}
         </p>
       )}
 

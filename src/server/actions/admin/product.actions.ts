@@ -52,6 +52,8 @@ function parseVariants(text: string) {
 const sizeSchema = z.object({
   id: z.string().optional(),
   sku: z.string(),
+  // Display only (generated server-side) — never written back on save.
+  publicSku: z.string().optional(),
   sizeLabel: z.string(),
   sizeSpecs: z.string(),
   price: z.coerce.number(),

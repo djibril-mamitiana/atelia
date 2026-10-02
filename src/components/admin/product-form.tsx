@@ -244,6 +244,7 @@ export function ProductForm({
                   </td>
                   <td className="py-1 pr-2">
                     <Input aria-label={t("colSku")} required value={s.sku} onChange={(e) => setSize(i, { sku: e.target.value })} className="w-40" />
+                    {s.publicSku && <p className="mt-0.5 text-[11px] text-muted">({s.publicSku})</p>}
                   </td>
                   <td className="py-1 pr-2">
                     <Input aria-label={t("colSpecs")} value={s.sizeSpecs} onChange={(e) => setSize(i, { sizeSpecs: e.target.value })} placeholder={multi ? "37x2,0x7 mm · 22,2 mm" : ""} className="w-56" />

@@ -57,7 +57,7 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
                   <div>
                     <p className="font-medium text-ink">{p.family.sizes > 1 ? stripSizeSuffix(localizedProductName(p, locale), p.sizeLabel) : localizedProductName(p, locale)}</p>
                     <p className="text-xs text-muted">
-                      {p.family.sizes > 1 ? t("familySizes", { count: p.family.sizes }) : p.sku}
+                      {p.family.sizes > 1 ? t("familySizes", { count: p.family.sizes }) : `${p.sku} (${p.publicSku})`}
                     </p>
                   </div>
                 </td>

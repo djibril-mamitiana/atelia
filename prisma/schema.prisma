@@ -220,6 +220,10 @@ model Product {
   name             String
   slug             String   @unique
   sku              String   @unique
+  // Customer-facing reference, distinct from `sku` (the supplier's own
+  // reference — the supplier asked us not to expose it, since it lets
+  // customers compare our price to theirs). Admin screens show both.
+  publicSku        String?  @unique
   description      String
   shortDescription String?
   // `name`/`description`/`shortDescription` above are the source-catalogue

@@ -69,7 +69,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
     name: product.name,
     image: product.images.map((i) => i.url),
     description: product.shortDescription || product.description,
-    sku: product.sku,
+    sku: product.publicSku,
     brand: { "@type": "Brand", name: product.brand.name },
     offers:
       product.sizes.length > 1
@@ -123,7 +123,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="eyebrow text-muted">{product.brand.name}</p>
           <h1 className="mt-3 font-display text-[2rem] leading-[1.08] tracking-[-0.01em] text-balance text-ink lg:text-[2.6rem]">{product.name}</h1>
-          {product.sizes.length === 0 && <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">{t("ref", { sku: product.sku })}</p>}
+          {product.sizes.length === 0 && <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">{t("ref", { sku: product.publicSku ?? product.sku })}</p>}
 
           <div className="mt-3 flex items-center gap-2">
             {product.reviewCount > 0 && (
@@ -151,7 +151,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
               variants={product.variants.map((v) => ({ id: v.id, name: v.name, sku: v.sku, priceDelta: Number(v.priceDelta), stock: v.stock }))}
               sizes={product.sizes.map((sz) => ({
                 id: sz.id,
-                sku: sz.sku,
+                publicSku: sz.publicSku,
                 sizeLabel: sz.sizeLabel,
                 specs: sz.specs,
                 price: sz.price,

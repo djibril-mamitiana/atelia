@@ -95,7 +95,7 @@ export async function getAdminInventory(opts: { q?: string; page?: number }) {
   const [products, total] = await Promise.all([
     db.product.findMany({
       where,
-      select: { id: true, name: true, sku: true, stock: true, lowStockThreshold: true, isActive: true },
+      select: { id: true, name: true, sku: true, publicSku: true, stock: true, lowStockThreshold: true, isActive: true },
       orderBy: { stock: "asc" },
       skip: (page - 1) * PAGE_SIZE_ADMIN_TABLE,
       take: PAGE_SIZE_ADMIN_TABLE,

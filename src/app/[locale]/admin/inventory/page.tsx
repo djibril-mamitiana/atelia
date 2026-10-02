@@ -32,7 +32,7 @@ export default async function AdminInventoryPage({ searchParams }: { searchParam
           </thead>
           <tbody className="divide-y divide-border">
             {products.map((p) => (
-              <InventoryRow key={p.id} productId={p.id} name={p.name} sku={p.sku} stock={p.stock} lowStockThreshold={p.lowStockThreshold} isActive={p.isActive} />
+              <InventoryRow key={p.id} productId={p.id} name={p.name} sku={`${p.sku} (${p.publicSku})`} stock={p.stock} lowStockThreshold={p.lowStockThreshold} isActive={p.isActive} />
             ))}
           </tbody>
         </table>
