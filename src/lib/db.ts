@@ -9,7 +9,7 @@ function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL;
   if (!connectionString) {
     throw new Error(
-      "DATABASE_URL is not set. Copy .env.example to .env and fill in your Neon connection string."
+      "DATABASE_URL is not set. Copy .env.example to .env and fill in your PostgreSQL connection string (see README)."
     );
   }
 

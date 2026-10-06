@@ -1,9 +1,12 @@
-# Atelia — plateforme e-commerce premium
+# ConcreteToolsPro — boutique B2B d'outils diamant
 
-Site e-commerce complet (catalogue, panier, checkout, paiement Stripe, comptes
-clients, suivi de commande) avec back-office d'administration, construit avec
-Next.js (App Router), TypeScript, Tailwind CSS, Prisma ORM et PostgreSQL
-hébergé sur **Neon**.
+Site e-commerce réservé aux professionnels (catalogue, panier, commande par
+virement bancaire, comptes clients, suivi de commande) avec back-office
+d'administration, construit avec Next.js (App Router), TypeScript, Tailwind
+CSS, Prisma ORM et PostgreSQL. L'application **et** la base de données sont
+hébergées sur **[Railway](https://railway.com)**.
+
+> Le dépôt s'appelle encore `atelia` (nom d'origine du projet).
 
 > Identité visuelle et contenu originaux — l'expérience s'inspire des grands
 > sites de bricolage/maison, sans reprendre la marque, le logo ou les textes
@@ -16,11 +19,13 @@ hébergé sur **Neon**.
 | Framework     | Next.js 16 (App Router, Server Components, Server Actions)   |
 | Langage       | TypeScript                                                    |
 | Style         | Tailwind CSS v4                                               |
-| Base de données | PostgreSQL sur [Neon](https://neon.tech)                    |
+| Hébergement   | Railway (service Next.js + service PostgreSQL)                |
+| Base de données | PostgreSQL sur Railway                                      |
 | ORM           | Prisma 7 (client sans moteur Rust, adapter `pg`)              |
 | Auth          | Session JWT maison (cookies httpOnly, `jose`, `bcryptjs`)      |
-| Paiement      | Stripe Checkout + webhooks                                    |
+| Paiement      | Virement bancaire manuel (Stripe présent mais désactivé)      |
 | Validation    | Zod, appliquée côté serveur sur toutes les mutations           |
+| Langues       | FR / DE / EN / IT (`next-intl`, fichiers `messages/*.json`)    |
 
 ## 1. Installation
 
@@ -29,38 +34,56 @@ npm install
 cp .env.example .env
 ```
 
-## 2. Base de données — Neon PostgreSQL
+## 2. Base de données — PostgreSQL sur Railway
 
-1. Créez un compte sur [neon.tech](https://neon.tech) puis un nouveau projet.
-2. Dans **Dashboard → Connection string**, récupérez :
-   - la chaîne **pooled** (avec `-pooler` dans le host) → `DATABASE_URL`
-   - la chaîne **directe** (sans pooler) → `DATABASE_URL_UNPOOLED`
-   - si Neon ne vous en donne qu'une, utilisez-la pour les deux variables.
-3. Renseignez-les dans `.env`.
-4. Générez un secret de session et renseignez `NEXTAUTH_SECRET` :
+La base de production est le service **PostgreSQL** du projet Railway.
+
+### Travailler en local
+
+Deux options :
+
+- **Une base locale ou de test (recommandé pour développer)** : n'importe
+  quel PostgreSQL. Par exemple, un second service PostgreSQL dans un
+  environnement Railway de test, ou un Postgres installé sur la machine.
+- **La base de production** : à éviter pour développer. Toute modification
+  faite en local (commandes de test, `migrate dev`, seed) touche les vraies
+  données.
+
+Puis :
+
+1. Récupérez l'URL de connexion : dans Railway, service **PostgreSQL →
+   Variables → `DATABASE_PUBLIC_URL`**. C'est l'URL accessible depuis
+   l'extérieur ; `DATABASE_URL` (host `*.railway.internal`) ne fonctionne
+   qu'à l'intérieur de Railway.
+2. Mettez-la dans `.env` sous `DATABASE_URL`. `DATABASE_URL_UNPOOLED` est
+   inutile sur Railway (pas de pooler) : laissez-la vide ou supprimez-la.
+3. Générez un secret de session et renseignez `NEXTAUTH_SECRET` :
    ```bash
    node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
    ```
-5. Appliquez le schéma et les migrations :
+4. Appliquez les migrations :
    ```bash
-   npx prisma migrate dev --name init
+   npx prisma migrate deploy
    ```
-6. Peuplez la base avec des données réalistes (9 sous-catégories d'outils
-   diamant, 1 marque "Diamond Pro", ~1417 produits, 10 tutoriels,
-   20 utilisateurs, 50 commandes, 100 avis) :
+5. **Base de test uniquement** : peuplez-la avec des données de démo
+   (9 sous-catégories d'outils diamant, 1 marque "Diamond Pro", ~1417
+   produits, 10 tutoriels, 20 utilisateurs, 50 commandes, 100 avis) :
    ```bash
    npx prisma db seed
    ```
 
-### Pourquoi deux URLs Neon ?
+### Connexion Prisma
 
-Prisma 7 ne lit plus la chaîne de connexion depuis `schema.prisma` : la CLI
-(`migrate`, `db seed`, `studio`) utilise `prisma.config.ts`
-(→ `DATABASE_URL_UNPOOLED`, une connexion directe — nécessaire pour les DDL
-et la base fantôme des migrations), tandis que l'application au runtime se
-connecte via un driver adapter (`@prisma/adapter-pg`, voir
-[src/lib/db.ts](src/lib/db.ts)) sur `DATABASE_URL` (la connexion **pooled**,
-adaptée aux fonctions serverless de Vercel).
+Prisma 7 ne lit plus la chaîne de connexion depuis `schema.prisma` :
+
+- la CLI (`migrate`, `db seed`, `studio`) passe par `prisma.config.ts`, qui
+  utilise `DATABASE_URL_UNPOOLED` si elle est définie, sinon `DATABASE_URL` ;
+- l'application se connecte via un driver adapter (`@prisma/adapter-pg`, voir
+  [src/lib/db.ts](src/lib/db.ts)) sur `DATABASE_URL`.
+
+> ⚠️ Si `DATABASE_URL_UNPOOLED` est encore définie quelque part (`.env`,
+> variables Railway) avec une ancienne URL Neon, les migrations iraient sur
+> Neon au lieu de Railway. Supprimez-la.
 
 ### Comptes de test créés par le seed
 
@@ -145,33 +168,49 @@ npm run build         # build de production
 npm test              # tests (voir /tests)
 ```
 
-## 6. Déploiement (Vercel)
+## 6. Déploiement (Railway)
 
-1. Poussez le repo sur GitHub et importez-le sur [Vercel](https://vercel.com/new).
-2. Renseignez les mêmes variables d'environnement que `.env` dans les
-   *Environment Variables* du projet Vercel (utilisez vos clés Stripe live
-   et votre URL Neon de production — vous pouvez créer une branche Neon
-   dédiée à la prod).
-3. Après le premier déploiement, exécutez la migration + le seed (une seule
-   fois pour la prod, sans le seed si vous ne voulez pas de données de démo) :
-   ```bash
-   DATABASE_URL_UNPOOLED="..." npx prisma migrate deploy
-   ```
-4. Configurez le webhook Stripe de production vers
-   `https://votre-domaine.vercel.app/api/webhooks/stripe`.
+Le projet Railway contient deux services : l'application Next.js, reliée à
+ce dépôt GitHub, et PostgreSQL.
 
-Aucune donnée persistante ne dépend du système de fichiers local — tout vit
-dans Neon (données) et Stripe (paiements), ce qui est compatible avec les
-fonctions serverless de Vercel.
+- **Chaque push sur `main` redéploie l'application.** Railway lance
+  `npm run build`, puis `npm start`.
+- **Les migrations s'appliquent toutes seules.** [railway.json](railway.json)
+  définit une commande *pre-deploy*, `npm run db:deploy`
+  (`prisma migrate deploy`). Elle s'exécute avant chaque mise en ligne. Si
+  une migration échoue, le déploiement s'arrête et l'ancienne version reste
+  en ligne. Il suffit donc de commiter le dossier `prisma/migrations/...`
+  avec le code qui en a besoin.
+- **Variables du service applicatif** (onglet *Variables*) :
+  - `DATABASE_URL` = `${{Postgres.DATABASE_URL}}` (référence au service
+    PostgreSQL, réseau privé) ;
+  - pas de `DATABASE_URL_UNPOOLED` (voir l'avertissement plus haut) ;
+  - `NEXTAUTH_SECRET`, `NEXT_PUBLIC_APP_URL` (le domaine public du site) ;
+  - `BANK_TRANSFER_*`, et si besoin `RESEND_API_KEY`, `EMAIL_FROM`,
+    `SUPPORT_EMAIL`.
+- **Vérifier un déploiement** : service applicatif → *Deployments* →
+  logs. L'étape *Pre-deploy* doit afficher les migrations appliquées, ou
+  « No pending migrations to apply ».
+- **Ne lancez pas le seed sur la production.** Il crée des comptes de démo
+  aux mots de passe et codes connus.
 
-## 7. Créer un compte administrateur supplémentaire
+Aucune donnée persistante ne dépend du système de fichiers du serveur : tout
+vit dans PostgreSQL. Les photos produit sont livrées avec le code
+(`public/products/`).
 
-Le seed crée déjà un compte `ADMIN`. Pour en promouvoir un autre :
+## 7. Gérer les comptes
 
-```bash
-npx prisma studio
-# Table User → éditer la ligne → role = ADMIN
-```
+- **Clients professionnels** : depuis le back-office, **/admin/customers →
+  Nouveau client** (voir « Vente réservée aux professionnels » plus haut).
+- **Administrateur ou staff supplémentaire** : il n'y a pas encore d'écran
+  pour ça. Promouvez un compte existant avec Prisma Studio, pointé sur la
+  base voulue :
+  ```bash
+  npx prisma studio
+  ```
+  Puis, dans la table `User`, éditez la ligne et passez `role` à `ADMIN` ou
+  `STAFF`. Le personnel se connecte avec un mot de passe, pas avec un code
+  client.
 
 ## Structure du projet
 
@@ -187,6 +226,8 @@ src/
   lib/                 db (Prisma), auth, stripe, utils, constantes
   validations/         schémas Zod partagés client/serveur
   proxy.ts             protection des routes /admin et /compte
+messages/              traductions FR / DE / EN / IT
+railway.json           commande pre-deploy Railway (migrations)
 ```
 
 ## Limitations connues / pistes d'amélioration
@@ -195,8 +236,11 @@ src/
   mot de passe) : le mécanisme (tokens, expiration) est implémenté mais
   aucun fournisseur d'envoi n'est branché — ajoutez une clé API (Resend,
   Postmark…) dans `src/lib/email.ts` pour une livraison réelle.
-- **Rate limiting** : limiteur en mémoire par instance (suffisant pour un
-  déploiement à faible échelle) — passez à Upstash/Redis si vous scalez à
-  plusieurs instances.
-- **Images du seed** : placeholders `picsum.photos`, à remplacer par vos
-  propres photos produit avant mise en production.
+- **Rate limiting** (dont les tentatives de connexion) : limiteur en mémoire
+  par instance, suffisant tant que le service Railway tourne sur une seule
+  réplique. Passez à Redis (Railway en propose un) si vous en ajoutez.
+- **Photos produit** : 113 produits ont une vraie photo fournisseur
+  (`public/products/`, correspondance SKU → photo dans
+  `prisma/data/product-photos.json`). Les produits sans photo sont
+  désactivés, donc masqués de la boutique, en attendant d'être
+  photographiés.
