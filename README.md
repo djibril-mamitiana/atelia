@@ -173,11 +173,14 @@ npm test              # tests (voir /tests)
 Le projet Railway contient deux services : l'application Next.js, reliée à
 ce dépôt GitHub, et PostgreSQL.
 
-- **Chaque push sur `main` redéploie l'application.** Railway lance
+- **Chaque push sur `main` redéploie l'application** (service → *Settings
+  → Source* : « Auto deploys when pushed to GitHub »). Railway lance
   `npm run build`, puis `npm start`.
-- **Les migrations s'appliquent toutes seules.** [railway.json](railway.json)
-  définit une commande *pre-deploy*, `npm run db:deploy`
-  (`prisma migrate deploy`). Elle s'exécute avant chaque mise en ligne. Si
+- **Les migrations s'appliquent toutes seules.** Le service a une commande
+  *pre-deploy*, `npm run db:deploy` (`prisma migrate deploy`), réglée dans
+  *Settings → Deploy* de Railway. Elle n'est pas dans un fichier du dépôt :
+  la config par fichier (`railway.json`) est dépréciée chez Railway. Elle
+  s'exécute avant chaque mise en ligne. Si
   une migration échoue, le déploiement s'arrête et l'ancienne version reste
   en ligne. Il suffit donc de commiter le dossier `prisma/migrations/...`
   avec le code qui en a besoin.
@@ -226,9 +229,7 @@ src/
   lib/                 db (Prisma), auth, stripe, utils, constantes
   validations/         schémas Zod partagés client/serveur
   proxy.ts             protection des routes /admin et /compte
-messages/              traductions FR / DE / EN / IT
-railway.json           commande pre-deploy Railway (migrations)
-```
+messages/              traductions FR / DE / EN / IT```
 
 ## Limitations connues / pistes d'amélioration
 
