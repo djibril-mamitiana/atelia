@@ -154,6 +154,8 @@ export async function getAdminCustomers(opts: { q?: string; page?: number }) {
             { email: { contains: opts.q, mode: "insensitive" } },
             { lastName: { contains: opts.q, mode: "insensitive" } },
             { firstName: { contains: opts.q, mode: "insensitive" } },
+            { company: { contains: opts.q, mode: "insensitive" } },
+            { customerCode: { contains: opts.q, mode: "insensitive" } },
           ],
         }
       : {}),
@@ -166,6 +168,8 @@ export async function getAdminCustomers(opts: { q?: string; page?: number }) {
         id: true,
         firstName: true,
         lastName: true,
+        company: true,
+        customerCode: true,
         email: true,
         createdAt: true,
         isActive: true,
@@ -193,7 +197,7 @@ export async function getAdminCustomers(opts: { q?: string; page?: number }) {
 
 export async function getAdminCustomerById(id: string) {
   return db.user.findUnique({
-    where: { id },
+    where: { id, role: "CUSTOMER" },
     include: {
       addresses: true,
       orders: { orderBy: { createdAt: "desc" }, include: { items: true } },

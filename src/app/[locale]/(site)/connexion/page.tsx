@@ -28,7 +28,7 @@ export default async function LoginPage({
 
         <p className="mt-6 text-center text-sm text-muted">
           {t("login.noAccount")}{" "}
-          <Link href={`/inscription${next ? `?next=${encodeURIComponent(next)}` : ""}`} className="font-medium text-accent-dark hover:underline">
+          <Link href="/inscription" className="font-medium text-accent-dark hover:underline">
             {t("login.createAccount")}
           </Link>
         </p>

@@ -18,7 +18,8 @@ export function CatalogFilters({
 }: {
   categories: Category[];
   brands: Brand[];
-  priceBounds: { min: number; max: number };
+  /** null for signed-out visitors: no price filter or price sort (B2B shop). */
+  priceBounds: { min: number; max: number } | null;
 }) {
   const t = useTranslations("Catalog");
   const locale = useLocale();
@@ -80,8 +81,8 @@ export function CatalogFilters({
         <p className="eyebrow mb-3 text-muted">{t("sortBy")}</p>
         <Select value={currentSort} onChange={(e) => updateParams({ tri: e.target.value })}>
           <option value="pertinence">{t("sortRelevance")}</option>
-          <option value="prix-asc">{t("sortPriceAsc")}</option>
-          <option value="prix-desc">{t("sortPriceDesc")}</option>
+          {priceBounds && <option value="prix-asc">{t("sortPriceAsc")}</option>}
+          {priceBounds && <option value="prix-desc">{t("sortPriceDesc")}</option>}
           <option value="nouveaute">{t("sortNewest")}</option>
           <option value="note">{t("sortTopRated")}</option>
         </Select>
@@ -128,6 +129,7 @@ export function CatalogFilters({
         </div>
       </div>
 
+      {priceBounds && (
       <div>
         <p className="eyebrow mb-3 text-muted">{t("price")}</p>
         <p className="mb-2 text-xs text-muted">
@@ -153,6 +155,7 @@ export function CatalogFilters({
           />
         </div>
       </div>
+      )}
 
       <div className="flex flex-col gap-2.5">
         <label className="flex items-center gap-2 text-sm text-ink-soft">

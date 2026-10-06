@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ShoppingCart } from "lucide-react";
 import { getCurrentCart } from "@/server/services/cart";
-import { getSession } from "@/lib/auth/session";
+import { requireActiveUser } from "@/lib/auth/access";
 import { computeOrderPricing, PricingError } from "@/server/services/pricing";
 import { getCartRecommendations } from "@/server/queries/catalog.queries";
 import { CartItemRow } from "@/components/cart/cart-item-row";
@@ -26,7 +26,9 @@ export default async function CartPage({
   searchParams: Promise<{ promo?: string }>;
 }) {
   const { promo } = await searchParams;
-  const [cart, session, t, locale] = await Promise.all([getCurrentCart(), getSession(), getTranslations("Cart"), getLocale()]);
+  // B2B shop: the cart (and its prices) is for signed-in pro accounts only.
+  const session = await requireActiveUser("/panier");
+  const [cart, t, locale] = await Promise.all([getCurrentCart(), getTranslations("Cart"), getLocale()]);
 
   if (!cart || cart.items.length === 0) {
     return (
@@ -56,12 +58,12 @@ export default async function CartPage({
     pricing = await computeOrderPricing(lines, {
       shippingMethod: "STANDARD",
       couponCode: promo || null,
-      userId: session?.userId,
+      userId: session.userId,
     });
   } catch (err) {
     if (err instanceof PricingError && err.code === "INVALID_COUPON") {
       couponError = err.message;
-      pricing = await computeOrderPricing(lines, { shippingMethod: "STANDARD", userId: session?.userId });
+      pricing = await computeOrderPricing(lines, { shippingMethod: "STANDARD", userId: session.userId });
     } else {
       throw err;
     }

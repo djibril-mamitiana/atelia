@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { User, Package, MapPin, Heart, Bell } from "lucide-react";
-import { requireUser } from "@/lib/auth/session";
+import { requireActiveUser } from "@/lib/auth/access";
 
 export default async function AccountLayout({ children }: { children: ReactNode }) {
-  const session = await requireUser("/compte");
+  const session = await requireActiveUser("/compte");
   const t = await getTranslations("Account");
 
   const NAV = [

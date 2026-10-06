@@ -18,7 +18,12 @@ export default async function ProfilePage() {
     <div className="flex flex-col gap-6">
       <h1 className="font-display text-2xl text-ink">{t("profileTitle")}</h1>
       <ProfileForm initial={{ firstName: user.firstName, lastName: user.lastName, phone: user.phone ?? "" }} />
-      <ChangePasswordForm />
+      {/* Customers sign in with a code managed by staff, not a password. */}
+      {user.role === "CUSTOMER" ? (
+        <p className="rounded-md border border-border bg-surface p-4 text-sm text-muted">{t("customerCodeManagedByStaff")}</p>
+      ) : (
+        <ChangePasswordForm />
+      )}
     </div>
   );
 }

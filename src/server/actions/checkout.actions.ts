@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { getSession } from "@/lib/auth/session";
+import { getActiveSession } from "@/lib/auth/access";
 import { getCurrentCart } from "@/server/services/cart";
 import { computeOrderPricing, PricingError, type CartLineInput } from "@/server/services/pricing";
 import { applyInventoryMovement } from "@/server/services/inventory";
@@ -21,7 +21,7 @@ export type CheckoutResult = { success: true; orderId: string } | { success: fal
  * mark it as received from the admin order page once the funds land.
  */
 export async function createOrderAction(input: CreateOrderInput): Promise<CheckoutResult> {
-  const session = await getSession();
+  const session = await getActiveSession();
   if (!session) return { success: false, error: "Connectez-vous pour finaliser votre commande." };
 
   const parsed = createOrderSchema.safeParse(input);

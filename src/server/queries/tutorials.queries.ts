@@ -1,6 +1,7 @@
 import "server-only";
 import { getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
+import { canSeePrices } from "@/lib/auth/access";
 import { localizedCategoryName } from "@/lib/category-name";
 
 // `title`/`description`/`content` are French (the source language for
@@ -84,7 +85,7 @@ const TUTORIAL_PRODUCT_SELECT = {
 } as const;
 
 export async function getTutorialBySlug(slug: string) {
-  const locale = (await getLocale()) as Locale;
+  const [locale, showPrices] = await Promise.all([getLocale() as Promise<Locale>, canSeePrices()]);
   const tutorial = await db.tutorial.findUnique({
     where: { slug },
     include: {
@@ -113,8 +114,9 @@ export async function getTutorialBySlug(slug: string) {
         ...tp.product,
         name: productLocale === "de" ? tp.product.name : (tp.product[`name${productLocale[0].toUpperCase()}${productLocale.slice(1)}` as "nameFr" | "nameEn" | "nameIt"] ?? tp.product.name),
         brand: { name: localizedCategoryName(tp.product.brand, locale) },
-        price: Number(tp.product.price),
-        compareAtPrice: tp.product.compareAtPrice != null ? Number(tp.product.compareAtPrice) : null,
+        // B2B shop: no prices for signed-out visitors (see lib/auth/access).
+        price: showPrices ? Number(tp.product.price) : null,
+        compareAtPrice: showPrices && tp.product.compareAtPrice != null ? Number(tp.product.compareAtPrice) : null,
       },
     })),
   };

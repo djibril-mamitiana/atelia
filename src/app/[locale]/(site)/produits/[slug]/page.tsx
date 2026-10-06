@@ -54,9 +54,11 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
       : Promise.resolve(false),
   ]);
 
-  const price = Number(product.price);
-  const compareAtPrice = product.compareAtPrice ? Number(product.compareAtPrice) : null;
-  const discount = discountPercent(price, compareAtPrice);
+  // null when signed out — prices are reserved to pro accounts.
+  const price = product.price;
+  const compareAtPrice = product.compareAtPrice;
+  const discount = price != null ? discountPercent(price, compareAtPrice) : null;
+  const sizePrices = product.sizes.map((sz) => sz.price).filter((p): p is number => p != null);
 
   const media = [
     ...product.images.map((img) => ({ type: "image" as const, url: img.url, alt: img.alt })),
@@ -71,24 +73,29 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
     description: product.shortDescription || product.description,
     sku: product.publicSku,
     brand: { "@type": "Brand", name: product.brand.name },
-    offers:
-      product.sizes.length > 1
-        ? {
-            "@type": "AggregateOffer",
-            priceCurrency: "EUR",
-            lowPrice: Math.min(...product.sizes.map((sz) => sz.price)).toFixed(2),
-            highPrice: Math.max(...product.sizes.map((sz) => sz.price)).toFixed(2),
-            offerCount: product.sizes.length,
-            availability: product.sizes.some((sz) => sz.stock > 0) ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-            url: `${SITE_URL}/produits/${product.slug}`,
-          }
-        : {
-            "@type": "Offer",
-            priceCurrency: "EUR",
-            price: price.toFixed(2),
-            availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-            url: `${SITE_URL}/produits/${product.slug}`,
-          },
+    // No offers without prices: search engines crawl signed out.
+    ...(price == null
+      ? {}
+      : {
+          offers:
+            product.sizes.length > 1 && sizePrices.length > 0
+              ? {
+                  "@type": "AggregateOffer",
+                  priceCurrency: "EUR",
+                  lowPrice: Math.min(...sizePrices).toFixed(2),
+                  highPrice: Math.max(...sizePrices).toFixed(2),
+                  offerCount: product.sizes.length,
+                  availability: product.sizes.some((sz) => sz.stock > 0) ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+                  url: `${SITE_URL}/produits/${product.slug}`,
+                }
+              : {
+                  "@type": "Offer",
+                  priceCurrency: "EUR",
+                  price: price.toFixed(2),
+                  availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+                  url: `${SITE_URL}/produits/${product.slug}`,
+                },
+        }),
     ...(product.reviewCount > 0
       ? { aggregateRating: { "@type": "AggregateRating", ratingValue: Number(product.avgRating), reviewCount: product.reviewCount } }
       : {}),
@@ -148,7 +155,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
               productId={product.id}
               basePrice={price}
               baseStock={product.stock}
-              variants={product.variants.map((v) => ({ id: v.id, name: v.name, sku: v.sku, priceDelta: Number(v.priceDelta), stock: v.stock }))}
+              variants={product.variants.map((v) => ({ id: v.id, name: v.name, sku: v.sku, priceDelta: v.priceDelta, stock: v.stock }))}
               sizes={product.sizes.map((sz) => ({
                 id: sz.id,
                 publicSku: sz.publicSku,
@@ -159,6 +166,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
                 stock: sz.stock,
               }))}
               initialSizeId={product.id}
+              signInPath={`/produits/${product.slug}`}
             />
           </div>
         </div>

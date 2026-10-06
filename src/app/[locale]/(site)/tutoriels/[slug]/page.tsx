@@ -69,7 +69,7 @@ export default async function TutorialPage({ params }: { params: Promise<Params>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs uppercase tracking-wide text-muted">{tp.product.brand.name}</p>
                     <p className="truncate text-sm font-medium text-ink">{tp.product.name}</p>
-                    <p className="text-sm text-ink">{formatPrice(Number(tp.product.price), locale)}</p>
+                    {tp.product.price != null && <p className="text-sm text-ink">{formatPrice(tp.product.price, locale)}</p>}
                   </div>
                   <LinkButton href={`/produits/${tp.product.slug}`} size="sm" variant="outline">
                     {t("view")}

@@ -94,6 +94,12 @@ model User {
   firstName     String
   lastName      String
   phone         String?
+  // B2B only: customer accounts are created by staff in /admin/customers
+  // (no public sign-up) and sign in with email + this code instead of a
+  // password. Stored upper-case and shown to staff so they can hand it out
+  // again. STAFF/ADMIN accounts have none and keep using passwordHash.
+  customerCode  String?  @unique
+  company       String?
   role          Role     @default(CUSTOMER)
   emailVerified DateTime?
   isActive      Boolean  @default(true)

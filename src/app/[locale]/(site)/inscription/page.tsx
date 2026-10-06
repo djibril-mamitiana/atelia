@@ -1,21 +1,15 @@
-import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { RegisterForm } from "@/components/auth/register-form";
-import { sanitizeNextPath } from "@/lib/safe-next";
+import { LinkButton } from "@/components/ui/button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Auth.register");
   return { title: t("title") };
 }
 
-export default async function RegisterPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ next?: string }>;
-}) {
-  const { next: rawNext } = await searchParams;
-  const next = sanitizeNextPath(rawNext);
+// Public sign-up is closed (professionals only): accounts are opened by our
+// team from /admin/customers. This page only explains how to get one.
+export default async function RegisterPage() {
   const t = await getTranslations("Auth");
 
   return (
@@ -24,14 +18,10 @@ export default async function RegisterPage({
         <h1 className="font-display text-3xl text-ink">{t("register.title")}</h1>
         <p className="mt-2 text-sm text-muted">{t("register.subtitle")}</p>
 
-        <RegisterForm nextPath={next} />
-
-        <p className="mt-6 text-center text-sm text-muted">
-          {t("register.alreadyAccount")}{" "}
-          <Link href={`/connexion${next ? `?next=${encodeURIComponent(next)}` : ""}`} className="font-medium text-accent-dark hover:underline">
-            {t("register.signIn")}
-          </Link>
-        </p>
+        <div className="mt-8 flex flex-col gap-3">
+          <LinkButton href="/contact" className="w-full">{t("register.contactCta")}</LinkButton>
+          <LinkButton href="/connexion" variant="ghost" className="w-full">{t("register.signIn")}</LinkButton>
+        </div>
       </div>
     </div>
   );

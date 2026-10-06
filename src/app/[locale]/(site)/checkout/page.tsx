@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { localizedProductName } from "@/lib/product-name";
-import { requireUser } from "@/lib/auth/session";
+import { requireActiveUser } from "@/lib/auth/access";
 import { getCurrentCart } from "@/server/services/cart";
 import { db } from "@/lib/db";
 import { CheckoutClient } from "@/components/checkout/checkout-client";
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function CheckoutPage() {
-  const session = await requireUser("/checkout");
+  const session = await requireActiveUser("/checkout");
   const cart = await getCurrentCart();
   const t = await getTranslations("Checkout");
   const locale = await getLocale();

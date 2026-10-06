@@ -14,13 +14,13 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     startTransition(async () => {
-      const result = await loginAction({ email, password });
+      const result = await loginAction({ email, code });
       if (!result.success) {
         setError(result.error);
         return;
@@ -41,19 +41,21 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
 
       <div>
         <div className="flex items-center justify-between">
-          <Label htmlFor="password">{t("passwordLabel")}</Label>
-          <Link href="/mot-de-passe-oublie" className="text-xs text-muted hover:text-accent-dark">
-            {t("login.forgotPassword")}
+          <Label htmlFor="code">{t("customerCodeLabel")}</Label>
+          <Link href="/contact" className="text-xs text-muted hover:text-accent-dark">
+            {t("login.forgotCode")}
           </Link>
         </div>
+        {/* type=password: the code is a credential, keep it off screen and out of autofill history. */}
         <Input
-          id="password"
+          id="code"
           type="password"
           autoComplete="current-password"
           required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
         />
+        <p className="mt-1.5 text-xs text-muted">{t("login.codeHint")}</p>
       </div>
 
       <Button type="submit" disabled={pending} className="mt-2 w-full">

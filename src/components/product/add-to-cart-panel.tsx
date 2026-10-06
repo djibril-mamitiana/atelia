@@ -3,14 +3,17 @@
 import { useMemo, useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { ShoppingCart, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Lock, ShoppingCart, Zap } from "lucide-react";
+import { Button, LinkButton } from "@/components/ui/button";
 import { QuantityStepper } from "@/components/ui/quantity-stepper";
 import { useToast } from "@/components/ui/toast";
 import { addToCartAction } from "@/server/actions/cart.actions";
 import { formatPrice } from "@/lib/format";
 
-type Variant = { id: string; name: string; sku: string; priceDelta: number; stock: number };
+// Money fields are null for signed-out visitors (B2B shop — prices are
+// stripped server-side, see lib/auth/access): the panel then still shows
+// sizes and stock, but asks to sign in instead of offering the cart.
+type Variant = { id: string; name: string; sku: string; priceDelta: number | null; stock: number };
 
 /** One size of a size group — each is its own product row (own SKU, price, stock). */
 export type SizeOption = {
@@ -18,7 +21,7 @@ export type SizeOption = {
   publicSku: string;
   sizeLabel: string;
   specs: string | null;
-  price: number;
+  price: number | null;
   compareAtPrice: number | null;
   stock: number;
 };
@@ -30,13 +33,16 @@ export function AddToCartPanel({
   variants,
   sizes = [],
   initialSizeId,
+  signInPath,
 }: {
   productId: string;
-  basePrice: number;
+  basePrice: number | null;
   baseStock: number;
   variants: Variant[];
   sizes?: SizeOption[];
   initialSizeId?: string;
+  /** Where the sign-in link brings the visitor back to. */
+  signInPath: string;
 }) {
   const t = useTranslations("Product");
   const locale = useLocale();
@@ -55,7 +61,7 @@ export function AddToCartPanel({
   const selectedVariant = hasSizes ? null : (variants.find((v) => v.id === variantId) ?? null);
   const targetProductId = selectedSize ? selectedSize.id : productId;
   const stock = selectedSize ? selectedSize.stock : selectedVariant ? selectedVariant.stock : baseStock;
-  const price = selectedSize ? selectedSize.price : basePrice + (selectedVariant?.priceDelta ?? 0);
+  const price = selectedSize ? selectedSize.price : basePrice != null ? basePrice + (selectedVariant?.priceDelta ?? 0) : null;
   const compareAtPrice = selectedSize?.compareAtPrice ?? null;
   const outOfStock = stock <= 0;
 
@@ -88,7 +94,7 @@ export function AddToCartPanel({
                   <th className="px-3 py-2 font-medium">{t("colSize")}</th>
                   <th className="px-3 py-2 font-medium">{t("colSpecs")}</th>
                   <th className="px-3 py-2 font-medium">{t("colRef")}</th>
-                  <th className="px-3 py-2 text-right font-medium">{t("colPrice")}</th>
+                  {price != null && <th className="px-3 py-2 text-right font-medium">{t("colPrice")}</th>}
                   <th className="px-3 py-2 font-medium">{t("colStock")}</th>
                 </tr>
               </thead>
@@ -121,7 +127,9 @@ export function AddToCartPanel({
                       </td>
                       <td className="px-3 py-2 text-xs text-muted">{sz.specs ?? "—"}</td>
                       <td className="whitespace-nowrap px-3 py-2 text-xs text-muted">{sz.publicSku}</td>
-                      <td className="whitespace-nowrap px-3 py-2 text-right font-medium text-ink">{formatPrice(sz.price, locale)}</td>
+                      {sz.price != null && (
+                        <td className="whitespace-nowrap px-3 py-2 text-right font-medium text-ink">{formatPrice(sz.price, locale)}</td>
+                      )}
                       <td className={`whitespace-nowrap px-3 py-2 text-xs ${sz.stock > 0 ? "text-sage" : "text-danger"}`}>
                         {sz.stock > 0 ? t("inStock") : t("outOfStockBadge")}
                       </td>
@@ -154,35 +162,59 @@ export function AddToCartPanel({
         </div>
       )}
 
-      <div className="flex items-baseline gap-2">
-        <span className="font-display text-4xl leading-none text-ink">{formatPrice(price, locale)}</span>
-        {compareAtPrice && (
-          <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
-        )}
-        <span className="text-xs text-muted">{t("vatIncluded")}</span>
-      </div>
-      {selectedSize && (
-        <p className="-mt-2 text-xs text-muted">
-          {t("selectedSize", { size: selectedSize.sizeLabel })} · {t("ref", { sku: selectedSize.publicSku })}
-        </p>
+      {price == null ? (
+        <>
+          {selectedSize && (
+            <p className="text-xs text-muted">
+              {t("selectedSize", { size: selectedSize.sizeLabel })} · {t("ref", { sku: selectedSize.publicSku })}
+            </p>
+          )}
+          <div className="flex flex-col gap-3 rounded-2xl bg-paper p-4">
+            <p className="flex items-center gap-2 text-sm font-medium text-ink">
+              <Lock size={15} /> {t("pricesForPros")}
+            </p>
+            <p className="text-sm text-muted">{t("pricesForProsHint")}</p>
+            <LinkButton href={`/connexion?next=${encodeURIComponent(signInPath)}`} size="lg">
+              {t("signInToSeePrice")}
+            </LinkButton>
+            <LinkButton href="/inscription" variant="ghost" size="sm">
+              {t("requestAccount")}
+            </LinkButton>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex items-baseline gap-2">
+            <span className="font-display text-4xl leading-none text-ink">{formatPrice(price, locale)}</span>
+            {compareAtPrice && (
+              <span className="text-sm text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
+            )}
+            <span className="text-xs text-muted">{t("vatIncluded")}</span>
+          </div>
+          {selectedSize && (
+            <p className="-mt-2 text-xs text-muted">
+              {t("selectedSize", { size: selectedSize.sizeLabel })} · {t("ref", { sku: selectedSize.publicSku })}
+            </p>
+          )}
+
+          <p className={outOfStock ? "text-sm font-medium text-danger" : "text-sm text-sage"}>
+            {outOfStock ? t("outOfStockStatus") : stock <= 5 ? t("lowStock", { count: stock }) : t("inStock")}
+          </p>
+
+          <div className="flex items-center gap-3">
+            <QuantityStepper value={quantity} onChange={setQuantity} max={maxQuantity} disabled={outOfStock} />
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            <Button onClick={() => add(false)} disabled={outOfStock || pending} size="lg">
+              <ShoppingCart size={17} /> {t("addToCart")}
+            </Button>
+            <Button onClick={() => add(true)} disabled={outOfStock || pending} variant="outline" size="lg">
+              <Zap size={17} /> {t("buyNow")}
+            </Button>
+          </div>
+        </>
       )}
-
-      <p className={outOfStock ? "text-sm font-medium text-danger" : "text-sm text-sage"}>
-        {outOfStock ? t("outOfStockStatus") : stock <= 5 ? t("lowStock", { count: stock }) : t("inStock")}
-      </p>
-
-      <div className="flex items-center gap-3">
-        <QuantityStepper value={quantity} onChange={setQuantity} max={maxQuantity} disabled={outOfStock} />
-      </div>
-
-      <div className="flex flex-col gap-2.5">
-        <Button onClick={() => add(false)} disabled={outOfStock || pending} size="lg">
-          <ShoppingCart size={17} /> {t("addToCart")}
-        </Button>
-        <Button onClick={() => add(true)} disabled={outOfStock || pending} variant="outline" size="lg">
-          <Zap size={17} /> {t("buyNow")}
-        </Button>
-      </div>
 
       <div className="mt-1 flex flex-col gap-1.5 border-t border-border pt-4 text-xs text-muted">
         <p>{t("shippingHome")}</p>

@@ -123,7 +123,9 @@ export function SearchBar({
                         <p className="truncate text-sm text-ink">{p.name}</p>
                         <p className="text-xs text-muted">{p.brand.name}</p>
                       </div>
-                      <span className="shrink-0 text-sm font-medium text-ink">{formatPrice(Number(p.price), locale)}</span>
+                      {p.price != null && (
+                        <span className="shrink-0 text-sm font-medium text-ink">{formatPrice(p.price, locale)}</span>
+                      )}
                     </Link>
                   ))}
                 </SuggestionSection>

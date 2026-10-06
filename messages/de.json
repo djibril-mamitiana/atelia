@@ -173,20 +173,23 @@
     "passwordHint": "Mindestens 8 Zeichen, mit einem Großbuchstaben und einer Zahl.",
     "login": {
       "title": "Anmelden",
-      "subtitle": "Greifen Sie auf Ihr Konto zu, um Ihre Bestellungen und Favoriten zu verfolgen.",
+      "subtitle": "Bereich nur für Gewerbekunden: Melden Sie sich mit Ihrer E-Mail und dem Kundencode an, den Sie von unserem Team erhalten haben.",
       "forgotPassword": "Passwort vergessen?",
       "submit": "Anmelden",
       "submitPending": "Anmeldung…",
-      "noAccount": "Noch kein Konto?",
-      "createAccount": "Konto erstellen"
+      "noAccount": "Noch kein Kunde?",
+      "createAccount": "Kontoeröffnung anfragen",
+      "forgotCode": "Code vergessen?",
+      "codeHint": "Bei der Eröffnung Ihres Gewerbekontos mitgeteilt."
     },
     "register": {
-      "title": "Konto erstellen",
-      "subtitle": "Verfolgen Sie Ihre Bestellungen, verwalten Sie Ihre Favoriten und sparen Sie beim nächsten Einkauf Zeit.",
+      "title": "Gewerbekonto eröffnen",
+      "subtitle": "Wir verkaufen ausschließlich an Gewerbekunden. Konten werden von unserem Team eröffnet: Kontaktieren Sie uns mit dem Namen Ihres Unternehmens, wir senden Ihnen Ihren Kundencode.",
       "submit": "Mein Konto erstellen",
       "submitPending": "Wird erstellt…",
       "alreadyAccount": "Bereits ein Konto?",
-      "signIn": "Anmelden"
+      "signIn": "Anmelden",
+      "contactCta": "Kontakt aufnehmen"
     },
     "forgotPassword": {
       "title": "Passwort vergessen",
@@ -200,7 +203,8 @@
       "subtitle": "Wählen Sie ein neues Passwort für Ihr Konto.",
       "submit": "Dieses Passwort festlegen",
       "submitPending": "Wird gespeichert…"
-    }
+    },
+    "customerCodeLabel": "Kundencode"
   },
   "Product": {
     "addToFavorites": "Zu Favoriten hinzufügen",
@@ -253,7 +257,11 @@
     "colRef": "Art.-Nr.",
     "colPrice": "Preis",
     "colStock": "Bestand",
-    "selectedSize": "Gewählte Größe: {size}"
+    "selectedSize": "Gewählte Größe: {size}",
+    "pricesForPros": "Preise nur für Gewerbekunden",
+    "pricesForProsHint": "Melden Sie sich mit Ihrem Gewerbekonto an, um Preise zu sehen und zu bestellen.",
+    "signInToSeePrice": "Anmelden, um den Preis zu sehen",
+    "requestAccount": "Noch kein Konto? Eröffnung anfragen"
   },
   "Catalog": {
     "allProducts": "Alle Produkte",
@@ -378,7 +386,8 @@
     "newPassword": "Neues Passwort",
     "changePassword": "Passwort ändern",
     "profileUpdated": "Profil aktualisiert.",
-    "passwordUpdated": "Passwort aktualisiert."
+    "passwordUpdated": "Passwort aktualisiert.",
+    "customerCodeManagedByStaff": "Sie melden sich mit Ihrem Kundencode an. Um ihn zu ändern, kontaktieren Sie unser Team."
   },
   "Order": {
     "statusPending": "Zahlung ausstehend",
@@ -725,7 +734,7 @@
     },
     "Customers": {
       "title": "Kunden ({count})",
-      "searchPlaceholder": "Name oder E-Mail…",
+      "searchPlaceholder": "Name, Firma, E-Mail oder Code…",
       "colName": "Name",
       "colEmail": "E-Mail",
       "colOrders": "Bestellungen",
@@ -733,7 +742,11 @@
       "colLastOrder": "Letzte Bestellung",
       "colStatus": "Status",
       "active": "Aktiv",
-      "inactive": "Inaktiv"
+      "inactive": "Inaktiv",
+      "newCustomer": "Neuer Kunde",
+      "colCompany": "Firma",
+      "colCode": "Kundencode",
+      "noCode": "Kein Code"
     },
     "CustomerDetail": {
       "since": "Kunde seit dem {date}",
@@ -741,7 +754,8 @@
       "kpiTotalSpent": "Gesamtausgaben",
       "kpiAddresses": "Adressen",
       "ordersSection": "Bestellungen",
-      "addressesSection": "Adressen"
+      "addressesSection": "Adressen",
+      "accountSection": "Konto und Zugang"
     },
     "Promotions": {
       "title": "Aktionen",
@@ -845,6 +859,28 @@
       "checkEmail": "E-Mail-Versand (RESEND_API_KEY)",
       "checkStripe": "Stripe-Zahlung — optional, deaktiviert (STRIPE_SECRET_KEY)",
       "configHint": "Konfigurieren Sie die fehlenden Variablen in Ihrer .env-Datei (siehe README)."
+    },
+    "CustomerForm": {
+      "newTitle": "Neuer Gewerbekunde",
+      "newSubtitle": "Der Kunde meldet sich mit dieser E-Mail und diesem Kundencode an. Nur hier angelegte Konten sehen Preise und können bestellen.",
+      "labelFirstName": "Vorname",
+      "labelLastName": "Nachname",
+      "labelCompany": "Firma",
+      "labelEmail": "E-Mail",
+      "labelPhone": "Telefon",
+      "labelCode": "Kundencode",
+      "generate": "Generieren",
+      "copy": "Code kopieren",
+      "codeCopied": "Code kopiert.",
+      "codeHint": "Zusammen mit der E-Mail an den Kunden weitergeben. Buchstaben, Ziffern und Bindestriche, mindestens 6 Zeichen.",
+      "activeCheckbox": "Konto aktiv (kann sich anmelden, Preise sehen und bestellen)",
+      "create": "Kunde anlegen",
+      "save": "Speichern",
+      "delete": "Löschen",
+      "deleteConfirm": "Diesen Kunden endgültig löschen? Dies kann nicht rückgängig gemacht werden.",
+      "toastCreated": "Kunde angelegt.",
+      "toastUpdated": "Kunde aktualisiert.",
+      "toastDeleted": "Kunde gelöscht."
     }
   },
   "Meta": {

@@ -2,15 +2,23 @@
 
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
+import { getActiveSession } from "@/lib/auth/access";
 import { getOrCreateCart } from "@/server/services/cart";
 
 export type CartActionResult = { success: true } | { success: false; error: string };
+
+// B2B shop: only signed-in, active pro accounts may use the cart.
+const SIGN_IN_REQUIRED: CartActionResult = {
+  success: false,
+  error: "Connectez-vous avec votre compte professionnel pour commander.",
+};
 
 export async function addToCartAction(
   productId: string,
   quantity: number,
   variantId?: string | null
 ): Promise<CartActionResult> {
+  if (!(await getActiveSession())) return SIGN_IN_REQUIRED;
   if (quantity < 1 || quantity > 99) {
     return { success: false, error: "Quantité invalide." };
   }
@@ -56,12 +64,16 @@ export async function updateCartItemQuantityAction(
   cartItemId: string,
   quantity: number
 ): Promise<CartActionResult> {
+  const session = await getActiveSession();
+  if (!session) return SIGN_IN_REQUIRED;
   if (quantity < 1 || quantity > 99) {
     return { success: false, error: "Quantité invalide." };
   }
 
-  const item = await db.cartItem.findUnique({
-    where: { id: cartItemId },
+  // Scoped to the caller's own cart — a bare id lookup would let anyone
+  // edit another customer's cart line.
+  const item = await db.cartItem.findFirst({
+    where: { id: cartItemId, cart: { userId: session.userId } },
     include: { product: true, variant: true },
   });
   if (!item) return { success: false, error: "Cet article n'est plus dans le panier." };
@@ -76,7 +88,9 @@ export async function updateCartItemQuantityAction(
 }
 
 export async function removeCartItemAction(cartItemId: string): Promise<CartActionResult> {
-  await db.cartItem.deleteMany({ where: { id: cartItemId } });
+  const session = await getActiveSession();
+  if (!session) return SIGN_IN_REQUIRED;
+  await db.cartItem.deleteMany({ where: { id: cartItemId, cart: { userId: session.userId } } });
   revalidatePath("/panier");
   revalidatePath("/", "layout"); // header cart count
   return { success: true };

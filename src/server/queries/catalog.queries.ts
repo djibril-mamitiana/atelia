@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { PAGE_SIZE_CATALOG } from "@/lib/constants";
 import { stripSizeSuffix, stripSpecLines } from "@/lib/product-grouping";
 import { localizedCategoryName } from "@/lib/category-name";
+import { canSeePrices } from "@/lib/auth/access";
 import type { Prisma } from "@prisma/client";
 
 export type SortOption = "pertinence" | "prix-asc" | "prix-desc" | "nouveaute" | "note";
@@ -147,7 +148,11 @@ type GroupStats = { size: number; fromPrice: number; inStock: boolean; localized
 // When `group` describes a real size group (size > 1) the card represents
 // the whole group: name without the size suffix, "from" price, and no
 // per-size promo price.
-function serializeProductCard(p: RawProductCard, locale: Locale, group?: GroupStats) {
+//
+// `showPrices` false (visitor not signed in — B2B shop, see lib/auth/access)
+// nulls every money field here, on the server, so prices never reach the
+// browser payload rather than just being hidden by the UI.
+function serializeProductCard(p: RawProductCard, locale: Locale, showPrices: boolean, group?: GroupStats) {
   const { nameFr, nameEn, nameIt, ...rest } = p;
   void nameFr;
   void nameEn;
@@ -159,12 +164,12 @@ function serializeProductCard(p: RawProductCard, locale: Locale, group?: GroupSt
     ...rest,
     name: title,
     brand: { name: localizedCategoryName(p.brand, locale), slug: p.brand.slug },
-    price: Number(p.price),
-    compareAtPrice: grouped ? null : p.compareAtPrice != null ? Number(p.compareAtPrice) : null,
+    price: showPrices ? Number(p.price) : null,
+    compareAtPrice: !showPrices || grouped ? null : p.compareAtPrice != null ? Number(p.compareAtPrice) : null,
     stock: grouped ? (group.inStock ? Math.max(p.stock, 1) : 0) : p.stock,
     avgRating: Number(p.avgRating),
     groupSize: grouped ? group.size : 1,
-    fromPrice: grouped ? group.fromPrice : null,
+    fromPrice: showPrices && grouped ? group.fromPrice : null,
   };
 }
 
@@ -222,8 +227,8 @@ function dedupeByGroup<T extends { id: string; groupKey: string | null }>(rows: 
 }
 
 async function toGroupedCards(rows: RawProductCard[], locale: Locale) {
-  const stats = await loadGroupStats(rows.map((r) => r.groupKey), locale);
-  return rows.map((r) => serializeProductCard(r, locale, r.groupKey ? stats.get(r.groupKey) : undefined));
+  const [stats, showPrices] = await Promise.all([loadGroupStats(rows.map((r) => r.groupKey), locale), canSeePrices()]);
+  return rows.map((r) => serializeProductCard(r, locale, showPrices, r.groupKey ? stats.get(r.groupKey) : undefined));
 }
 
 /** Home-page style shelf: newest/best/… rows, one card per size group. */
@@ -252,8 +257,19 @@ async function countListingEntriesByCategory(): Promise<Map<string, number>> {
   return counts;
 }
 
-export async function getCatalogPage(filters: CatalogFilters) {
-  const page = Math.max(1, filters.page ?? 1);
+export async function getCatalogPage(rawFilters: CatalogFilters) {
+  const page = Math.max(1, rawFilters.page ?? 1);
+  const showPrices = await canSeePrices();
+  // Price filters/sorting would let a visitor bisect prices they're not
+  // allowed to see — ignored until signed in.
+  const filters: CatalogFilters = showPrices
+    ? rawFilters
+    : {
+        ...rawFilters,
+        minPrice: undefined,
+        maxPrice: undefined,
+        sort: rawFilters.sort === "prix-asc" || rawFilters.sort === "prix-desc" ? undefined : rawFilters.sort,
+      };
   const where = buildWhere(filters);
   const locale = (await getLocale()) as Locale;
 
@@ -300,15 +316,17 @@ export async function getCatalogPage(filters: CatalogFilters) {
       .map((c) => ({ ...localizeCategory(c, locale), _count: { products: categoryCounts.get(c.id) ?? 0 } }))
       .filter((c) => c._count.products > 0),
     brands: brands.map((b) => ({ id: b.id, name: localizedCategoryName(b, locale), slug: b.slug })),
-    priceBounds: {
-      min: priceBounds._min.price ? Number(priceBounds._min.price) : 0,
-      max: priceBounds._max.price ? Number(priceBounds._max.price) : 1000,
-    },
+    priceBounds: showPrices
+      ? {
+          min: priceBounds._min.price ? Number(priceBounds._min.price) : 0,
+          max: priceBounds._max.price ? Number(priceBounds._max.price) : 1000,
+        }
+      : null,
   };
 }
 
 export async function getProductBySlug(slug: string) {
-  const locale = (await getLocale()) as Locale;
+  const [locale, showPrices] = await Promise.all([getLocale() as Promise<Locale>, canSeePrices()]);
   const product = await db.product.findUnique({
     where: { slug },
     include: {
@@ -374,8 +392,8 @@ export async function getProductBySlug(slug: string) {
         publicSku: s.publicSku ?? s.sku,
         sizeLabel: s.sizeLabel ?? s.publicSku ?? s.sku,
         specs: s.sizeSpecs,
-        price: Number(s.price),
-        compareAtPrice: s.compareAtPrice != null ? Number(s.compareAtPrice) : null,
+        price: showPrices ? Number(s.price) : null,
+        compareAtPrice: showPrices && s.compareAtPrice != null ? Number(s.compareAtPrice) : null,
         stock: s.stock,
       }))
     : [];
@@ -421,6 +439,11 @@ export async function getProductBySlug(slug: string) {
 
   return {
     ...product,
+    // Decimal → number here (the page passed them on as-is before), and
+    // null when the visitor may not see prices — see serializeProductCard.
+    price: showPrices ? Number(product.price) : null,
+    compareAtPrice: showPrices && product.compareAtPrice != null ? Number(product.compareAtPrice) : null,
+    variants: product.variants.map((v) => ({ ...v, priceDelta: showPrices ? Number(v.priceDelta) : null })),
     sizes,
     reviews,
     reviewCount,
@@ -449,8 +472,8 @@ export async function getProductBySlug(slug: string) {
             : (tp.tutorial[`title${locale[0].toUpperCase()}${locale.slice(1)}` as "titleDe" | "titleEn" | "titleIt"] ?? tp.tutorial.title),
       },
     })),
-    complementaryTo: product.complementaryTo.map((rel) => ({ ...rel, relatedProduct: serializeProductCard(rel.relatedProduct, locale) })),
-    relatedFrom: product.relatedFrom.map((rel) => ({ ...rel, baseProduct: serializeProductCard(rel.baseProduct, locale) })),
+    complementaryTo: product.complementaryTo.map((rel) => ({ ...rel, relatedProduct: serializeProductCard(rel.relatedProduct, locale, showPrices) })),
+    relatedFrom: product.relatedFrom.map((rel) => ({ ...rel, baseProduct: serializeProductCard(rel.baseProduct, locale, showPrices) })),
   };
 }
 
@@ -509,12 +532,13 @@ export async function getCartRecommendations(productIds: string[], limit = 4) {
     select: { relatedProduct: { select: PRODUCT_CARD_SELECT } },
     take: limit * 2,
   });
+  const showPrices = await canSeePrices();
   const seen = new Set<string>();
   const results: ProductCard[] = [];
   for (const r of relations) {
     if (seen.has(r.relatedProduct.id)) continue;
     seen.add(r.relatedProduct.id);
-    results.push(serializeProductCard(r.relatedProduct, locale));
+    results.push(serializeProductCard(r.relatedProduct, locale, showPrices));
     if (results.length >= limit) break;
   }
   return results;
@@ -527,7 +551,8 @@ export async function getFavoriteProducts(userId: string) {
     orderBy: { createdAt: "desc" },
     select: { productId: true, product: { select: PRODUCT_CARD_SELECT } },
   });
-  return favorites.map((f) => serializeProductCard(f.product, locale));
+  const showPrices = await canSeePrices();
+  return favorites.map((f) => serializeProductCard(f.product, locale, showPrices));
 }
 
 /** Global search across products, categories, brands and tutorials — powers the header search. */

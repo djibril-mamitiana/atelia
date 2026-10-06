@@ -489,6 +489,9 @@ async function seedUsers() {
         firstName,
         lastName,
         phone: faker.phone.number({ style: "national" }),
+        company: faker.company.name(),
+        // Customers sign in with email + customer code (B2B, no password).
+        customerCode: `DEMO-${String(i + 1).padStart(4, "0")}`,
         role: "CUSTOMER",
         emailVerified: faker.datatype.boolean({ probability: 0.8 }) ? faker.date.past({ years: 1 }) : null,
         isActive: true,
@@ -887,7 +890,7 @@ async function main() {
   console.log("\n✅ Done. Test accounts (see README for details):");
   console.log("   Admin:    christoftran@gmail.com / Admin1234!");
   console.log("   Staff:    staff@atelia.test / Staff1234!");
-  console.log("   Customer: <any seeded customer email> / Client1234!");
+  console.log("   Customer: <any seeded customer email> / code DEMO-0001 … DEMO-0018");
 }
 
 main()

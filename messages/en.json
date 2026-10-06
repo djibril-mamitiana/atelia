@@ -173,20 +173,23 @@
     "passwordHint": "At least 8 characters, with one uppercase letter and one digit.",
     "login": {
       "title": "Sign in",
-      "subtitle": "Access your account to track your orders and favorites.",
+      "subtitle": "Trade customers only: sign in with your email and the customer code provided by our team.",
       "forgotPassword": "Forgot your password?",
       "submit": "Sign in",
       "submitPending": "Signing in…",
-      "noAccount": "Don't have an account yet?",
-      "createAccount": "Create an account"
+      "noAccount": "Not a customer yet?",
+      "createAccount": "Request an account",
+      "forgotCode": "Forgot your code?",
+      "codeHint": "Provided when your trade account was opened."
     },
     "register": {
-      "title": "Create an account",
-      "subtitle": "Track your orders, manage your favorites and save time on your next purchase.",
+      "title": "Open a trade account",
+      "subtitle": "We only sell to professionals. Accounts are opened by our team: contact us with your company name and we will send you your customer code.",
       "submit": "Create my account",
       "submitPending": "Creating…",
       "alreadyAccount": "Already have an account?",
-      "signIn": "Sign in"
+      "signIn": "Sign in",
+      "contactCta": "Contact us"
     },
     "forgotPassword": {
       "title": "Forgot your password",
@@ -200,7 +203,8 @@
       "subtitle": "Choose a new password for your account.",
       "submit": "Set this password",
       "submitPending": "Saving…"
-    }
+    },
+    "customerCodeLabel": "Customer code"
   },
   "Product": {
     "addToFavorites": "Add to favorites",
@@ -253,7 +257,11 @@
     "colRef": "Ref.",
     "colPrice": "Price",
     "colStock": "Stock",
-    "selectedSize": "Selected size: {size}"
+    "selectedSize": "Selected size: {size}",
+    "pricesForPros": "Prices for trade customers only",
+    "pricesForProsHint": "Sign in with your trade account to see prices and order.",
+    "signInToSeePrice": "Sign in to see the price",
+    "requestAccount": "No account yet? Request one"
   },
   "Catalog": {
     "allProducts": "All products",
@@ -378,7 +386,8 @@
     "newPassword": "New password",
     "changePassword": "Change password",
     "profileUpdated": "Profile updated.",
-    "passwordUpdated": "Password updated."
+    "passwordUpdated": "Password updated.",
+    "customerCodeManagedByStaff": "You sign in with your customer code. To change it, contact our team."
   },
   "Order": {
     "statusPending": "Payment pending",
@@ -725,7 +734,7 @@
     },
     "Customers": {
       "title": "Customers ({count})",
-      "searchPlaceholder": "Name or email…",
+      "searchPlaceholder": "Name, company, email or code…",
       "colName": "Name",
       "colEmail": "Email",
       "colOrders": "Orders",
@@ -733,7 +742,11 @@
       "colLastOrder": "Last order",
       "colStatus": "Status",
       "active": "Active",
-      "inactive": "Inactive"
+      "inactive": "Inactive",
+      "newCustomer": "New customer",
+      "colCompany": "Company",
+      "colCode": "Customer code",
+      "noCode": "No code"
     },
     "CustomerDetail": {
       "since": "customer since {date}",
@@ -741,7 +754,8 @@
       "kpiTotalSpent": "Total spent",
       "kpiAddresses": "Addresses",
       "ordersSection": "Orders",
-      "addressesSection": "Addresses"
+      "addressesSection": "Addresses",
+      "accountSection": "Account and access"
     },
     "Promotions": {
       "title": "Promotions",
@@ -845,6 +859,28 @@
       "checkEmail": "Email sending (RESEND_API_KEY)",
       "checkStripe": "Stripe payment — optional, disabled (STRIPE_SECRET_KEY)",
       "configHint": "Configure the missing variables in your .env file (see the README)."
+    },
+    "CustomerForm": {
+      "newTitle": "New trade customer",
+      "newSubtitle": "The customer signs in with this email and customer code. Only accounts created here can see prices and order.",
+      "labelFirstName": "First name",
+      "labelLastName": "Last name",
+      "labelCompany": "Company",
+      "labelEmail": "Email",
+      "labelPhone": "Phone",
+      "labelCode": "Customer code",
+      "generate": "Generate",
+      "copy": "Copy code",
+      "codeCopied": "Code copied.",
+      "codeHint": "Give it to the customer along with their email. Letters, digits and dashes, at least 6 characters.",
+      "activeCheckbox": "Active account (can sign in, see prices and order)",
+      "create": "Create customer",
+      "save": "Save",
+      "delete": "Delete",
+      "deleteConfirm": "Permanently delete this customer? This cannot be undone.",
+      "toastCreated": "Customer created.",
+      "toastUpdated": "Customer updated.",
+      "toastDeleted": "Customer deleted."
     }
   },
   "Meta": {

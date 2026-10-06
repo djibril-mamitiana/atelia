@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight, Heart, ShoppingBag } from "lucide-react";
+import { ArrowRight, Heart, Lock, ShoppingBag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { cn } from "@/lib/utils";
@@ -30,9 +30,10 @@ export function ProductCard({
   const [favorite, setFavorite] = useState(isFavorite);
 
   const grouped = product.groupSize > 1;
-  const price = Number(product.price);
-  const compareAtPrice = product.compareAtPrice ? Number(product.compareAtPrice) : null;
-  const discount = discountPercent(price, compareAtPrice);
+  // null = signed-out visitor: prices are stripped server-side (B2B shop).
+  const price = product.price;
+  const compareAtPrice = product.compareAtPrice;
+  const discount = price != null ? discountPercent(price, compareAtPrice) : null;
   const outOfStock = product.stock <= 0;
   const image = product.images[0];
 
@@ -108,48 +109,65 @@ export function ProductCard({
           </div>
         )}
 
-        <div className="mt-auto pt-3">
-          {grouped ? (
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="text-[17px] font-semibold tabular-nums text-ink">
-                {t("fromPrice", { price: formatPrice(product.fromPrice ?? price, locale) })}
-              </span>
-              <span className="font-mono text-[11px] text-muted">{t("sizesCount", { count: product.groupSize })}</span>
-            </div>
-          ) : (
-            <div className="flex items-baseline gap-2">
-              <span className="text-[17px] font-semibold tabular-nums text-ink">{formatPrice(price, locale)}</span>
-              {compareAtPrice && (
-                <span className="text-sm tabular-nums text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
+        {price == null ? (
+          // Signed-out visitor: no price and no cart — sign in first.
+          <div className="mt-auto pt-3">
+            <p className="flex items-center gap-1.5 text-sm text-muted">
+              <Lock size={13} /> {t("pricesForPros")}
+            </p>
+            <Link
+              href={`/connexion?next=${encodeURIComponent(`/produits/${product.slug}`)}`}
+              className={cn(ctaBase, "border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-white")}
+            >
+              {t("signInToSeePrice")}
+            </Link>
+          </div>
+        ) : (
+          <>
+            <div className="mt-auto pt-3">
+              {grouped ? (
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-[17px] font-semibold tabular-nums text-ink">
+                    {t("fromPrice", { price: formatPrice(product.fromPrice ?? price, locale) })}
+                  </span>
+                  <span className="font-mono text-[11px] text-muted">{t("sizesCount", { count: product.groupSize })}</span>
+                </div>
+              ) : (
+                <div className="flex items-baseline gap-2">
+                  <span className="text-[17px] font-semibold tabular-nums text-ink">{formatPrice(price, locale)}</span>
+                  {compareAtPrice && (
+                    <span className="text-sm tabular-nums text-muted line-through">{formatPrice(compareAtPrice, locale)}</span>
+                  )}
+                </div>
               )}
             </div>
-          )}
-        </div>
 
-        {grouped ? (
-          // Several sizes: the size has to be picked on the product page.
-          <Link
-            href={`/produits/${product.slug}`}
-            className={cn(
-              ctaBase,
-              outOfStock
-                ? "pointer-events-none border border-ink/15 text-muted"
-                : "border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-white"
+            {grouped ? (
+              // Several sizes: the size has to be picked on the product page.
+              <Link
+                href={`/produits/${product.slug}`}
+                className={cn(
+                  ctaBase,
+                  outOfStock
+                    ? "pointer-events-none border border-ink/15 text-muted"
+                    : "border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-white"
+                )}
+              >
+                {outOfStock ? t("unavailable") : t("chooseSizeCta")}
+                {!outOfStock && <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />}
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={handleAddToCart}
+                disabled={outOfStock || pending}
+                className={cn(ctaBase, "bg-graphite text-white hover:bg-accent hover:text-graphite disabled:opacity-40")}
+              >
+                <ShoppingBag size={15} />
+                {outOfStock ? t("unavailable") : t("addToCart")}
+              </button>
             )}
-          >
-            {outOfStock ? t("unavailable") : t("chooseSizeCta")}
-            {!outOfStock && <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />}
-          </Link>
-        ) : (
-          <button
-            type="button"
-            onClick={handleAddToCart}
-            disabled={outOfStock || pending}
-            className={cn(ctaBase, "bg-graphite text-white hover:bg-accent hover:text-graphite disabled:opacity-40")}
-          >
-            <ShoppingBag size={15} />
-            {outOfStock ? t("unavailable") : t("addToCart")}
-          </button>
+          </>
         )}
       </div>
     </div>

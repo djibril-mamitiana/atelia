@@ -64,14 +64,34 @@ adaptée aux fonctions serverless de Vercel).
 
 ### Comptes de test créés par le seed
 
-| Rôle     | Email                     | Mot de passe   |
-| -------- | -------------------------- | -------------- |
-| Admin    | `christoftran@gmail.com`   | `Admin1234!`   |
-| Staff    | `staff@atelia.test`        | `Staff1234!`   |
-| Client   | un des emails générés      | `Client1234!`  |
+| Rôle     | Email                     | Mot de passe / code            |
+| -------- | -------------------------- | ------------------------------ |
+| Admin    | `christoftran@gmail.com`   | `Admin1234!`                   |
+| Staff    | `staff@atelia.test`        | `Staff1234!`                   |
+| Client   | un des emails générés      | code `DEMO-0001` … `DEMO-0018` |
 
-Les emails clients générés sont visibles dans la sortie de `prisma db seed`
-ou via Prisma Studio (`npx prisma studio`).
+Les emails clients générés sont visibles dans `/admin/customers` ou via
+Prisma Studio (`npx prisma studio`). Les codes `DEMO-…` sont prévisibles :
+ne lancez pas le seed sur la base de production.
+
+### Vente réservée aux professionnels
+
+- **Pas d'inscription publique** : `/inscription` invite seulement à nous
+  contacter. Les comptes clients sont créés par l'équipe dans
+  **/admin/customers → Nouveau client** (nom, entreprise, email, téléphone,
+  code client généré ou saisi à la main).
+- **Connexion client = email + code client** (insensible à la casse). Le
+  personnel (`ADMIN`/`STAFF`) se connecte toujours avec son mot de passe,
+  dans le même champ.
+- **Hors connexion, aucun prix** : ils sont retirés côté serveur (voir
+  [src/lib/auth/access.ts](src/lib/auth/access.ts)), donc absents aussi du
+  code source de la page. Le filtre et le tri par prix sont désactivés, le
+  panier, le checkout et les actions panier exigent un compte actif.
+- **Désactiver un compte** (case « Compte actif ») coupe l'accès
+  immédiatement, même si le client a encore une session ouverte. Un client
+  ayant des commandes ne peut pas être supprimé, seulement désactivé.
+- Les codes sont stockés en clair pour que l'équipe puisse les retransmettre
+  au client. Si un code fuit, générez-en un nouveau depuis la fiche client.
 
 ## 3. Paiement — virement bancaire manuel
 

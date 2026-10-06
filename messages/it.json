@@ -173,20 +173,23 @@
     "passwordHint": "Almeno 8 caratteri, con una maiuscola e una cifra.",
     "login": {
       "title": "Accedi",
-      "subtitle": "Accedi al tuo account per seguire i tuoi ordini e preferiti.",
+      "subtitle": "Area riservata ai professionisti: accedi con la tua email e il codice cliente fornito dal nostro team.",
       "forgotPassword": "Password dimenticata?",
       "submit": "Accedi",
       "submitPending": "Accesso…",
-      "noAccount": "Non hai ancora un account?",
-      "createAccount": "Crea un account"
+      "noAccount": "Non sei ancora cliente?",
+      "createAccount": "Richiedi l'apertura di un account",
+      "forgotCode": "Codice dimenticato?",
+      "codeHint": "Comunicato all'apertura del tuo account professionale."
     },
     "register": {
-      "title": "Crea un account",
-      "subtitle": "Segui i tuoi ordini, gestisci i tuoi preferiti e risparmia tempo al prossimo acquisto.",
+      "title": "Apri un account professionale",
+      "subtitle": "Vendiamo solo ai professionisti. Gli account vengono aperti dal nostro team: contattaci con il nome della tua azienda e ti invieremo il tuo codice cliente.",
       "submit": "Crea il mio account",
       "submitPending": "Creazione…",
       "alreadyAccount": "Hai già un account?",
-      "signIn": "Accedi"
+      "signIn": "Accedi",
+      "contactCta": "Contattaci"
     },
     "forgotPassword": {
       "title": "Password dimenticata",
@@ -200,7 +203,8 @@
       "subtitle": "Scegli una nuova password per il tuo account.",
       "submit": "Imposta questa password",
       "submitPending": "Salvataggio…"
-    }
+    },
+    "customerCodeLabel": "Codice cliente"
   },
   "Product": {
     "addToFavorites": "Aggiungi ai preferiti",
@@ -253,7 +257,11 @@
     "colRef": "Rif.",
     "colPrice": "Prezzo",
     "colStock": "Disponibilità",
-    "selectedSize": "Misura selezionata: {size}"
+    "selectedSize": "Misura selezionata: {size}",
+    "pricesForPros": "Prezzi riservati ai professionisti",
+    "pricesForProsHint": "Accedi con il tuo account professionale per vedere i prezzi e ordinare.",
+    "signInToSeePrice": "Accedi per vedere il prezzo",
+    "requestAccount": "Non hai un account? Richiedilo"
   },
   "Catalog": {
     "allProducts": "Tutti i prodotti",
@@ -378,7 +386,8 @@
     "newPassword": "Nuova password",
     "changePassword": "Cambia password",
     "profileUpdated": "Profilo aggiornato.",
-    "passwordUpdated": "Password aggiornata."
+    "passwordUpdated": "Password aggiornata.",
+    "customerCodeManagedByStaff": "Accedi con il tuo codice cliente. Per cambiarlo, contatta il nostro team."
   },
   "Order": {
     "statusPending": "In attesa di pagamento",
@@ -725,7 +734,7 @@
     },
     "Customers": {
       "title": "Clienti ({count})",
-      "searchPlaceholder": "Nome o email…",
+      "searchPlaceholder": "Nome, azienda, email o codice…",
       "colName": "Nome",
       "colEmail": "Email",
       "colOrders": "Ordini",
@@ -733,7 +742,11 @@
       "colLastOrder": "Ultimo ordine",
       "colStatus": "Stato",
       "active": "Attivo",
-      "inactive": "Inattivo"
+      "inactive": "Inattivo",
+      "newCustomer": "Nuovo cliente",
+      "colCompany": "Azienda",
+      "colCode": "Codice cliente",
+      "noCode": "Nessun codice"
     },
     "CustomerDetail": {
       "since": "cliente dal {date}",
@@ -741,7 +754,8 @@
       "kpiTotalSpent": "Totale speso",
       "kpiAddresses": "Indirizzi",
       "ordersSection": "Ordini",
-      "addressesSection": "Indirizzi"
+      "addressesSection": "Indirizzi",
+      "accountSection": "Account e accesso"
     },
     "Promotions": {
       "title": "Promozioni",
@@ -845,6 +859,28 @@
       "checkEmail": "Invio email (RESEND_API_KEY)",
       "checkStripe": "Pagamento Stripe — opzionale, disattivato (STRIPE_SECRET_KEY)",
       "configHint": "Configura le variabili mancanti nel tuo file .env (vedi il README)."
+    },
+    "CustomerForm": {
+      "newTitle": "Nuovo cliente professionale",
+      "newSubtitle": "Il cliente accederà con questa email e questo codice cliente. Solo gli account creati qui possono vedere i prezzi e ordinare.",
+      "labelFirstName": "Nome",
+      "labelLastName": "Cognome",
+      "labelCompany": "Azienda",
+      "labelEmail": "Email",
+      "labelPhone": "Telefono",
+      "labelCode": "Codice cliente",
+      "generate": "Genera",
+      "copy": "Copia codice",
+      "codeCopied": "Codice copiato.",
+      "codeHint": "Da comunicare al cliente insieme alla sua email. Lettere, cifre e trattini, minimo 6 caratteri.",
+      "activeCheckbox": "Account attivo (può accedere, vedere i prezzi e ordinare)",
+      "create": "Crea cliente",
+      "save": "Salva",
+      "delete": "Elimina",
+      "deleteConfirm": "Eliminare definitivamente questo cliente? L'operazione è irreversibile.",
+      "toastCreated": "Cliente creato.",
+      "toastUpdated": "Cliente aggiornato.",
+      "toastDeleted": "Cliente eliminato."
     }
   },
   "Meta": {

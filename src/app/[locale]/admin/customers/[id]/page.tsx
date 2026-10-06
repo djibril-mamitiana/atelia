@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAdminCustomerById } from "@/server/queries/admin.queries";
 import { Badge } from "@/components/ui/badge";
+import { CustomerForm } from "@/components/admin/customer-form";
+import { getSession } from "@/lib/auth/session";
+import { isAdmin } from "@/lib/auth/roles";
 import { formatDate, formatPrice } from "@/lib/format";
 
 export const generateMetadata = () => adminTitle("navCustomers");
@@ -17,11 +20,31 @@ export default async function AdminCustomerDetailPage({ params }: { params: Prom
   if (!customer) notFound();
 
   const totalSpent = customer.orders.reduce((sum, o) => sum + Number(o.total), 0);
+  const session = await getSession();
 
   return (
     <div>
       <h1 className="font-display text-2xl text-ink">{customer.firstName} {customer.lastName}</h1>
-      <p className="text-sm text-muted">{customer.email} · {t("since", { date: formatDate(customer.createdAt, locale) })}</p>
+      <p className="text-sm text-muted">
+        {customer.company ? `${customer.company} · ` : ""}{customer.email} · {t("since", { date: formatDate(customer.createdAt, locale) })}
+      </p>
+
+      <div className="mt-6 max-w-2xl">
+        <h2 className="mb-3 font-medium text-ink">{t("accountSection")}</h2>
+        <CustomerForm
+          customerId={customer.id}
+          canDelete={isAdmin(session?.role)}
+          initial={{
+            firstName: customer.firstName,
+            lastName: customer.lastName,
+            company: customer.company ?? "",
+            email: customer.email,
+            phone: customer.phone ?? "",
+            customerCode: customer.customerCode ?? "",
+            isActive: customer.isActive,
+          }}
+        />
+      </div>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
         <div className="rounded-md border border-border bg-surface p-4">

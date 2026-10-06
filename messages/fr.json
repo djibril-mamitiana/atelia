@@ -173,20 +173,23 @@
     "passwordHint": "8 caractères minimum, avec une majuscule et un chiffre.",
     "login": {
       "title": "Connexion",
-      "subtitle": "Accédez à votre compte pour suivre vos commandes et vos favoris.",
+      "subtitle": "Espace réservé aux professionnels : connectez-vous avec votre email et le code client fourni par notre équipe.",
       "forgotPassword": "Mot de passe oublié ?",
       "submit": "Se connecter",
       "submitPending": "Connexion…",
-      "noAccount": "Pas encore de compte ?",
-      "createAccount": "Créer un compte"
+      "noAccount": "Pas encore client ?",
+      "createAccount": "Demander l'ouverture d'un compte",
+      "forgotCode": "Code oublié ?",
+      "codeHint": "Indiqué lors de l'ouverture de votre compte professionnel."
     },
     "register": {
-      "title": "Créer un compte",
-      "subtitle": "Suivez vos commandes, gérez vos favoris et gagnez du temps au prochain achat.",
+      "title": "Ouvrir un compte professionnel",
+      "subtitle": "Nous vendons uniquement aux professionnels. Les comptes sont ouverts par notre équipe : contactez-nous avec le nom de votre entreprise, nous vous enverrons votre code client.",
       "submit": "Créer mon compte",
       "submitPending": "Création…",
       "alreadyAccount": "Déjà un compte ?",
-      "signIn": "Se connecter"
+      "signIn": "Se connecter",
+      "contactCta": "Nous contacter"
     },
     "forgotPassword": {
       "title": "Mot de passe oublié",
@@ -200,7 +203,8 @@
       "subtitle": "Choisissez un nouveau mot de passe pour votre compte.",
       "submit": "Choisir ce mot de passe",
       "submitPending": "Enregistrement…"
-    }
+    },
+    "customerCodeLabel": "Code client"
   },
   "Product": {
     "addToFavorites": "Ajouter aux favoris",
@@ -253,7 +257,11 @@
     "colRef": "Réf.",
     "colPrice": "Prix",
     "colStock": "Stock",
-    "selectedSize": "Taille sélectionnée : {size}"
+    "selectedSize": "Taille sélectionnée : {size}",
+    "pricesForPros": "Prix réservés aux professionnels",
+    "pricesForProsHint": "Connectez-vous avec votre compte professionnel pour voir les prix et commander.",
+    "signInToSeePrice": "Se connecter pour voir le prix",
+    "requestAccount": "Pas encore de compte ? Demander l'ouverture"
   },
   "Catalog": {
     "allProducts": "Tous les produits",
@@ -378,7 +386,8 @@
     "newPassword": "Nouveau mot de passe",
     "changePassword": "Changer le mot de passe",
     "profileUpdated": "Profil mis à jour.",
-    "passwordUpdated": "Mot de passe mis à jour."
+    "passwordUpdated": "Mot de passe mis à jour.",
+    "customerCodeManagedByStaff": "Vous vous connectez avec votre code client. Pour le changer, contactez notre équipe."
   },
   "Order": {
     "statusPending": "En attente de paiement",
@@ -725,7 +734,7 @@
     },
     "Customers": {
       "title": "Clients ({count})",
-      "searchPlaceholder": "Nom ou email…",
+      "searchPlaceholder": "Nom, entreprise, email ou code…",
       "colName": "Nom",
       "colEmail": "Email",
       "colOrders": "Commandes",
@@ -733,7 +742,11 @@
       "colLastOrder": "Dernière commande",
       "colStatus": "Statut",
       "active": "Actif",
-      "inactive": "Inactif"
+      "inactive": "Inactif",
+      "newCustomer": "Nouveau client",
+      "colCompany": "Entreprise",
+      "colCode": "Code client",
+      "noCode": "Aucun code"
     },
     "CustomerDetail": {
       "since": "client depuis le {date}",
@@ -741,7 +754,8 @@
       "kpiTotalSpent": "Total dépensé",
       "kpiAddresses": "Adresses",
       "ordersSection": "Commandes",
-      "addressesSection": "Adresses"
+      "addressesSection": "Adresses",
+      "accountSection": "Compte et accès"
     },
     "Promotions": {
       "title": "Promotions",
@@ -845,6 +859,28 @@
       "checkEmail": "Envoi d'emails (RESEND_API_KEY)",
       "checkStripe": "Paiement Stripe — optionnel, désactivé (STRIPE_SECRET_KEY)",
       "configHint": "Configurez les variables manquantes dans votre fichier .env (voir le README)."
+    },
+    "CustomerForm": {
+      "newTitle": "Nouveau client professionnel",
+      "newSubtitle": "Le client se connectera avec cet email et ce code client. Seuls les comptes créés ici peuvent voir les prix et commander.",
+      "labelFirstName": "Prénom",
+      "labelLastName": "Nom",
+      "labelCompany": "Entreprise",
+      "labelEmail": "Email",
+      "labelPhone": "Téléphone",
+      "labelCode": "Code client",
+      "generate": "Générer",
+      "copy": "Copier le code",
+      "codeCopied": "Code copié.",
+      "codeHint": "À transmettre au client avec son email. Lettres, chiffres et tirets, 6 caractères minimum.",
+      "activeCheckbox": "Compte actif (peut se connecter, voir les prix et commander)",
+      "create": "Créer le client",
+      "save": "Enregistrer",
+      "delete": "Supprimer",
+      "deleteConfirm": "Supprimer définitivement ce client ? Cette action est irréversible.",
+      "toastCreated": "Client créé.",
+      "toastUpdated": "Client mis à jour.",
+      "toastDeleted": "Client supprimé."
     }
   },
   "Meta": {
