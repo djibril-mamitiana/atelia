@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { PlayCircle, Clock } from "lucide-react";
 import { getPublishedTutorials } from "@/server/queries/tutorials.queries";
+import { MaterialGuide } from "@/components/tutorials/material-guide";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Tutorials");
@@ -25,7 +26,12 @@ export default async function TutorialsPage() {
       <h1 className="font-display text-3xl text-ink">{t("title")}</h1>
       <p className="mt-1.5 max-w-xl text-sm text-muted">{t("subtitle")}</p>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8">
+        <MaterialGuide />
+      </div>
+
+      <h2 className="mt-12 font-display text-2xl text-ink">{t("allGuidesTitle")}</h2>
+      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {tutorials.map((tut) => (
           <Link key={tut.id} href={`/tutoriels/${tut.slug}`} className="group flex flex-col gap-3">
             <div className="relative aspect-video overflow-hidden rounded-md bg-paper">

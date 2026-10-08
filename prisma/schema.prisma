@@ -702,6 +702,17 @@ model InventoryMovement {
   @@index([type])
 }
 
+// Shop-wide settings edited from /admin/settings — a single row (id
+// "default"). Missing row = the defaults in src/lib/constants.ts.
+model SiteSettings {
+  id               String   @id @default("default")
+  contactEmail     String
+  contactPhone     String
+  shippingStandard Decimal  @db.Decimal(10, 2)
+  shippingExpress  Decimal  @db.Decimal(10, 2)
+  updatedAt        DateTime @updatedAt
+}
+
 model AuditLog {
   id         String   @id @default(cuid())
   userId     String?

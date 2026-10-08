@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ChevronDown } from "lucide-react";
+import { formatPrice } from "@/lib/format";
+import { getSiteSettings } from "@/server/services/site-settings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Faq");
@@ -8,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FaqPage() {
-  const t = await getTranslations("Faq");
+  const [t, locale, { shipping }] = await Promise.all([getTranslations("Faq"), getLocale(), getSiteSettings()]);
 
   const SECTIONS = [
     {
@@ -24,7 +26,7 @@ export default async function FaqPage() {
       title: t("sectionShipping"),
       items: [
         { q: t("q3"), a: t("a3") },
-        { q: t("q4"), a: t("a4") },
+        { q: t("q4"), a: t("a4", { standard: formatPrice(shipping.standard, locale), express: formatPrice(shipping.express, locale) }) },
       ],
     },
     {

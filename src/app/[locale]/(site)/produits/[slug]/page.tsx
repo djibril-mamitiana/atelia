@@ -17,6 +17,7 @@ import { RatingStars } from "@/components/ui/rating-stars";
 import { Badge } from "@/components/ui/badge";
 import { formatPrice, discountPercent } from "@/lib/format";
 import { SITE_URL } from "@/lib/constants";
+import { getSiteSettings } from "@/server/services/site-settings";
 
 type Params = { slug: string };
 
@@ -42,7 +43,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   const t = await getTranslations("Product");
   const locale = await getLocale();
 
-  const session = await getSession();
+  const [session, settings] = await Promise.all([getSession(), getSiteSettings()]);
   const [isFavorite, canReview] = await Promise.all([
     session
       ? db.favorite.findUnique({ where: { userId_productId: { userId: session.userId, productId: product.id } } }).then(Boolean)
@@ -167,6 +168,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
               }))}
               initialSizeId={product.id}
               signInPath={`/produits/${product.slug}`}
+              contactPhone={settings.contactPhone}
             />
           </div>
         </div>

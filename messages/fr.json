@@ -1,6 +1,6 @@
 {
   "Header": {
-    "announcement": "Livraison offerte dès 49 € d'achat · Retrait en magasin gratuit",
+    "announcement": "Livraison rapide partout en France · Paiement par virement bancaire",
     "tutorials": "Tutoriels & conseils",
     "contact": "Contact",
     "favorites": "Favoris",
@@ -11,15 +11,16 @@
     "catalog": "Catalogue",
     "catalogEyebrow": "Le catalogue",
     "catalogTitle": "Toutes les familles d’outils diamant",
-    "viewCatalog": "Voir tout le catalogue"
+    "viewCatalog": "Voir tout le catalogue",
+    "callUs": "Une question ? Appelez-nous : {phone}"
   },
   "Footer": {
     "description": "Outils diamant professionnels pour le béton, l’asphalte et la pierre naturelle — et les guides pour bien les choisir.",
     "reassurance": {
       "shippingTitle": "Livraison rapide",
-      "shippingDescription": "Dès 49 € d'achat, partout en France",
-      "paymentTitle": "Paiement sécurisé",
-      "paymentDescription": "Transactions chiffrées",
+      "shippingDescription": "Partout en France",
+      "paymentTitle": "Paiement par virement",
+      "paymentDescription": "Directement depuis votre banque",
       "returnsTitle": "Retours simplifiés",
       "returnsDescription": "30 jours pour changer d'avis",
       "supportTitle": "Service client",
@@ -38,11 +39,12 @@
     "helpTitle": "Aide",
     "faq": "Questions fréquentes",
     "contact": "Contact",
-    "shippingHelp": "Livraison & retrait",
+    "shippingHelp": "Livraison",
     "returnsHelp": "Retours & remboursements",
     "copyright": "Tous droits réservés.",
     "legal": "Mentions légales",
-    "terms": "CGV"
+    "terms": "CGV",
+    "callUsText": "Pour chaque question, appelez-nous :"
   },
   "MobileNav": {
     "openMenu": "Ouvrir le menu",
@@ -55,8 +57,8 @@
   },
   "PromoTicker": {
     "messages": [
-      "Livraison offerte dès 49 € d'achat",
-      "Retrait en magasin gratuit",
+      "Livraison rapide partout en France",
+      "Pour chaque question, appelez-nous",
       "Paiement sécurisé par virement bancaire",
       "Conseils d'experts pour tous vos projets",
       "30 jours pour changer d'avis"
@@ -85,7 +87,7 @@
     "allTutorials": "Tous les tutoriels",
     "ourBrands": "Nos marques",
     "viewAll": "Voir tout",
-    "heroTrust1": "Livraison offerte dès {threshold}",
+    "heroTrust1": "Livraison rapide partout en France",
     "heroTrust2": "30 jours pour changer d’avis",
     "heroTrust3": "Paiement sécurisé par virement",
     "heroChipRange": "Ø115 – Ø1000 mm",
@@ -94,7 +96,6 @@
     "proofRefs": "références au catalogue",
     "proofGuides": "guides pas à pas",
     "proofLangs": "langues du site",
-    "proofShipping": "livraison offerte dès",
     "problemEyebrow": "Le constat",
     "problemTitle": "Choisir un outil diamant ne devrait pas être <em>un pari.</em>",
     "problemLead": "Diamètre, alésage, matériau à traiter, machine… Une seule erreur, et c’est un disque qui s’use trop vite ou un chantier qui s’arrête.",
@@ -136,18 +137,21 @@
     "brandMaterial3": "Pierre naturelle",
     "guidesEyebrow": "Guides & conseils",
     "guidesTitle": "Réussissez votre chantier, <em>pas à pas.</em>",
-    "guidesSubtitle": "Choisir, utiliser, entretenir : des guides concrets pour tirer le meilleur de votre outil diamant.",
+    "guidesSubtitle": "Différents tutos pour nos outils : choisir, utiliser et entretenir votre outil diamant.",
     "guidesAll": "Tous les guides",
     "guidesRead": "Lire le guide",
     "faqEyebrow": "FAQ",
     "faqTitle": "Une question ? <em>La réponse est là.</em>",
     "faqAll": "Voir toutes les questions",
-    "faqContactText": "Vous ne trouvez pas votre réponse ?",
+    "faqContactText": "Pour chaque question, appelez-nous ou écrivez-nous.",
     "faqContact": "Écrivez-nous",
     "ctaTitle": "Prêt à équiper <em>votre prochain chantier ?</em>",
     "ctaText": "Parcourez le catalogue ou écrivez-nous : nous vous aidons à choisir la bonne référence.",
     "ctaPrimary": "Voir le catalogue",
-    "ctaSecondary": "Nous contacter"
+    "ctaSecondary": "Nous contacter",
+    "proofPro": "vente réservée aux professionnels",
+    "materialTipTitle": "Astuce :",
+    "materialTipText": "quel disque et quelle couronne pour quel matériau ?"
   },
   "LanguageSwitcher": {
     "label": "Langue"
@@ -222,8 +226,6 @@
     "lowStock": "Plus que {count} en stock",
     "inStock": "En stock",
     "buyNow": "Commander maintenant",
-    "shippingHome": "Livraison à domicile dès 4,90 € — gratuite dès 49 € d'achat.",
-    "pickupFree": "Retrait en magasin gratuit sous 2h dans les points relais partenaires.",
     "ref": "Réf. {sku}",
     "reviewsCount": "({count} avis)",
     "description": "Description",
@@ -261,7 +263,10 @@
     "pricesForPros": "Prix réservés aux professionnels",
     "pricesForProsHint": "Connectez-vous avec votre compte professionnel pour voir les prix et commander.",
     "signInToSeePrice": "Se connecter pour voir le prix",
-    "requestAccount": "Pas encore de compte ? Demander l'ouverture"
+    "requestAccount": "Pas encore de compte ? Demander l'ouverture",
+    "shippingFast": "Livraison rapide partout en France.",
+    "paymentTransfer": "Paiement par virement bancaire.",
+    "questionCallUs": "Une question ? Appelez-nous au"
   },
   "Catalog": {
     "allProducts": "Tous les produits",
@@ -294,8 +299,6 @@
     "emptyTitle": "Votre panier est vide",
     "emptyDescription": "Parcourez notre catalogue pour trouver le matériel de votre prochain projet.",
     "discoverProducts": "Découvrir les produits",
-    "freeShippingRemaining": "Encore {amount} d'achat pour bénéficier de la livraison offerte.",
-    "freeShippingUnlocked": "Livraison offerte 🎉",
     "summary": "Résumé",
     "subtotal": "Sous-total",
     "discount": "Réduction",
@@ -310,7 +313,8 @@
     "removeFromCart": "Retirer du panier",
     "couponPlaceholder": "Code promo",
     "couponApply": "Appliquer",
-    "quantity": "Qté {quantity}"
+    "quantity": "Qté {quantity}",
+    "shippingAndPaymentNote": "Livraison rapide partout en France — paiement par virement bancaire après validation de la commande."
   },
   "Checkout": {
     "title": "Finaliser ma commande",
@@ -324,9 +328,7 @@
     "shippingStandardLabel": "Livraison standard",
     "shippingStandardDescription": "3 à 5 jours ouvrés",
     "shippingExpressLabel": "Livraison express",
-    "shippingExpressDescription": "1 à 2 jours ouvrés — 9,90 €",
-    "shippingPickupLabel": "Retrait en magasin",
-    "shippingPickupDescription": "Gratuit, sous 2h",
+    "shippingExpressDescription": "1 à 2 jours ouvrés",
     "couponOptional": "Code promo (optionnel)",
     "noteOptional": "Note pour le livreur (optionnel)",
     "bankTransferNotice": "Le paiement se fait par virement bancaire. Après validation, vous recevrez les coordonnées bancaires et la référence à indiquer — votre commande est préparée dès réception du virement.",
@@ -460,7 +462,7 @@
   "Faq": {
     "title": "Questions fréquentes",
     "sectionOrders": "Commandes",
-    "sectionShipping": "Livraison & retrait",
+    "sectionShipping": "Livraison",
     "sectionReturns": "Retours & remboursements",
     "sectionPayment": "Paiement",
     "q1": "Comment suivre ma commande ?",
@@ -468,9 +470,9 @@
     "q2": "Puis-je modifier ou annuler ma commande ?",
     "a2": "Une commande peut être annulée tant qu'elle n'a pas été expédiée, en nous contactant via le formulaire de contact avec votre numéro de commande.",
     "q3": "Quels sont les délais de livraison ?",
-    "a3": "Comptez 3 à 5 jours ouvrés en livraison standard, 1 à 2 jours en livraison express. Le retrait en magasin est disponible sous 2h dans les points relais partenaires.",
-    "q4": "La livraison est-elle gratuite ?",
-    "a4": "La livraison standard est offerte dès 49 € d'achat. En dessous, des frais de 5,90 € s'appliquent.",
+    "a3": "Nous expédions rapidement : comptez 3 à 5 jours ouvrés en livraison standard, 1 à 2 jours en livraison express.",
+    "q4": "Combien coûte la livraison ?",
+    "a4": "La livraison standard coûte {standard} et la livraison express {express}, quel que soit le montant de la commande.",
     "q5": "Combien de temps ai-je pour retourner un produit ?",
     "a5": "Vous disposez de 30 jours à compter de la réception pour retourner un produit non utilisé, dans son emballage d'origine.",
     "q6": "Comment obtenir un remboursement ?",
@@ -482,14 +484,15 @@
   },
   "Tutorials": {
     "title": "Tutoriels & conseils",
-    "subtitle": "Des guides pas à pas pour réussir vos projets, avec le matériel qu'il vous faut à chaque étape.",
+    "subtitle": "Différents tutos pour nos outils : des guides pas à pas pour choisir, utiliser et entretenir votre matériel.",
     "levelBeginner": "Débutant",
     "levelIntermediate": "Intermédiaire",
     "levelAdvanced": "Avancé",
     "minutesShort": "{minutes} min",
     "productsUsed": "Produits utilisés",
     "view": "Voir",
-    "allTutorials": "← Tous les tutoriels"
+    "allTutorials": "← Tous les tutoriels",
+    "allGuidesTitle": "Tous nos tutos"
   },
   "Search": {
     "title": "Recherche",
@@ -858,7 +861,16 @@
       "checkBank": "Coordonnées de virement bancaire (BANK_TRANSFER_*)",
       "checkEmail": "Envoi d'emails (RESEND_API_KEY)",
       "checkStripe": "Paiement Stripe — optionnel, désactivé (STRIPE_SECRET_KEY)",
-      "configHint": "Configurez les variables manquantes dans votre fichier .env (voir le README)."
+      "configHint": "Configurez les variables manquantes dans votre fichier .env (voir le README).",
+      "shopSection": "Contact et livraison",
+      "shopHint": "Affichés sur tout le site (en-tête, pied de page, contact, fiches produit). Les tarifs de livraison s'appliquent à chaque commande, sans livraison gratuite.",
+      "contactPhone": "Téléphone",
+      "contactEmail": "Email de contact",
+      "shippingStandard": "Livraison standard (€)",
+      "shippingExpress": "Livraison express (€)",
+      "shopSave": "Enregistrer",
+      "shopSaved": "Réglages enregistrés.",
+      "shopAdminOnly": "Seul un administrateur peut modifier ces réglages."
     },
     "CustomerForm": {
       "newTitle": "Nouveau client professionnel",
@@ -884,6 +896,50 @@
     }
   },
   "Meta": {
-    "description": "Outils diamant professionnels : disques, couronnes de carottage, segments et ponçage pour le béton, l’asphalte et la pierre naturelle. Livraison offerte dès 49 €."
+    "description": "Outils diamant professionnels : disques, couronnes de carottage, segments et ponçage pour le béton, l’asphalte et la pierre naturelle. Livraison rapide, paiement par virement."
+  },
+  "MaterialGuide": {
+    "eyebrow": "Astuce",
+    "title": "Quel disque, quelle couronne pour quel matériau ?",
+    "intro": "Les grandes règles pour bien choisir. Chaque chantier est différent : en cas de doute, on vous conseille par téléphone.",
+    "colMaterial": "Matériau",
+    "colBlade": "Disque à tronçonner",
+    "colCoreBit": "Couronne de carottage",
+    "rows": {
+      "reinforcedConcrete": {
+        "material": "Béton armé, béton dur",
+        "blade": "Disque segmenté soudé laser, liant tendre (scie de sol, scie murale ou meuleuse)",
+        "coreBit": "Couronne à eau à segments soudés laser"
+      },
+      "abrasive": {
+        "material": "Asphalte, enrobé, béton frais",
+        "blade": "Disque segmenté à liant dur, avec segments de protection du corps",
+        "coreBit": "Couronne à eau à liant dur"
+      },
+      "hardStone": {
+        "material": "Granite, pierre dure",
+        "blade": "Disque turbo ou segmenté à liant tendre, idéalement à l'eau",
+        "coreBit": "Couronne à eau"
+      },
+      "tile": {
+        "material": "Carrelage, grès cérame",
+        "blade": "Disque à jante continue, extra-fin (scie sur table ou meuleuse)",
+        "coreBit": "Couronne à sec de petit diamètre, ou à eau pour le grès cérame"
+      },
+      "masonry": {
+        "material": "Brique, parpaing, maçonnerie",
+        "blade": "Disque segmenté universel ou turbo",
+        "coreBit": "Couronne à sec"
+      },
+      "softStone": {
+        "material": "Marbre, pierre tendre",
+        "blade": "Disque à jante continue ou turbo, pour une coupe nette",
+        "coreBit": "Couronne à eau"
+      }
+    },
+    "ruleHard": "Matériau dur (granite, béton armé) → liant tendre : les diamants se renouvellent et l'outil continue de couper.",
+    "ruleAbrasive": "Matériau abrasif (asphalte, béton frais, grès) → liant dur : le segment s'use moins vite.",
+    "ruleWet": "À l'eau : coupe plus rapide, outil refroidi, moins de poussière. À sec : uniquement avec un outil prévu pour, par passes courtes.",
+    "callUs": "Pour chaque question sur le bon outil, appelez-nous :"
   }
 }

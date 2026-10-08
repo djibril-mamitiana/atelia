@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ArrowUpRight, Clock } from "lucide-react";
+import { ArrowUpRight, Clock, Lightbulb } from "lucide-react";
 import { LinkButton } from "@/components/ui/button";
 import { SectionHeading } from "@/components/home/section-heading";
 
@@ -73,6 +73,21 @@ export async function Guides({ guides }: { guides: Guide[] }) {
           </div>
         ))}
       </div>
+
+      <Link
+        href="/tutoriels#astuce"
+        data-reveal
+        className="group mt-6 flex items-center justify-between gap-4 rounded-3xl border border-border bg-paper px-7 py-5 text-ink transition-colors hover:border-ink/30"
+      >
+        <span className="flex items-center gap-3 text-[15px]">
+          <Lightbulb size={18} className="shrink-0 text-accent-dark" />
+          <span>
+            <span className="font-medium">{t("materialTipTitle")}</span>{" "}
+            <span className="text-ink-soft">{t("materialTipText")}</span>
+          </span>
+        </span>
+        <ArrowUpRight size={16} className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+      </Link>
     </section>
   );
 }

@@ -13,7 +13,6 @@ import { LinkButton } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
 import { localizedProductName } from "@/lib/product-name";
 import { localizedCategoryName } from "@/lib/category-name";
-import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cart");
@@ -70,19 +69,12 @@ export default async function CartPage({
   }
 
   const recommendations = await getCartRecommendations(cart.items.map((i) => i.productId));
-  const remainingForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - pricing.subtotal);
 
   return (
     <div className="container-page py-10">
       <h1 className="font-display text-3xl text-ink">{t("title")}</h1>
 
-      {remainingForFreeShipping > 0 ? (
-        <p className="mt-3 rounded-md bg-sage-soft px-4 py-2.5 text-sm text-sage">
-          {t("freeShippingRemaining", { amount: formatPrice(remainingForFreeShipping, locale) })}
-        </p>
-      ) : (
-        <p className="mt-3 rounded-md bg-sage-soft px-4 py-2.5 text-sm text-sage">{t("freeShippingUnlocked")}</p>
-      )}
+      <p className="mt-3 rounded-md bg-sage-soft px-4 py-2.5 text-sm text-sage">{t("shippingAndPaymentNote")}</p>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div className="divide-y divide-border">

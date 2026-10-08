@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Mail, Phone, Clock } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
+import { getSiteSettings } from "@/server/services/site-settings";
+import { telHref } from "@/lib/contact";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Contact");
@@ -9,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ContactPage() {
-  const t = await getTranslations("Contact");
+  const [t, settings] = await Promise.all([getTranslations("Contact"), getSiteSettings()]);
 
   return (
     <div className="container-page py-10">
@@ -24,14 +26,14 @@ export default async function ContactPage() {
             <Mail size={18} className="mt-0.5 text-accent" />
             <div>
               <p className="text-sm font-medium text-ink">{t("byEmail")}</p>
-              <p className="text-sm text-muted">support@atelia.example</p>
+              <a href={`mailto:${settings.contactEmail}`} className="text-sm text-muted hover:text-accent-dark">{settings.contactEmail}</a>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Phone size={18} className="mt-0.5 text-accent" />
             <div>
               <p className="text-sm font-medium text-ink">{t("byPhone")}</p>
-              <p className="text-sm text-muted">01 23 45 67 89</p>
+              <a href={telHref(settings.contactPhone)} className="text-sm text-muted hover:text-accent-dark">{settings.contactPhone}</a>
             </div>
           </div>
           <div className="flex items-start gap-3">

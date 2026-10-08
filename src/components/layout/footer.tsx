@@ -1,12 +1,14 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Truck, ShieldCheck, RotateCcw, Headset, ArrowUpRight } from "lucide-react";
+import { Truck, ShieldCheck, RotateCcw, Headset, ArrowUpRight, Mail, Phone } from "lucide-react";
 import { SITE_NAME } from "@/lib/constants";
+import { telHref } from "@/lib/contact";
+import { getSiteSettings } from "@/server/services/site-settings";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Logo } from "@/components/layout/logo";
 
 export async function Footer() {
-  const t = await getTranslations("Footer");
+  const [t, settings] = await Promise.all([getTranslations("Footer"), getSiteSettings()]);
 
   const reassurance = [
     { icon: Truck, title: t("reassurance.shippingTitle"), description: t("reassurance.shippingDescription") },
@@ -67,6 +69,19 @@ export async function Footer() {
         <div>
           <Logo tone="light" />
           <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-steel">{t("description")}</p>
+          <p className="mt-6 text-[15px] text-white/85">{t("callUsText")}</p>
+          <ul className="mt-3 flex flex-col gap-2 text-[15px]">
+            <li>
+              <a href={telHref(settings.contactPhone)} className="inline-flex items-center gap-2 text-white hover:text-accent">
+                <Phone size={15} /> {settings.contactPhone}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${settings.contactEmail}`} className="inline-flex items-center gap-2 text-white hover:text-accent">
+                <Mail size={15} /> {settings.contactEmail}
+              </a>
+            </li>
+          </ul>
           <Link
             href="/contact"
             className="group mt-8 inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white hover:text-graphite"

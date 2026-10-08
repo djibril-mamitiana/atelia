@@ -1,9 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Heart, ShoppingBag } from "lucide-react";
+import { Heart, Phone, ShoppingBag } from "lucide-react";
 import { getSession } from "@/lib/auth/session";
 import { getCurrentCart, cartItemCount } from "@/server/services/cart";
 import { getCategoryTree } from "@/server/queries/categories.queries";
+import { getSiteSettings } from "@/server/services/site-settings";
+import { telHref } from "@/lib/contact";
 import { SearchBar } from "@/components/layout/search-bar";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { MobileSearch } from "@/components/layout/mobile-search";
@@ -14,11 +16,12 @@ import { HeaderShell } from "@/components/layout/header-shell";
 import { Logo } from "@/components/layout/logo";
 
 export async function Header() {
-  const [session, cart, categories, t] = await Promise.all([
+  const [session, cart, categories, t, settings] = await Promise.all([
     getSession(),
     getCurrentCart(),
     getCategoryTree(),
     getTranslations("Header"),
+    getSiteSettings(),
   ]);
   const count = cartItemCount(cart);
 
@@ -42,6 +45,10 @@ export async function Header() {
             {t("announcement")}
           </p>
           <div className="flex items-center gap-6">
+            <a href={telHref(settings.contactPhone)} className="flex items-center gap-1.5 transition-colors hover:text-white">
+              <Phone size={13} />
+              {t("callUs", { phone: settings.contactPhone })}
+            </a>
             <Link href="/faq" className="transition-colors hover:text-white">
               {t("help")}
             </Link>

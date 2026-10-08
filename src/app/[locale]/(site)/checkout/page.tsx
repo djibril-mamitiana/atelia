@@ -6,6 +6,7 @@ import { requireActiveUser } from "@/lib/auth/access";
 import { getCurrentCart } from "@/server/services/cart";
 import { db } from "@/lib/db";
 import { CheckoutClient } from "@/components/checkout/checkout-client";
+import { getSiteSettings } from "@/server/services/site-settings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Checkout");
@@ -36,12 +37,13 @@ export default async function CheckoutPage() {
     unitPrice: Number(item.product.price) + Number(item.variant?.priceDelta ?? 0),
   }));
   const subtotal = lines.reduce((sum, l) => sum + l.unitPrice * l.quantity, 0);
+  const { shipping } = await getSiteSettings();
 
   return (
     <div className="container-page py-10">
       <h1 className="font-display text-3xl text-ink">{t("title")}</h1>
       <div className="mt-8">
-        <CheckoutClient addresses={addresses} lines={lines} subtotal={Math.round(subtotal * 100) / 100} />
+        <CheckoutClient addresses={addresses} lines={lines} subtotal={Math.round(subtotal * 100) / 100} shippingRates={shipping} />
       </div>
     </div>
   );

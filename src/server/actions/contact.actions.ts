@@ -4,6 +4,7 @@ import { z } from "zod";
 import { sendEmail } from "@/lib/email";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { headers } from "next/headers";
+import { getSiteSettings } from "@/server/services/site-settings";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Le nom est requis").max(120),
@@ -31,9 +32,10 @@ export async function submitContactAction(input: {
     return { success: false, error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
   }
 
-  const supportEmail = process.env.SUPPORT_EMAIL || "support@atelia.example";
+  // Same address as the one shown on the site, editable in /admin/settings.
+  const { contactEmail } = await getSiteSettings();
   await sendEmail({
-    to: supportEmail,
+    to: contactEmail,
     subject: `[Contact] ${parsed.data.subject}`,
     text: `De : ${parsed.data.name} <${parsed.data.email}>\n\n${parsed.data.message}`,
   });

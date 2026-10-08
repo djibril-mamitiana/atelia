@@ -8,6 +8,8 @@ vi.mock("@/lib/db", () => ({
     product: { findMany: vi.fn() },
     coupon: { findUnique: vi.fn() },
     couponUsage: { count: vi.fn() },
+    // No saved settings row → the default shipping rates from constants.
+    siteSettings: { findUnique: vi.fn().mockResolvedValue(null) },
   },
 }));
 
@@ -51,17 +53,12 @@ beforeEach(() => {
 });
 
 describe("computeShippingCost", () => {
-  it("is free above the free-shipping threshold for STANDARD delivery", () => {
-    expect(computeShippingCost("STANDARD", 60)).toBe(0);
+  const rates = { standard: 5.9, express: 9.9 };
+  it("charges the standard rate — there is no free-shipping threshold", () => {
+    expect(computeShippingCost("STANDARD", rates)).toBe(5.9);
   });
-  it("charges the standard fee below the threshold", () => {
-    expect(computeShippingCost("STANDARD", 20)).toBeGreaterThan(0);
-  });
-  it("PICKUP is always free", () => {
-    expect(computeShippingCost("PICKUP", 5)).toBe(0);
-  });
-  it("EXPRESS has a fixed cost regardless of subtotal", () => {
-    expect(computeShippingCost("EXPRESS", 500)).toBe(9.9);
+  it("charges the express rate for EXPRESS", () => {
+    expect(computeShippingCost("EXPRESS", rates)).toBe(9.9);
   });
 });
 
@@ -81,9 +78,9 @@ describe("computeOrderPricing", () => {
     );
 
     expect(result.subtotal).toBe(200);
-    // Below the free-shipping threshold is impossible here (200 > 49), so shipping is free.
-    expect(result.shippingCost).toBe(0);
-    expect(result.total).toBe(200);
+    // Shipping is always charged (default standard rate), whatever the amount.
+    expect(result.shippingCost).toBe(5.9);
+    expect(result.total).toBe(205.9);
   });
 
   it("rejects a quantity that exceeds available stock", async () => {
@@ -128,7 +125,7 @@ describe("computeOrderPricing", () => {
 
     expect(result.subtotal).toBe(100);
     expect(result.discount).toBe(10);
-    expect(result.total).toBe(90); // subtotal(100) - discount(10) + shipping(0, above threshold)
+    expect(result.total).toBe(95.9); // subtotal(100) - discount(10) + shipping(5.90)
   });
 
   it("rejects an expired or unknown coupon code", async () => {

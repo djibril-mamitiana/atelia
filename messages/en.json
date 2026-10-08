@@ -1,6 +1,6 @@
 {
   "Header": {
-    "announcement": "Free delivery from €49 · Free in-store pickup",
+    "announcement": "Fast delivery across France · Payment by bank transfer",
     "tutorials": "Guides & tips",
     "contact": "Contact",
     "favorites": "Favorites",
@@ -11,15 +11,16 @@
     "catalog": "Catalog",
     "catalogEyebrow": "The catalog",
     "catalogTitle": "Every family of diamond tools",
-    "viewCatalog": "Browse the full catalog"
+    "viewCatalog": "Browse the full catalog",
+    "callUs": "Any question? Call us: {phone}"
   },
   "Footer": {
     "description": "Professional diamond tools for concrete, asphalt and natural stone — plus the guides to choose them well.",
     "reassurance": {
       "shippingTitle": "Fast delivery",
-      "shippingDescription": "From €49 spent, anywhere in France",
-      "paymentTitle": "Secure payment",
-      "paymentDescription": "Encrypted transactions",
+      "shippingDescription": "Across France",
+      "paymentTitle": "Bank transfer payment",
+      "paymentDescription": "Straight from your bank",
       "returnsTitle": "Easy returns",
       "returnsDescription": "30 days to change your mind",
       "supportTitle": "Customer service",
@@ -38,11 +39,12 @@
     "helpTitle": "Help",
     "faq": "FAQ",
     "contact": "Contact",
-    "shippingHelp": "Shipping & pickup",
+    "shippingHelp": "Shipping",
     "returnsHelp": "Returns & refunds",
     "copyright": "All rights reserved.",
     "legal": "Legal notice",
-    "terms": "Terms & conditions"
+    "terms": "Terms & conditions",
+    "callUsText": "For any question, call us:"
   },
   "MobileNav": {
     "openMenu": "Open menu",
@@ -55,8 +57,8 @@
   },
   "PromoTicker": {
     "messages": [
-      "Free delivery from €49",
-      "Free in-store pickup",
+      "Fast delivery across France",
+      "For any question, call us",
       "Secure payment by bank transfer",
       "Expert advice for all your projects",
       "30 days to change your mind"
@@ -85,7 +87,7 @@
     "allTutorials": "All guides",
     "ourBrands": "Our brands",
     "viewAll": "View all",
-    "heroTrust1": "Free delivery from {threshold}",
+    "heroTrust1": "Fast delivery across France",
     "heroTrust2": "30 days to change your mind",
     "heroTrust3": "Secure payment by bank transfer",
     "heroChipRange": "Ø115 – Ø1000 mm",
@@ -94,7 +96,6 @@
     "proofRefs": "references in the catalog",
     "proofGuides": "step-by-step guides",
     "proofLangs": "site languages",
-    "proofShipping": "free delivery from",
     "problemEyebrow": "The problem",
     "problemTitle": "Choosing a diamond tool shouldn’t be <em>a gamble.</em>",
     "problemLead": "Diameter, bore, material, machine… One mistake and a blade wears out too fast or the job grinds to a halt.",
@@ -136,18 +137,21 @@
     "brandMaterial3": "Natural stone",
     "guidesEyebrow": "Guides & tips",
     "guidesTitle": "Get the job done, <em>step by step.</em>",
-    "guidesSubtitle": "Choose, use, maintain: practical guides to get the most out of your diamond tool.",
+    "guidesSubtitle": "Different tutorials for our tools: choose, use and maintain your diamond tool.",
     "guidesAll": "All guides",
     "guidesRead": "Read the guide",
     "faqEyebrow": "FAQ",
     "faqTitle": "A question? <em>The answer is right here.</em>",
     "faqAll": "See all questions",
-    "faqContactText": "Can’t find your answer?",
+    "faqContactText": "For any question, call us or write to us.",
     "faqContact": "Write to us",
     "ctaTitle": "Ready to equip <em>your next job?</em>",
     "ctaText": "Browse the catalog or write to us — we’ll help you pick the right reference.",
     "ctaPrimary": "Browse the catalog",
-    "ctaSecondary": "Contact us"
+    "ctaSecondary": "Contact us",
+    "proofPro": "trade customers only",
+    "materialTipTitle": "Tip:",
+    "materialTipText": "which blade and which core bit for which material?"
   },
   "LanguageSwitcher": {
     "label": "Language"
@@ -222,8 +226,6 @@
     "lowStock": "Only {count} left in stock",
     "inStock": "In stock",
     "buyNow": "Buy now",
-    "shippingHome": "Home delivery from €4.90 — free from €49 spent.",
-    "pickupFree": "Free in-store pickup within 2h at partner locations.",
     "ref": "Ref. {sku}",
     "reviewsCount": "({count} reviews)",
     "description": "Description",
@@ -261,7 +263,10 @@
     "pricesForPros": "Prices for trade customers only",
     "pricesForProsHint": "Sign in with your trade account to see prices and order.",
     "signInToSeePrice": "Sign in to see the price",
-    "requestAccount": "No account yet? Request one"
+    "requestAccount": "No account yet? Request one",
+    "shippingFast": "Fast delivery across France.",
+    "paymentTransfer": "Payment by bank transfer.",
+    "questionCallUs": "Any question? Call us on"
   },
   "Catalog": {
     "allProducts": "All products",
@@ -294,8 +299,6 @@
     "emptyTitle": "Your cart is empty",
     "emptyDescription": "Browse our catalog to find the material for your next project.",
     "discoverProducts": "Discover our products",
-    "freeShippingRemaining": "{amount} more to unlock free shipping.",
-    "freeShippingUnlocked": "Free shipping 🎉",
     "summary": "Summary",
     "subtotal": "Subtotal",
     "discount": "Discount",
@@ -310,7 +313,8 @@
     "removeFromCart": "Remove from cart",
     "couponPlaceholder": "Promo code",
     "couponApply": "Apply",
-    "quantity": "Qty {quantity}"
+    "quantity": "Qty {quantity}",
+    "shippingAndPaymentNote": "Fast delivery across France — payment by bank transfer once the order is placed."
   },
   "Checkout": {
     "title": "Complete my order",
@@ -324,9 +328,7 @@
     "shippingStandardLabel": "Standard shipping",
     "shippingStandardDescription": "3 to 5 business days",
     "shippingExpressLabel": "Express shipping",
-    "shippingExpressDescription": "1 to 2 business days — €9.90",
-    "shippingPickupLabel": "In-store pickup",
-    "shippingPickupDescription": "Free, within 2h",
+    "shippingExpressDescription": "1 to 2 business days",
     "couponOptional": "Promo code (optional)",
     "noteOptional": "Note for the courier (optional)",
     "bankTransferNotice": "Payment is made by bank transfer. After confirming, you'll receive the bank details and the reference to use — your order is prepared as soon as the transfer is received.",
@@ -460,7 +462,7 @@
   "Faq": {
     "title": "Frequently asked questions",
     "sectionOrders": "Orders",
-    "sectionShipping": "Shipping & pickup",
+    "sectionShipping": "Shipping",
     "sectionReturns": "Returns & refunds",
     "sectionPayment": "Payment",
     "q1": "How do I track my order?",
@@ -468,9 +470,9 @@
     "q2": "Can I change or cancel my order?",
     "a2": "An order can be cancelled as long as it hasn't been shipped yet — contact us via the contact form with your order number.",
     "q3": "What are the delivery times?",
-    "a3": "Allow 3 to 5 business days for standard shipping, 1 to 2 days for express shipping. In-store pickup is available within 2h at partner locations.",
-    "q4": "Is shipping free?",
-    "a4": "Standard shipping is free from €49 spent. Below that, a €5.90 fee applies.",
+    "a3": "We ship fast: allow 3 to 5 business days for standard delivery, 1 to 2 days for express.",
+    "q4": "How much does delivery cost?",
+    "a4": "Standard delivery costs {standard} and express delivery {express}, whatever the order amount.",
     "q5": "How long do I have to return a product?",
     "a5": "You have 30 days from receipt to return an unused product in its original packaging.",
     "q6": "How do I get a refund?",
@@ -482,14 +484,15 @@
   },
   "Tutorials": {
     "title": "Guides & tips",
-    "subtitle": "Step-by-step guides to succeed at your projects, with the right material for every step.",
+    "subtitle": "Different tutorials for our tools: step-by-step guides to choose, use and maintain your equipment.",
     "levelBeginner": "Beginner",
     "levelIntermediate": "Intermediate",
     "levelAdvanced": "Advanced",
     "minutesShort": "{minutes} min",
     "productsUsed": "Products used",
     "view": "View",
-    "allTutorials": "← All guides"
+    "allTutorials": "← All guides",
+    "allGuidesTitle": "All our tutorials"
   },
   "Search": {
     "title": "Search",
@@ -858,7 +861,16 @@
       "checkBank": "Bank transfer details (BANK_TRANSFER_*)",
       "checkEmail": "Email sending (RESEND_API_KEY)",
       "checkStripe": "Stripe payment — optional, disabled (STRIPE_SECRET_KEY)",
-      "configHint": "Configure the missing variables in your .env file (see the README)."
+      "configHint": "Configure the missing variables in your .env file (see the README).",
+      "shopSection": "Contact and delivery",
+      "shopHint": "Shown across the site (header, footer, contact, product pages). Delivery rates apply to every order — there is no free delivery.",
+      "contactPhone": "Phone",
+      "contactEmail": "Contact email",
+      "shippingStandard": "Standard delivery (€)",
+      "shippingExpress": "Express delivery (€)",
+      "shopSave": "Save",
+      "shopSaved": "Settings saved.",
+      "shopAdminOnly": "Only an administrator can change these settings."
     },
     "CustomerForm": {
       "newTitle": "New trade customer",
@@ -884,6 +896,50 @@
     }
   },
   "Meta": {
-    "description": "Professional diamond tools: blades, core drill bits, segments and sanding for concrete, asphalt and natural stone. Free delivery from €49."
+    "description": "Professional diamond tools: blades, core drill bits, segments and sanding for concrete, asphalt and natural stone. Fast delivery, payment by bank transfer."
+  },
+  "MaterialGuide": {
+    "eyebrow": "Tip",
+    "title": "Which blade, which core bit for which material?",
+    "intro": "The main rules for choosing well. Every job is different: if in doubt, we'll advise you by phone.",
+    "colMaterial": "Material",
+    "colBlade": "Cutting blade",
+    "colCoreBit": "Core drill bit",
+    "rows": {
+      "reinforcedConcrete": {
+        "material": "Reinforced concrete, hard concrete",
+        "blade": "Laser-welded segmented blade, soft bond (floor saw, wall saw or angle grinder)",
+        "coreBit": "Wet core bit with laser-welded segments"
+      },
+      "abrasive": {
+        "material": "Asphalt, tarmac, green concrete",
+        "blade": "Hard-bond segmented blade with undercut protection segments",
+        "coreBit": "Hard-bond wet core bit"
+      },
+      "hardStone": {
+        "material": "Granite, hard stone",
+        "blade": "Soft-bond turbo or segmented blade, ideally wet",
+        "coreBit": "Wet core bit"
+      },
+      "tile": {
+        "material": "Tile, porcelain stoneware",
+        "blade": "Extra-thin continuous-rim blade (table saw or angle grinder)",
+        "coreBit": "Small dry core bit, or wet for porcelain"
+      },
+      "masonry": {
+        "material": "Brick, block, masonry",
+        "blade": "Universal segmented or turbo blade",
+        "coreBit": "Dry core bit"
+      },
+      "softStone": {
+        "material": "Marble, soft stone",
+        "blade": "Continuous-rim or turbo blade, for a clean cut",
+        "coreBit": "Wet core bit"
+      }
+    },
+    "ruleHard": "Hard material (granite, reinforced concrete) → soft bond: the diamonds keep renewing and the tool keeps cutting.",
+    "ruleAbrasive": "Abrasive material (asphalt, green concrete, sandstone) → hard bond: the segment wears more slowly.",
+    "ruleWet": "Wet: faster cutting, cooled tool, less dust. Dry: only with a tool designed for it, in short passes.",
+    "callUs": "For any question about the right tool, call us:"
   }
 }

@@ -3,12 +3,13 @@
 import { useMemo, useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { Lock, ShoppingCart, Zap } from "lucide-react";
+import { Landmark, Lock, Phone, ShoppingCart, Truck, Zap } from "lucide-react";
 import { Button, LinkButton } from "@/components/ui/button";
 import { QuantityStepper } from "@/components/ui/quantity-stepper";
 import { useToast } from "@/components/ui/toast";
 import { addToCartAction } from "@/server/actions/cart.actions";
 import { formatPrice } from "@/lib/format";
+import { telHref } from "@/lib/contact";
 
 // Money fields are null for signed-out visitors (B2B shop — prices are
 // stripped server-side, see lib/auth/access): the panel then still shows
@@ -34,6 +35,7 @@ export function AddToCartPanel({
   sizes = [],
   initialSizeId,
   signInPath,
+  contactPhone,
 }: {
   productId: string;
   basePrice: number | null;
@@ -43,6 +45,8 @@ export function AddToCartPanel({
   initialSizeId?: string;
   /** Where the sign-in link brings the visitor back to. */
   signInPath: string;
+  /** From /admin/settings. */
+  contactPhone: string;
 }) {
   const t = useTranslations("Product");
   const locale = useLocale();
@@ -217,8 +221,17 @@ export function AddToCartPanel({
       )}
 
       <div className="mt-1 flex flex-col gap-1.5 border-t border-border pt-4 text-xs text-muted">
-        <p>{t("shippingHome")}</p>
-        <p>{t("pickupFree")}</p>
+        <p className="flex items-center gap-2"><Truck size={14} /> {t("shippingFast")}</p>
+        <p className="flex items-center gap-2"><Landmark size={14} /> {t("paymentTransfer")}</p>
+        <p className="flex items-center gap-2">
+          <Phone size={14} />
+          <span>
+            {t("questionCallUs")}{" "}
+            <a href={telHref(contactPhone)} className="font-medium text-ink hover:text-accent-dark">
+              {contactPhone}
+            </a>
+          </span>
+        </p>
       </div>
     </div>
   );

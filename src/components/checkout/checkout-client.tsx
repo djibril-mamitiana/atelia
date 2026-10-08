@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
 import { useToast } from "@/components/ui/toast";
 import { formatPrice } from "@/lib/format";
-import { computeShippingCost, type ShippingMethod } from "@/lib/shipping";
+import { computeShippingCost, type ShippingMethod, type ShippingRates } from "@/lib/shipping";
 import { addAddressAction } from "@/server/actions/address.actions";
 import { createOrderAction } from "@/server/actions/checkout.actions";
 import { AddressFormFields } from "@/components/checkout/address-form-fields";
@@ -48,10 +48,13 @@ export function CheckoutClient({
   addresses,
   lines,
   subtotal,
+  shippingRates,
 }: {
   addresses: Address[];
   lines: CartLine[];
   subtotal: number;
+  /** From /admin/settings — preview only; the server recomputes the total. */
+  shippingRates: ShippingRates;
 }) {
   const t = useTranslations("Checkout");
   const tCart = useTranslations("Cart");
@@ -64,7 +67,6 @@ export function CheckoutClient({
   const SHIPPING_OPTIONS: { value: ShippingMethod; label: string; description: string }[] = [
     { value: "STANDARD", label: t("shippingStandardLabel"), description: t("shippingStandardDescription") },
     { value: "EXPRESS", label: t("shippingExpressLabel"), description: t("shippingExpressDescription") },
-    { value: "PICKUP", label: t("shippingPickupLabel"), description: t("shippingPickupDescription") },
   ];
 
   const [selectedAddressId, setSelectedAddressId] = useState<string | null>(
@@ -77,7 +79,7 @@ export function CheckoutClient({
   const [couponCode, setCouponCode] = useState("");
   const [customerNote, setCustomerNote] = useState("");
 
-  const shippingCost = useMemo(() => computeShippingCost(shippingMethod, subtotal), [shippingMethod, subtotal]);
+  const shippingCost = useMemo(() => computeShippingCost(shippingMethod, shippingRates), [shippingMethod, shippingRates]);
   const estimatedTotal = subtotal + shippingCost;
 
   function handleSaveAddress() {
@@ -202,6 +204,7 @@ export function CheckoutClient({
                         <span className="block text-muted">{opt.description}</span>
                       </span>
                     </span>
+                    <span className="shrink-0 font-medium text-ink">{formatPrice(computeShippingCost(opt.value, shippingRates), locale)}</span>
                   </label>
                 ))}
               </div>

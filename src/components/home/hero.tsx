@@ -2,20 +2,17 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight, BookOpen, Check, Ruler } from "lucide-react";
 import { LinkButton } from "@/components/ui/button";
 import { Blade } from "@/components/home/blade";
-import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export async function Hero({ referencesCount, guidesCount }: { referencesCount: number; guidesCount: number }) {
   const t = await getTranslations("Home");
   const locale = await getLocale();
   const number = new Intl.NumberFormat(locale);
-  const euros = new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
-  const threshold = euros.format(FREE_SHIPPING_THRESHOLD);
 
   const proof = [
     { value: number.format(referencesCount), label: t("proofRefs") },
     { value: number.format(guidesCount), label: t("proofGuides") },
     { value: "4", label: t("proofLangs") },
-    { value: threshold, label: t("proofShipping") },
+    { value: "B2B", label: t("proofPro") },
   ];
 
   return (
@@ -60,7 +57,7 @@ export async function Hero({ referencesCount, guidesCount }: { referencesCount: 
           </div>
 
           <ul className="rise mt-10 flex flex-col gap-3 text-sm text-white/60 sm:flex-row sm:flex-wrap sm:gap-x-7" style={{ ["--d" as string]: "390ms" }}>
-            {[t("heroTrust1", { threshold }), t("heroTrust2"), t("heroTrust3")].map((item) => (
+            {[t("heroTrust1"), t("heroTrust2"), t("heroTrust3")].map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <Check size={15} className="text-accent" strokeWidth={2.4} />
                 {item}

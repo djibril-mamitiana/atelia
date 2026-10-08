@@ -6,13 +6,19 @@ import { db } from "@/lib/db";
 import { ProfileForm, ChangePasswordForm } from "@/components/account/profile-forms";
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
 import { isBankTransferConfigured } from "@/lib/bank";
+import { isAdmin } from "@/lib/auth/roles";
+import { getSiteSettings } from "@/server/services/site-settings";
+import { SiteSettingsForm } from "@/components/admin/site-settings-form";
 
 export const generateMetadata = () => adminTitle("navSettings");
 
 export default async function AdminSettingsPage() {
   const t = await getTranslations("Admin.Settings");
   const session = await requireRole(["ADMIN", "STAFF"]);
-  const user = await db.user.findUniqueOrThrow({ where: { id: session.userId } });
+  const [user, settings] = await Promise.all([
+    db.user.findUniqueOrThrow({ where: { id: session.userId } }),
+    getSiteSettings(),
+  ]);
 
   const checks = [
     { label: t("checkDb"), ok: Boolean(process.env.DATABASE_URL) },
@@ -32,6 +38,16 @@ export default async function AdminSettingsPage() {
           <div className="flex justify-between"><dt className="text-muted">{t("siteTagline")}</dt><dd className="text-ink">{SITE_TAGLINE}</dd></div>
         </dl>
       </section>
+
+      <SiteSettingsForm
+        canEdit={isAdmin(session.role)}
+        initial={{
+          contactEmail: settings.contactEmail,
+          contactPhone: settings.contactPhone,
+          shippingStandard: settings.shipping.standard.toFixed(2),
+          shippingExpress: settings.shipping.express.toFixed(2),
+        }}
+      />
 
       <section className="rounded-md border border-border bg-surface p-5">
         <p className="mb-3 font-medium text-ink">{t("configSection")}</p>

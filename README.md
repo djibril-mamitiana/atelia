@@ -116,6 +116,20 @@ ne lancez pas le seed sur la base de production.
 - Les codes sont stockés en clair pour que l'équipe puisse les retransmettre
   au client. Si un code fuit, générez-en un nouveau depuis la fiche client.
 
+### Contact et livraison (modifiables dans l'admin)
+
+**/admin/settings → Contact et livraison** (rôle `ADMIN`) :
+
+- **téléphone et email de contact**, affichés dans l'en-tête (« Une question ?
+  Appelez-nous »), le pied de page, la page contact, les fiches produit et
+  l'astuce matériaux. Le formulaire de contact est envoyé à cet email ;
+- **tarifs de livraison standard et express**, appliqués à chaque commande.
+  Il n'y a **pas de livraison gratuite** ni de retrait en magasin.
+
+Tant que le formulaire n'a jamais été enregistré, les valeurs par défaut de
+[src/lib/constants.ts](src/lib/constants.ts) s'appliquent
+(`contact@concretetoolspro.com`, `01 23 45 67 89`, 5,90 € et 9,90 €).
+
 ## 3. Paiement — virement bancaire manuel
 
 Le moyen de paiement actif est le **virement bancaire manuel** (pas de

@@ -1,6 +1,6 @@
 {
   "Header": {
-    "announcement": "Spedizione gratuita a partire da 49 € · Ritiro in negozio gratuito",
+    "announcement": "Spedizione rapida in tutta la Francia · Pagamento con bonifico bancario",
     "tutorials": "Guide e consigli",
     "contact": "Contatti",
     "favorites": "Preferiti",
@@ -11,15 +11,16 @@
     "catalog": "Catalogo",
     "catalogEyebrow": "Il catalogo",
     "catalogTitle": "Tutte le famiglie di utensili diamantati",
-    "viewCatalog": "Vedi tutto il catalogo"
+    "viewCatalog": "Vedi tutto il catalogo",
+    "callUs": "Domande? Chiamateci: {phone}"
   },
   "Footer": {
     "description": "Utensili diamantati professionali per calcestruzzo, asfalto e pietra naturale — e le guide per sceglierli bene.",
     "reassurance": {
       "shippingTitle": "Spedizione rapida",
-      "shippingDescription": "A partire da 49 € di spesa, in tutta la Francia",
-      "paymentTitle": "Pagamento sicuro",
-      "paymentDescription": "Transazioni crittografate",
+      "shippingDescription": "In tutta la Francia",
+      "paymentTitle": "Pagamento con bonifico",
+      "paymentDescription": "Direttamente dalla vostra banca",
       "returnsTitle": "Resi semplificati",
       "returnsDescription": "30 giorni per cambiare idea",
       "supportTitle": "Servizio clienti",
@@ -38,11 +39,12 @@
     "helpTitle": "Assistenza",
     "faq": "Domande frequenti",
     "contact": "Contatti",
-    "shippingHelp": "Spedizione e ritiro",
+    "shippingHelp": "Spedizione",
     "returnsHelp": "Resi e rimborsi",
     "copyright": "Tutti i diritti riservati.",
     "legal": "Note legali",
-    "terms": "Termini e condizioni"
+    "terms": "Termini e condizioni",
+    "callUsText": "Per qualsiasi domanda, chiamateci:"
   },
   "MobileNav": {
     "openMenu": "Apri il menu",
@@ -55,8 +57,8 @@
   },
   "PromoTicker": {
     "messages": [
-      "Spedizione gratuita a partire da 49 €",
-      "Ritiro in negozio gratuito",
+      "Spedizione rapida in tutta la Francia",
+      "Per qualsiasi domanda, chiamateci",
       "Pagamento sicuro tramite bonifico bancario",
       "Consigli di esperti per tutti i vostri progetti",
       "30 giorni per cambiare idea"
@@ -85,7 +87,7 @@
     "allTutorials": "Tutte le guide",
     "ourBrands": "I nostri marchi",
     "viewAll": "Vedi tutto",
-    "heroTrust1": "Spedizione gratuita da {threshold}",
+    "heroTrust1": "Spedizione rapida in tutta la Francia",
     "heroTrust2": "30 giorni per cambiare idea",
     "heroTrust3": "Pagamento sicuro con bonifico",
     "heroChipRange": "Ø115 – Ø1000 mm",
@@ -94,7 +96,6 @@
     "proofRefs": "referenze a catalogo",
     "proofGuides": "guide passo dopo passo",
     "proofLangs": "lingue del sito",
-    "proofShipping": "spedizione gratuita da",
     "problemEyebrow": "Il problema",
     "problemTitle": "Scegliere un utensile diamantato non dovrebbe essere <em>una scommessa.</em>",
     "problemLead": "Diametro, foro, materiale da trattare, macchina… Un solo errore e il disco si consuma troppo in fretta o il cantiere si ferma.",
@@ -136,18 +137,21 @@
     "brandMaterial3": "Pietra naturale",
     "guidesEyebrow": "Guide e consigli",
     "guidesTitle": "Portate a termine il cantiere, <em>passo dopo passo.</em>",
-    "guidesSubtitle": "Scegliere, usare, mantenere: guide concrete per ottenere il meglio dal vostro utensile diamantato.",
+    "guidesSubtitle": "Diversi tutorial per i nostri utensili: scegliere, usare e mantenere il vostro utensile diamantato.",
     "guidesAll": "Tutte le guide",
     "guidesRead": "Leggi la guida",
     "faqEyebrow": "FAQ",
     "faqTitle": "Una domanda? <em>La risposta è qui.</em>",
     "faqAll": "Vedi tutte le domande",
-    "faqContactText": "Non trovate la vostra risposta?",
+    "faqContactText": "Per qualsiasi domanda, chiamateci o scriveteci.",
     "faqContact": "Scriveteci",
     "ctaTitle": "Pronti ad attrezzare <em>il vostro prossimo cantiere?</em>",
     "ctaText": "Sfogliate il catalogo o scriveteci: vi aiutiamo a scegliere la referenza giusta.",
     "ctaPrimary": "Vedi il catalogo",
-    "ctaSecondary": "Contattaci"
+    "ctaSecondary": "Contattaci",
+    "proofPro": "vendita riservata ai professionisti",
+    "materialTipTitle": "Consiglio:",
+    "materialTipText": "quale disco e quale corona per quale materiale?"
   },
   "LanguageSwitcher": {
     "label": "Lingua"
@@ -222,8 +226,6 @@
     "lowStock": "Solo {count} rimasti disponibili",
     "inStock": "Disponibile",
     "buyNow": "Ordina ora",
-    "shippingHome": "Consegna a domicilio a partire da 4,90 € — gratuita a partire da 49 € di spesa.",
-    "pickupFree": "Ritiro gratuito in negozio entro 2h presso i punti partner.",
     "ref": "Rif. {sku}",
     "reviewsCount": "({count} recensioni)",
     "description": "Descrizione",
@@ -261,7 +263,10 @@
     "pricesForPros": "Prezzi riservati ai professionisti",
     "pricesForProsHint": "Accedi con il tuo account professionale per vedere i prezzi e ordinare.",
     "signInToSeePrice": "Accedi per vedere il prezzo",
-    "requestAccount": "Non hai un account? Richiedilo"
+    "requestAccount": "Non hai un account? Richiedilo",
+    "shippingFast": "Spedizione rapida in tutta la Francia.",
+    "paymentTransfer": "Pagamento con bonifico bancario.",
+    "questionCallUs": "Domande? Chiamateci al"
   },
   "Catalog": {
     "allProducts": "Tutti i prodotti",
@@ -294,8 +299,6 @@
     "emptyTitle": "Il tuo carrello è vuoto",
     "emptyDescription": "Esplora il nostro catalogo per trovare il materiale per il tuo prossimo progetto.",
     "discoverProducts": "Scopri i prodotti",
-    "freeShippingRemaining": "Ancora {amount} per ottenere la spedizione gratuita.",
-    "freeShippingUnlocked": "Spedizione gratuita 🎉",
     "summary": "Riepilogo",
     "subtotal": "Subtotale",
     "discount": "Sconto",
@@ -310,7 +313,8 @@
     "removeFromCart": "Rimuovi dal carrello",
     "couponPlaceholder": "Codice promo",
     "couponApply": "Applica",
-    "quantity": "Qtà {quantity}"
+    "quantity": "Qtà {quantity}",
+    "shippingAndPaymentNote": "Spedizione rapida in tutta la Francia — pagamento con bonifico bancario dopo la conferma dell'ordine."
   },
   "Checkout": {
     "title": "Completa il mio ordine",
@@ -324,9 +328,7 @@
     "shippingStandardLabel": "Spedizione standard",
     "shippingStandardDescription": "Da 3 a 5 giorni lavorativi",
     "shippingExpressLabel": "Spedizione express",
-    "shippingExpressDescription": "1-2 giorni lavorativi — 9,90 €",
-    "shippingPickupLabel": "Ritiro in negozio",
-    "shippingPickupDescription": "Gratuito, entro 2h",
+    "shippingExpressDescription": "1-2 giorni lavorativi",
     "couponOptional": "Codice promo (facoltativo)",
     "noteOptional": "Nota per il corriere (facoltativo)",
     "bankTransferNotice": "Il pagamento avviene tramite bonifico bancario. Dopo la conferma, riceverai le coordinate bancarie e il riferimento da indicare — il tuo ordine sarà preparato alla ricezione del bonifico.",
@@ -460,7 +462,7 @@
   "Faq": {
     "title": "Domande frequenti",
     "sectionOrders": "Ordini",
-    "sectionShipping": "Spedizione e ritiro",
+    "sectionShipping": "Spedizione",
     "sectionReturns": "Resi e rimborsi",
     "sectionPayment": "Pagamento",
     "q1": "Come posso tracciare il mio ordine?",
@@ -468,9 +470,9 @@
     "q2": "Posso modificare o annullare il mio ordine?",
     "a2": "Un ordine può essere annullato finché non è stato spedito, contattandoci tramite il modulo di contatto con il numero d'ordine.",
     "q3": "Quali sono i tempi di consegna?",
-    "a3": "Da 3 a 5 giorni lavorativi per la spedizione standard, 1-2 giorni per l'espressa. Il ritiro in negozio è disponibile entro 2h presso i punti partner.",
-    "q4": "La spedizione è gratuita?",
-    "a4": "La spedizione standard è gratuita a partire da 49 € di spesa. Al di sotto, si applicano 5,90 € di spese.",
+    "a3": "Spediamo rapidamente: 3-5 giorni lavorativi con la spedizione standard, 1-2 giorni con l'espresso.",
+    "q4": "Quanto costa la spedizione?",
+    "a4": "La spedizione standard costa {standard} e quella espressa {express}, qualunque sia l'importo dell'ordine.",
     "q5": "Quanto tempo ho per restituire un prodotto?",
     "a5": "Hai 30 giorni dalla ricezione per restituire un prodotto non utilizzato, nella sua confezione originale.",
     "q6": "Come ottengo un rimborso?",
@@ -482,14 +484,15 @@
   },
   "Tutorials": {
     "title": "Guide e consigli",
-    "subtitle": "Guide passo dopo passo per riuscire nei tuoi progetti, con il materiale giusto per ogni fase.",
+    "subtitle": "Diversi tutorial per i nostri utensili: guide passo dopo passo per scegliere, usare e mantenere la vostra attrezzatura.",
     "levelBeginner": "Principiante",
     "levelIntermediate": "Intermedio",
     "levelAdvanced": "Avanzato",
     "minutesShort": "{minutes} min",
     "productsUsed": "Prodotti utilizzati",
     "view": "Vedi",
-    "allTutorials": "← Tutte le guide"
+    "allTutorials": "← Tutte le guide",
+    "allGuidesTitle": "Tutti i nostri tutorial"
   },
   "Search": {
     "title": "Ricerca",
@@ -858,7 +861,16 @@
       "checkBank": "Coordinate bonifico bancario (BANK_TRANSFER_*)",
       "checkEmail": "Invio email (RESEND_API_KEY)",
       "checkStripe": "Pagamento Stripe — opzionale, disattivato (STRIPE_SECRET_KEY)",
-      "configHint": "Configura le variabili mancanti nel tuo file .env (vedi il README)."
+      "configHint": "Configura le variabili mancanti nel tuo file .env (vedi il README).",
+      "shopSection": "Contatti e spedizione",
+      "shopHint": "Mostrati su tutto il sito (intestazione, piè di pagina, contatti, schede prodotto). Le tariffe di spedizione si applicano a ogni ordine, senza spedizione gratuita.",
+      "contactPhone": "Telefono",
+      "contactEmail": "Email di contatto",
+      "shippingStandard": "Spedizione standard (€)",
+      "shippingExpress": "Spedizione espressa (€)",
+      "shopSave": "Salva",
+      "shopSaved": "Impostazioni salvate.",
+      "shopAdminOnly": "Solo un amministratore può modificare queste impostazioni."
     },
     "CustomerForm": {
       "newTitle": "Nuovo cliente professionale",
@@ -884,6 +896,50 @@
     }
   },
   "Meta": {
-    "description": "Utensili diamantati professionali: dischi, corone di carotaggio, segmenti e levigatura per calcestruzzo, asfalto e pietra naturale. Spedizione gratuita da 49 €."
+    "description": "Utensili diamantati professionali: dischi, corone di carotaggio, segmenti e levigatura per calcestruzzo, asfalto e pietra naturale. Spedizione rapida, pagamento con bonifico."
+  },
+  "MaterialGuide": {
+    "eyebrow": "Consiglio",
+    "title": "Quale disco, quale corona per quale materiale?",
+    "intro": "Le regole principali per scegliere bene. Ogni cantiere è diverso: in caso di dubbio, vi consigliamo per telefono.",
+    "colMaterial": "Materiale",
+    "colBlade": "Disco da taglio",
+    "colCoreBit": "Corona di carotaggio",
+    "rows": {
+      "reinforcedConcrete": {
+        "material": "Cemento armato, calcestruzzo duro",
+        "blade": "Disco segmentato saldato al laser, legante morbido (tagliasuolo, sega da parete o smerigliatrice)",
+        "coreBit": "Corona ad acqua con segmenti saldati al laser"
+      },
+      "abrasive": {
+        "material": "Asfalto, conglomerato, calcestruzzo fresco",
+        "blade": "Disco segmentato a legante duro, con segmenti di protezione del corpo",
+        "coreBit": "Corona ad acqua a legante duro"
+      },
+      "hardStone": {
+        "material": "Granito, pietra dura",
+        "blade": "Disco turbo o segmentato a legante morbido, meglio ad acqua",
+        "coreBit": "Corona ad acqua"
+      },
+      "tile": {
+        "material": "Piastrelle, gres porcellanato",
+        "blade": "Disco a bordo continuo extra sottile (sega da banco o smerigliatrice)",
+        "coreBit": "Piccola corona a secco, o ad acqua per il gres porcellanato"
+      },
+      "masonry": {
+        "material": "Mattoni, blocchi, muratura",
+        "blade": "Disco segmentato universale o turbo",
+        "coreBit": "Corona a secco"
+      },
+      "softStone": {
+        "material": "Marmo, pietra tenera",
+        "blade": "Disco a bordo continuo o turbo, per un taglio pulito",
+        "coreBit": "Corona ad acqua"
+      }
+    },
+    "ruleHard": "Materiale duro (granito, cemento armato) → legante morbido: i diamanti si rinnovano e l'utensile continua a tagliare.",
+    "ruleAbrasive": "Materiale abrasivo (asfalto, calcestruzzo fresco, arenaria) → legante duro: il segmento si consuma più lentamente.",
+    "ruleWet": "Ad acqua: taglio più rapido, utensile raffreddato, meno polvere. A secco: solo con un utensile progettato per questo, a passate brevi.",
+    "callUs": "Per qualsiasi domanda sull'utensile giusto, chiamateci:"
   }
 }

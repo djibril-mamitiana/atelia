@@ -1,6 +1,6 @@
 {
   "Header": {
-    "announcement": "Kostenloser Versand ab 49 € Einkaufswert · Kostenlose Abholung im Geschäft",
+    "announcement": "Schneller Versand in ganz Frankreich · Zahlung per Banküberweisung",
     "tutorials": "Anleitungen & Tipps",
     "contact": "Kontakt",
     "favorites": "Favoriten",
@@ -11,15 +11,16 @@
     "catalog": "Katalog",
     "catalogEyebrow": "Der Katalog",
     "catalogTitle": "Alle Familien von Diamantwerkzeugen",
-    "viewCatalog": "Gesamten Katalog ansehen"
+    "viewCatalog": "Gesamten Katalog ansehen",
+    "callUs": "Fragen? Rufen Sie uns an: {phone}"
   },
   "Footer": {
     "description": "Professionelle Diamantwerkzeuge für Beton, Asphalt und Naturstein – und die Anleitungen, um sie richtig auszuwählen.",
     "reassurance": {
       "shippingTitle": "Schneller Versand",
-      "shippingDescription": "Ab 49 € Einkauf, in ganz Frankreich",
-      "paymentTitle": "Sichere Zahlung",
-      "paymentDescription": "Verschlüsselte Transaktionen",
+      "shippingDescription": "In ganz Frankreich",
+      "paymentTitle": "Zahlung per Überweisung",
+      "paymentDescription": "Direkt über Ihre Bank",
       "returnsTitle": "Einfache Rücksendung",
       "returnsDescription": "30 Tage Rückgaberecht",
       "supportTitle": "Kundenservice",
@@ -38,11 +39,12 @@
     "helpTitle": "Hilfe",
     "faq": "Häufige Fragen",
     "contact": "Kontakt",
-    "shippingHelp": "Versand & Abholung",
+    "shippingHelp": "Versand",
     "returnsHelp": "Rückgabe & Erstattung",
     "copyright": "Alle Rechte vorbehalten.",
     "legal": "Impressum",
-    "terms": "AGB"
+    "terms": "AGB",
+    "callUsText": "Bei jeder Frage rufen Sie uns an:"
   },
   "MobileNav": {
     "openMenu": "Menü öffnen",
@@ -55,8 +57,8 @@
   },
   "PromoTicker": {
     "messages": [
-      "Kostenloser Versand ab 49 € Einkaufswert",
-      "Kostenlose Abholung im Geschäft",
+      "Schneller Versand in ganz Frankreich",
+      "Bei jeder Frage rufen Sie uns an",
       "Sichere Zahlung per Banküberweisung",
       "Expertenberatung für all Ihre Projekte",
       "30 Tage Rückgaberecht"
@@ -85,7 +87,7 @@
     "allTutorials": "Alle Anleitungen",
     "ourBrands": "Unsere Marken",
     "viewAll": "Alle ansehen",
-    "heroTrust1": "Kostenloser Versand ab {threshold}",
+    "heroTrust1": "Schneller Versand in ganz Frankreich",
     "heroTrust2": "30 Tage Rückgaberecht",
     "heroTrust3": "Sichere Zahlung per Überweisung",
     "heroChipRange": "Ø115 – Ø1000 mm",
@@ -94,7 +96,6 @@
     "proofRefs": "Artikel im Katalog",
     "proofGuides": "Schritt-für-Schritt-Anleitungen",
     "proofLangs": "Sprachen",
-    "proofShipping": "kostenloser Versand ab",
     "problemEyebrow": "Das Problem",
     "problemTitle": "Ein Diamantwerkzeug auszuwählen sollte kein <em>Glücksspiel sein.</em>",
     "problemLead": "Durchmesser, Aufnahme, Material, Maschine … Ein einziger Fehler, und die Scheibe verschleißt zu schnell oder die Baustelle steht still.",
@@ -136,18 +137,21 @@
     "brandMaterial3": "Naturstein",
     "guidesEyebrow": "Anleitungen & Tipps",
     "guidesTitle": "Ihre Baustelle gelingt – <em>Schritt für Schritt.</em>",
-    "guidesSubtitle": "Auswählen, anwenden, pflegen: praktische Anleitungen, damit Sie das Beste aus Ihrem Diamantwerkzeug herausholen.",
+    "guidesSubtitle": "Verschiedene Anleitungen für unsere Werkzeuge: Diamantwerkzeug auswählen, anwenden und pflegen.",
     "guidesAll": "Alle Anleitungen",
     "guidesRead": "Anleitung lesen",
     "faqEyebrow": "FAQ",
     "faqTitle": "Eine Frage? <em>Hier finden Sie die Antwort.</em>",
     "faqAll": "Alle Fragen ansehen",
-    "faqContactText": "Ihre Antwort ist nicht dabei?",
+    "faqContactText": "Bei jeder Frage rufen Sie uns an oder schreiben Sie uns.",
     "faqContact": "Schreiben Sie uns",
     "ctaTitle": "Bereit, <em>Ihre nächste Baustelle</em> auszustatten?",
     "ctaText": "Stöbern Sie im Katalog oder schreiben Sie uns – wir helfen Ihnen, den richtigen Artikel zu finden.",
     "ctaPrimary": "Katalog ansehen",
-    "ctaSecondary": "Kontakt aufnehmen"
+    "ctaSecondary": "Kontakt aufnehmen",
+    "proofPro": "Verkauf nur an Gewerbekunden",
+    "materialTipTitle": "Tipp:",
+    "materialTipText": "Welche Scheibe und welche Bohrkrone für welches Material?"
   },
   "LanguageSwitcher": {
     "label": "Sprache"
@@ -222,8 +226,6 @@
     "lowStock": "Nur noch {count} auf Lager",
     "inStock": "Auf Lager",
     "buyNow": "Jetzt bestellen",
-    "shippingHome": "Lieferung nach Hause ab 4,90 € — kostenlos ab 49 € Einkauf.",
-    "pickupFree": "Kostenlose Abholung innerhalb von 2 Std. in teilnehmenden Filialen.",
     "ref": "Art.-Nr. {sku}",
     "reviewsCount": "({count} Bewertungen)",
     "description": "Beschreibung",
@@ -261,7 +263,10 @@
     "pricesForPros": "Preise nur für Gewerbekunden",
     "pricesForProsHint": "Melden Sie sich mit Ihrem Gewerbekonto an, um Preise zu sehen und zu bestellen.",
     "signInToSeePrice": "Anmelden, um den Preis zu sehen",
-    "requestAccount": "Noch kein Konto? Eröffnung anfragen"
+    "requestAccount": "Noch kein Konto? Eröffnung anfragen",
+    "shippingFast": "Schneller Versand in ganz Frankreich.",
+    "paymentTransfer": "Zahlung per Banküberweisung.",
+    "questionCallUs": "Fragen? Rufen Sie uns an:"
   },
   "Catalog": {
     "allProducts": "Alle Produkte",
@@ -294,8 +299,6 @@
     "emptyTitle": "Ihr Warenkorb ist leer",
     "emptyDescription": "Durchstöbern Sie unseren Katalog, um das Material für Ihr nächstes Projekt zu finden.",
     "discoverProducts": "Produkte entdecken",
-    "freeShippingRemaining": "Noch {amount} bis zum kostenlosen Versand.",
-    "freeShippingUnlocked": "Kostenloser Versand 🎉",
     "summary": "Zusammenfassung",
     "subtotal": "Zwischensumme",
     "discount": "Rabatt",
@@ -310,7 +313,8 @@
     "removeFromCart": "Aus dem Warenkorb entfernen",
     "couponPlaceholder": "Gutscheincode",
     "couponApply": "Anwenden",
-    "quantity": "Menge {quantity}"
+    "quantity": "Menge {quantity}",
+    "shippingAndPaymentNote": "Schneller Versand in ganz Frankreich — Zahlung per Banküberweisung nach Bestätigung der Bestellung."
   },
   "Checkout": {
     "title": "Bestellung abschließen",
@@ -324,9 +328,7 @@
     "shippingStandardLabel": "Standardversand",
     "shippingStandardDescription": "3 bis 5 Werktage",
     "shippingExpressLabel": "Expressversand",
-    "shippingExpressDescription": "1 bis 2 Werktage — 9,90 €",
-    "shippingPickupLabel": "Abholung im Geschäft",
-    "shippingPickupDescription": "Kostenlos, innerhalb von 2 Std.",
+    "shippingExpressDescription": "1 bis 2 Werktage",
     "couponOptional": "Gutscheincode (optional)",
     "noteOptional": "Hinweis für den Lieferanten (optional)",
     "bankTransferNotice": "Die Zahlung erfolgt per Banküberweisung. Nach Bestätigung erhalten Sie die Bankdaten und den anzugebenden Verwendungszweck — Ihre Bestellung wird nach Zahlungseingang bearbeitet.",
@@ -460,7 +462,7 @@
   "Faq": {
     "title": "Häufig gestellte Fragen",
     "sectionOrders": "Bestellungen",
-    "sectionShipping": "Versand & Abholung",
+    "sectionShipping": "Versand",
     "sectionReturns": "Rückgabe & Erstattung",
     "sectionPayment": "Zahlung",
     "q1": "Wie kann ich meine Bestellung verfolgen?",
@@ -468,9 +470,9 @@
     "q2": "Kann ich meine Bestellung ändern oder stornieren?",
     "a2": "Eine Bestellung kann storniert werden, solange sie noch nicht versandt wurde — kontaktieren Sie uns dazu über das Kontaktformular mit Ihrer Bestellnummer.",
     "q3": "Wie lange dauert die Lieferung?",
-    "a3": "Rechnen Sie mit 3 bis 5 Werktagen im Standardversand, 1 bis 2 Tagen im Expressversand. Die Abholung im Geschäft ist innerhalb von 2 Std. bei teilnehmenden Filialen möglich.",
-    "q4": "Ist der Versand kostenlos?",
-    "a4": "Der Standardversand ist ab 49 € Einkauf kostenlos. Darunter fallen 5,90 € Versandkosten an.",
+    "a3": "Wir versenden schnell: 3 bis 5 Werktage im Standardversand, 1 bis 2 Werktage im Expressversand.",
+    "q4": "Was kostet der Versand?",
+    "a4": "Der Standardversand kostet {standard}, der Expressversand {express} — unabhängig vom Bestellwert.",
     "q5": "Wie lange habe ich Zeit, ein Produkt zurückzusenden?",
     "a5": "Sie haben 30 Tage ab Erhalt, um ein unbenutztes Produkt in der Originalverpackung zurückzusenden.",
     "q6": "Wie erhalte ich eine Rückerstattung?",
@@ -482,14 +484,15 @@
   },
   "Tutorials": {
     "title": "Anleitungen & Tipps",
-    "subtitle": "Schritt-für-Schritt-Anleitungen für Ihre Projekte, mit dem passenden Material für jeden Schritt.",
+    "subtitle": "Verschiedene Anleitungen für unsere Werkzeuge: Schritt für Schritt auswählen, anwenden und pflegen.",
     "levelBeginner": "Anfänger",
     "levelIntermediate": "Fortgeschritten",
     "levelAdvanced": "Experte",
     "minutesShort": "{minutes} Min.",
     "productsUsed": "Verwendete Produkte",
     "view": "Ansehen",
-    "allTutorials": "← Alle Anleitungen"
+    "allTutorials": "← Alle Anleitungen",
+    "allGuidesTitle": "Alle unsere Anleitungen"
   },
   "Search": {
     "title": "Suche",
@@ -858,7 +861,16 @@
       "checkBank": "Banküberweisungsdaten (BANK_TRANSFER_*)",
       "checkEmail": "E-Mail-Versand (RESEND_API_KEY)",
       "checkStripe": "Stripe-Zahlung — optional, deaktiviert (STRIPE_SECRET_KEY)",
-      "configHint": "Konfigurieren Sie die fehlenden Variablen in Ihrer .env-Datei (siehe README)."
+      "configHint": "Konfigurieren Sie die fehlenden Variablen in Ihrer .env-Datei (siehe README).",
+      "shopSection": "Kontakt und Versand",
+      "shopHint": "Werden auf der ganzen Website angezeigt (Kopf- und Fußzeile, Kontakt, Produktseiten). Die Versandkosten gelten für jede Bestellung, ohne kostenlosen Versand.",
+      "contactPhone": "Telefon",
+      "contactEmail": "Kontakt-E-Mail",
+      "shippingStandard": "Standardversand (€)",
+      "shippingExpress": "Expressversand (€)",
+      "shopSave": "Speichern",
+      "shopSaved": "Einstellungen gespeichert.",
+      "shopAdminOnly": "Nur ein Administrator kann diese Einstellungen ändern."
     },
     "CustomerForm": {
       "newTitle": "Neuer Gewerbekunde",
@@ -884,6 +896,50 @@
     }
   },
   "Meta": {
-    "description": "Professionelle Diamantwerkzeuge: Trennscheiben, Bohrkronen, Segmente und Schleifwerkzeuge für Beton, Asphalt und Naturstein. Kostenloser Versand ab 49 €."
+    "description": "Professionelle Diamantwerkzeuge: Trennscheiben, Bohrkronen, Segmente und Schleifwerkzeuge für Beton, Asphalt und Naturstein. Schneller Versand, Zahlung per Überweisung."
+  },
+  "MaterialGuide": {
+    "eyebrow": "Tipp",
+    "title": "Welche Scheibe, welche Bohrkrone für welches Material?",
+    "intro": "Die wichtigsten Regeln für die richtige Wahl. Jede Baustelle ist anders: Im Zweifel beraten wir Sie telefonisch.",
+    "colMaterial": "Material",
+    "colBlade": "Trennscheibe",
+    "colCoreBit": "Bohrkrone",
+    "rows": {
+      "reinforcedConcrete": {
+        "material": "Stahlbeton, harter Beton",
+        "blade": "Lasergeschweißte Segmentscheibe mit weicher Bindung (Fugenschneider, Wandsäge oder Winkelschleifer)",
+        "coreBit": "Nassbohrkrone mit lasergeschweißten Segmenten"
+      },
+      "abrasive": {
+        "material": "Asphalt, Belag, frischer Beton",
+        "blade": "Segmentscheibe mit harter Bindung und Unterschnittschutz-Segmenten",
+        "coreBit": "Nassbohrkrone mit harter Bindung"
+      },
+      "hardStone": {
+        "material": "Granit, Hartgestein",
+        "blade": "Turbo- oder Segmentscheibe mit weicher Bindung, möglichst nass",
+        "coreBit": "Nassbohrkrone"
+      },
+      "tile": {
+        "material": "Fliesen, Feinsteinzeug",
+        "blade": "Extra dünne Scheibe mit geschlossenem Rand (Tischsäge oder Winkelschleifer)",
+        "coreBit": "Kleine Trockenbohrkrone, oder nass für Feinsteinzeug"
+      },
+      "masonry": {
+        "material": "Ziegel, Betonstein, Mauerwerk",
+        "blade": "Universal-Segment- oder Turboscheibe",
+        "coreBit": "Trockenbohrkrone"
+      },
+      "softStone": {
+        "material": "Marmor, Weichgestein",
+        "blade": "Scheibe mit geschlossenem Rand oder Turbo, für saubere Schnitte",
+        "coreBit": "Nassbohrkrone"
+      }
+    },
+    "ruleHard": "Hartes Material (Granit, Stahlbeton) → weiche Bindung: Die Diamanten erneuern sich, das Werkzeug schneidet weiter.",
+    "ruleAbrasive": "Abrasives Material (Asphalt, frischer Beton, Sandstein) → harte Bindung: Das Segment verschleißt langsamer.",
+    "ruleWet": "Nass: schneller schneiden, gekühltes Werkzeug, weniger Staub. Trocken: nur mit dafür ausgelegtem Werkzeug, in kurzen Durchgängen.",
+    "callUs": "Bei jeder Frage zum richtigen Werkzeug rufen Sie uns an:"
   }
 }

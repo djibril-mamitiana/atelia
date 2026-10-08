@@ -1,6 +1,7 @@
 import "server-only";
 import { db } from "@/lib/db";
 import { computeShippingCost, type ShippingMethod } from "@/lib/shipping";
+import { getSiteSettings } from "@/server/services/site-settings";
 import type { Coupon, CouponType } from "@prisma/client";
 
 /**
@@ -185,7 +186,8 @@ export async function computeOrderPricing(
     couponId = coupon.id;
   }
 
-  const shippingCost = computeShippingCost(opts.shippingMethod, subtotal - discount);
+  const { shipping } = await getSiteSettings();
+  const shippingCost = computeShippingCost(opts.shippingMethod, shipping);
   const total = round2(subtotal - discount + shippingCost);
 
   return { lines, subtotal, discount, shippingCost, tax, total, couponId };
