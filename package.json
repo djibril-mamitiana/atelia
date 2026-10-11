@@ -9,7 +9,7 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy",
+    "db:deploy": "prisma migrate deploy && tsx scripts/sync-catalog-texts.ts Wachsdose Absaugung-M16 Absaugung-M18 Zentrierspitze-75 Zentrierspitze-90 --apply",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "test": "vitest run"

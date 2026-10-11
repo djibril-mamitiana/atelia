@@ -30151,16 +30151,21 @@
   },
   {
     "sku": "Wachsdose",
-    "name": "Kühlmittel/coolant",
-    "descriptionDe": "Kühlmittel/coolant",
-    "descriptionEn": "",
+    "name": "Kühlmittel (Wachsdose)",
+    "descriptionDe": "Kühlmittel (Wachsdose)",
+    "descriptionEn": "Coolant (wax can)",
     "typeModel": "",
     "price": 1.05,
     "categorySlug": "accessoires-diamant",
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Lubrifiant de refroidissement (boîte de cire)",
+      "en": "Coolant (wax can)",
+      "it": "Refrigerante (barattolo di cera)"
+    }
   },
   {
     "sku": "AD-6KANT/AGM14",
@@ -30218,55 +30223,75 @@
   },
   {
     "sku": "Absaugung-M16",
-    "name": "Absaugung, M16/extraction unit, M16",
-    "descriptionDe": "Absaugung, M16/extraction unit, M16",
-    "descriptionEn": "",
+    "name": "Absaugung, M16",
+    "descriptionDe": "Absaugung",
+    "descriptionEn": "Extraction unit",
     "typeModel": "",
     "price": 19.95,
     "categorySlug": "accessoires-diamant",
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Dispositif d’aspiration, M16",
+      "en": "Extraction unit, M16",
+      "it": "Unità di aspirazione, M16"
+    }
   },
   {
     "sku": "Absaugung-M18",
-    "name": "Absaugung, M18/extraction unit, M18",
-    "descriptionDe": "Absaugung, M18/extraction unit, M18",
-    "descriptionEn": "",
+    "name": "Absaugung, M18",
+    "descriptionDe": "Absaugung",
+    "descriptionEn": "Extraction unit",
     "typeModel": "",
     "price": 19.95,
     "categorySlug": "accessoires-diamant",
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Dispositif d’aspiration, M18",
+      "en": "Extraction unit, M18",
+      "it": "Unità di aspirazione, M18"
+    }
   },
   {
     "sku": "Zentrierspitze-75",
-    "name": "Zentrierspitze/tip for centering",
-    "descriptionDe": "Zentrierspitze/tip for centering",
-    "descriptionEn": "",
+    "name": "Zentrierspitze, Größe 75",
+    "descriptionDe": "Zentrierspitze",
+    "descriptionEn": "Tip for centering",
     "typeModel": "",
     "price": 4.2,
     "categorySlug": "accessoires-diamant",
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Pointe de centrage, taille 75",
+      "en": "Centering tip, size 75",
+      "it": "Punta di centraggio, misura 75"
+    }
   },
   {
     "sku": "Zentrierspitze-90",
-    "name": "Zentrierspitze/tip for centering",
-    "descriptionDe": "Zentrierspitze/tip for centering",
-    "descriptionEn": "",
+    "name": "Zentrierspitze, Größe 90",
+    "descriptionDe": "Zentrierspitze",
+    "descriptionEn": "Tip for centering",
     "typeModel": "",
     "price": 5.25,
     "categorySlug": "accessoires-diamant",
     "categoryName": "Accessoires",
     "specs": [],
     "specLabels": null,
-    "lowConfidence": false
+    "lowConfidence": false,
+    "names": {
+      "fr": "Pointe de centrage, taille 90",
+      "en": "Centering tip, size 90",
+      "it": "Punta di centraggio, misura 90"
+    }
   },
   {
     "sku": "AD-AG1/4-AG1/2",
