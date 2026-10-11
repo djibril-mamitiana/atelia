@@ -263,6 +263,13 @@ messages/              traductions FR / DE / EN / IT```
   [scripts/add-catalog-products.ts](scripts/add-catalog-products.ts)
   `<SKU…> [--apply]` les crée comme le seed. Exemple : les 7 TBO600-NZ,
   ajoutés le 11/10/2026.
+- **Corriger des noms ou descriptions** : modifiez les lignes dans
+  `diamond-pro-catalog.json` (champ `names` pour FR/EN/IT si le titre n'est
+  pas dans `description-translations.json`), puis
+  [scripts/sync-catalog-texts.ts](scripts/sync-catalog-texts.ts)
+  `<SKU…> [--apply]` reporte en base les noms, les descriptions, les textes
+  alternatifs des photos et les regroupements. Exemple : 31 noms provisoires
+  remplacés par les vrais titres du catalogue le 11/10/2026.
 - **Base de production** : elle n'est accessible que depuis Railway (pas de
   proxy public). Pour un script ponctuel, l'ajouter temporairement à
   `db:deploy` (simulation, puis `--apply`), puis le retirer. Sinon il
