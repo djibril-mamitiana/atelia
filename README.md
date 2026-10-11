@@ -257,6 +257,12 @@ messages/              traductions FR / DE / EN / IT```
   [scripts/fix-discs-115-230.ts](scripts/fix-discs-115-230.ts) l'applique à la
   base (simulation par défaut, `--apply` pour écrire). Il a été appliqué en
   production le 11/10/2026 et le seed le rejoue.
+- **Ajouter des produits du catalogue** : ajoutez-les à
+  `diamond-pro-catalog.json` (en fin de fichier, pour garder les références
+  `CTP-…` existantes), avec leur photo dans `product-photos.json`, puis
+  [scripts/add-catalog-products.ts](scripts/add-catalog-products.ts)
+  `<SKU…> [--apply]` les crée comme le seed. Exemple : les 7 TBO600-NZ,
+  ajoutés le 11/10/2026.
 - **Base de production** : elle n'est accessible que depuis Railway (pas de
   proxy public). Pour un script ponctuel, l'ajouter temporairement à
   `db:deploy` (simulation, puis `--apply`), puis le retirer. Sinon il
