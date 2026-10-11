@@ -30020,5 +30020,166 @@
     ],
     "specLabels": null,
     "lowConfidence": true
+  },
+  {
+    "sku": "2920450",
+    "name": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern Ø115mm",
+    "descriptionDe": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern",
+    "descriptionEn": "Diamond blade, segmented, turbo version, with protection segments and cooling holes",
+    "typeModel": "",
+    "price": 4.31,
+    "categorySlug": "disques-meuleuse-tronconneuse",
+    "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
+    "specs": [
+      "115",
+      "2,7x8",
+      "22,2",
+      "6"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false
+  },
+  {
+    "sku": "2920452",
+    "name": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern Ø125mm",
+    "descriptionDe": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern",
+    "descriptionEn": "Diamond blade, segmented, turbo version, with protection segments and cooling holes",
+    "typeModel": "",
+    "price": 4.94,
+    "categorySlug": "disques-meuleuse-tronconneuse",
+    "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
+    "specs": [
+      "125",
+      "2,8x8",
+      "22,2",
+      "6"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false
+  },
+  {
+    "sku": "2920453",
+    "name": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern Ø135mm",
+    "descriptionDe": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern",
+    "descriptionEn": "Diamond blade, segmented, turbo version, with protection segments and cooling holes",
+    "typeModel": "",
+    "price": 8.09,
+    "categorySlug": "disques-meuleuse-tronconneuse",
+    "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
+    "specs": [
+      "135",
+      "3,0x8",
+      "22,2",
+      "8"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false
+  },
+  {
+    "sku": "2920455",
+    "name": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern Ø135mm",
+    "descriptionDe": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern",
+    "descriptionEn": "Diamond blade, segmented, turbo version, with protection segments and cooling holes",
+    "typeModel": "",
+    "price": 8.09,
+    "categorySlug": "disques-meuleuse-tronconneuse",
+    "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
+    "specs": [
+      "135",
+      "3,0x8",
+      "30",
+      "8"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false
+  },
+  {
+    "sku": "2920454",
+    "name": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern Ø150mm",
+    "descriptionDe": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern",
+    "descriptionEn": "Diamond blade, segmented, turbo version, with protection segments and cooling holes",
+    "typeModel": "",
+    "price": 8.19,
+    "categorySlug": "disques-meuleuse-tronconneuse",
+    "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
+    "specs": [
+      "150",
+      "3,0x8",
+      "22,2",
+      "8"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false
+  },
+  {
+    "sku": "2920456",
+    "name": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern Ø180mm",
+    "descriptionDe": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern",
+    "descriptionEn": "Diamond blade, segmented, turbo version, with protection segments and cooling holes",
+    "typeModel": "",
+    "price": 11.03,
+    "categorySlug": "disques-meuleuse-tronconneuse",
+    "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
+    "specs": [
+      "180",
+      "3,0x8",
+      "22,2",
+      "8"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false
+  },
+  {
+    "sku": "2920458",
+    "name": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern Ø230mm",
+    "descriptionDe": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern",
+    "descriptionEn": "Diamond blade, segmented, turbo version, with protection segments and cooling holes",
+    "typeModel": "",
+    "price": 13.97,
+    "categorySlug": "disques-meuleuse-tronconneuse",
+    "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
+    "specs": [
+      "230",
+      "3,2x8",
+      "22,2",
+      "10"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false
   }
 ]

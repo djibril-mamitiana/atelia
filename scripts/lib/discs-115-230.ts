@@ -53,8 +53,13 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 export type DiscsReport = { renamed: string[]; regrouped: string[]; moved: Record<string, number>; categoriesCreated: string[]; sourceRenamed: boolean; missing: string[] };
 
-export async function applyDiscs115230(db: PrismaClient, { apply }: { apply: boolean }): Promise<DiscsReport> {
-  const refs = read<{ items: DiscRef[] }>("discs-115-230.json").items;
+/** `onlySkus`: limit the writes to these products (e.g. just-added ones), so
+ *  later admin edits of the others aren't overwritten. Groups are still
+ *  computed over the whole reference table. */
+export async function applyDiscs115230(db: PrismaClient, { apply, onlySkus }: { apply: boolean; onlySkus?: string[] }): Promise<DiscsReport> {
+  const allRefs = read<{ items: DiscRef[] }>("discs-115-230.json").items;
+  const only = onlySkus ? new Set(onlySkus.map((s) => s.toLowerCase())) : null;
+  const refs = only ? allRefs.filter((r) => only.has(r.sku.toLowerCase())) : allRefs;
   const catalog = read<CatalogItem[]>("diamond-pro-catalog.json");
   const dict = read<Record<string, Record<string, string>>>("description-translations.json");
   const translations = read<Record<string, Record<"de" | "en" | "it", Lang>>>("category-translations.json");
@@ -73,7 +78,7 @@ export async function applyDiscs115230(db: PrismaClient, { apply }: { apply: boo
     return base ? (ref.type === "standard" ? base.groupKey : `${base.groupKey}:${ref.type}`) : null;
   };
   const splitCount = new Map<string, number>();
-  for (const ref of refs) {
+  for (const ref of allRefs) {
     const key = splitKey(ref);
     if (key && ref.type !== "standard") splitCount.set(key, (splitCount.get(key) ?? 0) + 1);
   }

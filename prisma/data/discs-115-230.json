@@ -2,6 +2,55 @@
  "source": "Katalog 2026 (hualing lu), chapitre 1 « Diamanttrennscheiben Ø 115 mm - Ø 230 mm », p. 5-25. type: icône Silent → silent, icône Abrasiv ✓ → abrasive.",
  "items": [
   {
+   "sku": "2920450",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern"
+  },
+  {
+   "sku": "2920452",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern"
+  },
+  {
+   "sku": "2920453",
+   "diameter": 135,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern"
+  },
+  {
+   "sku": "2920454",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern"
+  },
+  {
+   "sku": "2920455",
+   "diameter": 135,
+   "bore": "30",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern"
+  },
+  {
+   "sku": "2920456",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern"
+  },
+  {
+   "sku": "2920458",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, Turbo, mit Schutz-Segmenten und Kühllöchern"
+  },
+  {
    "sku": "AB101-115",
    "diameter": 115,
    "bore": "22,2",
