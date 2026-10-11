@@ -30,6 +30,18 @@ const PARENT = {
   name: "Disques Ø115 – Ø230 mm",
   description: "Disques diamant pour meuleuse d'angle, du Ø115 au Ø230 mm, pour la coupe à sec : standard, silencieux et pour matériaux abrasifs.",
 };
+// Once the Ø115–230 blades are out, the old family only holds cut-off saw
+// blades (Ø300–Ø400) and a few special Ø230 blades (galvanised, carbide).
+const SOURCE_RENAME = {
+  name: "Disques tronçonneuse Ø300 – Ø400 mm & disques spéciaux",
+  description: "Disques diamant pour tronçonneuses Ø300 à Ø400 mm, et disques spéciaux (galvanisés, carbure).",
+  nameDe: "Trennscheiben für Trennschleifer Ø300 – Ø400 mm & Spezialscheiben",
+  nameEn: "Cut-off saw blades Ø300 – Ø400 mm & special blades",
+  nameIt: "Dischi per troncatrice Ø300 – Ø400 mm e dischi speciali",
+  descriptionDe: "Diamant-Trennscheiben für Trennschleifer Ø300 bis Ø400 mm sowie Spezialscheiben (galvanisch, Hartmetall).",
+  descriptionEn: "Diamond blades for cut-off saws Ø300 to Ø400 mm, and special blades (galvanised, carbide).",
+  descriptionIt: "Dischi diamantati per troncatrici da Ø300 a Ø400 mm e dischi speciali (galvanici, metallo duro).",
+};
 const CHILDREN: Record<DiscRef["type"], { slug: string; name: string; description: string; order: number }> = {
   standard: { slug: "disques-115-230-standard", name: "Disques", description: "Disques diamant Ø115 – Ø230 mm pour béton, granit, brique et matériaux de construction.", order: 1 },
   silent: { slug: "disques-115-230-silencieux", name: "Disques silencieux", description: "Disques diamant à âme sandwich : nettement moins bruyants à la coupe.", order: 2 },
@@ -39,7 +51,7 @@ const CHILDREN: Record<DiscRef["type"], { slug: string; name: string; descriptio
 const LOCALES = ["fr", "en", "it"] as const;
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 
-export type DiscsReport = { renamed: string[]; regrouped: string[]; moved: Record<string, number>; categoriesCreated: string[]; missing: string[] };
+export type DiscsReport = { renamed: string[]; regrouped: string[]; moved: Record<string, number>; categoriesCreated: string[]; sourceRenamed: boolean; missing: string[] };
 
 export async function applyDiscs115230(db: PrismaClient, { apply }: { apply: boolean }): Promise<DiscsReport> {
   const refs = read<{ items: DiscRef[] }>("discs-115-230.json").items;
@@ -72,7 +84,7 @@ export async function applyDiscs115230(db: PrismaClient, { apply }: { apply: boo
     const key = splitKey(ref)!;
     return (splitCount.get(key) ?? 0) >= 2 ? { ...base, groupKey: key } : NO_GROUP;
   };
-  const report: DiscsReport = { renamed: [], regrouped: [], moved: {}, categoriesCreated: [], missing: [] };
+  const report: DiscsReport = { renamed: [], regrouped: [], moved: {}, categoriesCreated: [], sourceRenamed: false, missing: [] };
 
   const products = await db.product.findMany({
     where: { sku: { in: refs.map((r) => r.sku), mode: "insensitive" } },
@@ -143,6 +155,12 @@ export async function applyDiscs115230(db: PrismaClient, { apply }: { apply: boo
     const target = CHILDREN[ref.type].slug;
     report.moved[target] = (report.moved[target] ?? 0) + 1;
     if (apply) await db.product.update({ where: { id: product.id }, data: { categoryId: childIds[ref.type] } });
+  }
+
+  // 4. The old family's name no longer covers Ø115–230.
+  if (source && source.name !== SOURCE_RENAME.name) {
+    report.sourceRenamed = true;
+    if (apply) await db.category.update({ where: { id: source.id }, data: SOURCE_RENAME });
   }
 
   return report;

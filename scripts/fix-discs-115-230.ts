@@ -19,6 +19,7 @@ async function main() {
   console.log(`\nTailles / regroupements (${r.regrouped.length}):\n  ${r.regrouped.join("\n  ")}`);
   console.log(`\nCatégories créées: ${r.categoriesCreated.join(", ") || "aucune"}`);
   console.log(`Produits déplacés:`, r.moved);
+  console.log(`Ancienne famille renommée en « Disques tronçonneuse Ø300 – Ø400 mm & disques spéciaux » : ${r.sourceRenamed ? "oui" : "déjà fait"}`);
   if (r.missing.length) console.log(`\nRéférences du catalogue absentes de la base (${r.missing.length}): ${r.missing.join(", ")}`);
 
   const left = await db.product.groupBy({ by: ["isActive"], where: { category: { slug: "disques-meuleuse-tronconneuse" } }, _count: { _all: true } });
