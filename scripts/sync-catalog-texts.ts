@@ -1,6 +1,6 @@
-// Pushes the names/descriptions (4 languages) of given SKUs from
-// prisma/data/diamond-pro-catalog.json to an existing database, and their
-// size grouping (plus any product whose group they join or leave).
+// Pushes the names/descriptions (4 languages) and photo alt texts of given
+// SKUs from prisma/data/diamond-pro-catalog.json to an existing database, and
+// their size grouping (plus any product whose group they join or leave).
 // Never touches price, stock, category, images or flags.
 //
 //   npx tsx scripts/sync-catalog-texts.ts HM-230 TS-125-22 …           → dry run
@@ -38,7 +38,11 @@ async function main() {
     }
     const texts = productTexts(item, dict, brand?.name ?? "");
     console.log(`  ${sku}: ${product.nameFr ?? product.name}\n      → ${texts.nameFr ?? texts.name}`);
-    if (apply) await db.product.update({ where: { id: product.id }, data: texts });
+    if (apply) {
+      await db.product.update({ where: { id: product.id }, data: texts });
+      // Photo alt texts were filled with the name at creation.
+      await db.productImage.updateMany({ where: { productId: product.id }, data: { alt: item.name } });
+    }
   }
 
   // 2. Size groups: the listed products, and every product sharing a group
