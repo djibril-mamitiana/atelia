@@ -5,6 +5,7 @@
 //
 //   npx tsx scripts/sync-catalog-texts.ts HM-230 TS-125-22 …           → dry run
 //   npx tsx scripts/sync-catalog-texts.ts HM-230 TS-125-22 … --apply   → writes
+//   npx tsx scripts/sync-catalog-texts.ts --file=skus.json [--apply]  → SKUs from a JSON array
 import "dotenv/config";
 import { readFileSync } from "node:fs";
 import { PrismaClient } from "@prisma/client";
@@ -13,7 +14,11 @@ import { computeProductGroups } from "../src/lib/product-grouping";
 import { productTexts, readCatalog, readDictionary } from "./lib/catalog-product";
 
 const apply = process.argv.includes("--apply");
-const skus = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+// SKUs on the command line, or --file=<json array> for long lists / SKUs with spaces.
+const fileArg = process.argv.find((a) => a.startsWith("--file="));
+const skus: string[] = fileArg
+  ? JSON.parse(readFileSync(fileArg.slice("--file=".length), "utf8"))
+  : process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL! }) });
 
 async function main() {
