@@ -5060,9 +5060,9 @@
   },
   {
     "sku": "TBO510-3002012",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-3002012",
-    "descriptionDe": "Leistung max. 7,5 kW",
-    "descriptionEn": "Power max. 7,5 kW",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten Ø300mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten",
+    "descriptionEn": "Diamond blade, sintered, segmented, with turbo shape segments",
     "typeModel": "",
     "price": 24.15,
     "categorySlug": "disques-meuleuse-tronconneuse",
@@ -5081,16 +5081,16 @@
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-3002012",
-      "en": "Angle grinder & cut-off saw blades — TBO510-3002012",
-      "it": "Dischi per smerigliatrice e troncatrice — TBO510-3002012"
+      "fr": "Disque diamant, fritté, segmenté, à segments turbo Ø300mm",
+      "en": "Diamond blade, sintered, segmented, with turbo shape segments Ø300mm",
+      "it": "Disco diamantato, sinterizzato, segmentato, a segmenti turbo Ø300mm"
     }
   },
   {
     "sku": "TBO510-3502012",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-3502012",
-    "descriptionDe": "Leistung max. 7,5 kW",
-    "descriptionEn": "Power max. 7,5 kW",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten Ø350mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten",
+    "descriptionEn": "Diamond blade, sintered, segmented, with turbo shape segments",
     "typeModel": "",
     "price": 28.35,
     "categorySlug": "disques-meuleuse-tronconneuse",
@@ -5109,16 +5109,16 @@
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-3502012",
-      "en": "Angle grinder & cut-off saw blades — TBO510-3502012",
-      "it": "Dischi per smerigliatrice e troncatrice — TBO510-3502012"
+      "fr": "Disque diamant, fritté, segmenté, à segments turbo Ø350mm",
+      "en": "Diamond blade, sintered, segmented, with turbo shape segments Ø350mm",
+      "it": "Disco diamantato, sinterizzato, segmentato, a segmenti turbo Ø350mm"
     }
   },
   {
     "sku": "TBO510-3502512",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-3502512",
-    "descriptionDe": "Leistung max. 7,5 kW",
-    "descriptionEn": "Power max. 7,5 kW",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten Ø350mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten",
+    "descriptionEn": "Diamond blade, sintered, segmented, with turbo shape segments",
     "typeModel": "",
     "price": 28.35,
     "categorySlug": "disques-meuleuse-tronconneuse",
@@ -5137,16 +5137,16 @@
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-3502512",
-      "en": "Angle grinder & cut-off saw blades — TBO510-3502512",
-      "it": "Dischi per smerigliatrice e troncatrice — TBO510-3502512"
+      "fr": "Disque diamant, fritté, segmenté, à segments turbo Ø350mm",
+      "en": "Diamond blade, sintered, segmented, with turbo shape segments Ø350mm",
+      "it": "Disco diamantato, sinterizzato, segmentato, a segmenti turbo Ø350mm"
     }
   },
   {
     "sku": "TBO510-4002512",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — TBO510-4002512",
-    "descriptionDe": "Leistung max. 7,5 kW",
-    "descriptionEn": "Power max. 7,5 kW",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten Ø400mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten",
+    "descriptionEn": "Diamond blade, sintered, segmented, with turbo shape segments",
     "typeModel": "",
     "price": 33.6,
     "categorySlug": "disques-meuleuse-tronconneuse",
@@ -5165,9 +5165,9 @@
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques meuleuse d'angle & tronçonneuse — TBO510-4002512",
-      "en": "Angle grinder & cut-off saw blades — TBO510-4002512",
-      "it": "Dischi per smerigliatrice e troncatrice — TBO510-4002512"
+      "fr": "Disque diamant, fritté, segmenté, à segments turbo Ø400mm",
+      "en": "Diamond blade, sintered, segmented, with turbo shape segments Ø400mm",
+      "it": "Disco diamantato, sinterizzato, segmentato, a segmenti turbo Ø400mm"
     }
   },
   {
@@ -10069,34 +10069,55 @@
   },
   {
     "sku": "FK704-3502010",
-    "name": "Trennscheiben für Bodensägen — FK704-3502010",
-    "descriptionDe": "350 2,6x10 20",
-    "descriptionEn": "",
+    "name": "Diamanttrennscheibe mit geschlossenem Rand, mit Flansch Ø350mm",
+    "descriptionDe": "Diamanttrennscheibe mit geschlossenem Rand, mit Flansch",
+    "descriptionEn": "Diamond blade with continuous rim, with flange",
     "typeModel": "",
     "price": 69,
     "categorySlug": "disques-scie-sol",
     "categoryName": "Disques scie à sol",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specs": [
+      "350",
+      "2,6x10",
+      "20"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques scie à sol — FK704-3502010",
-      "en": "Floor saw blades — FK704-3502010",
-      "it": "Dischi per seghe da pavimento — FK704-3502010"
+      "fr": "Disque diamant à bord continu, avec bride Ø350mm",
+      "en": "Diamond blade with continuous rim, with flange Ø350mm",
+      "it": "Disco diamantato a bordo continuo, con flangia Ø350mm"
     }
   },
   {
     "sku": "FK704-3502510",
-    "name": "Für wassergekühltes arbeiten/for wet use",
-    "descriptionDe": "Für wassergekühltes arbeiten/for wet use",
-    "descriptionEn": "350 2,4x10 25,4",
+    "name": "Diamanttrennscheibe mit geschlossenem Rand, mit Flansch Ø350mm",
+    "descriptionDe": "Diamanttrennscheibe mit geschlossenem Rand, mit Flansch",
+    "descriptionEn": "Diamond blade with continuous rim, with flange",
     "typeModel": "",
     "price": 69,
     "categorySlug": "disques-scie-sol",
     "categoryName": "Disques scie à sol",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": false
+    "specs": [
+      "350",
+      "2,4x10",
+      "25,4"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm"
+    ],
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disque diamant à bord continu, avec bride Ø350mm",
+      "en": "Diamond blade with continuous rim, with flange Ø350mm",
+      "it": "Disco diamantato a bordo continuo, con flangia Ø350mm"
+    }
   },
   {
     "sku": "LS110-2-B3-3002010",
@@ -21600,24 +21621,26 @@
   },
   {
     "sku": "GVV-250-300-7x5",
-    "name": "Segmente und Ringe für Bohrkronen — GVV-250-300-7x5",
-    "descriptionDe": "Segment",
-    "descriptionEn": "mm",
+    "name": "Bohrkronen-Segment, vakuumbeschichtet, für Bohrkronen Ø250–300 mm",
+    "descriptionDe": "Bohrkronen-Segment, vakuumbeschichtet",
+    "descriptionEn": "Core bit segment, vacuum coated",
     "typeModel": "",
     "price": 4.62,
     "categorySlug": "segments-bagues-carottage",
     "categoryName": "Segments et bagues de carottage",
     "specs": [
+      "24x5,0x7",
       "250-300"
     ],
     "specLabels": [
-      "mm"
+      "Segment mm",
+      "Ø mm"
     ],
-    "lowConfidence": true,
+    "lowConfidence": false,
     "names": {
-      "fr": "Segments et bagues de carottage — GVV-250-300-7x5",
-      "en": "Core bit segments and rings — GVV-250-300-7x5",
-      "it": "Segmenti e anelli per corone da carotaggio — GVV-250-300-7x5"
+      "fr": "Segment de couronne, à revêtement sous vide, pour couronnes Ø250–300 mm",
+      "en": "Core bit segment, vacuum coated, for core bits Ø250–300 mm",
+      "it": "Segmento per corona, rivestito sottovuoto, per corone Ø250–300 mm"
     }
   },
   {
@@ -25429,112 +25452,132 @@
   },
   {
     "sku": "TS-105-22",
-    "name": "Schleifscheiben — TS-105-22",
-    "descriptionDe": "Ø Segment",
-    "descriptionEn": "mm mm",
+    "name": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag Ø105mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag",
+    "descriptionEn": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat",
     "typeModel": "",
     "price": 12.6,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
-      "22,2 mm"
+      "105",
+      "2,9",
+      "22,2"
     ],
     "specLabels": [
+      "mm",
+      "mm",
       "mm"
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — TS-105-22",
-      "en": "Grinding discs — TS-105-22",
-      "it": "Dischi abrasivi per levigatura — TS-105-22"
+      "fr": "Disque diamant fritté, disque mixte coupe et dégrossissage, revêtement de dégrossissage sur une face Ø105mm",
+      "en": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat Ø105mm",
+      "it": "Disco diamantato sinterizzato, disco combinato per taglio e sgrossatura, rivestimento di sgrossatura su un lato Ø105mm"
     }
   },
   {
     "sku": "TS-125-22",
-    "name": "Schleifscheiben — TS-125-22",
-    "descriptionDe": "Ø Segment",
-    "descriptionEn": "mm mm",
+    "name": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag Ø125mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag",
+    "descriptionEn": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat",
     "typeModel": "",
     "price": 13.65,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
-      "22,2 mm"
+      "125",
+      "2,9",
+      "22,2"
     ],
     "specLabels": [
+      "mm",
+      "mm",
       "mm"
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — TS-125-22",
-      "en": "Grinding discs — TS-125-22",
-      "it": "Dischi abrasivi per levigatura — TS-125-22"
+      "fr": "Disque diamant fritté, disque mixte coupe et dégrossissage, revêtement de dégrossissage sur une face Ø125mm",
+      "en": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat Ø125mm",
+      "it": "Disco diamantato sinterizzato, disco combinato per taglio e sgrossatura, rivestimento di sgrossatura su un lato Ø125mm"
     }
   },
   {
     "sku": "TS-125-M14",
-    "name": "Schleifscheiben — TS-125-M14",
-    "descriptionDe": "Ø Segment",
-    "descriptionEn": "mm mm",
+    "name": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag Ø125mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag",
+    "descriptionEn": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat",
     "typeModel": "",
     "price": 15.75,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
+      "125",
+      "2,9",
       "M14"
     ],
     "specLabels": [
+      "mm",
+      "mm",
       "mm"
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — TS-125-M14",
-      "en": "Grinding discs — TS-125-M14",
-      "it": "Dischi abrasivi per levigatura — TS-125-M14"
+      "fr": "Disque diamant fritté, disque mixte coupe et dégrossissage, revêtement de dégrossissage sur une face Ø125mm",
+      "en": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat Ø125mm",
+      "it": "Disco diamantato sinterizzato, disco combinato per taglio e sgrossatura, rivestimento di sgrossatura su un lato Ø125mm"
     }
   },
   {
     "sku": "TS-230-22",
-    "name": "Schleifscheiben — TS-230-22",
-    "descriptionDe": "Ø Segment",
-    "descriptionEn": "mm mm",
+    "name": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag Ø230mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag",
+    "descriptionEn": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat",
     "typeModel": "",
     "price": 36.75,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
-      "22,2 mm"
+      "230",
+      "2,9",
+      "22,2"
     ],
     "specLabels": [
+      "mm",
+      "mm",
       "mm"
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — TS-230-22",
-      "en": "Grinding discs — TS-230-22",
-      "it": "Dischi abrasivi per levigatura — TS-230-22"
+      "fr": "Disque diamant fritté, disque mixte coupe et dégrossissage, revêtement de dégrossissage sur une face Ø230mm",
+      "en": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat Ø230mm",
+      "it": "Disco diamantato sinterizzato, disco combinato per taglio e sgrossatura, rivestimento di sgrossatura su un lato Ø230mm"
     }
   },
   {
     "sku": "TS-230-M14",
-    "name": "Schleifscheiben — TS-230-M14",
-    "descriptionDe": "Ø Segment",
-    "descriptionEn": "mm mm",
+    "name": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag Ø230mm",
+    "descriptionDe": "Diamanttrennscheibe, gesintert, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag",
+    "descriptionEn": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat",
     "typeModel": "",
     "price": 39.9,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
+      "230",
+      "2,9",
       "M14"
     ],
     "specLabels": [
+      "mm",
+      "mm",
       "mm"
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — TS-230-M14",
-      "en": "Grinding discs — TS-230-M14",
-      "it": "Dischi abrasivi per levigatura — TS-230-M14"
+      "fr": "Disque diamant fritté, disque mixte coupe et dégrossissage, revêtement de dégrossissage sur une face Ø230mm",
+      "en": "Diamond blade, sintered, combi blade for cutting and grinding, one sided grinding coat Ø230mm",
+      "it": "Disco diamantato sinterizzato, disco combinato per taglio e sgrossatura, rivestimento di sgrossatura su un lato Ø230mm"
     }
   },
   {
@@ -25561,24 +25604,28 @@
   },
   {
     "sku": "GVV-SPF-125",
-    "name": "Schleifscheiben — GVV-SPF-125",
-    "descriptionDe": "Ø Segment",
-    "descriptionEn": "mm mm",
+    "name": "Diamanttrennscheibe, galvanisch belegt, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag Ø125mm",
+    "descriptionDe": "Diamanttrennscheibe, galvanisch belegt, Kombischeibe zum Trennen und Schruppen, einseitiger Schruppbelag",
+    "descriptionEn": "Diamond blade, electroplated, combi blade for cutting and grinding, one sided grinding coat",
     "typeModel": "",
     "price": 12.08,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
-      "22,2 mm"
+      "125",
+      "2,9",
+      "22,2"
     ],
     "specLabels": [
+      "mm",
+      "mm",
       "mm"
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — GVV-SPF-125",
-      "en": "Grinding discs — GVV-SPF-125",
-      "it": "Dischi abrasivi per levigatura — GVV-SPF-125"
+      "fr": "Disque diamant galvanique, disque mixte coupe et dégrossissage, revêtement de dégrossissage sur une face Ø125mm",
+      "en": "Diamond blade, electroplated, combi blade for cutting and grinding, one sided grinding coat Ø125mm",
+      "it": "Disco diamantato galvanico, disco combinato per taglio e sgrossatura, rivestimento di sgrossatura su un lato Ø125mm"
     }
   },
   {
@@ -25954,120 +26001,144 @@
   },
   {
     "sku": "HD-50",
-    "name": "Schleifscheiben — HD-50",
-    "descriptionDe": "# 50",
-    "descriptionEn": "",
+    "name": "Diamant-Handschleifpad, Körnung #50 (grün)",
+    "descriptionDe": "Diamant-Handschleifpad",
+    "descriptionEn": "Diamond handheld grinding pad",
     "typeModel": "",
     "price": 7.56,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
+      "#50",
       "Grün/green"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "Körnung/Grit",
+      "Farbe/Color"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — HD-50",
-      "en": "Grinding discs — HD-50",
-      "it": "Dischi abrasivi per levigatura — HD-50"
+      "fr": "Patin de ponçage diamant manuel, grain #50 (vert)",
+      "en": "Diamond handheld grinding pad, grit #50 (green)",
+      "it": "Tampone abrasivo diamantato manuale, grana #50 (verde)"
     }
   },
   {
     "sku": "HD-100",
-    "name": "Schleifscheiben — HD-100",
-    "descriptionDe": "# 100",
-    "descriptionEn": "",
+    "name": "Diamant-Handschleifpad, Körnung #100 (schwarz)",
+    "descriptionDe": "Diamant-Handschleifpad",
+    "descriptionEn": "Diamond handheld grinding pad",
     "typeModel": "",
     "price": 6.41,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
+      "#100",
       "Schwarz/black"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "Körnung/Grit",
+      "Farbe/Color"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — HD-100",
-      "en": "Grinding discs — HD-100",
-      "it": "Dischi abrasivi per levigatura — HD-100"
+      "fr": "Patin de ponçage diamant manuel, grain #100 (noir)",
+      "en": "Diamond handheld grinding pad, grit #100 (black)",
+      "it": "Tampone abrasivo diamantato manuale, grana #100 (nero)"
     }
   },
   {
     "sku": "HD-200",
-    "name": "Schleifscheiben — HD-200",
-    "descriptionDe": "# 200",
-    "descriptionEn": "",
+    "name": "Diamant-Handschleifpad, Körnung #200 (rot)",
+    "descriptionDe": "Diamant-Handschleifpad",
+    "descriptionEn": "Diamond handheld grinding pad",
     "typeModel": "",
     "price": 6.41,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
+      "#200",
       "Rot/red"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "Körnung/Grit",
+      "Farbe/Color"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — HD-200",
-      "en": "Grinding discs — HD-200",
-      "it": "Dischi abrasivi per levigatura — HD-200"
+      "fr": "Patin de ponçage diamant manuel, grain #200 (rouge)",
+      "en": "Diamond handheld grinding pad, grit #200 (red)",
+      "it": "Tampone abrasivo diamantato manuale, grana #200 (rosso)"
     }
   },
   {
     "sku": "HD-800",
-    "name": "Schleifscheiben — HD-800",
-    "descriptionDe": "# 800",
-    "descriptionEn": "",
+    "name": "Diamant-Handschleifpad, Körnung #800 (blau)",
+    "descriptionDe": "Diamant-Handschleifpad",
+    "descriptionEn": "Diamond handheld grinding pad",
     "typeModel": "",
     "price": 6.41,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
+      "#800",
       "Blau/blue"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "Körnung/Grit",
+      "Farbe/Color"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — HD-800",
-      "en": "Grinding discs — HD-800",
-      "it": "Dischi abrasivi per levigatura — HD-800"
+      "fr": "Patin de ponçage diamant manuel, grain #800 (bleu)",
+      "en": "Diamond handheld grinding pad, grit #800 (blue)",
+      "it": "Tampone abrasivo diamantato manuale, grana #800 (blu)"
     }
   },
   {
     "sku": "HD-Koffer-PL-6",
-    "name": "Schleifscheiben — HD-Koffer-PL-6",
-    "descriptionDe": "2 x #50, 2 x #100, 2 x #200",
-    "descriptionEn": "",
+    "name": "Diamant-Handschleifpad, Koffer-Set (2× #50, 2× #100, 2× #200)",
+    "descriptionDe": "Diamant-Handschleifpad",
+    "descriptionEn": "Diamond handheld grinding pad",
     "typeModel": "",
     "price": 50.72,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
-      "Koffer Set"
+      "2× #50, 2× #100, 2× #200"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "Körnung/Grit"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — HD-Koffer-PL-6",
-      "en": "Grinding discs — HD-Koffer-PL-6",
-      "it": "Dischi abrasivi per levigatura — HD-Koffer-PL-6"
+      "fr": "Patin de ponçage diamant manuel, coffret (2× #50, 2× #100, 2× #200)",
+      "en": "Diamond handheld grinding pad, case set (2× #50, 2× #100, 2× #200)",
+      "it": "Tampone abrasivo diamantato manuale, valigetta (2× #50, 2× #100, 2× #200)"
     }
   },
   {
     "sku": "GM-4",
-    "name": "Schleifscheiben — GM-4",
-    "descriptionDe": "M 14",
-    "descriptionEn": "",
+    "name": "Trägerkörper für Klett Schleifpads, für Winkelschleifer, Ø100 mm, M14",
+    "descriptionDe": "Trägerkörper für Klett Schleifpads, für Winkelschleifer",
+    "descriptionEn": "Body for hook and loop grinding pads, for angle grinder",
     "typeModel": "",
     "price": 3.78,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specs": [
+      "100",
+      "M14"
+    ],
+    "specLabels": [
+      "mm",
+      "Anschluss/Connection"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — GM-4",
-      "en": "Grinding discs — GM-4",
-      "it": "Dischi abrasivi per levigatura — GM-4"
+      "fr": "Plateau support pour patins de ponçage auto-agrippants, pour meuleuse d'angle, Ø100 mm, M14",
+      "en": "Body for hook and loop grinding pads, for angle grinder, Ø100 mm, M14",
+      "it": "Platorello per tamponi abrasivi a strappo, per smerigliatrice angolare, Ø100 mm, M14"
     }
   },
   {
@@ -26286,22 +26357,26 @@
   },
   {
     "sku": "4TR3-SET",
-    "name": "Schleifscheiben — 4TR3-SET",
-    "descriptionDe": "# 50 125 Klett/hook and loop",
-    "descriptionEn": "# 100 125 Klett/hook and loop",
+    "name": "Diamant-Schleifpad, für Winkelschleifer, Set Ø100 mm, für Beton (trocken)",
+    "descriptionDe": "Diamant-Schleifpad, für Winkelschleifer",
+    "descriptionEn": "Diamond grinding pad, for angle grinder",
     "typeModel": "",
     "price": 67.83,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
     "specs": [
-      "Ø 100 mm"
+      "100",
+      "Klett/hook and loop"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "Anschluss/Connection"
+    ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — 4TR3-SET",
-      "en": "Grinding discs — 4TR3-SET",
-      "it": "Dischi abrasivi per levigatura — 4TR3-SET"
+      "fr": "Patin de ponçage diamant, pour meuleuse d'angle, jeu Ø100 mm, pour béton (à sec)",
+      "en": "Diamond grinding pad, for angle grinder, set Ø100 mm, for concrete (dry)",
+      "it": "Tampone abrasivo diamantato, per smerigliatrice angolare, set Ø100 mm, per calcestruzzo (a secco)"
     }
   },
   {
@@ -26466,22 +26541,26 @@
   },
   {
     "sku": "4DS2-Set",
-    "name": "Schleifscheiben — 4DS2-Set",
-    "descriptionDe": "Körnung Ø Anschluss",
-    "descriptionEn": "Grit mm Connection",
+    "name": "Diamant-Schleifpad, für Winkelschleifer, Set Ø100 mm, für Granit (nass)",
+    "descriptionDe": "Diamant-Schleifpad, für Winkelschleifer",
+    "descriptionEn": "Diamond grinding pad, for angle grinder",
     "typeModel": "4DS2",
     "price": 22.05,
     "categorySlug": "disques-poncage",
     "categoryName": "Disques de ponçage",
-    "specs": [],
+    "specs": [
+      "100",
+      "Klett/hook and loop"
+    ],
     "specLabels": [
-      "Typ 4DS2"
+      "mm",
+      "Anschluss/Connection"
     ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques de ponçage — 4DS2-Set",
-      "en": "Grinding discs — 4DS2-Set",
-      "it": "Dischi abrasivi per levigatura — 4DS2-Set"
+      "fr": "Patin de ponçage diamant, pour meuleuse d'angle, jeu Ø100 mm, pour granit (à l'eau)",
+      "en": "Diamond grinding pad, for angle grinder, set Ø100 mm, for granite (wet)",
+      "it": "Tampone abrasivo diamantato, per smerigliatrice angolare, set Ø100 mm, per granito (ad acqua)"
     }
   },
   {
@@ -28212,75 +28291,87 @@
   },
   {
     "sku": "HM-125",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — HM-125",
-    "descriptionDe": "Ø",
-    "descriptionEn": "mm",
+    "name": "Trennscheibe mit Wolframcarbid (Hartmetall) Ø125mm",
+    "descriptionDe": "Trennscheibe mit Wolframcarbid (Hartmetall)",
+    "descriptionEn": "Cut off blade with tungsten carbide",
     "typeModel": "",
     "price": 3.68,
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "22,2",
       "12"
     ],
     "specLabels": [
       "mm",
+      "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": true,
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques meuleuse d'angle & tronçonneuse — HM-125",
-      "en": "Angle grinder & cut-off saw blades — HM-125",
-      "it": "Dischi per smerigliatrice e troncatrice — HM-125"
+      "fr": "Disque à tronçonner carbure de tungstène Ø125mm",
+      "en": "Cut off blade with tungsten carbide Ø125mm",
+      "it": "Disco da taglio con carburo di tungsteno Ø125mm"
     }
   },
   {
     "sku": "HM-230",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — HM-230",
-    "descriptionDe": "Ø",
-    "descriptionEn": "mm",
+    "name": "Trennscheibe mit Wolframcarbid (Hartmetall) Ø230mm",
+    "descriptionDe": "Trennscheibe mit Wolframcarbid (Hartmetall)",
+    "descriptionEn": "Cut off blade with tungsten carbide",
     "typeModel": "",
     "price": 8.4,
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "230",
       "22,2",
       "20"
     ],
     "specLabels": [
       "mm",
+      "mm",
       "Seg. pcs"
     ],
-    "lowConfidence": true,
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques meuleuse d'angle & tronçonneuse — HM-230",
-      "en": "Angle grinder & cut-off saw blades — HM-230",
-      "it": "Dischi per smerigliatrice e troncatrice — HM-230"
+      "fr": "Disque à tronçonner carbure de tungstène Ø230mm",
+      "en": "Cut off blade with tungsten carbide Ø230mm",
+      "it": "Disco da taglio con carburo di tungsteno Ø230mm"
     }
   },
   {
     "sku": "PR-BT-350",
-    "name": "Trennscheiben für Ringsägen (Beton) — PR-BT-350",
-    "descriptionDe": "Block-Segment",
-    "descriptionEn": "10 mm",
+    "name": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen, Beton bis B25, Ø365 mm",
+    "descriptionDe": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen",
+    "descriptionEn": "Diamond blade for PARTNER and HUSQVARNA machines",
     "typeModel": "",
     "price": 74.66,
     "categorySlug": "disques-decoupeuse-couronne",
     "categoryName": "Disques découpeuse béton à couronne",
-    "specs": [],
-    "specLabels": null,
+    "specs": [
+      "365",
+      "33x4,3x10",
+      "22"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false,
     "names": {
-      "fr": "Disques découpeuse béton à couronne — PR-BT-350",
-      "en": "Concrete ring saw blades — PR-BT-350",
-      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-BT-350"
+      "fr": "Disque diamant pour machines PARTNER/HUSQVARNA, béton jusqu'à B25, Ø365 mm",
+      "en": "Diamond blade for PARTNER and HUSQVARNA machines, concrete up to B25, Ø365 mm",
+      "it": "Disco diamantato per macchine PARTNER/HUSQVARNA, calcestruzzo fino a B25, Ø365 mm"
     }
   },
   {
     "sku": "PR-Antriebsrolle",
-    "name": "Trennscheiben für Ringsägen (Beton) — PR-Antriebsrolle",
-    "descriptionDe": "Block-Segment",
-    "descriptionEn": "10 mm",
+    "name": "Antriebsrolle für Säge Typ 3600",
+    "descriptionDe": "Antriebsrolle für Säge Typ 3600",
+    "descriptionEn": "Drive roll for saw type 3600",
     "typeModel": "",
     "price": 13.65,
     "categorySlug": "disques-decoupeuse-couronne",
@@ -28289,25 +28380,36 @@
     "specLabels": null,
     "lowConfidence": false,
     "names": {
-      "fr": "Disques découpeuse béton à couronne — PR-Antriebsrolle",
-      "en": "Concrete ring saw blades — PR-Antriebsrolle",
-      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-Antriebsrolle"
+      "fr": "Galet d'entraînement pour découpeuse type 3600",
+      "en": "Drive roll for saw type 3600",
+      "it": "Rullo di trascinamento per sega tipo 3600"
     }
   },
   {
     "sku": "PR-KS-350",
-    "name": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen",
+    "name": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen, Kalksandstein, Ø365 mm",
     "descriptionDe": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen",
     "descriptionEn": "Diamond blade for PARTNER and HUSQVARNA machines",
     "typeModel": "PR-KS",
     "price": 74.66,
     "categorySlug": "disques-decoupeuse-couronne",
     "categoryName": "Disques découpeuse béton à couronne",
-    "specs": [],
-    "specLabels": [
-      "Typ PR-KS"
+    "specs": [
+      "365",
+      "33x4,3x10",
+      "22"
     ],
-    "lowConfidence": false
+    "specLabels": [
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false,
+    "names": {
+      "fr": "Disque diamant pour machines PARTNER/HUSQVARNA, brique silico-calcaire, Ø365 mm",
+      "en": "Diamond blade for PARTNER and HUSQVARNA machines, sand-lime stone, Ø365 mm",
+      "it": "Disco diamantato per macchine PARTNER/HUSQVARNA, mattone silico-calcareo, Ø365 mm"
+    }
   },
   {
     "sku": "PR-Antriebsrolle-v2",
@@ -28329,20 +28431,28 @@
   },
   {
     "sku": "PR-BTT-350",
-    "name": "Trennscheiben für Ringsägen (Beton) — PR-BTT-350",
-    "descriptionDe": "10 mm",
-    "descriptionEn": "33x4.3x10 22",
+    "name": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen, Beton bis B45, Ø365 mm",
+    "descriptionDe": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen",
+    "descriptionEn": "Diamond blade for PARTNER and HUSQVARNA machines",
     "typeModel": "",
     "price": 59.64,
     "categorySlug": "disques-decoupeuse-couronne",
     "categoryName": "Disques découpeuse béton à couronne",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specs": [
+      "365",
+      "33x4,3x10",
+      "22"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques découpeuse béton à couronne — PR-BTT-350",
-      "en": "Concrete ring saw blades — PR-BTT-350",
-      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-BTT-350"
+      "fr": "Disque diamant pour machines PARTNER/HUSQVARNA, béton jusqu'à B45, Ø365 mm",
+      "en": "Diamond blade for PARTNER and HUSQVARNA machines, concrete up to B45, Ø365 mm",
+      "it": "Disco diamantato per macchine PARTNER/HUSQVARNA, calcestruzzo fino a B45, Ø365 mm"
     }
   },
   {
@@ -28365,20 +28475,28 @@
   },
   {
     "sku": "PR-503-350",
-    "name": "Trennscheiben für Ringsägen (Beton) — PR-503-350",
-    "descriptionDe": "10 mm",
-    "descriptionEn": "33x4.3x10 22",
+    "name": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen, Beton bis B45, Turbo-Segmente, Ø365 mm",
+    "descriptionDe": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen",
+    "descriptionEn": "Diamond blade for PARTNER and HUSQVARNA machines",
     "typeModel": "",
     "price": 54.81,
     "categorySlug": "disques-decoupeuse-couronne",
     "categoryName": "Disques découpeuse béton à couronne",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specs": [
+      "365",
+      "33x4,3x10",
+      "22"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques découpeuse béton à couronne — PR-503-350",
-      "en": "Concrete ring saw blades — PR-503-350",
-      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-503-350"
+      "fr": "Disque diamant pour machines PARTNER/HUSQVARNA, béton jusqu'à B45, segments turbo, Ø365 mm",
+      "en": "Diamond blade for PARTNER and HUSQVARNA machines, concrete up to B45, turbo segments, Ø365 mm",
+      "it": "Disco diamantato per macchine PARTNER/HUSQVARNA, calcestruzzo fino a B45, segmenti turbo, Ø365 mm"
     }
   },
   {
@@ -28401,20 +28519,28 @@
   },
   {
     "sku": "PR-LS-3D-350",
-    "name": "Trennscheiben für Ringsägen (Beton) — PR-LS-3D-350",
-    "descriptionDe": "10 mm",
-    "descriptionEn": "33x4.3x10 22",
+    "name": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen, Beton bis B45, 3D-Raster-Struktur, Ø365 mm",
+    "descriptionDe": "Diamanttrennscheibe für PARTNER/HUSQVARNA Maschinen",
+    "descriptionEn": "Diamond blade for PARTNER and HUSQVARNA machines",
     "typeModel": "",
     "price": 86.31,
     "categorySlug": "disques-decoupeuse-couronne",
     "categoryName": "Disques découpeuse béton à couronne",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specs": [
+      "365",
+      "33x4,3x10",
+      "22"
+    ],
+    "specLabels": [
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Disques découpeuse béton à couronne — PR-LS-3D-350",
-      "en": "Concrete ring saw blades — PR-LS-3D-350",
-      "it": "Dischi per troncatrici ad anello (calcestruzzo) — PR-LS-3D-350"
+      "fr": "Disque diamant pour machines PARTNER/HUSQVARNA, béton jusqu'à B45, structure diamant 3D, Ø365 mm",
+      "en": "Diamond blade for PARTNER and HUSQVARNA machines, concrete up to B45, 3D grid structure, Ø365 mm",
+      "it": "Disco diamantato per macchine PARTNER/HUSQVARNA, calcestruzzo fino a B45, struttura 3D, Ø365 mm"
     }
   },
   {
@@ -28455,20 +28581,26 @@
   },
   {
     "sku": "VL-200-11/4",
-    "name": "Maschinenaufnahmen — VL-200-11/4",
-    "descriptionDe": "100 1 1/4\"",
-    "descriptionEn": "",
+    "name": "Diamant-Bohrkronen Zubehör, Verlängerung 1 1/4\", Länge 200 mm",
+    "descriptionDe": "Diamant-Bohrkronen Zubehör, Verlängerung",
+    "descriptionEn": "Diamond core bit accessories, extension",
     "typeModel": "",
     "price": 8.4,
     "categorySlug": "fixation-machine",
     "categoryName": "Fixation machine",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specs": [
+      "200",
+      "1 1/4\""
+    ],
+    "specLabels": [
+      "Länge/Length mm",
+      "Aufnahme/Connection"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Fixation machine — VL-200-11/4",
-      "en": "Machine fittings — VL-200-11/4",
-      "it": "Attacchi macchina — VL-200-11/4"
+      "fr": "Rallonge pour couronne diamant 1 1/4\", longueur 200 mm",
+      "en": "Diamond core bit accessories, extension 1 1/4\", length 200 mm",
+      "it": "Prolunga per corona diamantata 1 1/4\", lunghezza 200 mm"
     }
   },
   {
@@ -28563,20 +28695,26 @@
   },
   {
     "sku": "VL-200-R1/2",
-    "name": "Maschinenaufnahmen — VL-200-R1/2",
-    "descriptionDe": "100 R 1/2\"",
-    "descriptionEn": "",
+    "name": "Diamant-Bohrkronen Zubehör, Verlängerung R 1/2\", Länge 200 mm",
+    "descriptionDe": "Diamant-Bohrkronen Zubehör, Verlängerung",
+    "descriptionEn": "Diamond core bit accessories, extension",
     "typeModel": "",
     "price": 5.25,
     "categorySlug": "fixation-machine",
     "categoryName": "Fixation machine",
-    "specs": [],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specs": [
+      "200",
+      "R 1/2\""
+    ],
+    "specLabels": [
+      "Länge/Length mm",
+      "Aufnahme/Connection"
+    ],
+    "lowConfidence": false,
     "names": {
-      "fr": "Fixation machine — VL-200-R1/2",
-      "en": "Machine fittings — VL-200-R1/2",
-      "it": "Attacchi macchina — VL-200-R1/2"
+      "fr": "Rallonge pour couronne diamant R 1/2\", longueur 200 mm",
+      "en": "Diamond core bit accessories, extension R 1/2\", length 200 mm",
+      "it": "Prolunga per corona diamantata R 1/2\", lunghezza 200 mm"
     }
   },
   {
