@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -102,13 +103,21 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
       : {}),
   };
 
+  // Sub-category products (e.g. "Disques pour matériaux abrasifs") also show
+  // their family; a top-level family's parent is the catalogue root, skipped.
+  const family = product.category.parent?.parentId ? product.category.parent : null;
+  const crumbs = [
+    ...(family ? [{ name: family.name, href: `/categories/${family.slug}` }] : []),
+    { name: product.category.name, href: `/categories/${product.category.slug}` },
+  ];
+
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: t("home"), item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: product.category.name, item: `${SITE_URL}/categories/${product.category.slug}` },
-      { "@type": "ListItem", position: 3, name: product.name, item: `${SITE_URL}/produits/${product.slug}` },
+      ...crumbs.map((c, i) => ({ "@type": "ListItem", position: i + 2, name: c.name, item: `${SITE_URL}${c.href}` })),
+      { "@type": "ListItem", position: crumbs.length + 2, name: product.name, item: `${SITE_URL}/produits/${product.slug}` },
     ],
   };
 
@@ -120,7 +129,13 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
       <nav aria-label="Breadcrumb" className="mb-6 flex min-w-0 items-center gap-2 text-[13px] text-muted lg:mb-8">
         <Link href="/" className="shrink-0 transition-colors hover:text-ink">{t("home")}</Link>
         <span aria-hidden="true">/</span>
-        <Link href={`/categories/${product.category.slug}`} className="min-w-0 truncate transition-colors hover:text-ink">{product.category.name}</Link>
+        {crumbs.map((c, i) => (
+          <Fragment key={c.href}>
+            {i > 0 && <span aria-hidden="true" className="max-sm:hidden">/</span>}
+            {/* On phones only the closest category is shown, to keep one line. */}
+            <Link href={c.href} className={`min-w-0 truncate transition-colors hover:text-ink ${i < crumbs.length - 1 ? "max-sm:hidden" : ""}`}>{c.name}</Link>
+          </Fragment>
+        ))}
         <span aria-hidden="true" className="max-sm:hidden">/</span>
         <span className="min-w-0 truncate text-ink max-sm:hidden">{product.name}</span>
       </nav>

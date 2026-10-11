@@ -245,6 +245,23 @@ src/
   proxy.ts             protection des routes /admin et /compte
 messages/              traductions FR / DE / EN / IT```
 
+## Catalogue : catégories et données fournisseur
+
+- **Sous-catégories** : une famille peut contenir des sous-catégories, par
+  exemple « Disques Ø115 – Ø230 mm » → Disques / Disques silencieux / Disques
+  pour matériaux abrasifs. Le menu additionne leurs produits et la page de la
+  famille affiche aussi ceux des sous-catégories.
+- **Disques Ø115–230** : [prisma/data/discs-115-230.json](prisma/data/discs-115-230.json)
+  est le référentiel tiré du Katalog 2026 fournisseur (chapitre 1, p. 5-25) :
+  diamètre, alésage, et type selon les icônes « Silent » et « Abrasiv ✓ ».
+  [scripts/fix-discs-115-230.ts](scripts/fix-discs-115-230.ts) l'applique à la
+  base (simulation par défaut, `--apply` pour écrire). Il a été appliqué en
+  production le 11/10/2026 et le seed le rejoue.
+- **Base de production** : elle n'est accessible que depuis Railway (pas de
+  proxy public). Pour un script ponctuel, l'ajouter temporairement à
+  `db:deploy` (simulation, puis `--apply`), puis le retirer. Sinon il
+  réécrirait à chaque déploiement les modifications faites dans l'admin.
+
 ## Limitations connues / pistes d'amélioration
 
 - **Emails transactionnels** (confirmation de commande, réinitialisation de
