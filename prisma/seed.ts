@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { computeProductGroups } from "../src/lib/product-grouping";
 import { computePublicSkus } from "../src/lib/public-sku";
+import { applyDiscs115230 } from "../scripts/lib/discs-115-230";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -862,6 +863,9 @@ async function main() {
 
   await seedProductRelations(products);
   console.log("  ✓ product relations (complementary/similar)");
+
+  const discs = await applyDiscs115230(db, { apply: true });
+  console.log(`  ✓ Ø115–230 blades filed into ${Object.keys(discs.moved).length} sub-categories`);
 
   await seedTutorials(categories, products);
   console.log(`  ✓ ${TUTORIALS.length} tutorials`);

@@ -415,7 +415,7 @@
   },
   {
     "sku": "BT104-B1-1152212",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — BT104-B1-1152212",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø115mm",
     "descriptionDe": "⍟⍟ STANDARD",
     "descriptionEn": "",
     "typeModel": "",
@@ -423,11 +423,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "115",
       "33x1,7x12",
       "22,2",
       "8"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false,
     "names": {
       "fr": "Disques meuleuse d'angle & tronçonneuse — BT104-B1-1152212",
@@ -437,7 +443,7 @@
   },
   {
     "sku": "BT104-B1-1252212",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — BT104-B1-1252212",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø125mm",
     "descriptionDe": "⍟⍟ STANDARD",
     "descriptionEn": "",
     "typeModel": "",
@@ -445,11 +451,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "36x2,2x12",
       "22,2",
       "9"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false,
     "names": {
       "fr": "Disques meuleuse d'angle & tronçonneuse — BT104-B1-1252212",
@@ -459,7 +471,7 @@
   },
   {
     "sku": "BT104-B1-2302212",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — BT104-B1-2302212",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø230mm",
     "descriptionDe": "⍟⍟ STANDARD",
     "descriptionEn": "",
     "typeModel": "",
@@ -467,11 +479,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "230",
       "37x2,7x12",
       "22,2",
       "16"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false,
     "names": {
       "fr": "Disques meuleuse d'angle & tronçonneuse — BT104-B1-2302212",
@@ -573,7 +591,7 @@
   },
   {
     "sku": "AB101-115",
-    "name": "Diamanttrennscheibe, gesintert, segmentiert",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø115mm",
     "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert",
     "descriptionEn": "Diamond blade, sintered, segmented",
     "typeModel": "",
@@ -581,16 +599,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "115",
       "38x2,0x7",
       "22,2",
       "8"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "AB101-125",
-    "name": "Diamanttrennscheibe, gesintert, segmentiert",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø125mm",
     "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert",
     "descriptionEn": "Diamond blade, sintered, segmented",
     "typeModel": "",
@@ -598,16 +622,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "37x2,0x7",
       "22,2",
       "9"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "AB101-135-22",
-    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø12mm",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø135mm",
     "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert",
     "descriptionEn": "Diamond blade, sintered, segmented",
     "typeModel": "",
@@ -615,16 +645,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "135",
       "36x2,2x7",
       "22,2",
       "12"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "AB101-135-30",
-    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø30mm",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø135mm",
     "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert",
     "descriptionEn": "Diamond blade, sintered, segmented",
     "typeModel": "",
@@ -632,16 +668,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "135",
       "36x2,2x7",
       "30",
       "12"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "AB101-150",
-    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø12mm",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø150mm",
     "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert",
     "descriptionEn": "Diamond blade, sintered, segmented",
     "typeModel": "",
@@ -649,16 +691,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "150",
       "33x2,3x7",
       "22,2",
       "12"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "Ab101-180",
-    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø14mm",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø180mm",
     "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert",
     "descriptionEn": "Diamond blade, sintered, segmented",
     "typeModel": "",
@@ -666,16 +714,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "180",
       "34x2,4x7",
       "22,2",
       "14"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "AB101-230",
-    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø16mm",
+    "name": "Diamanttrennscheibe, gesintert, segmentiert Ø230mm",
     "descriptionDe": "Diamanttrennscheibe, gesintert, segmentiert",
     "descriptionEn": "Diamond blade, sintered, segmented",
     "typeModel": "",
@@ -683,11 +737,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "230",
       "39x2,6x7,5",
       "22,2",
       "16"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
@@ -897,7 +957,7 @@
   },
   {
     "sku": "LS505-1-X-Lock-115",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø115mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
     "descriptionEn": "Diamond blade, laser welded, segmented, with turbo shape segments",
     "typeModel": "",
@@ -905,16 +965,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "115",
       "31x2,2x10",
       "Bosch/X-Lock",
       "9"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "LS505-1-X-Lock-125",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø10mm",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø125mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
     "descriptionEn": "Diamond blade, laser welded, segmented, with turbo shape segments",
     "typeModel": "",
@@ -922,11 +988,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "31x2,2x10",
       "Bosch/X-Lock",
       "10"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
@@ -1159,7 +1231,7 @@
   },
   {
     "sku": "HP-503-1152212",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø115mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
     "descriptionEn": "Diamond blade, laser welded, segmented, with turbo shape segments",
     "typeModel": "",
@@ -1167,16 +1239,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "115",
       "31,5x2,4x12",
       "22,2",
       "8"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "HP-503-1252212",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø125mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
     "descriptionEn": "Diamond blade, laser welded, segmented, with turbo shape segments",
     "typeModel": "",
@@ -1184,16 +1262,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "31,5x2,4x12",
       "22,2",
       "9"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "HP-503-1502212",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø11mm",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø150mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
     "descriptionEn": "Diamond blade, laser welded, segmented, with turbo shape segments",
     "typeModel": "",
@@ -1201,16 +1285,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "150",
       "31,5x2,4x12",
       "22,2",
       "11"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "HP-503-1802212",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø13mm",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø180mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
     "descriptionEn": "Diamond blade, laser welded, segmented, with turbo shape segments",
     "typeModel": "",
@@ -1218,16 +1308,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "180",
       "33x2,4x12",
       "22,2",
       "13"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "HP-503-2302212",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — HP-503-2302212",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø230mm",
     "descriptionDe": "115",
     "descriptionEn": "",
     "typeModel": "",
@@ -1235,12 +1331,18 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "230",
       "38x2,6x12",
       "22,2",
       "15"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false,
     "names": {
       "fr": "Disques meuleuse d'angle & tronçonneuse — HP-503-2302212",
       "en": "Angle grinder & cut-off saw blades — HP-503-2302212",
@@ -1387,7 +1489,7 @@
   },
   {
     "sku": "LS503-230-BLANK",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø16mm",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten Ø230mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten",
     "descriptionEn": "Diamond blade, laser welded, segmented, with turbo shape segments",
     "typeModel": "",
@@ -1395,11 +1497,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "230",
       "40x2,6x10",
       "22,23",
       "16"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
@@ -1888,7 +1996,7 @@
   },
   {
     "sku": "LS901-125-50",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher Ø50mm",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher Ø125mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher",
     "descriptionEn": "Diamond blade, laser welded, segmented, cooling holes",
     "typeModel": "",
@@ -1896,11 +2004,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "33x2,4x10",
       "50",
       "9"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
@@ -1951,7 +2065,7 @@
   },
   {
     "sku": "LS-3D-17-2302217",
-    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert Ø16mm",
+    "name": "Diamanttrennscheibe, lasergeschweißt, segmentiert Ø230mm",
     "descriptionDe": "Diamanttrennscheibe, lasergeschweißt, segmentiert",
     "descriptionEn": "Diamond blade, laser welded, segmented",
     "typeModel": "",
@@ -1959,11 +2073,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "230",
       "40x2,8x17",
       "22,2",
       "16"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
@@ -3210,7 +3330,7 @@
   },
   {
     "sku": "FK-S-K-115-SW",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — FK-S-K-115-SW",
+    "name": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch Ø115mm",
     "descriptionDe": "⍟⍟⍟ PRO",
     "descriptionEn": "",
     "typeModel": "",
@@ -3218,12 +3338,18 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "115",
       "1,4x10",
       "22,2",
       "Vollrand"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false,
     "names": {
       "fr": "Disques meuleuse d'angle & tronçonneuse — FK-S-K-115-SW",
       "en": "Angle grinder & cut-off saw blades — FK-S-K-115-SW",
@@ -3232,7 +3358,7 @@
   },
   {
     "sku": "FK-S-K-125-SW",
-    "name": "Trennscheiben für Winkelschleifer & Trennschleifer — FK-S-K-125-SW",
+    "name": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch Ø125mm",
     "descriptionDe": "⍟⍟⍟ PRO",
     "descriptionEn": "",
     "typeModel": "",
@@ -3240,12 +3366,18 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "1,4x10",
       "22,2",
       "Vollrand"
     ],
-    "specLabels": null,
-    "lowConfidence": true,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
+    "lowConfidence": false,
     "names": {
       "fr": "Disques meuleuse d'angle & tronçonneuse — FK-S-K-125-SW",
       "en": "Angle grinder & cut-off saw blades — FK-S-K-125-SW",
@@ -3346,15 +3478,19 @@
   },
   {
     "sku": "Jollyschnitt-B-125",
-    "name": "Für Gehrungsschnitte (45°) ECO",
+    "name": "Diamanttrennscheibe, mit geschlossenem Rand Ø125mm",
     "descriptionDe": "Für Gehrungsschnitte (45°) ECO",
     "descriptionEn": "1,6x25 22,2",
     "typeModel": "",
     "price": 15,
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
-    "specs": [],
-    "specLabels": null,
+    "specs": [
+      "125"
+    ],
+    "specLabels": [
+      "mm"
+    ],
     "lowConfidence": false
   },
   {
@@ -3635,7 +3771,7 @@
   },
   {
     "sku": "TBO300-125-GW-50",
-    "name": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern Ø50mm",
+    "name": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern Ø125mm",
     "descriptionDe": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern",
     "descriptionEn": "Diamond blade, with continuous rim, turbo, with waved core",
     "typeModel": "",
@@ -3643,11 +3779,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "2,5x7",
       "50",
       "Vollrand"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
@@ -4243,7 +4385,7 @@
   },
   {
     "sku": "TBO700-SP-115",
-    "name": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher",
+    "name": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher Ø115mm",
     "descriptionDe": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher",
     "descriptionEn": "Diamond blade, with continuous rim, turbo, cooling holes",
     "typeModel": "",
@@ -4251,16 +4393,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "115",
       "2,0x12",
       "22,2",
       "Vollrand"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "TBO700-SP-125",
-    "name": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher",
+    "name": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher Ø125mm",
     "descriptionDe": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher",
     "descriptionEn": "Diamond blade, with continuous rim, turbo, cooling holes",
     "typeModel": "",
@@ -4268,16 +4416,22 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "125",
       "2,0x12",
       "22,2",
       "Vollrand"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {
     "sku": "TBO700-230-SP",
-    "name": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher",
+    "name": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher Ø230mm",
     "descriptionDe": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher",
     "descriptionEn": "Diamond blade, with continuous rim, turbo, cooling holes",
     "typeModel": "",
@@ -4285,11 +4439,17 @@
     "categorySlug": "disques-meuleuse-tronconneuse",
     "categoryName": "Disques meuleuse d'angle & tronçonneuse (Ø115 – Ø400 mm)",
     "specs": [
+      "230",
       "2,4x12",
       "22,2",
       "Vollrand"
     ],
-    "specLabels": null,
+    "specLabels": [
+      "mm",
+      "mm",
+      "mm",
+      "Seg. pcs"
+    ],
     "lowConfidence": false
   },
   {

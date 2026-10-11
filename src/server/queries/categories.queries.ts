@@ -45,9 +45,16 @@ export async function getCategoryTree() {
     byParent.set(key, [...(byParent.get(key) ?? []), cat]);
   }
 
+  // `_count.products` is rolled up: a family whose products sit in
+  // sub-categories (e.g. "Disques Ø115–230") still shows its real total in
+  // the menus instead of looking empty.
   type Node = (typeof localized)[number] & { children: Node[] };
   function build(parentId: string | null): Node[] {
-    return (byParent.get(parentId) ?? []).map((cat) => ({ ...cat, children: build(cat.id) }));
+    return (byParent.get(parentId) ?? []).map((cat) => {
+      const children = build(cat.id);
+      const products = cat._count.products + children.reduce((sum, c) => sum + c._count.products, 0);
+      return { ...cat, _count: { products }, children };
+    });
   }
 
   return build(null);

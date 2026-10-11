@@ -194,5 +194,61 @@
       "name": "Pulizia",
       "description": "Pietre e piastre di affilatura per pulire e riattivare gli utensili diamantati."
     }
+  },
+  "disques-115-230": {
+    "de": {
+      "name": "Trennscheiben Ø115 – Ø230 mm",
+      "description": "Diamant-Trennscheiben für Winkelschleifer, Ø115 bis Ø230 mm, für den Trockenschnitt: Standard, geräuscharm und für abrasive Materialien."
+    },
+    "en": {
+      "name": "Blades Ø115 – Ø230 mm",
+      "description": "Diamond blades for angle grinders, Ø115 to Ø230 mm, for dry cutting: standard, low-noise and for abrasive materials."
+    },
+    "it": {
+      "name": "Dischi Ø115 – Ø230 mm",
+      "description": "Dischi diamantati per smerigliatrice angolare, da Ø115 a Ø230 mm, per il taglio a secco: standard, silenziosi e per materiali abrasivi."
+    }
+  },
+  "disques-115-230-standard": {
+    "de": {
+      "name": "Trennscheiben",
+      "description": "Diamant-Trennscheiben Ø115 – Ø230 mm für Beton, Granit, Ziegel und Baumaterial."
+    },
+    "en": {
+      "name": "Blades",
+      "description": "Diamond blades Ø115 – Ø230 mm for concrete, granite, brick and building materials."
+    },
+    "it": {
+      "name": "Dischi",
+      "description": "Dischi diamantati Ø115 – Ø230 mm per calcestruzzo, granito, mattoni e materiali da costruzione."
+    }
+  },
+  "disques-115-230-silencieux": {
+    "de": {
+      "name": "Geräuscharme Trennscheiben",
+      "description": "Diamant-Trennscheiben mit Sandwichkern: deutlich leiser beim Schneiden."
+    },
+    "en": {
+      "name": "Low-noise blades",
+      "description": "Sandwich-core diamond blades: much quieter when cutting."
+    },
+    "it": {
+      "name": "Dischi silenziosi",
+      "description": "Dischi diamantati con anima sandwich: molto più silenziosi durante il taglio."
+    }
+  },
+  "disques-115-230-abrasifs": {
+    "de": {
+      "name": "Trennscheiben für abrasive Materialien",
+      "description": "Diamant-Trennscheiben für Mauerwerk, Kalksandstein, Sandstein und andere abrasive Materialien."
+    },
+    "en": {
+      "name": "Blades for abrasive materials",
+      "description": "Diamond blades for masonry, sand-lime brick, sandstone and other abrasive materials."
+    },
+    "it": {
+      "name": "Dischi per materiali abrasivi",
+      "description": "Dischi diamantati per muratura, mattoni silico-calcarei, arenaria e altri materiali abrasivi."
+    }
   }
 }

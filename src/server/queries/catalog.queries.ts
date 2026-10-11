@@ -78,7 +78,9 @@ function buildWhere(filters: CatalogFilters): Prisma.ProductWhereInput {
     ];
   }
   if (filters.categorySlug) {
-    where.category = { slug: filters.categorySlug };
+    // A family can hold its products directly or in sub-categories
+    // (e.g. "Disques Ø115–230" → silencieux / abrasifs): include both.
+    where.category = { OR: [{ slug: filters.categorySlug }, { parent: { slug: filters.categorySlug } }] };
   }
   if (filters.brandSlugs && filters.brandSlugs.length > 0) {
     where.brand = { slug: { in: filters.brandSlugs } };
@@ -497,16 +499,22 @@ export async function getPromotedProducts(limit = 8) {
   return pickGroupedCards({ isActive: true, compareAtPrice: { not: null } }, { createdAt: "desc" }, limit, locale);
 }
 
+/** Product families for the home tiles: the level under the catalogue root
+ *  (same as the header menu), each counting its sub-categories' products too. */
 export async function getPopularCategories(limit = 8) {
   const locale = (await getLocale()) as Locale;
   const categories = await db.category.findMany({
     where: { isActive: true },
-    select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true, slug: true, imageUrl: true, _count: { select: { products: true } } },
+    select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true, slug: true, imageUrl: true, parentId: true },
     orderBy: { order: "asc" },
-    take: limit,
   });
   const counts = await countListingEntriesByCategory();
-  return categories.map((c) => ({ ...localizeCategory(c, locale), _count: { products: counts.get(c.id) ?? 0 } }));
+  const roots = new Set(categories.filter((c) => c.parentId === null).map((c) => c.id));
+  const total = (id: string) =>
+    (counts.get(id) ?? 0) + categories.filter((c) => c.parentId === id).reduce((sum, c) => sum + (counts.get(c.id) ?? 0), 0);
+  // A lone root without children is itself a family (flat catalogue).
+  const families = categories.filter((c) => (c.parentId !== null && roots.has(c.parentId)) || (c.parentId === null && !categories.some((o) => o.parentId === c.id)));
+  return families.slice(0, limit).map((c) => ({ ...localizeCategory(c, locale), _count: { products: total(c.id) } }));
 }
 
 export async function getActiveBrands(limit = 12) {

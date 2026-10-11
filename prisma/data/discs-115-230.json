@@ -1,0 +1,1398 @@
+{
+ "source": "Katalog 2026 (hualing lu), chapitre 1 « Diamanttrennscheiben Ø 115 mm - Ø 230 mm », p. 5-25. type: icône Silent → silent, icône Abrasiv ✓ → abrasive.",
+ "items": [
+  {
+   "sku": "AB101-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-1152210",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-1252210",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-135-22",
+   "diameter": 135,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-135-30",
+   "diameter": 135,
+   "bore": "30",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Ab101-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-1802210",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AB101-2302210",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AK-115-10",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AK-115-TB",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "AK-125-10",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "AK-125-TB",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "AK-180-TB",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "AK-230-TB",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "AK-230x10mm",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "BT104-B1-1152212",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "BT104-B1-1252212",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "BT104-B1-2302212",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "FD-115-Blank",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-125-Blank",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-150-Blank",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-180-25-BLANK",
+   "diameter": 180,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-180-Blank",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-200-25,4-Blank",
+   "diameter": 200,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-200-Blank",
+   "diameter": 200,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-230-22,23-Blank",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FD-230-25-Blank",
+   "diameter": 230,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, warmgepresst, mit Lasereinschnitten, extra dünn"
+  },
+  {
+   "sku": "FK-S-EW-BL-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK-S-EW-BL-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK-S-HF-115-BL",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK-S-HF-125-BL",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK-S-K-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK-S-K-115-SW",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK-S-K-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK-S-K-125-SW",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, extra dünn, mit Flansch"
+  },
+  {
+   "sku": "FK200-105",
+   "diameter": 105,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "Fk200-80-15",
+   "diameter": 80,
+   "bore": "15/22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "FK205-110",
+   "diameter": 110,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "Fk205-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "FK205-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "Fk205-150-22",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "Fk205-150-25",
+   "diameter": 150,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "Fk205-180-22",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "FK205-180-25",
+   "diameter": 180,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "Fk205-200-22",
+   "diameter": 200,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "FK205-200-25",
+   "diameter": 200,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "Fk205-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "FK304-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-150-22",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-180-22",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-180-25,4",
+   "diameter": 180,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-200-22",
+   "diameter": 200,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-200-25,4",
+   "diameter": 200,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-200-30",
+   "diameter": 200,
+   "bore": "30",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FK304-230-25,4",
+   "diameter": 230,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst"
+  },
+  {
+   "sku": "FKT-115-BL",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-115-GO FM",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-125-BL",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-125-GO FM",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-150-BL",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-180-BL",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-200-25,4BL",
+   "diameter": 200,
+   "bore": "25,4",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-230-BL",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "FKT-76-10-BL",
+   "diameter": 76,
+   "bore": "10",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, warmgepresst, extra dünn"
+  },
+  {
+   "sku": "HP-201-1-2302212",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, Kühllöcher"
+  },
+  {
+   "sku": "HP-503-1152212",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "HP-503-1252212",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "HP-503-1502212",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "HP-503-1802212",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "HP-503-2302212",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "Jollyschnitt-B-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand"
+  },
+  {
+   "sku": "LS-3D-12-1252212",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS-3D-17-2302217",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS-503-1-230",
+   "diameter": 230,
+   "bore": "22,23",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS-SP-125-Blank",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS-SP-150-Blank",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS-SP-200-Blank",
+   "diameter": 200,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS-SP-230-Blank",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS103-2-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS103-2-115SP",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "LS103-2-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS103-2-125SP",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "LS103-2-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS103-2-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS103-2-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS103-2-230-Sp-1",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "abrasive",
+   "catalogTitle": "Diamanttrennscheibe, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "LS107-1-115-10",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS107-1-125-10",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS107-1-150-10",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS107-1-180-10",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS107-1-230-10",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS109-1-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS109-1-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS109-1-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS109-1-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS109-1-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS201-1-115-10",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, Kühllöcher"
+  },
+  {
+   "sku": "LS201-1-125-10",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, Kühllöcher"
+  },
+  {
+   "sku": "LS201-1-150-10",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, Kühllöcher"
+  },
+  {
+   "sku": "LS201-1-180-10",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, Kühllöcher"
+  },
+  {
+   "sku": "LS201-1-230-12",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, Kühllöcher"
+  },
+  {
+   "sku": "LS301-1-115-10-A",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS301-1-125-10-A",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS301-1-140-10-A",
+   "diameter": 140,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS301-1-150-10-A",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS301-1-180-10-A",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS301-1-230-10-A",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "LS500-1-KL-1152210",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS500-1-KL-1252210",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS500-1-KL-2302212",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, Kurzzahn, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS501-1-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS501-1-230-10-SW",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "silent",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten, Sandwichkern"
+  },
+  {
+   "sku": "LS501-115-10",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS501-125-10",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS501-140",
+   "diameter": 140,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS501-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS501-169",
+   "diameter": 169,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS501-200",
+   "diameter": 200,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS501-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS503-115-KL",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS503-125-KL",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS503-150-KL",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS503-180-KL",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS503-230-BLANK",
+   "diameter": 230,
+   "bore": "22,23",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS503-230-KL",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten, Kühllöcher"
+  },
+  {
+   "sku": "LS505-1-X-Lock-115",
+   "diameter": 115,
+   "bore": "Bosch/X-Lock",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS505-1-X-Lock-125",
+   "diameter": 125,
+   "bore": "Bosch/X-Lock",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS505-115-10",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS505-125-10",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS505-150-10",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS505-180-10",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS505-230-10",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "LS901-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher"
+  },
+  {
+   "sku": "LS901-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher"
+  },
+  {
+   "sku": "LS901-125-50",
+   "diameter": 125,
+   "bore": "50",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher"
+  },
+  {
+   "sku": "LS901-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher"
+  },
+  {
+   "sku": "LS901-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher"
+  },
+  {
+   "sku": "LS901-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Kühllöcher"
+  },
+  {
+   "sku": "LS901-230-B-SW",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "silent",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert, Sandwichkern"
+  },
+  {
+   "sku": "TBO101-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO101-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO101-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO101-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO200-1152210",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, warmgepresst"
+  },
+  {
+   "sku": "TBO200-115SI",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO200-1252210",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, warmgepresst"
+  },
+  {
+   "sku": "TBO200-125SI",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO200-180-SI",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO200-2302210",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, warmgepresst"
+  },
+  {
+   "sku": "TBO200-230SI",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO300-125-GW-50",
+   "diameter": 125,
+   "bore": "50",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern"
+  },
+  {
+   "sku": "TBO300GW-115SG",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern"
+  },
+  {
+   "sku": "TBO300GW-125SG",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern"
+  },
+  {
+   "sku": "TBO300GW-150SG",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern"
+  },
+  {
+   "sku": "TBO300GW-180SG",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern"
+  },
+  {
+   "sku": "TBO300GW-230SG",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo, mit gewelltem Kern"
+  },
+  {
+   "sku": "TBO510-1152212",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "TBO510-1252212",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "TBO510-1502212",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "TBO510-1802212",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "TBO510-2302212",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "TBO600-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-115-FM",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-125-FM",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-150-FM",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO600-230-FM",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, segmentiert, in Turbo-Ausführung, mit Schutz-Segmenten"
+  },
+  {
+   "sku": "TBO700-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO700-115-12-BU",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher"
+  },
+  {
+   "sku": "TBO700-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO700-125-12BU",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher"
+  },
+  {
+   "sku": "TBO700-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO700-180",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO700-230",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand, Turbo"
+  },
+  {
+   "sku": "TBO700-230-12-BL",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher"
+  },
+  {
+   "sku": "TBO700-230-SP",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher"
+  },
+  {
+   "sku": "TBO700-SP-115",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher"
+  },
+  {
+   "sku": "TBO700-SP-125",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, mit geschlossenem Rand,Turbo, Kühllöcher"
+  },
+  {
+   "sku": "TBS-2302215",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert, mit Turbo-Segmenten"
+  },
+  {
+   "sku": "The 3D grid structure increases the",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, lasergeschweißt, segmentiert"
+  },
+  {
+   "sku": "Uni 101-115-10",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni 101-125-10",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni 101-180-10",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni 101-230-10",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni101-150-10",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni105-115-WS-1",
+   "diameter": 115,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni105-125-WS",
+   "diameter": 125,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni105-140",
+   "diameter": 140,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni105-150",
+   "diameter": 150,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni105-180-WS",
+   "diameter": 180,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  },
+  {
+   "sku": "Uni105-230-WS-1",
+   "diameter": 230,
+   "bore": "22,2",
+   "type": "standard",
+   "catalogTitle": "Diamanttrennscheibe, gesintert, segmentiert"
+  }
+ ]
+}
