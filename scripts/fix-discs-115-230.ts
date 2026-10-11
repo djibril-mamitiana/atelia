@@ -4,6 +4,7 @@
 //   npx tsx scripts/fix-discs-115-230.ts           → dry run, writes nothing
 //   npx tsx scripts/fix-discs-115-230.ts --apply   → updates the database
 import "dotenv/config";
+import { readFileSync } from "node:fs";
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { applyDiscs115230 } from "./lib/discs-115-230";
@@ -22,6 +23,24 @@ async function main() {
 
   const left = await db.product.groupBy({ by: ["isActive"], where: { category: { slug: "disques-meuleuse-tronconneuse" } }, _count: { _all: true } });
   console.log("\nRestent dans « disques-meuleuse-tronconneuse » :", left.map((l) => `${l._count._all} ${l.isActive ? "actifs" : "inactifs"}`).join(", "));
+
+  // What the old family will still hold once the Ø115–230 blades have moved out.
+  const refs: { sku: string }[] = JSON.parse(readFileSync("prisma/data/discs-115-230.json", "utf8")).items;
+  const moving = new Set(refs.map((i) => i.sku.toLowerCase()));
+  const remaining = (
+    await db.product.findMany({
+      where: { isActive: true, category: { slug: "disques-meuleuse-tronconneuse" } },
+      select: { sku: true, name: true, sizeLabel: true },
+      orderBy: { sizeOrder: "asc" },
+    })
+  ).filter((p) => !moving.has(p.sku.toLowerCase()));
+  const byName = new Map<string, string[]>();
+  for (const p of remaining) {
+    const base = p.name.replace(/\s*Ø\s*\d+\s*mm\s*$/i, "");
+    byName.set(base, [...(byName.get(base) ?? []), (p.sizeLabel ?? p.sku).replace(" mm", "")]);
+  }
+  console.log(`Actifs qui y resteront (${remaining.length}) :`);
+  for (const [name, sizes] of byName) console.log(`  ${name} : ${sizes.join(", ")}`);
 }
 
 main()
