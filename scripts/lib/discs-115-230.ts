@@ -49,6 +49,29 @@ export async function applyDiscs115230(db: PrismaClient, { apply }: { apply: boo
 
   const bySku = new Map(catalog.map((c) => [c.sku.toLowerCase(), c]));
   const groups = computeProductGroups(catalog);
+
+  // Size groups are keyed on the bare name, so e.g. abrasive AB101 and
+  // standard Uni105 ("Diamanttrennscheibe, gesintert, segmentiert") would be
+  // one product page. Silent / abrasive blades get their own groups so each
+  // sub-category only shows what belongs there; a blade left alone is shown
+  // as a standalone product.
+  const NO_GROUP = { groupKey: null, sizeLabel: null, sizeOrder: null, sizeSpecs: null };
+  const splitKey = (ref: DiscRef) => {
+    const base = groups.get(bySku.get(ref.sku.toLowerCase())?.sku ?? "");
+    return base ? (ref.type === "standard" ? base.groupKey : `${base.groupKey}:${ref.type}`) : null;
+  };
+  const splitCount = new Map<string, number>();
+  for (const ref of refs) {
+    const key = splitKey(ref);
+    if (key && ref.type !== "standard") splitCount.set(key, (splitCount.get(key) ?? 0) + 1);
+  }
+  const groupFor = (ref: DiscRef, sku: string) => {
+    const base = groups.get(sku);
+    if (!base) return NO_GROUP;
+    if (ref.type === "standard") return base;
+    const key = splitKey(ref)!;
+    return (splitCount.get(key) ?? 0) >= 2 ? { ...base, groupKey: key } : NO_GROUP;
+  };
   const report: DiscsReport = { renamed: [], regrouped: [], moved: {}, categoriesCreated: [], missing: [] };
 
   const products = await db.product.findMany({
@@ -77,7 +100,7 @@ export async function applyDiscs115230(db: PrismaClient, { apply }: { apply: boo
       if (apply) await db.product.update({ where: { id: product.id }, data: nameChanges });
     }
 
-    const g = groups.get(item.sku) ?? { groupKey: null, sizeLabel: null, sizeOrder: null, sizeSpecs: null };
+    const g = groupFor(ref, item.sku);
     if (g.groupKey !== product.groupKey || g.sizeLabel !== product.sizeLabel || g.sizeOrder !== product.sizeOrder || g.sizeSpecs !== product.sizeSpecs) {
       report.regrouped.push(`${product.sku}: ${product.sizeLabel ?? "—"} → ${g.sizeLabel ?? "—"}`);
       if (apply) await db.product.update({ where: { id: product.id }, data: g });
