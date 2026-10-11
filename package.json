@@ -9,7 +9,7 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy && tsx scripts/sync-catalog-texts.ts TBO510-3002012 TBO510-3502012 TBO510-3502512 TBO510-4002512 FK704-3502010 FK704-3502510 GVV-250-300-7x5 TS-105-22 TS-125-22 TS-125-M14 TS-230-22 TS-230-M14 GVV-SPF-125 HD-50 HD-100 HD-200 HD-800 HD-Koffer-PL-6 GM-4 4TR3-SET 4DS2-Set HM-125 HM-230 PR-BT-350 PR-Antriebsrolle PR-KS-350 PR-BTT-350 PR-503-350 PR-LS-3D-350 VL-200-11/4 VL-200-R1/2 --apply",
+    "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "test": "vitest run"
