@@ -314,7 +314,10 @@
     "couponPlaceholder": "Code promo",
     "couponApply": "Appliquer",
     "quantity": "Qté {quantity}",
-    "shippingAndPaymentNote": "Livraison rapide partout en France — paiement par virement bancaire après validation de la commande."
+    "shippingAndPaymentNote": "Livraison rapide partout en France — paiement par virement bancaire après validation de la commande.",
+    "itemUnavailable": "Ce produit n'est plus disponible : retirez-le du panier.",
+    "itemOutOfStock": "En rupture de stock : retirez-le du panier.",
+    "issuesNote": "Certains articles ne peuvent pas être commandés en l'état. Retirez-les ou réduisez la quantité pour passer la commande."
   },
   "Checkout": {
     "title": "Finaliser ma commande",

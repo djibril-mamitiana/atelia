@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ShoppingCart } from "lucide-react";
-import { getCurrentCart } from "@/server/services/cart";
+import { cartItemIssue, getCurrentCart } from "@/server/services/cart";
 import { requireActiveUser } from "@/lib/auth/access";
-import { computeOrderPricing, PricingError } from "@/server/services/pricing";
+import { computeOrderPricing, PricingError, type CartLineInput } from "@/server/services/pricing";
 import { getCartRecommendations } from "@/server/queries/catalog.queries";
 import { CartItemRow } from "@/components/cart/cart-item-row";
 import { CouponForm } from "@/components/cart/coupon-form";
 import { ProductCard } from "@/components/product/product-card";
 import { EmptyState } from "@/components/ui/empty-state";
-import { LinkButton } from "@/components/ui/button";
+import { Button, LinkButton } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
 import { localizedProductName } from "@/lib/product-name";
 import { localizedCategoryName } from "@/lib/category-name";
@@ -17,6 +17,19 @@ import { localizedCategoryName } from "@/lib/category-name";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cart");
   return { title: t("title") };
+}
+
+// Preview totals; an invalid promo code shows an error instead of failing the page.
+async function previewPricing(lines: CartLineInput[], promo: string | undefined, userId: string) {
+  const opts = { shippingMethod: "STANDARD" as const, userId, ignoreStock: true };
+  try {
+    return { pricing: await computeOrderPricing(lines, { ...opts, couponCode: promo || null }) };
+  } catch (err) {
+    if (err instanceof PricingError && err.code === "INVALID_COUPON") {
+      return { pricing: await computeOrderPricing(lines, opts), couponError: err.message };
+    }
+    throw err;
+  }
 }
 
 export default async function CartPage({
@@ -45,28 +58,18 @@ export default async function CartPage({
     );
   }
 
-  const lines = cart.items.map((item) => ({
-    productId: item.productId,
-    variantId: item.variantId,
-    quantity: item.quantity,
-  }));
-
-  let pricing;
-  let couponError: string | undefined;
-  try {
-    pricing = await computeOrderPricing(lines, {
-      shippingMethod: "STANDARD",
-      couponCode: promo || null,
-      userId: session.userId,
-    });
-  } catch (err) {
-    if (err instanceof PricingError && err.code === "INVALID_COUPON") {
-      couponError = err.message;
-      pricing = await computeOrderPricing(lines, { shippingMethod: "STANDARD", userId: session.userId });
-    } else {
-      throw err;
-    }
-  }
+  const issues = new Map(cart.items.map((item) => [item.id, cartItemIssue(item)]));
+  const hasIssues = [...issues.values()].some(Boolean);
+  // Unavailable / sold-out lines stay listed (to be removed) but out of the totals.
+  const lines = cart.items
+    .filter((item) => issues.get(item.id) !== "unavailable" && issues.get(item.id) !== "outOfStock")
+    .map((item) => ({
+      productId: item.productId,
+      variantId: item.variantId,
+      quantity: item.quantity,
+    }));
+  const { pricing, couponError } =
+    lines.length > 0 ? await previewPricing(lines, promo, session.userId) : { pricing: null, couponError: undefined };
 
   const recommendations = await getCartRecommendations(cart.items.map((i) => i.productId));
 
@@ -90,6 +93,7 @@ export default async function CartPage({
               unitPrice={Number(item.product.price) + Number(item.variant?.priceDelta ?? 0)}
               quantity={item.quantity}
               stock={item.variant ? item.variant.stock : item.product.stock}
+              issue={issues.get(item.id) ?? null}
             />
           ))}
         </div>
@@ -97,38 +101,49 @@ export default async function CartPage({
         <div className="flex flex-col gap-5">
           <div className="rounded-md border border-border p-5">
             <p className="mb-4 font-medium text-ink">{t("summary")}</p>
-            <dl className="flex flex-col gap-2.5 text-sm">
-              <div className="flex justify-between">
-                <dt className="text-muted">{t("subtotal")}</dt>
-                <dd className="text-ink">{formatPrice(pricing.subtotal, locale)}</dd>
-              </div>
-              {pricing.discount > 0 && (
-                <div className="flex justify-between text-sage">
-                  <dt>{t("discount")}</dt>
-                  <dd>-{formatPrice(pricing.discount, locale)}</dd>
+            {pricing && (
+              <dl className="flex flex-col gap-2.5 text-sm">
+                <div className="flex justify-between">
+                  <dt className="text-muted">{t("subtotal")}</dt>
+                  <dd className="text-ink">{formatPrice(pricing.subtotal, locale)}</dd>
                 </div>
-              )}
-              <div className="flex justify-between">
-                <dt className="text-muted">{t("estimatedShipping")}</dt>
-                <dd className="text-ink">{pricing.shippingCost === 0 ? t("free") : formatPrice(pricing.shippingCost, locale)}</dd>
-              </div>
-              <div className="flex justify-between text-xs text-muted">
-                <dt>{t("vatIncludedLabel")}</dt>
-                <dd>{formatPrice(pricing.tax, locale)}</dd>
-              </div>
-              <div className="mt-1 flex justify-between border-t border-border pt-3 text-base font-semibold text-ink">
-                <dt>{t("total")}</dt>
-                <dd>{formatPrice(pricing.total, locale)}</dd>
-              </div>
-            </dl>
+                {pricing.discount > 0 && (
+                  <div className="flex justify-between text-sage">
+                    <dt>{t("discount")}</dt>
+                    <dd>-{formatPrice(pricing.discount, locale)}</dd>
+                  </div>
+                )}
+                <div className="flex justify-between">
+                  <dt className="text-muted">{t("estimatedShipping")}</dt>
+                  <dd className="text-ink">{pricing.shippingCost === 0 ? t("free") : formatPrice(pricing.shippingCost, locale)}</dd>
+                </div>
+                <div className="flex justify-between text-xs text-muted">
+                  <dt>{t("vatIncludedLabel")}</dt>
+                  <dd>{formatPrice(pricing.tax, locale)}</dd>
+                </div>
+                <div className="mt-1 flex justify-between border-t border-border pt-3 text-base font-semibold text-ink">
+                  <dt>{t("total")}</dt>
+                  <dd>{formatPrice(pricing.total, locale)}</dd>
+                </div>
+              </dl>
+            )}
 
             <div className="mt-5">
               <CouponForm error={couponError} />
             </div>
 
-            <LinkButton href="/checkout" size="lg" className="mt-5 w-full">
-              {t("checkout")}
-            </LinkButton>
+            {hasIssues || !pricing ? (
+              <>
+                <p className="mt-5 rounded-md bg-danger-soft px-3.5 py-2.5 text-sm text-danger">{t("issuesNote")}</p>
+                <Button size="lg" className="mt-3 w-full" disabled>
+                  {t("checkout")}
+                </Button>
+              </>
+            ) : (
+              <LinkButton href="/checkout" size="lg" className="mt-5 w-full">
+                {t("checkout")}
+              </LinkButton>
+            )}
             <LinkButton href="/produits" variant="ghost" size="sm" className="mt-2 w-full">
               {t("continueShopping")}
             </LinkButton>

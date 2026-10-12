@@ -77,8 +77,12 @@ export async function updateCartItemQuantityAction(
     include: { product: true, variant: true },
   });
   if (!item) return { success: false, error: "Cet article n'est plus dans le panier." };
+  if (!item.product.isActive || (item.variant && !item.variant.isActive)) {
+    return { success: false, error: "Ce produit n'est plus disponible." };
+  }
 
   const availableStock = item.variant ? item.variant.stock : item.product.stock;
+  if (availableStock < 1) return { success: false, error: "Ce produit est en rupture de stock." };
   const nextQuantity = Math.min(quantity, availableStock);
 
   await db.cartItem.update({ where: { id: cartItemId }, data: { quantity: nextQuantity } });

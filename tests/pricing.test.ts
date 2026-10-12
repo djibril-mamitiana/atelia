@@ -91,6 +91,16 @@ describe("computeOrderPricing", () => {
     ).rejects.toMatchObject({ code: "OUT_OF_STOCK" });
   });
 
+  it("prices the requested quantity over stock for the cart preview (ignoreStock)", async () => {
+    findManyMock.mockResolvedValue([mockProduct({ price: 10, stock: 1 })]);
+
+    const pricing = await computeOrderPricing([{ productId: "prod_1", quantity: 5 }], {
+      shippingMethod: "STANDARD",
+      ignoreStock: true,
+    });
+    expect(pricing.subtotal).toBe(50);
+  });
+
   it("rejects an inactive product", async () => {
     findManyMock.mockResolvedValue([mockProduct({ isActive: false })]);
 

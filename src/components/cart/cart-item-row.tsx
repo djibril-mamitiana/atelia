@@ -8,7 +8,9 @@ import { Trash2 } from "lucide-react";
 import { QuantityStepper } from "@/components/ui/quantity-stepper";
 import { useToast } from "@/components/ui/toast";
 import { formatPrice } from "@/lib/format";
+import { cn } from "@/lib/utils";
 import { removeCartItemAction, updateCartItemQuantityAction } from "@/server/actions/cart.actions";
+import type { CartItemIssue } from "@/server/services/cart";
 
 export function CartItemRow({
   id,
@@ -20,6 +22,7 @@ export function CartItemRow({
   unitPrice,
   quantity,
   stock,
+  issue,
 }: {
   id: string;
   productSlug: string;
@@ -30,11 +33,14 @@ export function CartItemRow({
   unitPrice: number;
   quantity: number;
   stock: number;
+  issue: CartItemIssue | null;
 }) {
   const t = useTranslations("Cart");
   const locale = useLocale();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
+  // Deactivated (its page is gone) or sold out: can only be removed.
+  const orderable = issue !== "unavailable" && issue !== "outOfStock";
 
   function updateQuantity(next: number) {
     startTransition(async () => {
@@ -50,25 +56,41 @@ export function CartItemRow({
     });
   }
 
+  const image = imageUrl && <Image src={imageUrl} alt={productName} fill sizes="96px" className="object-cover" />;
+
   return (
     <div className="flex gap-4 py-5">
-      <Link href={`/produits/${productSlug}`} className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md bg-paper">
-        {imageUrl && <Image src={imageUrl} alt={productName} fill sizes="96px" className="object-cover" />}
-      </Link>
+      {issue === "unavailable" ? (
+        <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md bg-paper opacity-50">{image}</div>
+      ) : (
+        <Link href={`/produits/${productSlug}`} className={cn("relative h-24 w-24 shrink-0 overflow-hidden rounded-md bg-paper", !orderable && "opacity-50")}>
+          {image}
+        </Link>
+      )}
 
       <div className="flex flex-1 flex-col gap-1">
         <p className="text-xs uppercase tracking-wide text-muted">{brandName}</p>
-        <Link href={`/produits/${productSlug}`} className="text-sm font-medium text-ink hover:text-accent-dark">
-          {productName}
-        </Link>
+        {issue === "unavailable" ? (
+          <p className="text-sm font-medium text-muted">{productName}</p>
+        ) : (
+          <Link href={`/produits/${productSlug}`} className="text-sm font-medium text-ink hover:text-accent-dark">
+            {productName}
+          </Link>
+        )}
         {variantName && <p className="text-xs text-muted">{variantName}</p>}
-        {stock < quantity && <p className="text-xs font-medium text-danger">{t("stockLimited", { stock })}</p>}
+        {issue === "unavailable" && <p className="text-xs font-medium text-danger">{t("itemUnavailable")}</p>}
+        {issue === "outOfStock" && <p className="text-xs font-medium text-danger">{t("itemOutOfStock")}</p>}
+        {issue === "stockLimited" && <p className="text-xs font-medium text-danger">{t("stockLimited", { stock })}</p>}
 
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-          <QuantityStepper value={quantity} onChange={updateQuantity} max={Math.max(1, stock)} disabled={pending} />
+          {orderable ? (
+            <QuantityStepper value={quantity} onChange={updateQuantity} max={Math.max(1, stock)} disabled={pending} />
+          ) : (
+            <span />
+          )}
           <div className="flex items-center gap-4">
-            <span className="text-sm font-semibold text-ink">{formatPrice(unitPrice * quantity, locale)}</span>
-            <button onClick={remove} aria-label={t("removeFromCart")} className="text-muted hover:text-danger">
+            {orderable && <span className="text-sm font-semibold text-ink">{formatPrice(unitPrice * quantity, locale)}</span>}
+            <button onClick={remove} disabled={pending} aria-label={t("removeFromCart")} className="text-muted hover:text-danger">
               <Trash2 size={17} />
             </button>
           </div>

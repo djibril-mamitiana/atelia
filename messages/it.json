@@ -314,7 +314,10 @@
     "couponPlaceholder": "Codice promo",
     "couponApply": "Applica",
     "quantity": "Qtà {quantity}",
-    "shippingAndPaymentNote": "Spedizione rapida in tutta la Francia — pagamento con bonifico bancario dopo la conferma dell'ordine."
+    "shippingAndPaymentNote": "Spedizione rapida in tutta la Francia — pagamento con bonifico bancario dopo la conferma dell'ordine.",
+    "itemUnavailable": "Questo prodotto non è più disponibile: rimuovilo dal carrello.",
+    "itemOutOfStock": "Esaurito: rimuovilo dal carrello.",
+    "issuesNote": "Alcuni articoli non possono essere ordinati così. Rimuovili o riduci la quantità per procedere all'ordine."
   },
   "Checkout": {
     "title": "Completa il mio ordine",

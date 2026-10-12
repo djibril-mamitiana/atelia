@@ -352,12 +352,12 @@ export async function getProductBySlug(slug: string) {
         },
       },
       complementaryTo: {
-        where: { kind: "COMPLEMENTARY" },
+        where: { kind: "COMPLEMENTARY", relatedProduct: { isActive: true } },
         orderBy: { position: "asc" },
         include: { relatedProduct: { select: PRODUCT_CARD_SELECT } },
       },
       relatedFrom: {
-        where: { kind: "SIMILAR" },
+        where: { kind: "SIMILAR", baseProduct: { isActive: true } },
         orderBy: { position: "asc" },
         include: { baseProduct: { select: PRODUCT_CARD_SELECT } },
       },
@@ -536,7 +536,12 @@ export async function getCartRecommendations(productIds: string[], limit = 4) {
   if (productIds.length === 0) return [];
   const locale = (await getLocale()) as Locale;
   const relations = await db.productRelation.findMany({
-    where: { baseProductId: { in: productIds }, kind: "COMPLEMENTARY", relatedProductId: { notIn: productIds } },
+    where: {
+      baseProductId: { in: productIds },
+      kind: "COMPLEMENTARY",
+      relatedProductId: { notIn: productIds },
+      relatedProduct: { isActive: true },
+    },
     select: { relatedProduct: { select: PRODUCT_CARD_SELECT } },
     take: limit * 2,
   });

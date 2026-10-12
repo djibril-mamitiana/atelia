@@ -3,7 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { localizedProductName } from "@/lib/product-name";
 import { requireActiveUser } from "@/lib/auth/access";
-import { getCurrentCart } from "@/server/services/cart";
+import { cartItemIssue, getCurrentCart } from "@/server/services/cart";
 import { db } from "@/lib/db";
 import { CheckoutClient } from "@/components/checkout/checkout-client";
 import { getSiteSettings } from "@/server/services/site-settings";
@@ -19,7 +19,8 @@ export default async function CheckoutPage() {
   const t = await getTranslations("Checkout");
   const locale = await getLocale();
 
-  if (!cart || cart.items.length === 0) {
+  // Empty, or holding a line that can't be ordered: the cart page explains what to fix.
+  if (!cart || cart.items.length === 0 || cart.items.some((item) => cartItemIssue(item))) {
     redirect({ href: "/panier", locale });
     throw new Error("unreachable"); // redirect() always throws — this only narrows `cart` for TS
   }

@@ -314,7 +314,10 @@
     "couponPlaceholder": "Promo code",
     "couponApply": "Apply",
     "quantity": "Qty {quantity}",
-    "shippingAndPaymentNote": "Fast delivery across France — payment by bank transfer once the order is placed."
+    "shippingAndPaymentNote": "Fast delivery across France — payment by bank transfer once the order is placed.",
+    "itemUnavailable": "This product is no longer available — please remove it from your cart.",
+    "itemOutOfStock": "Out of stock — please remove it from your cart.",
+    "issuesNote": "Some items can't be ordered as they are. Remove them or lower the quantity to check out."
   },
   "Checkout": {
     "title": "Complete my order",

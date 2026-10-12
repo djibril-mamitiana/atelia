@@ -314,7 +314,10 @@
     "couponPlaceholder": "Gutscheincode",
     "couponApply": "Anwenden",
     "quantity": "Menge {quantity}",
-    "shippingAndPaymentNote": "Schneller Versand in ganz Frankreich — Zahlung per Banküberweisung nach Bestätigung der Bestellung."
+    "shippingAndPaymentNote": "Schneller Versand in ganz Frankreich — Zahlung per Banküberweisung nach Bestätigung der Bestellung.",
+    "itemUnavailable": "Dieses Produkt ist nicht mehr erhältlich – bitte aus dem Warenkorb entfernen.",
+    "itemOutOfStock": "Nicht auf Lager – bitte aus dem Warenkorb entfernen.",
+    "issuesNote": "Einige Artikel können so nicht bestellt werden. Entfernen Sie sie oder verringern Sie die Menge, um zur Kasse zu gehen."
   },
   "Checkout": {
     "title": "Bestellung abschließen",

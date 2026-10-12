@@ -126,6 +126,21 @@ export async function mergeGuestCartIntoUser(userId: string) {
   cookieStore.delete(CART_COOKIE_NAME);
 }
 
+export type CartItemIssue = "unavailable" | "outOfStock" | "stockLimited";
+
+/**
+ * Why a cart line can't be ordered as it is, or null. A product deactivated
+ * or sold out after being added stays in the cart: the cart page shows it so
+ * the customer can remove it, and checkout waits until it's sorted out.
+ */
+export function cartItemIssue(item: CartWithItems["items"][number]): CartItemIssue | null {
+  if (!item.product.isActive || (item.variant && !item.variant.isActive)) return "unavailable";
+  const stock = item.variant ? item.variant.stock : item.product.stock;
+  if (stock < 1) return "outOfStock";
+  if (item.quantity > stock) return "stockLimited";
+  return null;
+}
+
 export function cartItemCount(cart: { items: { quantity: number }[] } | null): number {
   if (!cart) return 0;
   return cart.items.reduce((sum, i) => sum + i.quantity, 0);

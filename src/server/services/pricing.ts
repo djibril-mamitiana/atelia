@@ -76,7 +76,9 @@ function couponDiscountAmount(
 
 export async function computeOrderPricing(
   items: CartLineInput[],
-  opts: { shippingMethod: ShippingMethod; couponCode?: string | null; userId?: string | null }
+  // ignoreStock: cart preview only — totals at the requested quantities while
+  // the cart page flags the lines over stock. Order creation never sets it.
+  opts: { shippingMethod: ShippingMethod; couponCode?: string | null; userId?: string | null; ignoreStock?: boolean }
 ): Promise<OrderPricing> {
   if (items.length === 0) {
     throw new PricingError("EMPTY_CART", "Le panier est vide.");
@@ -127,7 +129,7 @@ export async function computeOrderPricing(
     };
   });
 
-  if (outOfStock.length > 0) {
+  if (outOfStock.length > 0 && !opts.ignoreStock) {
     throw new PricingError(
       "OUT_OF_STOCK",
       `Stock insuffisant pour : ${outOfStock.join(", ")}.`,
