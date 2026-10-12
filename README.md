@@ -228,6 +228,15 @@ vit dans PostgreSQL. Les photos produit sont livrées avec le code
   Puis, dans la table `User`, éditez la ligne et passez `role` à `ADMIN` ou
   `STAFF`. Le personnel se connecte avec un mot de passe, pas avec un code
   client.
+- **Changer l'email ou le mot de passe de l'admin** : `scripts/set-admin-login.ts`
+  lit `NEW_ADMIN_EMAIL` et `NEW_ADMIN_PASSWORD` dans l'environnement, pour que
+  les identifiants ne passent jamais par le dépôt. Sans `--apply`, il affiche
+  seulement ce qu'il ferait. S'il y a plusieurs admins, désignez le bon avec
+  `ADMIN_CURRENT_EMAIL`. En production, la base n'étant joignable que depuis
+  Railway : ajoutez les deux variables au service (`npx @railway/cli variable
+  set … --service atelia --skip-deploys`), ajoutez
+  `&& tsx scripts/set-admin-login.ts --apply` à `db:deploy` le temps d'un
+  déploiement, puis supprimez les variables et retirez l'étape.
 
 ## Structure du projet
 
