@@ -75,7 +75,7 @@
     "discoverProducts": "Trouver mon outil",
     "viewTutorials": "Lire les guides",
     "ourCategories": "Parcourir par usage",
-    "productsCount": "{count} produits",
+    "productsCount": "{count, plural, one {# produit} other {# produits}}",
     "bestSellers": "Meilleures ventes",
     "bestSellersSubtitle": "Les produits préférés de nos clients",
     "currentPromotions": "Promotions en cours",

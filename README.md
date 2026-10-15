@@ -279,10 +279,34 @@ messages/              traductions FR / DE / EN / IT```
   `<SKU…> [--apply]` reporte en base les noms, les descriptions, les textes
   alternatifs des photos et les regroupements. Exemple : 31 noms provisoires
   remplacés par les vrais titres du catalogue le 11/10/2026.
+- **Nettoyant béton** : [scripts/add-nettoyant-beton.ts](scripts/add-nettoyant-beton.ts)
+  `[--apply]` a créé le 15/10/2026 la marque ABAX, la famille « Nettoyant
+  béton » et les bidons Décap Béton 5 L / 20 L. Les bidons sont créés masqués
+  à 0 €, faute de prix connu : saisissez prix et stock dans l'admin, puis
+  rendez-les visibles. Un produit à 0 € ne peut pas être rendu visible. Le
+  même script place les familles de carottage en tête (champ « Ordre » des
+  catégories, que suivent l'accueil et les menus). Il ajoute aussi la vidéo
+  de carottage aux deux familles de carottage et en fait un guide. Le seed
+  le rejoue.
 - **Base de production** : elle n'est accessible que depuis Railway (pas de
   proxy public). Pour un script ponctuel, l'ajouter temporairement à
   `db:deploy` (simulation, puis `--apply`), puis le retirer. Sinon il
   réécrirait à chaque déploiement les modifications faites dans l'admin.
+
+## Vidéos
+
+Une vidéo est un simple lien, collé dans l'admin : un lien YouTube (bouton
+« Partager », Shorts compris) ou l'adresse d'un fichier `.mp4`. Les liens
+YouTube sont lus dans le lecteur YouTube (sans cookie avant lecture), les
+Shorts en format vertical. On peut en mettre à trois endroits :
+
+- **Produit** (champ « Vidéos », une par ligne, `lien | titre` en option) :
+  dans la galerie de la fiche, après les photos.
+- **Catégorie** (champ « Vidéo ») : en haut de la page de la catégorie. La
+  vidéo de la famille « Nettoyant béton » est aussi celle qui se lance depuis
+  les bidons en haut de l'accueil.
+- **Guide** (Tutoriels → « Vidéo ») : la miniature YouTube est reprise
+  automatiquement si le champ « Miniature » est vide.
 
 ## Limitations connues / pistes d'amélioration
 

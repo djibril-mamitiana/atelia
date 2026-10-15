@@ -75,7 +75,7 @@
     "discoverProducts": "Trova il mio utensile",
     "viewTutorials": "Leggi le guide",
     "ourCategories": "Sfoglia per uso",
-    "productsCount": "{count} prodotti",
+    "productsCount": "{count, plural, one {# prodotto} other {# prodotti}}",
     "bestSellers": "I più venduti",
     "bestSellersSubtitle": "I prodotti preferiti dai nostri clienti",
     "currentPromotions": "Offerte in corso",
