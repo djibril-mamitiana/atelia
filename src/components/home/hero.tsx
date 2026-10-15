@@ -2,8 +2,20 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight, BookOpen, Check, Ruler } from "lucide-react";
 import { LinkButton } from "@/components/ui/button";
 import { Blade } from "@/components/home/blade";
+import { HeroCleaner } from "@/components/home/hero-cleaner";
 
-export async function Hero({ referencesCount, guidesCount }: { referencesCount: number; guidesCount: number }) {
+export type HeroCleanerFeature = { videoUrl: string; productHref: string | null };
+
+export async function Hero({
+  referencesCount,
+  guidesCount,
+  cleaner,
+}: {
+  referencesCount: number;
+  guidesCount: number;
+  // The concrete cleaner and its video take the blade's place when set up.
+  cleaner: HeroCleanerFeature | null;
+}) {
   const t = await getTranslations("Home");
   const locale = await getLocale();
   const number = new Intl.NumberFormat(locale);
@@ -66,6 +78,14 @@ export async function Hero({ referencesCount, guidesCount }: { referencesCount: 
           </ul>
         </div>
 
+        {cleaner ? (
+          <div className="rise relative lg:col-span-5" style={{ ["--d" as string]: "200ms" }}>
+            <div className="relative mx-auto mt-4 w-[92%] max-w-[460px] sm:max-w-[520px] lg:mt-0 lg:w-full lg:max-w-none">
+              <HeroCleaner videoUrl={cleaner.videoUrl} productHref={cleaner.productHref} />
+            </div>
+            <p className="eyebrow mt-6 text-center text-white/45 lg:hidden">{t("heroCleanerCaption")}</p>
+          </div>
+        ) : (
         <div className="rise relative lg:col-span-5" style={{ ["--d" as string]: "200ms" }}>
           <div className="relative mx-auto mt-4 aspect-square w-[92%] max-w-[460px] sm:max-w-[540px] lg:absolute lg:left-1/2 lg:top-1/2 lg:mx-0 lg:mt-0 lg:w-[122%] lg:max-w-none lg:-translate-x-[48%] lg:-translate-y-1/2">
             <Blade />
@@ -80,6 +100,7 @@ export async function Hero({ referencesCount, guidesCount }: { referencesCount: 
           </div>
           <p className="eyebrow mt-6 text-center text-white/35 lg:hidden">{t("heroCaption")}</p>
         </div>
+        )}
       </div>
 
       <div className="border-t border-white/10">

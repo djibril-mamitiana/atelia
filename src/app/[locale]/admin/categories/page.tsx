@@ -26,6 +26,7 @@ export default async function AdminCategoriesPage() {
             descriptionEn: c.descriptionEn ?? "",
             descriptionIt: c.descriptionIt ?? "",
             imageUrl: c.imageUrl ?? "",
+            videoUrl: c.videoUrl ?? "",
             parentId: c.parentId,
             order: c.order,
             isActive: c.isActive,

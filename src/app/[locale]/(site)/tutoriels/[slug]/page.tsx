@@ -6,6 +6,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Clock, BarChart3 } from "lucide-react";
 import { getTutorialBySlug } from "@/server/queries/tutorials.queries";
 import { LinkButton } from "@/components/ui/button";
+import { VideoEmbed } from "@/components/ui/video-embed";
 import { formatPrice } from "@/lib/format";
 
 type Params = { slug: string };
@@ -34,9 +35,7 @@ export default async function TutorialPage({ params }: { params: Promise<Params>
     <div className="container-page py-10">
       <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
         <div>
-          <div className="aspect-video overflow-hidden rounded-md bg-ink">
-            <video src={tutorial.videoUrl} controls poster={tutorial.thumbnailUrl ?? undefined} className="h-full w-full object-cover" />
-          </div>
+          <VideoEmbed url={tutorial.videoUrl} title={tutorial.title} poster={tutorial.thumbnailUrl} />
 
           <div className="mt-5 flex items-center gap-4 text-sm text-muted">
             <span className="flex items-center gap-1.5"><Clock size={15} /> {t("minutesShort", { minutes: tutorial.durationMinutes })}</span>

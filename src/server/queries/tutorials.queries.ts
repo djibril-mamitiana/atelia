@@ -31,6 +31,8 @@ const TAG_TRANSLATIONS: Record<string, Record<Exclude<Locale, "fr">, string>> = 
   extérieur: { de: "Außen", en: "Outdoor", it: "Esterno" },
   intérieur: { de: "Innen", en: "Indoor", it: "Interno" },
   sécurité: { de: "Sicherheit", en: "Safety", it: "Sicurezza" },
+  carottage: { de: "Kernbohren", en: "Core drilling", it: "Carotaggio" },
+  vidéo: { de: "Video", en: "Video", it: "Video" },
 };
 
 function localizedTag(tag: string, locale: Locale): string {

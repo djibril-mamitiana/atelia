@@ -15,6 +15,7 @@ import path from "node:path";
 import { computeProductGroups } from "../src/lib/product-grouping";
 import { computePublicSkus } from "../src/lib/public-sku";
 import { applyDiscs115230 } from "../scripts/lib/discs-115-230";
+import { applyCleanerAndVideos } from "../scripts/lib/nettoyant-beton";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -869,6 +870,9 @@ async function main() {
 
   await seedTutorials(categories, products);
   console.log(`  ✓ ${TUTORIALS.length} tutorials`);
+
+  await applyCleanerAndVideos(db, { apply: true });
+  console.log("  ✓ concrete cleaner family, category videos, coring guide");
 
   const { admin, staff, customers } = await seedUsers();
   console.log(`  ✓ ${2 + customers.length} users (1 admin, 1 staff, ${customers.length} customers)`);

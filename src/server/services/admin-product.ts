@@ -52,6 +52,7 @@ export type SharedInput = {
   seoTitle: string | null;
   seoDescription: string | null;
   images: { url: string; alt: string; position: number }[];
+  videos: { url: string; title: string | null; position: number }[];
   attributes: { name: string; values: string[] }[];
   variants: { name: string; sku: string; priceDelta: number; stock: number; isActive: boolean }[];
 };
@@ -65,7 +66,12 @@ export async function loadFamilyRows(id: string) {
   return db.product.findMany({
     where: product.groupKey ? { groupKey: product.groupKey } : { id },
     orderBy: [{ sizeOrder: "asc" }, { sku: "asc" }],
-    include: { images: { orderBy: { position: "asc" } }, attributes: { include: { values: true } }, variants: true },
+    include: {
+      images: { orderBy: { position: "asc" } },
+      videos: { orderBy: { position: "asc" } },
+      attributes: { include: { values: true } },
+      variants: true,
+    },
   });
 }
 
@@ -201,6 +207,7 @@ export async function saveProduct(shared: SharedInput, sizes: SizeInput[], famil
         let id: string;
         if (current) {
           await tx.productImage.deleteMany({ where: { productId: current.id } });
+          await tx.productVideo.deleteMany({ where: { productId: current.id } });
           await tx.productAttribute.deleteMany({ where: { productId: current.id } });
           if (!multi) await tx.productVariant.deleteMany({ where: { productId: current.id } });
           await tx.product.update({ where: { id: current.id }, data });
@@ -230,6 +237,7 @@ export async function saveProduct(shared: SharedInput, sizes: SizeInput[], famil
         }
 
         if (shared.images.length > 0) await tx.productImage.createMany({ data: shared.images.map((i) => ({ ...i, productId: id })) });
+        if (shared.videos.length > 0) await tx.productVideo.createMany({ data: shared.videos.map((v) => ({ ...v, productId: id })) });
         for (const attr of shared.attributes) {
           await tx.productAttribute.create({
             data: { productId: id, name: attr.name, values: { create: attr.values.map((v) => ({ value: v })) } },
@@ -262,7 +270,14 @@ export async function deleteProduct(id: string): Promise<{ success: true } | { s
 }
 
 /** Shows or hides every size of the product at once. */
-export async function setProductActive(id: string, isActive: boolean) {
+export async function setProductActive(id: string, isActive: boolean): Promise<{ success: true } | { success: false; error: string }> {
   const rows = await loadFamilyRows(id);
+  // Products created by script before their price is known are stored at 0 €
+  // and hidden: they must not go on sale at that price.
+  const unpriced = isActive ? rows.find((r) => !(Number(r.price) > 0)) : undefined;
+  if (unpriced) {
+    return { success: false, error: `Saisissez d'abord le prix de « ${unpriced.sizeLabel ?? unpriced.sku} » (fiche produit), puis rendez-le visible.` };
+  }
   await db.product.updateMany({ where: { id: { in: rows.map((r) => r.id) } }, data: { isActive } });
+  return { success: true };
 }

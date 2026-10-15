@@ -517,6 +517,47 @@ export async function getPopularCategories(limit = 8) {
   return families.slice(0, limit).map((c) => ({ ...localizeCategory(c, locale), _count: { products: total(c.id) } }));
 }
 
+/**
+ * A few product photos per family (its own products and its sub-categories'),
+ * so the home page tiles show what is inside: one photo per product, never
+ * the same picture twice (sizes of a product share theirs).
+ */
+export async function getFamilyPreviewImages(familyIds: string[], perFamily = 3): Promise<Map<string, { url: string; alt: string }[]>> {
+  const previews = new Map<string, { url: string; alt: string }[]>(familyIds.map((id) => [id, []]));
+  if (familyIds.length === 0) return previews;
+  const locale = (await getLocale()) as Locale;
+  const rows = await db.product.findMany({
+    where: {
+      isActive: true,
+      images: { some: {} },
+      OR: [{ categoryId: { in: familyIds } }, { category: { parentId: { in: familyIds } } }],
+    },
+    orderBy: [{ isFeatured: "desc" }, { isBestSeller: "desc" }, { createdAt: "asc" }],
+    select: {
+      id: true,
+      groupKey: true,
+      categoryId: true,
+      category: { select: { parentId: true } },
+      name: true,
+      nameFr: true,
+      nameEn: true,
+      nameIt: true,
+      images: { take: 1, orderBy: { position: "asc" }, select: { url: true } },
+    },
+  });
+  const seen = new Set<string>();
+  for (const row of rows) {
+    const familyId = previews.has(row.categoryId) ? row.categoryId : row.category.parentId;
+    const list = familyId ? previews.get(familyId) : undefined;
+    const url = row.images[0]?.url;
+    const product = row.groupKey ?? row.id;
+    if (!list || !url || list.length >= perFamily || seen.has(product) || list.some((p) => p.url === url)) continue;
+    seen.add(product);
+    list.push({ url, alt: stripSizeSuffix(localizedField(row, "name", locale)) });
+  }
+  return previews;
+}
+
 export async function getActiveBrands(limit = 12) {
   const locale = (await getLocale()) as Locale;
   const brands = await db.brand.findMany({

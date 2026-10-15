@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
 import { requireRole } from "@/lib/auth/session";
 import { z } from "zod";
+import { mediaUrlSchema } from "@/validations/media";
+import { youtubeId, youtubeThumbnail } from "@/lib/video";
 
 export type AdminActionResult = { success: true; id: string } | { success: false; error: string };
 
@@ -16,8 +18,8 @@ const tutorialFormSchema = z.object({
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug invalide"),
   description: z.string().trim().min(10),
   content: z.string().trim().min(10),
-  thumbnailUrl: z.string().url().optional().or(z.literal("")),
-  videoUrl: z.string().url(),
+  thumbnailUrl: mediaUrlSchema.optional().or(z.literal("")),
+  videoUrl: mediaUrlSchema,
   durationMinutes: z.coerce.number().int().positive(),
   level: z.enum(["BEGINNER", "INTERMEDIATE", "ADVANCED"]),
   categoryId: z.string().optional().or(z.literal("")),
@@ -26,6 +28,13 @@ const tutorialFormSchema = z.object({
   isPublished: z.boolean().optional(),
 });
 export type TutorialFormInput = z.infer<typeof tutorialFormSchema>;
+
+/** The thumbnail typed in, else the YouTube one for a YouTube video. */
+function thumbnailFor(data: TutorialFormInput): string | null {
+  if (data.thumbnailUrl) return data.thumbnailUrl;
+  const id = youtubeId(data.videoUrl);
+  return id ? youtubeThumbnail(id) : null;
+}
 
 function parseLines(text?: string) {
   return (text ?? "")
@@ -54,7 +63,7 @@ export async function createTutorialAction(input: TutorialFormInput): Promise<Ad
       slug: data.slug,
       description: data.description,
       content: data.content,
-      thumbnailUrl: data.thumbnailUrl || null,
+      thumbnailUrl: thumbnailFor(data),
       videoUrl: data.videoUrl,
       durationMinutes: data.durationMinutes,
       level: data.level,
@@ -98,7 +107,7 @@ export async function updateTutorialAction(id: string, input: TutorialFormInput)
         slug: data.slug,
         description: data.description,
         content: data.content,
-        thumbnailUrl: data.thumbnailUrl || null,
+        thumbnailUrl: thumbnailFor(data),
         videoUrl: data.videoUrl,
         durationMinutes: data.durationMinutes,
         level: data.level,

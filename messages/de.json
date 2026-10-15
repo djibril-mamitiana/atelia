@@ -71,7 +71,7 @@
   "Home": {
     "heroKicker": "Professionelle Diamantwerkzeuge",
     "heroTitle": "Das Diamantwerkzeug, das <em>Ihre Baustelle zu Ende bringt.</em>",
-    "heroSubtitle": "Trennscheiben, Bohrkronen, Segmente und Schleifwerkzeuge für Beton, Asphalt und Naturstein. {count} Artikel, geliefert in ganz Frankreich.",
+    "heroSubtitle": "Bohrkronen für Nass- und Trockenbohrung, Trennscheiben, Segmente, Schleifwerkzeuge und Betonreiniger für Beton, Asphalt und Naturstein. {count} Artikel, geliefert in ganz Frankreich.",
     "discoverProducts": "Mein Werkzeug finden",
     "viewTutorials": "Anleitungen lesen",
     "ourCategories": "Nach Anwendung stöbern",
@@ -114,7 +114,7 @@
     "solution3Title": "Anleitungen, die entscheiden helfen",
     "solution3Text": "Schritt-für-Schritt-Anleitungen zum Auswählen, Anwenden und Pflegen Ihres Werkzeugs.",
     "categoriesEyebrow": "Katalog",
-    "categoriesSubtitle": "Trennen, Kernbohren, Schleifen: Finden Sie die Werkzeugfamilie, die zu Ihrer Maschine passt.",
+    "categoriesSubtitle": "Kernbohren, Trennen, Schleifen, Reinigen: Finden Sie die Werkzeugfamilie, die zu Ihrer Maschine passt.",
     "allCategories": "Gesamter Katalog",
     "bestSellersEyebrow": "Auswahl",
     "processEyebrow": "So funktioniert’s",
@@ -151,7 +151,15 @@
     "ctaSecondary": "Kontakt aufnehmen",
     "proofPro": "Verkauf nur an Gewerbekunden",
     "materialTipTitle": "Tipp:",
-    "materialTipText": "Welche Scheibe und welche Bohrkrone für welches Material?"
+    "materialTipText": "Welche Scheibe und welche Bohrkrone für welches Material?",
+    "heroCleanerBadge": "Biologisch abbaubar",
+    "heroCleanerChip": "Betonreiniger · 5 L & 20 L",
+    "heroCleanerPlay": "Video zum Betonmischer-Reiniger Décap Béton ansehen",
+    "heroCleanerCaption": "Neu: Betonmischer-Reiniger Décap Béton im Video",
+    "heroCleanerAlt5": "5-L-Kanister Betonmischer-Reiniger ABAX Décap Béton",
+    "heroCleanerAlt20": "20-L-Kanister Betonmischer-Reiniger ABAX Décap Béton",
+    "heroCleanerProduct": "Zum Produkt",
+    "videoClose": "Video schließen"
   },
   "LanguageSwitcher": {
     "label": "Sprache"
@@ -616,7 +624,9 @@
       "colStock": "Bestand",
       "colActive": "Aktiv",
       "removeSize": "Diese Größe entfernen",
-      "addSizeRow": "Größe hinzufügen"
+      "addSizeRow": "Größe hinzufügen",
+      "sectionVideos": "Videos",
+      "videosHint": "Ein Video pro Zeile: YouTube-Link (auch Shorts) oder Adresse einer .mp4-Datei. Bei Bedarf „| Titel“ nach dem Link."
     },
     "Categories": {
       "title": "Kategorien",
@@ -642,7 +652,8 @@
       "lang_fr": "Französisch (Quelle)",
       "lang_de": "Deutsch",
       "lang_en": "Englisch",
-      "lang_it": "Italienisch"
+      "lang_it": "Italienisch",
+      "labelVideo": "Video (YouTube-Link oder .mp4-Datei), oben auf der Kategorieseite"
     },
     "Brands": {
       "title": "Marken",
@@ -826,8 +837,8 @@
       "labelSlug": "Slug",
       "labelDescription": "Beschreibung",
       "labelContent": "Inhalt (Schritte)",
-      "labelThumbnail": "Vorschaubild (URL)",
-      "labelVideo": "Video (URL)",
+      "labelThumbnail": "Vorschaubild (URL, bei YouTube-Videos optional)",
+      "labelVideo": "Video (YouTube-Link oder .mp4-Datei)",
       "labelDuration": "Dauer (Minuten)",
       "labelLevel": "Niveau",
       "levelBeginner": "Anfänger",

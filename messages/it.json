@@ -71,7 +71,7 @@
   "Home": {
     "heroKicker": "Utensili diamantati professionali",
     "heroTitle": "L’utensile diamantato che <em>porta a termine il vostro cantiere.</em>",
-    "heroSubtitle": "Dischi, corone di carotaggio, segmenti e levigatura per calcestruzzo, asfalto e pietra naturale. {count} referenze, consegnate in tutta la Francia.",
+    "heroSubtitle": "Corone di carotaggio ad acqua e a secco, dischi, segmenti, levigatura e detergente per calcestruzzo, per calcestruzzo, asfalto e pietra naturale. {count} referenze, consegnate in tutta la Francia.",
     "discoverProducts": "Trova il mio utensile",
     "viewTutorials": "Leggi le guide",
     "ourCategories": "Sfoglia per uso",
@@ -114,7 +114,7 @@
     "solution3Title": "Guide per decidere",
     "solution3Text": "Tutorial passo dopo passo per scegliere, usare e mantenere il vostro utensile.",
     "categoriesEyebrow": "Catalogo",
-    "categoriesSubtitle": "Taglio, carotaggio, levigatura: trovate la famiglia di utensili adatta alla vostra macchina.",
+    "categoriesSubtitle": "Carotaggio, taglio, levigatura, pulizia: trovate la famiglia di utensili adatta alla vostra macchina.",
     "allCategories": "Tutto il catalogo",
     "bestSellersEyebrow": "Selezione",
     "processEyebrow": "Come funziona",
@@ -151,7 +151,15 @@
     "ctaSecondary": "Contattaci",
     "proofPro": "vendita riservata ai professionisti",
     "materialTipTitle": "Consiglio:",
-    "materialTipText": "quale disco e quale corona per quale materiale?"
+    "materialTipText": "quale disco e quale corona per quale materiale?",
+    "heroCleanerBadge": "Biodegradabile",
+    "heroCleanerChip": "Detergente calcestruzzo · 5 L e 20 L",
+    "heroCleanerPlay": "Guarda il video del detergente per betoniere Décap Béton",
+    "heroCleanerCaption": "Novità: detergente per betoniere Décap Béton, in video",
+    "heroCleanerAlt5": "Tanica da 5 L di detergente per betoniere ABAX Décap Béton",
+    "heroCleanerAlt20": "Tanica da 20 L di detergente per betoniere ABAX Décap Béton",
+    "heroCleanerProduct": "Vedi il prodotto",
+    "videoClose": "Chiudi il video"
   },
   "LanguageSwitcher": {
     "label": "Lingua"
@@ -616,7 +624,9 @@
       "colStock": "Scorte",
       "colActive": "Attiva",
       "removeSize": "Rimuovi questa misura",
-      "addSizeRow": "Aggiungi una misura"
+      "addSizeRow": "Aggiungi una misura",
+      "sectionVideos": "Video",
+      "videosHint": "Un video per riga: link YouTube (anche Shorts) o indirizzo di un file .mp4. Aggiungete «| titolo» dopo il link se serve."
     },
     "Categories": {
       "title": "Categorie",
@@ -642,7 +652,8 @@
       "lang_fr": "Francese (origine)",
       "lang_de": "Tedesco",
       "lang_en": "Inglese",
-      "lang_it": "Italiano"
+      "lang_it": "Italiano",
+      "labelVideo": "Video (link YouTube o file .mp4), mostrato in cima alla categoria"
     },
     "Brands": {
       "title": "Marche",
@@ -826,8 +837,8 @@
       "labelSlug": "Slug",
       "labelDescription": "Descrizione",
       "labelContent": "Contenuto (passaggi)",
-      "labelThumbnail": "Miniatura (URL)",
-      "labelVideo": "Video (URL)",
+      "labelThumbnail": "Miniatura (URL, facoltativa per un video YouTube)",
+      "labelVideo": "Video (link YouTube o file .mp4)",
       "labelDuration": "Durata (minuti)",
       "labelLevel": "Livello",
       "levelBeginner": "Principiante",

@@ -1,11 +1,19 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { LinkButton } from "@/components/ui/button";
 import { SectionHeading } from "@/components/home/section-heading";
 import { cn } from "@/lib/utils";
 
-type Category = { id: string; name: string; slug: string; _count: { products: number } };
+type Category = {
+  id: string;
+  name: string;
+  slug: string;
+  _count: { products: number };
+  // A few product photos, so visitors see what the family holds.
+  previews: { url: string; alt: string }[];
+};
 
 /** Concentric "blade" rings — a quiet texture that echoes the hero without needing photography. */
 function Rings({ className }: { className?: string }) {
@@ -24,7 +32,7 @@ function Rings({ className }: { className?: string }) {
 
 export async function CategoryBento({ categories }: { categories: Category[] }) {
   const t = await getTranslations("Home");
-  const tiles = categories.slice(0, 9);
+  const tiles = categories;
 
   return (
     <section className="bg-surface py-24 lg:py-36">
@@ -64,7 +72,23 @@ export async function CategoryBento({ categories }: { categories: Category[] }) 
                     </span>
                   </div>
 
-                  <div className="relative mt-8 sm:mt-10">
+                  {cat.previews.length > 0 && (
+                    <div className={cn("relative flex", big ? "mt-8 gap-3 sm:gap-4" : "mt-5 -space-x-3")}>
+                      {cat.previews.map((photo) => (
+                        <span
+                          key={photo.url}
+                          className={cn(
+                            "relative shrink-0 overflow-hidden bg-white ring-1 ring-ink/10 transition-[transform,box-shadow] duration-500 group-hover:ring-white/20",
+                            big ? "h-24 w-24 rounded-2xl sm:h-32 sm:w-32 lg:h-36 lg:w-36" : "h-14 w-14 rounded-xl border-2 border-paper group-hover:border-graphite sm:h-16 sm:w-16"
+                          )}
+                        >
+                          <Image src={photo.url} alt={photo.alt} fill sizes={big ? "144px" : "64px"} className="object-contain p-1" />
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className={cn("relative", cat.previews.length > 0 ? "mt-5 sm:mt-6" : "mt-8 sm:mt-10")}>
                     <h3
                       className={cn(
                         "max-w-[16ch] leading-[1.08] tracking-[-0.01em]",

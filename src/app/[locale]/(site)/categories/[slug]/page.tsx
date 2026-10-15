@@ -10,6 +10,8 @@ import { CatalogFilters } from "@/components/catalog/catalog-filters";
 import { Pagination } from "@/components/catalog/pagination";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PackageSearch } from "lucide-react";
+import { VideoEmbed } from "@/components/ui/video-embed";
+import { isYoutubeShort } from "@/lib/video";
 
 type Params = { slug: string };
 type SearchParams = {
@@ -67,27 +69,40 @@ export default async function CategoryPage({
 
   return (
     <div className="container-page py-10">
-      {category.parent && (
-        <Link href={`/categories/${category.parent.slug}`} className="text-sm text-muted hover:text-ink">
-          ← {category.parent.name}
-        </Link>
-      )}
-      <h1 className="mt-1 font-display text-3xl text-ink">{category.name}</h1>
-      {category.description && <p className="mt-1.5 max-w-2xl text-sm text-muted">{category.description}</p>}
-
-      {category.children.length > 0 && (
-        <div className="mt-5 flex flex-wrap gap-2">
-          {category.children.map((child) => (
-            <Link
-              key={child.id}
-              href={`/categories/${child.slug}`}
-              className="rounded-full border border-border-strong px-3.5 py-1.5 text-sm text-ink-soft hover:border-accent hover:text-accent-dark"
-            >
-              {child.name}
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
+        <div>
+          {category.parent && (
+            <Link href={`/categories/${category.parent.slug}`} className="text-sm text-muted hover:text-ink">
+              ← {category.parent.name}
             </Link>
-          ))}
+          )}
+          <h1 className="mt-1 font-display text-3xl text-ink">{category.name}</h1>
+          {category.description && <p className="mt-1.5 max-w-2xl text-sm text-muted">{category.description}</p>}
+
+          {category.children.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {category.children.map((child) => (
+                <Link
+                  key={child.id}
+                  href={`/categories/${child.slug}`}
+                  className="rounded-full border border-border-strong px-3.5 py-1.5 text-sm text-ink-soft hover:border-accent hover:text-accent-dark"
+                >
+                  {child.name}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
-      )}
+
+        {/* Set in the admin (Catégories → Vidéo): a demo of the tools of this family. */}
+        {category.videoUrl && (
+          <VideoEmbed
+            url={category.videoUrl}
+            title={category.name}
+            className={isYoutubeShort(category.videoUrl) ? "aspect-[9/16] w-full max-w-[220px] shrink-0" : "w-full shrink-0 lg:max-w-md"}
+          />
+        )}
+      </div>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[240px_1fr]">
         <CatalogFilters categories={result.categories} brands={result.brands} priceBounds={result.priceBounds} />

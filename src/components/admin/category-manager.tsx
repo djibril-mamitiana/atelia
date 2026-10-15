@@ -26,6 +26,7 @@ const EMPTY: CategoryInput = {
   descriptionEn: "",
   descriptionIt: "",
   imageUrl: "",
+  videoUrl: "",
   parentId: null,
   order: 0,
   isActive: true,
@@ -164,6 +165,10 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
           <div className="sm:col-span-2">
             <Label>{t("labelImage")}</Label>
             <Input value={form.imageUrl ?? ""} onChange={(e) => set("imageUrl", e.target.value)} />
+          </div>
+          <div className="sm:col-span-2">
+            <Label>{t("labelVideo")}</Label>
+            <Input value={form.videoUrl ?? ""} onChange={(e) => set("videoUrl", e.target.value)} placeholder="https://youtu.be/…" />
           </div>
           <div className="sm:col-span-2">
             <Label>{t("labelDescription")}</Label>

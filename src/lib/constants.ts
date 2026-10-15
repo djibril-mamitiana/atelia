@@ -12,6 +12,10 @@ export const DEFAULT_CONTACT_PHONE = "01 23 45 67 89";
 export const DEFAULT_SHIPPING_STANDARD = 5.9; // EUR
 export const DEFAULT_SHIPPING_EXPRESS = 9.9; // EUR
 
+// Concrete cleaner family: featured in the home page hero with its video
+// (the category's video, set in the admin). See scripts/lib/nettoyant-beton.ts.
+export const CLEANER_CATEGORY_SLUG = "nettoyant-beton";
+
 export const PAGE_SIZE_CATALOG = 24;
 export const PAGE_SIZE_ADMIN_TABLE = 20;
 

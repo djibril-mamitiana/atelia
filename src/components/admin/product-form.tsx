@@ -52,6 +52,7 @@ const EMPTY: AdminProductFormInput = {
   seoTitle: "",
   seoDescription: "",
   imagesText: "",
+  videosText: "",
   attributesText: "",
   variantsText: "",
   sizes: [EMPTY_SIZE],
@@ -314,6 +315,12 @@ export function ProductForm({
         <p className="mb-1 font-medium text-ink">{t("sectionImages")}</p>
         <p className="mb-3 text-xs text-muted">{t("imagesHint")}</p>
         <Textarea rows={4} value={form.imagesText} onChange={(e) => set("imagesText", e.target.value)} placeholder="https://…" />
+      </section>
+
+      <section className="rounded-md border border-border bg-surface p-5">
+        <p className="mb-1 font-medium text-ink">{t("sectionVideos")}</p>
+        <p className="mb-3 text-xs text-muted">{t("videosHint")}</p>
+        <Textarea rows={2} value={form.videosText ?? ""} onChange={(e) => set("videosText", e.target.value)} placeholder="https://youtu.be/… | Démonstration" />
       </section>
 
       <section className="rounded-md border border-border bg-surface p-5">

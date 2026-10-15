@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
       // for your own CDN (Cloudinary et al.) before going to production.
       { protocol: "https", hostname: "picsum.photos" },
       { protocol: "https", hostname: "res.cloudinary.com" },
+      // YouTube video thumbnails (tutorials, product galleries).
+      { protocol: "https", hostname: "i.ytimg.com" },
     ],
     qualities: [60, 75, 90],
   },

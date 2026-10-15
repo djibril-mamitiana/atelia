@@ -71,7 +71,7 @@
   "Home": {
     "heroKicker": "Professional diamond tools",
     "heroTitle": "The diamond tool that <em>sees the job through.</em>",
-    "heroSubtitle": "Blades, core drill bits, segments and sanding for concrete, asphalt and natural stone. {count} references, delivered across France.",
+    "heroSubtitle": "Wet and dry core drill bits, blades, segments, sanding and concrete cleaner for concrete, asphalt and natural stone. {count} references, delivered across France.",
     "discoverProducts": "Find my tool",
     "viewTutorials": "Read the guides",
     "ourCategories": "Browse by use",
@@ -114,7 +114,7 @@
     "solution3Title": "Guides to settle it",
     "solution3Text": "Step-by-step tutorials to choose, use and maintain your tool.",
     "categoriesEyebrow": "Catalog",
-    "categoriesSubtitle": "Cutting, core drilling, sanding: find the family of tools that matches your machine.",
+    "categoriesSubtitle": "Core drilling, cutting, sanding, cleaning: find the family of tools that matches your machine.",
     "allCategories": "Full catalog",
     "bestSellersEyebrow": "Selection",
     "processEyebrow": "How it works",
@@ -151,7 +151,15 @@
     "ctaSecondary": "Contact us",
     "proofPro": "trade customers only",
     "materialTipTitle": "Tip:",
-    "materialTipText": "which blade and which core bit for which material?"
+    "materialTipText": "which blade and which core bit for which material?",
+    "heroCleanerBadge": "Biodegradable",
+    "heroCleanerChip": "Concrete cleaner · 5 L & 20 L",
+    "heroCleanerPlay": "Watch the Décap Béton mixer cleaner video",
+    "heroCleanerCaption": "New: Décap Béton mixer cleaner, on video",
+    "heroCleanerAlt5": "5 L can of ABAX Décap Béton mixer cleaner",
+    "heroCleanerAlt20": "20 L can of ABAX Décap Béton mixer cleaner",
+    "heroCleanerProduct": "View product",
+    "videoClose": "Close video"
   },
   "LanguageSwitcher": {
     "label": "Language"
@@ -616,7 +624,9 @@
       "colStock": "Stock",
       "colActive": "Active",
       "removeSize": "Remove this size",
-      "addSizeRow": "Add a size"
+      "addSizeRow": "Add a size",
+      "sectionVideos": "Videos",
+      "videosHint": "One video per line: YouTube link (Shorts included) or the address of an .mp4 file. Add “| title” after the link if needed."
     },
     "Categories": {
       "title": "Categories",
@@ -642,7 +652,8 @@
       "lang_fr": "French (source)",
       "lang_de": "German",
       "lang_en": "English",
-      "lang_it": "Italian"
+      "lang_it": "Italian",
+      "labelVideo": "Video (YouTube link or .mp4 file), shown at the top of the category"
     },
     "Brands": {
       "title": "Brands",
@@ -826,8 +837,8 @@
       "labelSlug": "Slug",
       "labelDescription": "Description",
       "labelContent": "Content (steps)",
-      "labelThumbnail": "Thumbnail (URL)",
-      "labelVideo": "Video (URL)",
+      "labelThumbnail": "Thumbnail (URL, optional for a YouTube video)",
+      "labelVideo": "Video (YouTube link or .mp4 file)",
       "labelDuration": "Duration (minutes)",
       "labelLevel": "Level",
       "levelBeginner": "Beginner",

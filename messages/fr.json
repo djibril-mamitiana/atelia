@@ -71,7 +71,7 @@
   "Home": {
     "heroKicker": "Outils diamant professionnels",
     "heroTitle": "L’outil diamant qui <em>va au bout</em> de votre chantier.",
-    "heroSubtitle": "Disques, couronnes de carottage, segments et ponçage pour le béton, l’asphalte et la pierre naturelle. {count} références, livrées partout en France.",
+    "heroSubtitle": "Couronnes de carottage à eau et à sec, disques, segments, ponçage et nettoyant béton, pour le béton, l’asphalte et la pierre naturelle. {count} références, livrées partout en France.",
     "discoverProducts": "Trouver mon outil",
     "viewTutorials": "Lire les guides",
     "ourCategories": "Parcourir par usage",
@@ -114,7 +114,7 @@
     "solution3Title": "Des guides pour trancher",
     "solution3Text": "Des tutoriels pas à pas pour choisir, utiliser et entretenir votre outil.",
     "categoriesEyebrow": "Catalogue",
-    "categoriesSubtitle": "Découpe, carottage, ponçage : trouvez la famille d’outils qui correspond à votre machine.",
+    "categoriesSubtitle": "Carottage, découpe, ponçage, nettoyage : trouvez la famille d’outils qui correspond à votre machine.",
     "allCategories": "Tout le catalogue",
     "bestSellersEyebrow": "Sélection",
     "processEyebrow": "Comment ça marche",
@@ -151,7 +151,15 @@
     "ctaSecondary": "Nous contacter",
     "proofPro": "vente réservée aux professionnels",
     "materialTipTitle": "Astuce :",
-    "materialTipText": "quel disque et quelle couronne pour quel matériau ?"
+    "materialTipText": "quel disque et quelle couronne pour quel matériau ?",
+    "heroCleanerBadge": "Biodégradable",
+    "heroCleanerChip": "Nettoyant béton · 5 L & 20 L",
+    "heroCleanerPlay": "Voir la vidéo du nettoyant bétonnière Décap Béton",
+    "heroCleanerCaption": "Nouveau : nettoyant bétonnière Décap Béton, en vidéo",
+    "heroCleanerAlt5": "Bidon de 5 L de nettoyant bétonnière ABAX Décap Béton",
+    "heroCleanerAlt20": "Bidon de 20 L de nettoyant bétonnière ABAX Décap Béton",
+    "heroCleanerProduct": "Voir le produit",
+    "videoClose": "Fermer la vidéo"
   },
   "LanguageSwitcher": {
     "label": "Langue"
@@ -616,7 +624,9 @@
       "colStock": "Stock",
       "colActive": "Actif",
       "removeSize": "Supprimer cette taille",
-      "addSizeRow": "Ajouter une taille"
+      "addSizeRow": "Ajouter une taille",
+      "sectionVideos": "Vidéos",
+      "videosHint": "Une vidéo par ligne : lien YouTube (Shorts compris) ou adresse d’un fichier .mp4. Ajoutez « | titre » après le lien si besoin."
     },
     "Categories": {
       "title": "Catégories",
@@ -642,7 +652,8 @@
       "lang_fr": "Français (source)",
       "lang_de": "Allemand",
       "lang_en": "Anglais",
-      "lang_it": "Italien"
+      "lang_it": "Italien",
+      "labelVideo": "Vidéo (lien YouTube ou fichier .mp4), affichée en haut de la catégorie"
     },
     "Brands": {
       "title": "Marques",
@@ -826,8 +837,8 @@
       "labelSlug": "Slug",
       "labelDescription": "Description",
       "labelContent": "Contenu (étapes)",
-      "labelThumbnail": "Miniature (URL)",
-      "labelVideo": "Vidéo (URL)",
+      "labelThumbnail": "Miniature (URL, facultative pour une vidéo YouTube)",
+      "labelVideo": "Vidéo (lien YouTube ou fichier .mp4)",
       "labelDuration": "Durée (minutes)",
       "labelLevel": "Niveau",
       "levelBeginner": "Débutant",

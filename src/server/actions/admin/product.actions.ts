@@ -18,6 +18,18 @@ function parseImageUrls(text: string) {
     .map((url, i) => ({ url, alt: "", position: i }));
 }
 
+/** One video per line: "URL" or "URL | titre". */
+function parseVideos(text: string) {
+  return text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .map((line, i) => {
+      const [url, ...title] = line.split("|");
+      return { url: (url ?? "").trim(), title: title.join("|").trim(), position: i };
+    });
+}
+
 function parseAttributes(text: string) {
   return text
     .split("\n")
@@ -88,6 +100,7 @@ const formSchema = z.object({
   seoTitle: z.string().optional(),
   seoDescription: z.string().optional(),
   imagesText: z.string().optional(),
+  videosText: z.string().optional(),
   attributesText: z.string().optional(),
   variantsText: z.string().optional(),
   sizes: z.array(sizeSchema).min(1),
@@ -135,7 +148,7 @@ async function save(input: AdminProductFormInput, familyOf?: string): Promise<Ad
     images: parseImageUrls(f.imagesText ?? ""),
     attributes: parseAttributes(f.attributesText ?? ""),
     variants: parseVariants(f.variantsText ?? ""),
-    videos: [],
+    videos: parseVideos(f.videosText ?? ""),
   });
   if (!parsed.success) return { success: false, error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
   const data = parsed.data;
@@ -164,6 +177,7 @@ async function save(input: AdminProductFormInput, familyOf?: string): Promise<Ad
       seoTitle: data.seoTitle || null,
       seoDescription: data.seoDescription || null,
       images: data.images.map((i) => ({ url: i.url, alt: i.alt ?? "", position: i.position })),
+      videos: data.videos.map((v) => ({ url: v.url, title: v.title || null, position: v.position })),
       attributes: data.attributes,
       variants: data.variants,
     },
@@ -199,7 +213,8 @@ export async function updateProductAction(id: string, input: AdminProductFormInp
 
 export async function toggleProductActiveAction(id: string, isActive: boolean): Promise<{ success: true } | { success: false; error: string }> {
   await requireRole(["ADMIN", "STAFF"]);
-  await setProductActive(id, isActive);
+  const result = await setProductActive(id, isActive);
+  if (!result.success) return result;
   revalidatePath("/admin/products");
   revalidatePath("/produits");
   return { success: true };

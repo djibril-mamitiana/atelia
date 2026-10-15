@@ -179,6 +179,8 @@ model Category {
   descriptionEn String?
   descriptionIt String?
   imageUrl    String?
+  // YouTube link or video file, shown at the top of the category page.
+  videoUrl    String?
   parentId    String?
   order       Int      @default(0)
   seoTitle       String?

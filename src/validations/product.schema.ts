@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { mediaUrlSchema } from "@/validations/media";
 
 export const productAttributeInputSchema = z.object({
   name: z.string().trim().min(1).max(80),
@@ -6,13 +7,13 @@ export const productAttributeInputSchema = z.object({
 });
 
 export const productImageInputSchema = z.object({
-  url: z.string().url(),
+  url: mediaUrlSchema,
   alt: z.string().trim().max(200).optional().or(z.literal("")),
   position: z.number().int().min(0).default(0),
 });
 
 export const productVideoInputSchema = z.object({
-  url: z.string().url(),
+  url: mediaUrlSchema,
   title: z.string().trim().max(200).optional().or(z.literal("")),
   position: z.number().int().min(0).default(0),
 });
@@ -77,7 +78,8 @@ export const categorySchema = z.object({
   descriptionDe: z.string().trim().max(500).optional().or(z.literal("")),
   descriptionEn: z.string().trim().max(500).optional().or(z.literal("")),
   descriptionIt: z.string().trim().max(500).optional().or(z.literal("")),
-  imageUrl: z.string().url().optional().or(z.literal("")),
+  imageUrl: mediaUrlSchema.optional().or(z.literal("")),
+  videoUrl: mediaUrlSchema.optional().or(z.literal("")),
   parentId: z.string().optional().nullable(),
   order: z.coerce.number().int().default(0),
   seoTitle: z.string().trim().max(160).optional().or(z.literal("")),

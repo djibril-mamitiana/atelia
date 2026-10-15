@@ -62,6 +62,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
             seoTitle: lead.seoTitle ?? "",
             seoDescription: lead.seoDescription ?? "",
             imagesText: lead.images.map((i) => i.url).join("\n"),
+            videosText: lead.videos.map((v) => (v.title ? `${v.url} | ${v.title}` : v.url)).join("\n"),
             attributesText: lead.attributes.map((a) => `${a.name}: ${a.values.map((v) => v.value).join(", ")}`).join("\n"),
             variantsText: lead.variants.map((v) => `${v.name} | ${v.sku} | ${v.priceDelta} | ${v.stock}`).join("\n"),
             sizes: rows.map((r) => ({
