@@ -604,7 +604,7 @@
       "checkboxNew": "Novità",
       "checkboxBestSeller": "Più venduto",
       "sectionImages": "Immagini",
-      "imagesHint": "Un URL immagine per riga.",
+      "imagesHint": "Le stesse foto per tutte le misure. La prima è la foto principale (scheda, catalogo, home page).",
       "sectionAttributes": "Caratteristiche tecniche",
       "attributesHint": "Una caratteristica per riga, nel formato «Nome: valore1, valore2».",
       "sectionVariants": "Varianti",
@@ -663,7 +663,7 @@
       "lang_en": "Inglese",
       "lang_it": "Italiano",
       "labelVideo": "Video (link YouTube o file .mp4), mostrato in cima alla categoria",
-      "labelImages": "Foto (un indirizzo per riga), mostrate in galleria nella pagina della categoria"
+      "labelImages": "Foto, mostrate in galleria nella pagina della categoria"
     },
     "Brands": {
       "title": "Marche",
@@ -917,6 +917,18 @@
       "toastCreated": "Cliente creato.",
       "toastUpdated": "Cliente aggiornato.",
       "toastDeleted": "Cliente eliminato."
+    },
+    "Uploader": {
+      "add": "Aggiungi foto",
+      "hint": "Trascinate qui le foto o cliccate su «Aggiungi foto» (da telefono: fotocamera o galleria). JPEG, PNG o WebP, max 20 MB. Ricordate poi di salvare il modulo.",
+      "main": "Principale",
+      "remove": "Rimuovi la foto",
+      "moveBefore": "Sposta prima",
+      "moveAfter": "Sposta dopo",
+      "addressPlaceholder": "Oppure incollate l'indirizzo di una foto (https://… o /products/…)",
+      "addAddress": "Aggiungi",
+      "tooBig": "foto troppo pesante (max 20 MB)",
+      "failed": "invio non riuscito, riprovate"
     }
   },
   "Meta": {

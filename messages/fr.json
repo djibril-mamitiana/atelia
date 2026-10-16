@@ -604,7 +604,7 @@
       "checkboxNew": "Nouveau",
       "checkboxBestSeller": "Meilleure vente",
       "sectionImages": "Images",
-      "imagesHint": "Une URL d'image par ligne.",
+      "imagesHint": "Les mêmes photos pour toutes les tailles. La première est la photo principale (fiche, catalogue, accueil).",
       "sectionAttributes": "Caractéristiques techniques",
       "attributesHint": "Une caractéristique par ligne, au format « Nom: valeur1, valeur2 ».",
       "sectionVariants": "Variantes",
@@ -663,7 +663,7 @@
       "lang_en": "Anglais",
       "lang_it": "Italien",
       "labelVideo": "Vidéo (lien YouTube ou fichier .mp4), affichée en haut de la catégorie",
-      "labelImages": "Photos (une adresse par ligne), affichées en galerie sur la page de la catégorie"
+      "labelImages": "Photos, affichées en galerie sur la page de la catégorie"
     },
     "Brands": {
       "title": "Marques",
@@ -917,6 +917,18 @@
       "toastCreated": "Client créé.",
       "toastUpdated": "Client mis à jour.",
       "toastDeleted": "Client supprimé."
+    },
+    "Uploader": {
+      "add": "Ajouter des photos",
+      "hint": "Glissez vos photos ici ou cliquez sur « Ajouter des photos » (depuis un téléphone : appareil photo ou galerie). JPEG, PNG ou WebP, 20 Mo maximum. Pensez à enregistrer la fiche ensuite.",
+      "main": "Principale",
+      "remove": "Retirer la photo",
+      "moveBefore": "Avancer",
+      "moveAfter": "Reculer",
+      "addressPlaceholder": "Ou collez l'adresse d'une photo (https://… ou /products/…)",
+      "addAddress": "Ajouter",
+      "tooBig": "photo trop lourde (20 Mo maximum)",
+      "failed": "envoi impossible, réessayez"
     }
   },
   "Meta": {

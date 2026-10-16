@@ -604,7 +604,7 @@
       "checkboxNew": "New",
       "checkboxBestSeller": "Best seller",
       "sectionImages": "Images",
-      "imagesHint": "One image URL per line.",
+      "imagesHint": "The same photos for every size. The first one is the main photo (product page, catalogue, home page).",
       "sectionAttributes": "Technical specifications",
       "attributesHint": "One specification per line, in the format “Name: value1, value2”.",
       "sectionVariants": "Variants",
@@ -663,7 +663,7 @@
       "lang_en": "English",
       "lang_it": "Italian",
       "labelVideo": "Video (YouTube link or .mp4 file), shown at the top of the category",
-      "labelImages": "Photos (one address per line), shown as a gallery on the category page"
+      "labelImages": "Photos, shown as a gallery on the category page"
     },
     "Brands": {
       "title": "Brands",
@@ -917,6 +917,18 @@
       "toastCreated": "Customer created.",
       "toastUpdated": "Customer updated.",
       "toastDeleted": "Customer deleted."
+    },
+    "Uploader": {
+      "add": "Add photos",
+      "hint": "Drop your photos here or click “Add photos” (on a phone: camera or gallery). JPEG, PNG or WebP, 20 MB max. Remember to save the form afterwards.",
+      "main": "Main",
+      "remove": "Remove photo",
+      "moveBefore": "Move earlier",
+      "moveAfter": "Move later",
+      "addressPlaceholder": "Or paste a photo address (https://… or /products/…)",
+      "addAddress": "Add",
+      "tooBig": "photo too large (20 MB max)",
+      "failed": "upload failed, please try again"
     }
   },
   "Meta": {

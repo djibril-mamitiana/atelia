@@ -288,9 +288,21 @@ messages/              traductions FR / DE / EN / IT```
   catégories, que suivent l'accueil et les menus). Il ajoute aussi la vidéo
   de carottage aux deux familles de carottage et en fait un guide. Le seed
   le rejoue.
-- **Photos d'une catégorie** : champ « Photos » dans Admin → Catégories (une
-  adresse par ligne, fichiers dans `public/categories/`). Elles s'affichent
-  en galerie sur la page de la catégorie, avec agrandissement au clic. Une
+- **Ajouter des photos depuis l'admin** : dans la fiche produit (« Images »)
+  et dans une catégorie (« Photos »), bouton « Ajouter des photos » ou
+  glisser-déposer, depuis un ordinateur ou un téléphone. On peut ensuite les
+  réordonner (la première est la photo principale) ou les retirer, puis il
+  faut enregistrer la fiche. Les photos sont réduites dans le navigateur,
+  puis converties en WebP (2000 px max.) par
+  [src/server/services/media.ts](src/server/services/media.ts). Elles sont
+  stockées dans la base (table `MediaFile`), pas sur le disque, que Railway
+  efface à chaque déploiement. Elles sont servies à `/media/<id>.webp`, avec
+  un cache permanent. Une photo retirée d'une fiche reste dans la table.
+  On peut aussi coller l'adresse d'une photo (`https://…` ou un fichier de
+  `public/`).
+- **Photos d'une catégorie** : champ « Photos » dans Admin → Catégories.
+  Elles s'affichent en galerie sur la page de la catégorie, avec
+  agrandissement au clic. Une
   catégorie qui a des photos mais aucun produit invite à appeler. Exemple :
   « Accessoires carottage » (35 photos) et « Accessoires sciage » (2), sous
   « Accessoires », créées le 16/10/2026 par
@@ -328,4 +340,5 @@ Shorts en format vertical. On peut en mettre à trois endroits :
   (`public/products/`, correspondance SKU → photo dans
   `prisma/data/product-photos.json`). Les produits sans photo sont
   désactivés, donc masqués de la boutique, en attendant d'être
-  photographiés.
+  photographiés. Leurs photos s'ajoutent maintenant depuis l'admin (voir
+  « Ajouter des photos depuis l'admin »).

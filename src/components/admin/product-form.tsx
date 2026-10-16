@@ -8,6 +8,7 @@ import slugify from "slugify";
 import { Input, Label, Textarea, Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
+import { ImageUploader } from "@/components/admin/image-uploader";
 import {
   createProductAction,
   updateProductAction,
@@ -314,7 +315,10 @@ export function ProductForm({
       <section className="rounded-md border border-border bg-surface p-5">
         <p className="mb-1 font-medium text-ink">{t("sectionImages")}</p>
         <p className="mb-3 text-xs text-muted">{t("imagesHint")}</p>
-        <Textarea rows={4} value={form.imagesText} onChange={(e) => set("imagesText", e.target.value)} placeholder="https://…" />
+        <ImageUploader
+          value={(form.imagesText ?? "").split("\n").map((line) => line.trim()).filter(Boolean)}
+          onChange={(urls) => set("imagesText", urls.join("\n"))}
+        />
       </section>
 
       <section className="rounded-md border border-border bg-surface p-5">

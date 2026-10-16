@@ -604,7 +604,7 @@
       "checkboxNew": "Neu",
       "checkboxBestSeller": "Bestseller",
       "sectionImages": "Bilder",
-      "imagesHint": "Eine Bild-URL pro Zeile.",
+      "imagesHint": "Dieselben Fotos für alle Größen. Das erste ist das Hauptfoto (Produktseite, Katalog, Startseite).",
       "sectionAttributes": "Technische Merkmale",
       "attributesHint": "Ein Merkmal pro Zeile, im Format „Name: Wert1, Wert2“.",
       "sectionVariants": "Varianten",
@@ -663,7 +663,7 @@
       "lang_en": "Englisch",
       "lang_it": "Italienisch",
       "labelVideo": "Video (YouTube-Link oder .mp4-Datei), oben auf der Kategorieseite",
-      "labelImages": "Fotos (eine Adresse pro Zeile), als Galerie auf der Kategorieseite"
+      "labelImages": "Fotos, als Galerie auf der Kategorieseite"
     },
     "Brands": {
       "title": "Marken",
@@ -917,6 +917,18 @@
       "toastCreated": "Kunde angelegt.",
       "toastUpdated": "Kunde aktualisiert.",
       "toastDeleted": "Kunde gelöscht."
+    },
+    "Uploader": {
+      "add": "Fotos hinzufügen",
+      "hint": "Fotos hierher ziehen oder auf „Fotos hinzufügen“ klicken (am Handy: Kamera oder Galerie). JPEG, PNG oder WebP, max. 20 MB. Danach das Formular speichern.",
+      "main": "Haupt",
+      "remove": "Foto entfernen",
+      "moveBefore": "Nach vorne",
+      "moveAfter": "Nach hinten",
+      "addressPlaceholder": "Oder Adresse eines Fotos einfügen (https://… oder /products/…)",
+      "addAddress": "Hinzufügen",
+      "tooBig": "Foto zu groß (max. 20 MB)",
+      "failed": "Hochladen fehlgeschlagen, bitte erneut versuchen"
     }
   },
   "Meta": {

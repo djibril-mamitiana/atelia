@@ -8,6 +8,7 @@ import { Input, Label, Textarea, Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
+import { ImageUploader } from "@/components/admin/image-uploader";
 import { createCategoryAction, updateCategoryAction, deleteCategoryAction } from "@/server/actions/admin/category.actions";
 import { localizedCategoryName } from "@/lib/category-name";
 import type { CategoryInput } from "@/validations/product.schema";
@@ -173,12 +174,7 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
           </div>
           <div className="sm:col-span-2">
             <Label>{t("labelImages")}</Label>
-            <Textarea
-              rows={4}
-              value={form.images.join("\n")}
-              onChange={(e) => set("images", e.target.value.split("\n"))}
-              placeholder="/categories/…/01.webp"
-            />
+            <ImageUploader value={form.images.filter(Boolean)} onChange={(urls) => set("images", urls)} />
           </div>
           <div className="sm:col-span-2">
             <Label>{t("labelDescription")}</Label>

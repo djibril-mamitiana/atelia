@@ -338,6 +338,22 @@ model ProductImage {
   @@index([productId])
 }
 
+// Photos uploaded from the admin (products, category galleries). Stored in
+// the database rather than on disk: Railway's filesystem is wiped on every
+// deploy, and Postgres is already persistent and backed up. Served at
+// /media/<id>.webp (app/media/[file]/route.ts), already converted to WebP.
+model MediaFile {
+  id           String   @id @default(cuid())
+  data         Bytes
+  contentType  String
+  width        Int
+  height       Int
+  size         Int
+  originalName String?
+  uploadedById String?
+  createdAt    DateTime @default(now())
+}
+
 model ProductVideo {
   id        String  @id @default(cuid())
   productId String
