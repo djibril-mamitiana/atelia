@@ -26,11 +26,11 @@ export async function Header() {
   const count = cartItemCount(cart);
 
   // The tree has a single root ("Outils diamant") holding the real families;
-  // the menu lists the families that actually contain products.
+  // the menu lists the families that actually contain products, in the
+  // admin's order (Catégories → Ordre: coring first).
   const families = categories
     .flatMap((root) => (root.children.length > 0 ? root.children : [root]))
     .filter((c) => c._count.products > 0)
-    .sort((a, b) => b._count.products - a._count.products)
     .map((c) => ({ id: c.id, name: c.name, slug: c.slug, count: c._count.products }));
 
   const navLink =

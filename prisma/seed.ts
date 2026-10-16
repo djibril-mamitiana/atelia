@@ -16,6 +16,7 @@ import { computeProductGroups } from "../src/lib/product-grouping";
 import { computePublicSkus } from "../src/lib/public-sku";
 import { applyDiscs115230 } from "../scripts/lib/discs-115-230";
 import { applyCleanerAndVideos } from "../scripts/lib/nettoyant-beton";
+import { applyAccessoryPhotos } from "../scripts/lib/accessory-photos";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -873,6 +874,9 @@ async function main() {
 
   await applyCleanerAndVideos(db, { apply: true });
   console.log("  ✓ concrete cleaner family, category videos, coring guide");
+
+  await applyAccessoryPhotos(db, { apply: true });
+  console.log("  ✓ coring / sawing accessory photos");
 
   const { admin, staff, customers } = await seedUsers();
   console.log(`  ✓ ${2 + customers.length} users (1 admin, 1 staff, ${customers.length} customers)`);

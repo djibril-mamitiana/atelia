@@ -9,7 +9,7 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy",
+    "db:deploy": "prisma migrate deploy && tsx scripts/add-accessory-photos.ts --apply",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "test": "vitest run"

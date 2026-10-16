@@ -300,7 +300,16 @@
     "categoriesTitle": "Catégories",
     "categoriesSubtitle": "Parcourez l'ensemble de notre catalogue par univers.",
     "filters": "Filtres",
-    "catalogEyebrow": "Catalogue"
+    "catalogEyebrow": "Catalogue",
+    "galleryTitle": "En images",
+    "galleryOpen": "Agrandir la photo {index} sur {total}",
+    "galleryAlt": "{name}, photo {index}",
+    "galleryPrev": "Photo précédente",
+    "galleryNext": "Photo suivante",
+    "galleryClose": "Fermer",
+    "photosOnlyTitle": "Pas encore en vente en ligne",
+    "photosOnlyText": "Pour un prix ou une disponibilité, appelez-nous au {phone} ou écrivez-nous.",
+    "photosOnlyContact": "Nous écrire"
   },
   "Cart": {
     "title": "Mon panier",
@@ -653,7 +662,8 @@
       "lang_de": "Allemand",
       "lang_en": "Anglais",
       "lang_it": "Italien",
-      "labelVideo": "Vidéo (lien YouTube ou fichier .mp4), affichée en haut de la catégorie"
+      "labelVideo": "Vidéo (lien YouTube ou fichier .mp4), affichée en haut de la catégorie",
+      "labelImages": "Photos (une adresse par ligne), affichées en galerie sur la page de la catégorie"
     },
     "Brands": {
       "title": "Marques",

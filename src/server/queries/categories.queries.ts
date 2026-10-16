@@ -27,7 +27,9 @@ const CATEGORY_TREE_SELECT = {
   slug: true,
   imageUrl: true,
   parentId: true,
-  _count: { select: { products: true } },
+  // Visible products only: a family whose products are all hidden (no photo
+  // or no price yet) stays out of the menus instead of leading to an empty page.
+  _count: { select: { products: { where: { isActive: true } } } },
 } as const;
 
 export async function getCategoryTree() {

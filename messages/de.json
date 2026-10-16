@@ -300,7 +300,16 @@
     "categoriesTitle": "Kategorien",
     "categoriesSubtitle": "Durchstöbern Sie unseren gesamten Katalog nach Themenwelten.",
     "filters": "Filter",
-    "catalogEyebrow": "Katalog"
+    "catalogEyebrow": "Katalog",
+    "galleryTitle": "In Bildern",
+    "galleryOpen": "Foto {index} von {total} vergrößern",
+    "galleryAlt": "{name}, Foto {index}",
+    "galleryPrev": "Vorheriges Foto",
+    "galleryNext": "Nächstes Foto",
+    "galleryClose": "Schließen",
+    "photosOnlyTitle": "Noch nicht online erhältlich",
+    "photosOnlyText": "Für Preis oder Verfügbarkeit rufen Sie uns an unter {phone} oder schreiben Sie uns.",
+    "photosOnlyContact": "Schreiben Sie uns"
   },
   "Cart": {
     "title": "Mein Warenkorb",
@@ -653,7 +662,8 @@
       "lang_de": "Deutsch",
       "lang_en": "Englisch",
       "lang_it": "Italienisch",
-      "labelVideo": "Video (YouTube-Link oder .mp4-Datei), oben auf der Kategorieseite"
+      "labelVideo": "Video (YouTube-Link oder .mp4-Datei), oben auf der Kategorieseite",
+      "labelImages": "Fotos (eine Adresse pro Zeile), als Galerie auf der Kategorieseite"
     },
     "Brands": {
       "title": "Marken",

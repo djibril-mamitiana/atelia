@@ -14,9 +14,14 @@ const orNull = (v: string | undefined) => v?.trim() || null;
 
 export type AdminActionResult = { success: true; id: string } | { success: false; error: string };
 
+/** The photos textarea sends one line per address: blank lines are dropped. */
+function withCleanImages(input: CategoryInput): CategoryInput {
+  return { ...input, images: (input.images ?? []).map((url) => url.trim()).filter(Boolean) };
+}
+
 export async function createCategoryAction(input: CategoryInput): Promise<AdminActionResult> {
   await requireRole(["ADMIN", "STAFF"]);
-  const parsed = categorySchema.safeParse(input);
+  const parsed = categorySchema.safeParse(withCleanImages(input));
   if (!parsed.success) return { success: false, error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
 
   const taken = await db.category.findUnique({ where: { slug: parsed.data.slug } });
@@ -35,6 +40,7 @@ export async function createCategoryAction(input: CategoryInput): Promise<AdminA
       descriptionIt: orNull(parsed.data.descriptionIt),
       imageUrl: parsed.data.imageUrl || null,
       videoUrl: parsed.data.videoUrl || null,
+      images: parsed.data.images,
       parentId: parsed.data.parentId || null,
       order: parsed.data.order,
       seoTitle: parsed.data.seoTitle || null,
@@ -54,7 +60,7 @@ export async function updateCategoryAction(id: string, input: CategoryInput): Pr
   if (!existing) return { success: false, error: "Catégorie introuvable." };
   if (input.parentId === id) return { success: false, error: "Une catégorie ne peut pas être son propre parent." };
 
-  const parsed = categorySchema.safeParse(input);
+  const parsed = categorySchema.safeParse(withCleanImages(input));
   if (!parsed.success) return { success: false, error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
 
   if (parsed.data.slug !== existing.slug) {
@@ -76,6 +82,7 @@ export async function updateCategoryAction(id: string, input: CategoryInput): Pr
       descriptionIt: orNull(parsed.data.descriptionIt),
       imageUrl: parsed.data.imageUrl || null,
       videoUrl: parsed.data.videoUrl || null,
+      images: parsed.data.images,
       parentId: parsed.data.parentId || null,
       order: parsed.data.order,
       seoTitle: parsed.data.seoTitle || null,

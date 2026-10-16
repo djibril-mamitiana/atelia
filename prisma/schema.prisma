@@ -181,6 +181,9 @@ model Category {
   imageUrl    String?
   // YouTube link or video file, shown at the top of the category page.
   videoUrl    String?
+  // Photo gallery shown on the category page (addresses, in display order) —
+  // e.g. workshop photos of accessories that aren't sold online yet.
+  images      String[] @default([])
   parentId    String?
   order       Int      @default(0)
   seoTitle       String?

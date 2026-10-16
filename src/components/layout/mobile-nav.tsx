@@ -38,8 +38,8 @@ export function MobileNav({ categories, loggedIn }: { categories: CategoryNode[]
 
   const families = categories
     .flatMap((root) => (root.children.length > 0 ? root.children : [root]))
-    .filter((c) => c._count.products > 0)
-    .sort((a, b) => b._count.products - a._count.products);
+    // Admin order (Catégories → Ordre), as in the desktop menu.
+    .filter((c) => c._count.products > 0);
 
   const secondary = "flex items-center justify-between border-b border-border py-4 text-lg text-ink";
 

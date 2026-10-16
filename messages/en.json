@@ -300,7 +300,16 @@
     "categoriesTitle": "Categories",
     "categoriesSubtitle": "Browse our whole catalog by category.",
     "filters": "Filters",
-    "catalogEyebrow": "Catalogue"
+    "catalogEyebrow": "Catalogue",
+    "galleryTitle": "In pictures",
+    "galleryOpen": "Enlarge photo {index} of {total}",
+    "galleryAlt": "{name}, photo {index}",
+    "galleryPrev": "Previous photo",
+    "galleryNext": "Next photo",
+    "galleryClose": "Close",
+    "photosOnlyTitle": "Not sold online yet",
+    "photosOnlyText": "For a price or availability, call us on {phone} or write to us.",
+    "photosOnlyContact": "Write to us"
   },
   "Cart": {
     "title": "My cart",
@@ -653,7 +662,8 @@
       "lang_de": "German",
       "lang_en": "English",
       "lang_it": "Italian",
-      "labelVideo": "Video (YouTube link or .mp4 file), shown at the top of the category"
+      "labelVideo": "Video (YouTube link or .mp4 file), shown at the top of the category",
+      "labelImages": "Photos (one address per line), shown as a gallery on the category page"
     },
     "Brands": {
       "title": "Brands",

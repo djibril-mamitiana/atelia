@@ -300,7 +300,16 @@
     "categoriesTitle": "Categorie",
     "categoriesSubtitle": "Esplora l'intero catalogo per universo.",
     "filters": "Filtri",
-    "catalogEyebrow": "Catalogo"
+    "catalogEyebrow": "Catalogo",
+    "galleryTitle": "In immagini",
+    "galleryOpen": "Ingrandisci la foto {index} di {total}",
+    "galleryAlt": "{name}, foto {index}",
+    "galleryPrev": "Foto precedente",
+    "galleryNext": "Foto successiva",
+    "galleryClose": "Chiudi",
+    "photosOnlyTitle": "Non ancora in vendita online",
+    "photosOnlyText": "Per prezzo o disponibilità chiamateci al {phone} o scriveteci.",
+    "photosOnlyContact": "Scriveteci"
   },
   "Cart": {
     "title": "Il mio carrello",
@@ -653,7 +662,8 @@
       "lang_de": "Tedesco",
       "lang_en": "Inglese",
       "lang_it": "Italiano",
-      "labelVideo": "Video (link YouTube o file .mp4), mostrato in cima alla categoria"
+      "labelVideo": "Video (link YouTube o file .mp4), mostrato in cima alla categoria",
+      "labelImages": "Foto (un indirizzo per riga), mostrate in galleria nella pagina della categoria"
     },
     "Brands": {
       "title": "Marche",

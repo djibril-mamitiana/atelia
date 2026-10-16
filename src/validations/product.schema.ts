@@ -80,6 +80,7 @@ export const categorySchema = z.object({
   descriptionIt: z.string().trim().max(500).optional().or(z.literal("")),
   imageUrl: mediaUrlSchema.optional().or(z.literal("")),
   videoUrl: mediaUrlSchema.optional().or(z.literal("")),
+  images: z.array(mediaUrlSchema).max(60).default([]),
   parentId: z.string().optional().nullable(),
   order: z.coerce.number().int().default(0),
   seoTitle: z.string().trim().max(160).optional().or(z.literal("")),

@@ -9,7 +9,11 @@ import { ProductCard } from "@/components/product/product-card";
 import { CatalogFilters } from "@/components/catalog/catalog-filters";
 import { Pagination } from "@/components/catalog/pagination";
 import { EmptyState } from "@/components/ui/empty-state";
-import { PackageSearch } from "lucide-react";
+import { PackageSearch, Phone } from "lucide-react";
+import { CategoryGallery } from "@/components/catalog/category-gallery";
+import { LinkButton } from "@/components/ui/button";
+import { getSiteSettings } from "@/server/services/site-settings";
+import { telHref } from "@/lib/contact";
 import { VideoEmbed } from "@/components/ui/video-embed";
 import { isYoutubeShort } from "@/lib/video";
 
@@ -52,7 +56,7 @@ export default async function CategoryPage({
     if (replacement) redirect({ href: `/categories/${replacement}`, locale: await getLocale() });
     notFound();
   }
-  const t = await getTranslations("Catalog");
+  const [t, settings] = await Promise.all([getTranslations("Catalog"), getSiteSettings()]);
 
   const result = await getCatalogPage({
     // The route already scopes to this category; a click on a child in the
@@ -104,11 +108,31 @@ export default async function CategoryPage({
         )}
       </div>
 
+      {category.images.length > 0 && <CategoryGallery images={category.images} name={category.name} />}
+
       <div className="mt-8 grid gap-10 lg:grid-cols-[240px_1fr]">
         <CatalogFilters categories={result.categories} brands={result.brands} priceBounds={result.priceBounds} />
 
         <div>
-          {result.products.length === 0 ? (
+          {result.products.length === 0 && category.images.length > 0 ? (
+            // Photos only (accessories not sold online yet): point to a call instead of "no products".
+            <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
+              <p className="font-display text-2xl text-ink">{t("photosOnlyTitle")}</p>
+              <p className="mt-2 max-w-xl text-sm text-muted">{t("photosOnlyText", { phone: settings.contactPhone })}</p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a
+                  href={telHref(settings.contactPhone)}
+                  className="inline-flex h-11 items-center gap-2 rounded-full bg-accent px-6 text-sm font-medium text-graphite hover:bg-[#ff7440]"
+                >
+                  <Phone size={16} />
+                  {settings.contactPhone}
+                </a>
+                <LinkButton href="/contact" variant="outline">
+                  {t("photosOnlyContact")}
+                </LinkButton>
+              </div>
+            </div>
+          ) : result.products.length === 0 ? (
             <EmptyState icon={PackageSearch} title={t("noResultsCategory")} />
           ) : (
             <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3">
