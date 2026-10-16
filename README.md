@@ -288,6 +288,13 @@ messages/              traductions FR / DE / EN / IT```
   catégories, que suivent l'accueil et les menus). Il ajoute aussi la vidéo
   de carottage aux deux familles de carottage et en fait un guide. Le seed
   le rejoue.
+- **Photos d'une catégorie** : champ « Photos » dans Admin → Catégories (une
+  adresse par ligne, fichiers dans `public/categories/`). Elles s'affichent
+  en galerie sur la page de la catégorie, avec agrandissement au clic. Une
+  catégorie qui a des photos mais aucun produit invite à appeler. Exemple :
+  « Accessoires carottage » (35 photos) et « Accessoires sciage » (2), sous
+  « Accessoires », créées le 16/10/2026 par
+  [scripts/add-accessory-photos.ts](scripts/add-accessory-photos.ts).
 - **Base de production** : elle n'est accessible que depuis Railway (pas de
   proxy public). Pour un script ponctuel, l'ajouter temporairement à
   `db:deploy` (simulation, puis `--apply`), puis le retirer. Sinon il
