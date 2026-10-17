@@ -187,6 +187,10 @@ model Category {
   // "Produits spéciaux": the category's photos and products scroll in the
   // band under the home page hero.
   featuredOnHome Boolean @default(false)
+  // Price grids shown on the category page ("Couronnes à eau : neuve /
+  // rebrasage", "Tubes miniers"…), pasted from Excel in the admin — see
+  // src/lib/price-tables.ts. Prices hidden from signed-out visitors.
+  priceTables    Json     @default("[]")
   parentId    String?
   order       Int      @default(0)
   seoTitle       String?
@@ -280,6 +284,9 @@ model Product {
   sizeLabel        String?   // e.g. "Ø115 mm"
   sizeOrder        Float?    // numeric size, for ordering the selector
   sizeSpecs        String?   // compact catalogue specs shown in the size table
+  // The same specs filed under named columns ([["diameter","230"],["bore","22,2"]…],
+  // see src/lib/spec-table.ts) for catalogue-style size tables. Null = use sizeSpecs.
+  specs            Json?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 

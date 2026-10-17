@@ -278,7 +278,24 @@
     "requestAccount": "Pas encore de compte ? Demander l'ouverture",
     "shippingFast": "Livraison rapide partout en France.",
     "paymentTransfer": "Paiement par virement bancaire.",
-    "questionCallUs": "Une question ? Appelez-nous au"
+    "questionCallUs": "Une question ? Appelez-nous au",
+    "specTableTitle": "Caractéristiques",
+    "specCols": {
+      "diameter": "Ø (mm)",
+      "bitDiameter": "Ø couronne (mm)",
+      "segment": "Segment (mm)",
+      "width": "Largeur (mm)",
+      "bore": "Alésage (mm)",
+      "height": "Hauteur (mm)",
+      "segments": "Segments",
+      "connection": "Raccord",
+      "grit": "Grain",
+      "length": "Longueur utile (mm)",
+      "color": "Couleur",
+      "type": "Type"
+    },
+    "seeSizeTable": "Voir le tableau des {count} tailles",
+    "colChoose": "Choisir"
   },
   "Catalog": {
     "allProducts": "Tous les produits",
@@ -313,7 +330,10 @@
     "galleryClose": "Fermer",
     "photosOnlyTitle": "Pas encore en vente en ligne",
     "photosOnlyText": "Pour un prix ou une disponibilité, appelez-nous au {phone} ou écrivez-nous.",
-    "photosOnlyContact": "Nous écrire"
+    "photosOnlyContact": "Nous écrire",
+    "priceTablesTitle": "Tarifs",
+    "priceTablesLocked": "Prix réservés aux professionnels.",
+    "priceTablesSignIn": "Se connecter pour les voir"
   },
   "Cart": {
     "title": "Mon panier",
@@ -668,7 +688,16 @@
       "lang_it": "Italien",
       "labelVideo": "Vidéo (lien YouTube ou fichier .mp4), affichée en haut de la catégorie",
       "labelImages": "Photos, affichées en galerie sur la page de la catégorie",
-      "featuredOnHomeCheckbox": "Produits spéciaux : photos et produits dans la bande défilante de l'accueil"
+      "featuredOnHomeCheckbox": "Produits spéciaux : photos et produits dans la bande défilante de l'accueil",
+      "labelPriceTables": "Tableaux de prix",
+      "priceTablesHint": "Un tableau par grille de prix (une ligne par diamètre). Dans Excel, sélectionnez les cellules avec la ligne de titres, copiez, puis collez-les ici. La première colonne est le diamètre, les autres des prix (cachés aux visiteurs non connectés).",
+      "priceTableTitle": "Titre du tableau",
+      "priceTableCells": "Cellules (collées depuis Excel)",
+      "priceTableHint": "{columns} colonnes, {rows} lignes",
+      "priceTableTranslations": "Traductions (allemand, anglais, italien) : titre et ligne de titres",
+      "priceTableHeaders": "Ligne de titres",
+      "priceTableAdd": "Ajouter un tableau de prix",
+      "priceTableRemove": "Supprimer ce tableau"
     },
     "Brands": {
       "title": "Marques",

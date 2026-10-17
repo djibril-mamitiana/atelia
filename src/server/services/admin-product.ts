@@ -1,7 +1,7 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import slugify from "slugify";
-import type { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { nameWithSize, parseSizeOrder, stripSizeSuffix } from "@/lib/product-grouping";
 import { generatePublicSku } from "@/server/services/public-sku";
@@ -202,6 +202,9 @@ export async function saveProduct(shared: SharedInput, sizes: SizeInput[], famil
           sizeLabel: multi ? label : null,
           sizeOrder: multi && label ? (parseSizeOrder(label) ?? index) : null,
           sizeSpecs: multi ? size.sizeSpecs.trim() || null : null,
+          // The catalogue columns (Product.specs) mirror the specs text: once
+          // the admin rewrites that text, the table shows the text instead.
+          ...(current && (current.sizeSpecs ?? "") !== (multi ? size.sizeSpecs.trim() : "") ? { specs: Prisma.DbNull } : {}),
         };
 
         let id: string;

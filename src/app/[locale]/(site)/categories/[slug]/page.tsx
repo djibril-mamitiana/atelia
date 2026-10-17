@@ -11,6 +11,9 @@ import { Pagination } from "@/components/catalog/pagination";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PackageSearch, Phone } from "lucide-react";
 import { CategoryGallery } from "@/components/catalog/category-gallery";
+import { CategoryPriceTables } from "@/components/catalog/category-price-tables";
+import { readPriceTables } from "@/lib/price-tables";
+import { canSeePrices } from "@/lib/auth/access";
 import { LinkButton } from "@/components/ui/button";
 import { getSiteSettings } from "@/server/services/site-settings";
 import { telHref } from "@/lib/contact";
@@ -58,7 +61,7 @@ export default async function CategoryPage({
     if (replacement) redirect({ href: `/categories/${replacement}`, locale: await getLocale() });
     notFound();
   }
-  const [t, settings] = await Promise.all([getTranslations("Catalog"), getSiteSettings()]);
+  const [t, settings, showPrices] = await Promise.all([getTranslations("Catalog"), getSiteSettings(), canSeePrices()]);
 
   const result = await getCatalogPage({
     // The route already scopes to this category; a click on a child in the
@@ -113,6 +116,8 @@ export default async function CategoryPage({
       {category.images.length > 0 && (
         <CategoryGallery images={category.images} name={category.name} initialIndex={sp.photo ? Number(sp.photo) - 1 : null} />
       )}
+
+      <CategoryPriceTables tables={readPriceTables(category.priceTables)} showPrices={showPrices} signInPath={`/categories/${slug}`} />
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[240px_1fr]">
         <CatalogFilters categories={result.categories} brands={result.brands} priceBounds={result.priceBounds} />

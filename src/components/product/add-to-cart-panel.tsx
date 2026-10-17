@@ -10,6 +10,9 @@ import { useToast } from "@/components/ui/toast";
 import { addToCartAction } from "@/server/actions/cart.actions";
 import { formatPrice } from "@/lib/format";
 import { telHref } from "@/lib/contact";
+import { localizeSpecValue, type SpecCell } from "@/lib/spec-table";
+import { Select } from "@/components/ui/input";
+import { useSizeSelection } from "@/components/product/size-selection";
 
 // Money fields are null for signed-out visitors (B2B shop — prices are
 // stripped server-side, see lib/auth/access): the panel then still shows
@@ -22,6 +25,8 @@ export type SizeOption = {
   publicSku: string;
   sizeLabel: string;
   specs: string | null;
+  /** The same specs under named columns (catalogue-style table), when known. */
+  cells: SpecCell[] | null;
   price: number | null;
   compareAtPrice: number | null;
   stock: number;
@@ -57,11 +62,12 @@ export function AddToCartPanel({
   const [quantity, setQuantity] = useState(1);
 
   const hasSizes = sizes.length > 1;
-  const [sizeId, setSizeId] = useState<string>(initialSizeId ?? sizes[0]?.id ?? productId);
+  // Shared with the full-width size table (SizeTable) when the page has one.
+  const { sizeId, setSizeId } = useSizeSelection(initialSizeId ?? sizes[0]?.id ?? productId);
   const selectedSize = hasSizes ? (sizes.find((sz) => sz.id === sizeId) ?? sizes[0]) : null;
 
-  // With a size table each size is its own product: it supplies the id,
-  // price and stock. Otherwise the (optional) variant chips apply as before.
+  // With sizes each size is its own product: it supplies the id, price and
+  // stock. Otherwise the (optional) variant chips apply as before.
   const selectedVariant = hasSizes ? null : (variants.find((v) => v.id === variantId) ?? null);
   const targetProductId = selectedSize ? selectedSize.id : productId;
   const stock = selectedSize ? selectedSize.stock : selectedVariant ? selectedVariant.stock : baseStock;
@@ -70,6 +76,14 @@ export function AddToCartPanel({
   const outOfStock = stock <= 0;
 
   const maxQuantity = useMemo(() => Math.max(1, Math.min(stock, 99)), [stock]);
+
+  /** "Ø230 · 38x2,4x10 · 22,2 · 16 — 12,50 €": a size, as a line of the drop-down list. */
+  const optionLabel = (sz: SizeOption) => {
+    const parts = sz.cells
+      ? sz.cells.map(([key, value]) => (key === "diameter" ? `Ø${value}` : localizeSpecValue(value, locale as "fr" | "de" | "en" | "it")))
+      : [sz.sizeLabel, ...(sz.specs ? [sz.specs] : [])];
+    return parts.join(" · ") + (sz.price != null ? ` — ${formatPrice(sz.price, locale)}` : "");
+  };
 
   function add(redirectToCheckout: boolean) {
     startTransition(async () => {
@@ -87,62 +101,29 @@ export function AddToCartPanel({
   }
 
   return (
-    <div className="flex flex-col gap-5 rounded-3xl border border-border bg-surface p-5 sm:p-7">
+    <div id="buy-box" className="flex scroll-mt-28 flex-col gap-5 rounded-3xl border border-border bg-surface p-5 sm:p-7">
       {hasSizes && (
         <div>
-          <p className="eyebrow mb-3 text-muted">{t("sizeTableTitle")}</p>
-          <div className="max-h-72 overflow-auto rounded-2xl border border-border">
-            <table className="w-full min-w-[420px] text-left text-sm">
-              <thead className="sticky top-0 bg-paper text-xs uppercase tracking-wide text-muted">
-                <tr>
-                  <th className="px-3 py-2 font-medium">{t("colSize")}</th>
-                  <th className="px-3 py-2 font-medium">{t("colSpecs")}</th>
-                  <th className="px-3 py-2 font-medium">{t("colRef")}</th>
-                  {price != null && <th className="px-3 py-2 text-right font-medium">{t("colPrice")}</th>}
-                  <th className="px-3 py-2 font-medium">{t("colStock")}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {sizes.map((sz) => {
-                  const active = sz.id === selectedSize?.id;
-                  return (
-                    <tr
-                      key={sz.id}
-                      onClick={() => {
-                        setSizeId(sz.id);
-                        setQuantity(1);
-                      }}
-                      className={`cursor-pointer transition-colors ${active ? "bg-accent-soft" : "hover:bg-paper"}`}
-                    >
-                      <td className="whitespace-nowrap px-3 py-2 font-medium text-ink">
-                        <label className="flex cursor-pointer items-center gap-2">
-                          <input
-                            type="radio"
-                            name="size"
-                            checked={active}
-                            onChange={() => {
-                              setSizeId(sz.id);
-                              setQuantity(1);
-                            }}
-                            className="accent-accent"
-                          />
-                          {sz.sizeLabel}
-                        </label>
-                      </td>
-                      <td className="px-3 py-2 text-xs text-muted">{sz.specs ?? "—"}</td>
-                      <td className="whitespace-nowrap px-3 py-2 text-xs text-muted">{sz.publicSku}</td>
-                      {sz.price != null && (
-                        <td className="whitespace-nowrap px-3 py-2 text-right font-medium text-ink">{formatPrice(sz.price, locale)}</td>
-                      )}
-                      <td className={`whitespace-nowrap px-3 py-2 text-xs ${sz.stock > 0 ? "text-sage" : "text-danger"}`}>
-                        {sz.stock > 0 ? t("inStock") : t("outOfStockBadge")}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <label htmlFor="size-select" className="eyebrow mb-3 block text-muted">
+            {t("sizeTableTitle")}
+          </label>
+          <Select
+            id="size-select"
+            value={selectedSize?.id}
+            onChange={(e) => {
+              setSizeId(e.target.value);
+              setQuantity(1);
+            }}
+          >
+            {sizes.map((sz) => (
+              <option key={sz.id} value={sz.id}>
+                {optionLabel(sz)}
+              </option>
+            ))}
+          </Select>
+          <a href="#tailles" className="mt-2 inline-block text-xs font-medium text-accent-dark underline underline-offset-2">
+            {t("seeSizeTable", { count: sizes.length })}
+          </a>
         </div>
       )}
 

@@ -17,6 +17,7 @@ import { computePublicSkus } from "../src/lib/public-sku";
 import { applyDiscs115230 } from "../scripts/lib/discs-115-230";
 import { applyCleanerAndVideos } from "../scripts/lib/nettoyant-beton";
 import { applySpecialCategories } from "../scripts/lib/special-categories";
+import { applyCoringPriceTables, applySpecTables } from "../scripts/lib/spec-and-price-tables";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -877,6 +878,10 @@ async function main() {
 
   await applySpecialCategories(db, { apply: true });
   console.log("  ✓ special families: Aide au carottage, Débouchage de tubes (home band)");
+
+  const specTables = await applySpecTables(db, { apply: true });
+  await applyCoringPriceTables(db, { apply: true });
+  console.log(`  ✓ catalogue size tables (${specTables.filled} products), coring price tables`);
 
   const { admin, staff, customers } = await seedUsers();
   console.log(`  ✓ ${2 + customers.length} users (1 admin, 1 staff, ${customers.length} customers)`);

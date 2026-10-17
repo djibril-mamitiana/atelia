@@ -278,7 +278,24 @@
     "requestAccount": "No account yet? Request one",
     "shippingFast": "Fast delivery across France.",
     "paymentTransfer": "Payment by bank transfer.",
-    "questionCallUs": "Any question? Call us on"
+    "questionCallUs": "Any question? Call us on",
+    "specTableTitle": "Specifications",
+    "specCols": {
+      "diameter": "Ø (mm)",
+      "bitDiameter": "Core bit Ø (mm)",
+      "segment": "Segment (mm)",
+      "width": "Width (mm)",
+      "bore": "Bore (mm)",
+      "height": "Height (mm)",
+      "segments": "Segments",
+      "connection": "Connection",
+      "grit": "Grit",
+      "length": "Working length (mm)",
+      "color": "Colour",
+      "type": "Type"
+    },
+    "seeSizeTable": "See the table of {count} sizes",
+    "colChoose": "Choose"
   },
   "Catalog": {
     "allProducts": "All products",
@@ -313,7 +330,10 @@
     "galleryClose": "Close",
     "photosOnlyTitle": "Not sold online yet",
     "photosOnlyText": "For a price or availability, call us on {phone} or write to us.",
-    "photosOnlyContact": "Write to us"
+    "photosOnlyContact": "Write to us",
+    "priceTablesTitle": "Prices",
+    "priceTablesLocked": "Prices are for professional accounts.",
+    "priceTablesSignIn": "Sign in to see them"
   },
   "Cart": {
     "title": "My cart",
@@ -668,7 +688,16 @@
       "lang_it": "Italian",
       "labelVideo": "Video (YouTube link or .mp4 file), shown at the top of the category",
       "labelImages": "Photos, shown as a gallery on the category page",
-      "featuredOnHomeCheckbox": "Special products: photos and products in the scrolling band on the home page"
+      "featuredOnHomeCheckbox": "Special products: photos and products in the scrolling band on the home page",
+      "labelPriceTables": "Price tables",
+      "priceTablesHint": "One table per price list (one row per diameter). In Excel, select the cells with their title row, copy, then paste them here. First column = diameter, the others prices (hidden from signed-out visitors).",
+      "priceTableTitle": "Table title",
+      "priceTableCells": "Cells (pasted from Excel)",
+      "priceTableHint": "{columns} columns, {rows} rows",
+      "priceTableTranslations": "Translations (German, English, Italian): title and title row",
+      "priceTableHeaders": "Title row",
+      "priceTableAdd": "Add a price table",
+      "priceTableRemove": "Delete this table"
     },
     "Brands": {
       "title": "Brands",

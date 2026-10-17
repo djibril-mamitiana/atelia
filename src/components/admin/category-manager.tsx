@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { ImageUploader } from "@/components/admin/image-uploader";
+import { PriceTablesEditor } from "@/components/admin/price-tables-editor";
 import { createCategoryAction, updateCategoryAction, deleteCategoryAction } from "@/server/actions/admin/category.actions";
 import { localizedCategoryName } from "@/lib/category-name";
 import type { CategoryInput } from "@/validations/product.schema";
@@ -29,6 +30,7 @@ const EMPTY: CategoryInput = {
   imageUrl: "",
   videoUrl: "",
   images: [],
+  priceTables: [],
   parentId: null,
   order: 0,
   featuredOnHome: false,
@@ -176,6 +178,12 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
           <div className="sm:col-span-2">
             <Label>{t("labelImages")}</Label>
             <ImageUploader value={form.images.filter(Boolean)} onChange={(urls) => set("images", urls)} />
+          </div>
+          <div className="sm:col-span-2">
+            <Label>{t("labelPriceTables")}</Label>
+            <p className="mb-2 text-xs text-muted">{t("priceTablesHint")}</p>
+            {/* Remounted per category: its drafts start from that category's tables. */}
+            <PriceTablesEditor key={editingId ?? "new"} value={form.priceTables} onChange={(tables) => set("priceTables", tables)} />
           </div>
           <div className="sm:col-span-2">
             <Label>{t("labelDescription")}</Label>

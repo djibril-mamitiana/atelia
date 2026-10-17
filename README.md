@@ -312,6 +312,31 @@ messages/              traductions FR / DE / EN / IT```
   (`/categories/<slug>?photo=N`), toucher un produit ouvre sa fiche. La bande
   est mise en pause au survol et ne défile pas si l'appareil demande moins
   d'animations.
+- **Tableaux des tailles, comme le catalogue** : sur la fiche produit, un
+  tableau pleine largeur sous la photo (Ø | Segment | Alésage | Segments |
+  Réf. | Prix | Stock pour les disques, Ø | Segments | Segment | Raccord |
+  Longueur utile… pour les couronnes). Cliquer une ligne choisit la taille
+  dans l'encadré d'achat, qui propose aussi une liste déroulante.
+  - Les colonnes viennent des valeurs du catalogue fournisseur, rangées par
+    [src/lib/spec-table.ts](src/lib/spec-table.ts). Les en-têtes du
+    catalogue disaient souvent seulement « mm » : chaque valeur est donc
+    reconnue d'après son en-tête ou sa forme.
+  - Elles sont stockées dans `Product.specs`, remplies par
+    [scripts/add-spec-and-price-tables.ts](scripts/add-spec-and-price-tables.ts)
+    (appliqué le 17/10/2026, rejoué par le seed). Environ 1 300 produits sur
+    1 424 ont ces colonnes ; les autres gardent le texte « Caractéristiques ».
+  - Si l'on réécrit le texte des caractéristiques d'une taille dans l'admin,
+    ce texte remplace les colonnes pour cette taille.
+- **Tableaux de prix d'une catégorie** : Admin → Catégories → « Tableaux de
+  prix ».
+  - On sélectionne les cellules dans Excel, ligne de titres comprise, on
+    copie et on colle. La première colonne est le diamètre, les autres sont
+    des prix. Le titre et la ligne de titres se traduisent sous
+    « Traductions ».
+  - Les prix ne sont envoyés qu'aux comptes pros connectés : les autres
+    visiteurs voient les diamètres et un lien pour se connecter.
+  - « Couronnes de carottage à eau » contient les grilles « neuves /
+    rebrasage » et « tubes miniers » du client.
 - **Familles spéciales** :
   [scripts/add-special-categories.ts](scripts/add-special-categories.ts)
   `[--apply]` a créé le 17/10/2026 « Aide au carottage » (les 37 photos de

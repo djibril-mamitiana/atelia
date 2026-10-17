@@ -6,6 +6,7 @@ import { stripSizeSuffix, stripSpecLines } from "@/lib/product-grouping";
 import { localizedCategoryName } from "@/lib/category-name";
 import { canSeePrices } from "@/lib/auth/access";
 import { interleave } from "@/lib/interleave";
+import { readSpecCells } from "@/lib/spec-table";
 import type { Prisma } from "@prisma/client";
 
 export type SortOption = "pertinence" | "prix-asc" | "prix-desc" | "nouveaute" | "note";
@@ -379,6 +380,7 @@ export async function getProductBySlug(slug: string) {
           publicSku: true,
           sizeLabel: true,
           sizeSpecs: true,
+          specs: true,
           price: true,
           compareAtPrice: true,
           stock: true,
@@ -395,6 +397,8 @@ export async function getProductBySlug(slug: string) {
         publicSku: s.publicSku ?? s.sku,
         sizeLabel: s.sizeLabel ?? s.publicSku ?? s.sku,
         specs: s.sizeSpecs,
+        // Named columns for the catalogue-style table (null: plain specs text).
+        cells: readSpecCells(s.specs),
         price: showPrices ? Number(s.price) : null,
         compareAtPrice: showPrices && s.compareAtPrice != null ? Number(s.compareAtPrice) : null,
         stock: s.stock,
@@ -439,6 +443,8 @@ export async function getProductBySlug(slug: string) {
   const source = donor ?? product;
   const localizedName = localizedField(source, "name", locale);
   const familyName = sizes.length > 0 ? stripSizeSuffix(localizedName, source.sizeLabel) : localizedName;
+  // A standalone product gets a one-row spec table too.
+  const specCells = sizes.length === 0 ? readSpecCells(product.specs) : null;
 
   return {
     ...product,
@@ -448,6 +454,7 @@ export async function getProductBySlug(slug: string) {
     compareAtPrice: showPrices && product.compareAtPrice != null ? Number(product.compareAtPrice) : null,
     variants: product.variants.map((v) => ({ ...v, priceDelta: showPrices ? Number(v.priceDelta) : null })),
     sizes,
+    specCells,
     reviews,
     reviewCount,
     avgRating,
@@ -455,7 +462,9 @@ export async function getProductBySlug(slug: string) {
     // The per-size "Caractéristiques : …" line describes only one size — for a
     // size group those figures live in the size table instead.
     description:
-      sizes.length > 0 ? stripSpecLines(localizedField(source, "description", locale)) : localizedField(source, "description", locale),
+      sizes.length > 0 || specCells
+        ? stripSpecLines(localizedField(source, "description", locale))
+        : localizedField(source, "description", locale),
     shortDescription: source.shortDescription != null ? localizedField(source, "shortDescription", locale) : source.shortDescription,
     brand: { ...product.brand, name: localizedCategoryName(product.brand, locale) },
     category: {

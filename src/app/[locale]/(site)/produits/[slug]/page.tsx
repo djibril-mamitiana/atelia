@@ -10,6 +10,8 @@ import { getSession } from "@/lib/auth/session";
 import { db } from "@/lib/db";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { AddToCartPanel } from "@/components/product/add-to-cart-panel";
+import { SizeTable } from "@/components/product/size-table";
+import { SizeSelectionProvider } from "@/components/product/size-selection";
 import { FavoriteButton } from "@/components/product/favorite-button";
 import { ProductCard } from "@/components/product/product-card";
 import { ReviewList } from "@/components/product/review-list";
@@ -140,6 +142,8 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         <span className="min-w-0 truncate text-ink max-sm:hidden">{product.name}</span>
       </nav>
 
+      {/* The size chosen in the full-width table and in the purchase box is one. */}
+      <SizeSelectionProvider initialSizeId={product.id}>
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
         <ProductGallery media={media} productName={product.name} />
 
@@ -177,6 +181,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
                 publicSku: sz.publicSku,
                 sizeLabel: sz.sizeLabel,
                 specs: sz.specs,
+                cells: sz.cells,
                 price: sz.price,
                 compareAtPrice: sz.compareAtPrice,
                 stock: sz.stock,
@@ -188,6 +193,22 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           </div>
         </div>
       </div>
+
+      <SizeTable
+        sizes={product.sizes.map((sz) => ({
+          id: sz.id,
+          publicSku: sz.publicSku,
+          sizeLabel: sz.sizeLabel,
+          specs: sz.specs,
+          cells: sz.cells,
+          price: sz.price,
+          compareAtPrice: sz.compareAtPrice,
+          stock: sz.stock,
+        }))}
+        specCells={product.specCells}
+        publicSku={product.publicSku ?? product.sku}
+      />
+      </SizeSelectionProvider>
 
       <div className="mt-16 grid gap-10 lg:mt-24 lg:grid-cols-[2fr_1fr] lg:gap-14">
         <div className="flex flex-col gap-10">

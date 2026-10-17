@@ -278,7 +278,24 @@
     "requestAccount": "Non hai un account? Richiedilo",
     "shippingFast": "Spedizione rapida in tutta la Francia.",
     "paymentTransfer": "Pagamento con bonifico bancario.",
-    "questionCallUs": "Domande? Chiamateci al"
+    "questionCallUs": "Domande? Chiamateci al",
+    "specTableTitle": "Caratteristiche",
+    "specCols": {
+      "diameter": "Ø (mm)",
+      "bitDiameter": "Ø corona (mm)",
+      "segment": "Segmento (mm)",
+      "width": "Larghezza (mm)",
+      "bore": "Foro (mm)",
+      "height": "Altezza (mm)",
+      "segments": "Segmenti",
+      "connection": "Attacco",
+      "grit": "Grana",
+      "length": "Lunghezza utile (mm)",
+      "color": "Colore",
+      "type": "Tipo"
+    },
+    "seeSizeTable": "Vedi la tabella delle {count} misure",
+    "colChoose": "Scegli"
   },
   "Catalog": {
     "allProducts": "Tutti i prodotti",
@@ -313,7 +330,10 @@
     "galleryClose": "Chiudi",
     "photosOnlyTitle": "Non ancora in vendita online",
     "photosOnlyText": "Per prezzo o disponibilità chiamateci al {phone} o scriveteci.",
-    "photosOnlyContact": "Scriveteci"
+    "photosOnlyContact": "Scriveteci",
+    "priceTablesTitle": "Prezzi",
+    "priceTablesLocked": "Prezzi riservati ai professionisti.",
+    "priceTablesSignIn": "Accedi per vederli"
   },
   "Cart": {
     "title": "Il mio carrello",
@@ -668,7 +688,16 @@
       "lang_it": "Italiano",
       "labelVideo": "Video (link YouTube o file .mp4), mostrato in cima alla categoria",
       "labelImages": "Foto, mostrate in galleria nella pagina della categoria",
-      "featuredOnHomeCheckbox": "Prodotti speciali: foto e prodotti nella fascia scorrevole della home page"
+      "featuredOnHomeCheckbox": "Prodotti speciali: foto e prodotti nella fascia scorrevole della home page",
+      "labelPriceTables": "Tabelle prezzi",
+      "priceTablesHint": "Una tabella per listino (una riga per diametro). In Excel selezionate le celle con la riga dei titoli, copiate e incollatele qui. Prima colonna = diametro, le altre prezzi (nascosti ai visitatori non connessi).",
+      "priceTableTitle": "Titolo della tabella",
+      "priceTableCells": "Celle (incollate da Excel)",
+      "priceTableHint": "{columns} colonne, {rows} righe",
+      "priceTableTranslations": "Traduzioni (tedesco, inglese, italiano): titolo e riga dei titoli",
+      "priceTableHeaders": "Riga dei titoli",
+      "priceTableAdd": "Aggiungi una tabella prezzi",
+      "priceTableRemove": "Elimina questa tabella"
     },
     "Brands": {
       "title": "Marche",

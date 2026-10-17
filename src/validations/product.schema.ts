@@ -62,6 +62,27 @@ export const productSchema = z.object({
   });
 export type ProductInput = z.infer<typeof productSchema>;
 
+/** A category price grid (src/lib/price-tables.ts): French title and headers required. */
+const priceTableSchema = z
+  .object({
+    title: z.object({
+      fr: z.string().trim().min(1, "Donnez un titre à chaque tableau de prix").max(120),
+      de: z.string().trim().max(120),
+      en: z.string().trim().max(120),
+      it: z.string().trim().max(120),
+    }),
+    headers: z.object({
+      fr: z.array(z.string().max(60)).min(1).max(12),
+      de: z.array(z.string().max(60)).max(12),
+      en: z.array(z.string().max(60)).max(12),
+      it: z.array(z.string().max(60)).max(12),
+    }),
+    rows: z.array(z.array(z.string().max(40)).max(12)).min(1, "Un tableau de prix doit avoir au moins une ligne").max(200),
+  })
+  .refine((t) => t.rows.every((r) => r.length === t.headers.fr.length), {
+    message: "Chaque ligne d'un tableau de prix doit avoir autant de colonnes que la ligne de titres",
+  });
+
 export const categorySchema = z.object({
   name: z.string().trim().min(2).max(120),
   slug: z
@@ -86,6 +107,7 @@ export const categorySchema = z.object({
   seoTitle: z.string().trim().max(160).optional().or(z.literal("")),
   seoDescription: z.string().trim().max(300).optional().or(z.literal("")),
   featuredOnHome: z.boolean().default(false),
+  priceTables: z.array(priceTableSchema).max(10).default([]),
   isActive: z.boolean().default(true),
 });
 export type CategoryInput = z.infer<typeof categorySchema>;

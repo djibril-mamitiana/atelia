@@ -278,7 +278,24 @@
     "requestAccount": "Noch kein Konto? Eröffnung anfragen",
     "shippingFast": "Schneller Versand in ganz Frankreich.",
     "paymentTransfer": "Zahlung per Banküberweisung.",
-    "questionCallUs": "Fragen? Rufen Sie uns an:"
+    "questionCallUs": "Fragen? Rufen Sie uns an:",
+    "specTableTitle": "Merkmale",
+    "specCols": {
+      "diameter": "Ø (mm)",
+      "bitDiameter": "Ø Bohrkrone (mm)",
+      "segment": "Segment (mm)",
+      "width": "Breite (mm)",
+      "bore": "Bohrung (mm)",
+      "height": "Höhe (mm)",
+      "segments": "Segmente",
+      "connection": "Anschluss",
+      "grit": "Körnung",
+      "length": "Nutzlänge (mm)",
+      "color": "Farbe",
+      "type": "Typ"
+    },
+    "seeSizeTable": "Tabelle der {count} Größen ansehen",
+    "colChoose": "Auswählen"
   },
   "Catalog": {
     "allProducts": "Alle Produkte",
@@ -313,7 +330,10 @@
     "galleryClose": "Schließen",
     "photosOnlyTitle": "Noch nicht online erhältlich",
     "photosOnlyText": "Für Preis oder Verfügbarkeit rufen Sie uns an unter {phone} oder schreiben Sie uns.",
-    "photosOnlyContact": "Schreiben Sie uns"
+    "photosOnlyContact": "Schreiben Sie uns",
+    "priceTablesTitle": "Preise",
+    "priceTablesLocked": "Preise nur für Fachkunden.",
+    "priceTablesSignIn": "Anmelden, um sie zu sehen"
   },
   "Cart": {
     "title": "Mein Warenkorb",
@@ -668,7 +688,16 @@
       "lang_it": "Italienisch",
       "labelVideo": "Video (YouTube-Link oder .mp4-Datei), oben auf der Kategorieseite",
       "labelImages": "Fotos, als Galerie auf der Kategorieseite",
-      "featuredOnHomeCheckbox": "Spezialprodukte: Fotos und Produkte im Laufband der Startseite"
+      "featuredOnHomeCheckbox": "Spezialprodukte: Fotos und Produkte im Laufband der Startseite",
+      "labelPriceTables": "Preistabellen",
+      "priceTablesHint": "Eine Tabelle pro Preisliste (eine Zeile pro Durchmesser). In Excel die Zellen samt Titelzeile markieren, kopieren und hier einfügen. Erste Spalte = Durchmesser, die anderen Preise (für nicht angemeldete Besucher verborgen).",
+      "priceTableTitle": "Titel der Tabelle",
+      "priceTableCells": "Zellen (aus Excel eingefügt)",
+      "priceTableHint": "{columns} Spalten, {rows} Zeilen",
+      "priceTableTranslations": "Übersetzungen (Deutsch, Englisch, Italienisch): Titel und Titelzeile",
+      "priceTableHeaders": "Titelzeile",
+      "priceTableAdd": "Preistabelle hinzufügen",
+      "priceTableRemove": "Diese Tabelle löschen"
     },
     "Brands": {
       "title": "Marken",

@@ -2,6 +2,7 @@ import { adminTitle } from "@/lib/admin-metadata";
 import { getTranslations } from "next-intl/server";
 import { getAdminCategories } from "@/server/queries/admin.queries";
 import { CategoryManager } from "@/components/admin/category-manager";
+import { readPriceTables } from "@/lib/price-tables";
 
 export const generateMetadata = () => adminTitle("navCategories");
 
@@ -28,6 +29,7 @@ export default async function AdminCategoriesPage() {
             imageUrl: c.imageUrl ?? "",
             videoUrl: c.videoUrl ?? "",
             images: c.images,
+            priceTables: readPriceTables(c.priceTables),
             parentId: c.parentId,
             order: c.order,
             featuredOnHome: c.featuredOnHome,
