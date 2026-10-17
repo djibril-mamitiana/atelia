@@ -5,6 +5,7 @@ import { PAGE_SIZE_CATALOG } from "@/lib/constants";
 import { stripSizeSuffix, stripSpecLines } from "@/lib/product-grouping";
 import { localizedCategoryName } from "@/lib/category-name";
 import { canSeePrices } from "@/lib/auth/access";
+import { interleave } from "@/lib/interleave";
 import type { Prisma } from "@prisma/client";
 
 export type SortOption = "pertinence" | "prix-asc" | "prix-desc" | "nouveaute" | "note";
@@ -505,7 +506,7 @@ export async function getPopularCategories(limit = 8) {
   const locale = (await getLocale()) as Locale;
   const categories = await db.category.findMany({
     where: { isActive: true },
-    select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true, slug: true, imageUrl: true, parentId: true },
+    select: { id: true, name: true, nameDe: true, nameEn: true, nameIt: true, slug: true, imageUrl: true, parentId: true, images: true },
     orderBy: { order: "asc" },
   });
   const counts = await countListingEntriesByCategory();
@@ -514,7 +515,12 @@ export async function getPopularCategories(limit = 8) {
     (counts.get(id) ?? 0) + categories.filter((c) => c.parentId === id).reduce((sum, c) => sum + (counts.get(c.id) ?? 0), 0);
   // A lone root without children is itself a family (flat catalogue).
   const families = categories.filter((c) => (c.parentId !== null && roots.has(c.parentId)) || (c.parentId === null && !categories.some((o) => o.parentId === c.id)));
-  return families.slice(0, limit).map((c) => ({ ...localizeCategory(c, locale), _count: { products: total(c.id) } }));
+  // Gallery photos (own + sub-categories): a family of photos only still gets a tile.
+  const photos = (id: string) => categories.filter((c) => c.id === id || c.parentId === id).reduce((sum, c) => sum + c.images.length, 0);
+  return families.slice(0, limit).map(({ images, ...c }) => {
+    void images;
+    return { ...localizeCategory(c, locale), _count: { products: total(c.id) }, photos: photos(c.id) };
+  });
 }
 
 /**
@@ -555,7 +561,80 @@ export async function getFamilyPreviewImages(familyIds: string[], perFamily = 3)
     seen.add(product);
     list.push({ url, alt: stripSizeSuffix(localizedField(row, "name", locale)) });
   }
+  // Not enough product photos (e.g. "Aide au carottage", photos only): fill
+  // up with the gallery photos of the family and its sub-categories.
+  const short = familyIds.filter((id) => previews.get(id)!.length < perFamily);
+  if (short.length > 0) {
+    const galleries = await db.category.findMany({
+      where: { isActive: true, OR: [{ id: { in: short } }, { parentId: { in: short } }] },
+      orderBy: { order: "asc" },
+      select: { id: true, parentId: true, images: true, name: true, nameDe: true, nameEn: true, nameIt: true },
+    });
+    for (const g of galleries) {
+      const list = previews.get(previews.has(g.id) ? g.id : g.parentId!);
+      if (!list) continue;
+      for (const url of g.images) {
+        if (list.length >= perFamily) break;
+        if (!list.some((p) => p.url === url)) list.push({ url, alt: localizedFrBasedField(g, "name", locale) });
+      }
+    }
+  }
   return previews;
+}
+
+export type SpecialBandItem = { key: string; href: string; imageUrl: string; label: string };
+
+/**
+ * "Produits spéciaux" band under the home hero: the gallery photos and visible
+ * products of the categories ticked "Produits spéciaux" in the admin. A photo
+ * opens its category on that photo, a product its product page. Categories
+ * are interleaved so the band alternates, and capped so none takes it over.
+ */
+export async function getSpecialBandItems(perCategory = 10): Promise<SpecialBandItem[]> {
+  const locale = (await getLocale()) as Locale;
+  const categories = await db.category.findMany({
+    where: { isActive: true, featuredOnHome: true },
+    orderBy: { order: "asc" },
+    select: {
+      id: true,
+      slug: true,
+      images: true,
+      name: true,
+      nameDe: true,
+      nameEn: true,
+      nameIt: true,
+      products: {
+        where: { isActive: true, images: { some: {} } },
+        orderBy: [{ isFeatured: "desc" }, { sizeOrder: "asc" }],
+        select: {
+          id: true,
+          slug: true,
+          groupKey: true,
+          sizeLabel: true,
+          name: true,
+          nameFr: true,
+          nameEn: true,
+          nameIt: true,
+          images: { take: 1, orderBy: { position: "asc" }, select: { url: true } },
+        },
+      },
+    },
+  });
+  const lists = categories.map((c) => {
+    const label = localizedFrBasedField(c, "name", locale);
+    const seen = new Set<string>();
+    const products: SpecialBandItem[] = c.products
+      .filter((p) => !seen.has(p.groupKey ?? p.id) && seen.add(p.groupKey ?? p.id))
+      .map((p) => ({
+        key: `p-${p.id}`,
+        href: `/produits/${p.slug}`,
+        imageUrl: p.images[0].url,
+        label: stripSizeSuffix(localizedField(p, "name", locale), p.sizeLabel),
+      }));
+    const photos: SpecialBandItem[] = c.images.map((url, i) => ({ key: `c-${c.id}-${i}`, href: `/categories/${c.slug}?photo=${i + 1}`, imageUrl: url, label }));
+    return [...products, ...photos].slice(0, perCategory);
+  });
+  return interleave(lists);
 }
 
 export async function getActiveBrands(limit = 12) {

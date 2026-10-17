@@ -13,6 +13,7 @@ type CategoryNode = {
   slug: string;
   children: CategoryNode[];
   _count: { products: number };
+  photos: number;
 };
 
 export function MobileNav({ categories, loggedIn }: { categories: CategoryNode[]; loggedIn: boolean }) {
@@ -39,7 +40,7 @@ export function MobileNav({ categories, loggedIn }: { categories: CategoryNode[]
   const families = categories
     .flatMap((root) => (root.children.length > 0 ? root.children : [root]))
     // Admin order (Catégories → Ordre), as in the desktop menu.
-    .filter((c) => c._count.products > 0);
+    .filter((c) => c._count.products > 0 || c.photos > 0);
 
   const secondary = "flex items-center justify-between border-b border-border py-4 text-lg text-ink";
 

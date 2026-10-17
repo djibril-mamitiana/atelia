@@ -31,6 +31,7 @@ const EMPTY: CategoryInput = {
   images: [],
   parentId: null,
   order: 0,
+  featuredOnHome: false,
   isActive: true,
 };
 
@@ -178,12 +179,16 @@ export function CategoryManager({ initialCategories }: { initialCategories: Cate
           </div>
           <div className="sm:col-span-2">
             <Label>{t("labelDescription")}</Label>
-            <Textarea rows={2} value={form[fields.description] ?? ""} onChange={(e) => set(fields.description, e.target.value)} />
+            <Textarea rows={4} value={form[fields.description] ?? ""} onChange={(e) => set(fields.description, e.target.value)} />
           </div>
         </div>
         <label className="flex items-center gap-2 text-sm text-ink-soft">
           <input type="checkbox" checked={form.isActive} onChange={(e) => set("isActive", e.target.checked)} className="h-4 w-4 accent-accent" />
           {t("activeCheckbox")}
+        </label>
+        <label className="flex items-center gap-2 text-sm text-ink-soft">
+          <input type="checkbox" checked={form.featuredOnHome} onChange={(e) => set("featuredOnHome", e.target.checked)} className="h-4 w-4 accent-accent" />
+          {t("featuredOnHomeCheckbox")}
         </label>
         <div className="flex gap-2">
           <Button size="sm" onClick={onSave} disabled={pending}>{t("save")}</Button>

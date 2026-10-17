@@ -33,12 +33,15 @@ export function HeroCleaner({ videoUrl, productHref }: { videoUrl: string; produ
           <Play size={32} fill="currentColor" className="ml-1" />
         </span>
 
-        <span className="absolute right-0 top-[4%] inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-3.5 py-2 text-[12.5px] font-semibold text-sage shadow-lg">
-          <Leaf size={14} strokeWidth={2.4} />
-          {t("heroCleanerBadge")}
-        </span>
-        <span className="absolute bottom-[8%] left-0 rounded-full border border-white/15 bg-graphite/80 px-3.5 py-2 font-mono text-[10.5px] uppercase tracking-[0.1em] text-white/85 backdrop-blur">
-          {t("heroCleanerChip")}
+        {/* "Biodégradable" sits right above the product line. */}
+        <span className="absolute bottom-[6%] left-0 flex flex-col items-start gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-3.5 py-2 text-[12.5px] font-semibold text-sage shadow-lg">
+            <Leaf size={14} strokeWidth={2.4} />
+            {t("heroCleanerBadge")}
+          </span>
+          <span className="rounded-full border border-white/15 bg-graphite/85 px-3.5 py-2 font-mono text-[10.5px] uppercase tracking-[0.1em] text-white/90 backdrop-blur">
+            {t("heroCleanerChip")}
+          </span>
         </span>
       </button>
 

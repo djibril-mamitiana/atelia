@@ -260,6 +260,23 @@ body {
   animation: glow-breathe 5s ease-in-out infinite;
 }
 
+/* "Produits spéciaux" band: the list is rendered twice, so sliding it by
+   half its width loops seamlessly. Paused while hovered or focused. */
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee {
+  animation: marquee var(--marquee-duration, 60s) linear infinite;
+}
+
+.marquee-track:hover .marquee,
+.marquee-track:focus-within .marquee {
+  animation-play-state: paused;
+}
+
 /* Underline that draws itself on hover. */
 .link-underline {
   background-image: linear-gradient(currentColor, currentColor);
@@ -282,9 +299,19 @@ body {
   .rise,
   .blade-spin,
   .spark,
-  .glow-breathe {
+  .glow-breathe,
+  .marquee {
     animation: none !important;
     transition: none !important;
+  }
+
+  /* No sliding: the band becomes a row to scroll by hand, shown once. */
+  .marquee-track {
+    overflow-x: auto;
+  }
+
+  .marquee-copy {
+    display: none;
   }
 
   .reveal-ready [data-reveal]:not(.is-in) {

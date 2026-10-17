@@ -153,13 +153,17 @@
     "materialTipTitle": "Consiglio:",
     "materialTipText": "quale disco e quale corona per quale materiale?",
     "heroCleanerBadge": "Biodegradabile",
-    "heroCleanerChip": "Detergente calcestruzzo · 5 L e 20 L",
-    "heroCleanerPlay": "Guarda il video del detergente per betoniere Décap Béton",
-    "heroCleanerCaption": "Novità: detergente per betoniere Décap Béton, in video",
+    "heroCleanerChip": "Detergente lattime di cemento · 5 L · 20 L",
+    "heroCleanerPlay": "Guarda il video del detergente per lattime di cemento Décap Béton",
+    "heroCleanerCaption": "Novità: detergente per lattime di cemento Décap Béton, in video",
     "heroCleanerAlt5": "Tanica da 5 L di detergente per betoniere ABAX Décap Béton",
     "heroCleanerAlt20": "Tanica da 20 L di detergente per betoniere ABAX Décap Béton",
     "heroCleanerProduct": "Vedi il prodotto",
-    "videoClose": "Chiudi il video"
+    "videoClose": "Chiudi il video",
+    "specialEyebrow": "Da scoprire",
+    "specialTitle": "Prodotti speciali",
+    "specialSubtitle": "Toccate una foto per aprirla nella sua categoria.",
+    "photosCount": "{count, plural, one {# foto} other {# foto}}"
   },
   "LanguageSwitcher": {
     "label": "Lingua"
@@ -663,7 +667,8 @@
       "lang_en": "Inglese",
       "lang_it": "Italiano",
       "labelVideo": "Video (link YouTube o file .mp4), mostrato in cima alla categoria",
-      "labelImages": "Foto, mostrate in galleria nella pagina della categoria"
+      "labelImages": "Foto, mostrate in galleria nella pagina della categoria",
+      "featuredOnHomeCheckbox": "Prodotti speciali: foto e prodotti nella fascia scorrevole della home page"
     },
     "Brands": {
       "title": "Marche",

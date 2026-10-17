@@ -69,15 +69,15 @@ export const categorySchema = z.object({
     .trim()
     .toLowerCase()
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug invalide"),
-  description: z.string().trim().max(500).optional().or(z.literal("")),
+  description: z.string().trim().max(2000).optional().or(z.literal("")),
   // French is the source language; these are the de/en/it overrides —
   // all optional, empty falls back to the French field above.
   nameDe: z.string().trim().max(120).optional().or(z.literal("")),
   nameEn: z.string().trim().max(120).optional().or(z.literal("")),
   nameIt: z.string().trim().max(120).optional().or(z.literal("")),
-  descriptionDe: z.string().trim().max(500).optional().or(z.literal("")),
-  descriptionEn: z.string().trim().max(500).optional().or(z.literal("")),
-  descriptionIt: z.string().trim().max(500).optional().or(z.literal("")),
+  descriptionDe: z.string().trim().max(2000).optional().or(z.literal("")),
+  descriptionEn: z.string().trim().max(2000).optional().or(z.literal("")),
+  descriptionIt: z.string().trim().max(2000).optional().or(z.literal("")),
   imageUrl: mediaUrlSchema.optional().or(z.literal("")),
   videoUrl: mediaUrlSchema.optional().or(z.literal("")),
   images: z.array(mediaUrlSchema).max(60).default([]),
@@ -85,6 +85,7 @@ export const categorySchema = z.object({
   order: z.coerce.number().int().default(0),
   seoTitle: z.string().trim().max(160).optional().or(z.literal("")),
   seoDescription: z.string().trim().max(300).optional().or(z.literal("")),
+  featuredOnHome: z.boolean().default(false),
   isActive: z.boolean().default(true),
 });
 export type CategoryInput = z.infer<typeof categorySchema>;

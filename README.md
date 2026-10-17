@@ -302,11 +302,28 @@ messages/              traductions FR / DE / EN / IT```
   `public/`).
 - **Photos d'une catégorie** : champ « Photos » dans Admin → Catégories.
   Elles s'affichent en galerie sur la page de la catégorie, avec
-  agrandissement au clic. Une
-  catégorie qui a des photos mais aucun produit invite à appeler. Exemple :
-  « Accessoires carottage » (35 photos) et « Accessoires sciage » (2), sous
-  « Accessoires », créées le 16/10/2026 par
-  [scripts/add-accessory-photos.ts](scripts/add-accessory-photos.ts).
+  agrandissement au clic. Une catégorie qui a des photos mais aucun produit
+  invite à appeler. Elle apparaît quand même dans les menus et sur l'accueil,
+  avec « N photos ».
+- **Produits spéciaux** (case dans Admin → Catégories) : les photos et les
+  produits visibles de ces catégories défilent dans la bande sous le haut de
+  l'accueil. 10 éléments au plus par catégorie, en alternant les catégories.
+  Toucher une photo ouvre sa catégorie sur cette photo
+  (`/categories/<slug>?photo=N`), toucher un produit ouvre sa fiche. La bande
+  est mise en pause au survol et ne défile pas si l'appareil demande moins
+  d'animations.
+- **Familles spéciales** :
+  [scripts/add-special-categories.ts](scripts/add-special-categories.ts)
+  `[--apply]` a créé le 17/10/2026 « Aide au carottage » (les 37 photos de
+  l'atelier et la vidéo de carottage) et « Débouchage de tubes »
+  (chasse-carottes hydrauliques et récupérateurs de carotte). Les photos et
+  le texte de « Débouchage de tubes », en 4 langues, viennent des PDF
+  fournisseur `H250067_Betonkerntreiber_2/3/4`. Les PDF eux-mêmes ne sont pas
+  publiés : ils montrent le fournisseur, ses coordonnées et les prix d'achat.
+  Le script a aussi coché « Produits spéciaux » pour ces deux catégories et
+  « Nettoyant béton ». « Aide au carottage » remplace les sous-catégories
+  « Accessoires carottage / sciage » de la veille, et leurs anciennes
+  adresses redirigent vers elle. Le seed rejoue le script.
 - **Base de production** : elle n'est accessible que depuis Railway (pas de
   proxy public). Pour un script ponctuel, l'ajouter temporairement à
   `db:deploy` (simulation, puis `--apply`), puis le retirer. Sinon il

@@ -153,13 +153,17 @@
     "materialTipTitle": "Astuce :",
     "materialTipText": "quel disque et quelle couronne pour quel matériau ?",
     "heroCleanerBadge": "Biodégradable",
-    "heroCleanerChip": "Nettoyant béton · 5 L & 20 L",
-    "heroCleanerPlay": "Voir la vidéo du nettoyant bétonnière Décap Béton",
-    "heroCleanerCaption": "Nouveau : nettoyant bétonnière Décap Béton, en vidéo",
+    "heroCleanerChip": "Nettoyant laitance béton · 5 L · 20 L",
+    "heroCleanerPlay": "Voir la vidéo du nettoyant laitance béton Décap Béton",
+    "heroCleanerCaption": "Nouveau : nettoyant laitance béton, en vidéo",
     "heroCleanerAlt5": "Bidon de 5 L de nettoyant bétonnière ABAX Décap Béton",
     "heroCleanerAlt20": "Bidon de 20 L de nettoyant bétonnière ABAX Décap Béton",
     "heroCleanerProduct": "Voir le produit",
-    "videoClose": "Fermer la vidéo"
+    "videoClose": "Fermer la vidéo",
+    "specialEyebrow": "À découvrir",
+    "specialTitle": "Produits spéciaux",
+    "specialSubtitle": "Touchez une photo pour l'ouvrir dans sa catégorie.",
+    "photosCount": "{count, plural, one {# photo} other {# photos}}"
   },
   "LanguageSwitcher": {
     "label": "Langue"
@@ -663,7 +667,8 @@
       "lang_en": "Anglais",
       "lang_it": "Italien",
       "labelVideo": "Vidéo (lien YouTube ou fichier .mp4), affichée en haut de la catégorie",
-      "labelImages": "Photos, affichées en galerie sur la page de la catégorie"
+      "labelImages": "Photos, affichées en galerie sur la page de la catégorie",
+      "featuredOnHomeCheckbox": "Produits spéciaux : photos et produits dans la bande défilante de l'accueil"
     },
     "Brands": {
       "title": "Marques",

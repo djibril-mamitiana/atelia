@@ -30,6 +30,7 @@ export default async function AdminCategoriesPage() {
             images: c.images,
             parentId: c.parentId,
             order: c.order,
+            featuredOnHome: c.featuredOnHome,
             isActive: c.isActive,
             parent: c.parent,
             productCount: c._count.products,

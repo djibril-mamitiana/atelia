@@ -30,6 +30,7 @@ const CATEGORY_TREE_SELECT = {
   // Visible products only: a family whose products are all hidden (no photo
   // or no price yet) stays out of the menus instead of leading to an empty page.
   _count: { select: { products: { where: { isActive: true } } } },
+  images: true,
 } as const;
 
 export async function getCategoryTree() {
@@ -39,7 +40,8 @@ export async function getCategoryTree() {
     orderBy: { order: "asc" },
     select: CATEGORY_TREE_SELECT,
   });
-  const localized = categories.map((cat) => ({ ...cat, name: localizedField(cat, "name", locale) }));
+  // Only the number of gallery photos travels on (the tree reaches the mobile menu).
+  const localized = categories.map(({ images, ...cat }) => ({ ...cat, photos: images.length, name: localizedField(cat, "name", locale) }));
 
   const byParent = new Map<string | null, typeof localized>();
   for (const cat of localized) {
@@ -47,15 +49,17 @@ export async function getCategoryTree() {
     byParent.set(key, [...(byParent.get(key) ?? []), cat]);
   }
 
-  // `_count.products` is rolled up: a family whose products sit in
-  // sub-categories (e.g. "Disques Ø115–230") still shows its real total in
-  // the menus instead of looking empty.
+  // `_count.products` and `photos` are rolled up: a family whose products sit
+  // in sub-categories (e.g. "Disques Ø115–230") still shows its real total in
+  // the menus instead of looking empty. A family with photos only ("Aide au
+  // carottage") is listed too.
   type Node = (typeof localized)[number] & { children: Node[] };
   function build(parentId: string | null): Node[] {
     return (byParent.get(parentId) ?? []).map((cat) => {
       const children = build(cat.id);
       const products = cat._count.products + children.reduce((sum, c) => sum + c._count.products, 0);
-      return { ...cat, _count: { products }, children };
+      const photos = cat.photos + children.reduce((sum, c) => sum + c.photos, 0);
+      return { ...cat, _count: { products }, photos, children };
     });
   }
 

@@ -27,6 +27,8 @@ type SearchParams = {
   promotion?: string;
   tri?: string;
   page?: string;
+  // From the home "Produits spéciaux" band: opens the gallery on that photo (1-based).
+  photo?: string;
 };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
@@ -81,7 +83,7 @@ export default async function CategoryPage({
             </Link>
           )}
           <h1 className="mt-1 font-display text-3xl text-ink">{category.name}</h1>
-          {category.description && <p className="mt-1.5 max-w-2xl text-sm text-muted">{category.description}</p>}
+          {category.description && <p className="mt-1.5 max-w-2xl whitespace-pre-line text-sm text-muted">{category.description}</p>}
 
           {category.children.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-2">
@@ -108,7 +110,9 @@ export default async function CategoryPage({
         )}
       </div>
 
-      {category.images.length > 0 && <CategoryGallery images={category.images} name={category.name} />}
+      {category.images.length > 0 && (
+        <CategoryGallery images={category.images} name={category.name} initialIndex={sp.photo ? Number(sp.photo) - 1 : null} />
+      )}
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[240px_1fr]">
         <CatalogFilters categories={result.categories} brands={result.brands} priceBounds={result.priceBounds} />
@@ -141,7 +145,7 @@ export default async function CategoryPage({
               ))}
             </div>
           )}
-          <Pagination page={result.page} pageCount={result.pageCount} basePath={`/categories/${slug}`} searchParams={sp} />
+          <Pagination page={result.page} pageCount={result.pageCount} basePath={`/categories/${slug}`} searchParams={{ ...sp, photo: undefined }} />
         </div>
       </div>
     </div>

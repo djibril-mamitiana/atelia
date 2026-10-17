@@ -11,6 +11,7 @@ type Category = {
   name: string;
   slug: string;
   _count: { products: number };
+  photos: number;
   // A few product photos, so visitors see what the family holds.
   previews: { url: string; alt: string }[];
 };
@@ -98,7 +99,7 @@ export async function CategoryBento({ categories }: { categories: Category[] }) 
                       {cat.name}
                     </h3>
                     <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.1em] text-muted transition-colors group-hover:text-steel">
-                      {t("productsCount", { count: cat._count.products })}
+                      {cat._count.products > 0 ? t("productsCount", { count: cat._count.products }) : t("photosCount", { count: cat.photos })}
                     </p>
                   </div>
                 </Link>

@@ -1,17 +1,24 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const noSubscribe = () => () => {};
+
 /** The category's photos (set in the admin); a click opens them full screen. */
-export function CategoryGallery({ images, name }: { images: string[]; name: string }) {
+export function CategoryGallery({ images, name, initialIndex = null }: { images: string[]; name: string; initialIndex?: number | null }) {
   const t = useTranslations("Catalog");
-  const [open, setOpen] = useState<number | null>(null);
+  // Arriving from a photo of the home band: open on it.
+  const [open, setOpen] = useState<number | null>(
+    initialIndex != null && Number.isInteger(initialIndex) && initialIndex >= 0 && initialIndex < images.length ? initialIndex : null
+  );
   const close = useCallback(() => setOpen(null), []);
+  // The viewer is a portal into <body>: browser only (false during SSR and hydration).
+  const inBrowser = useSyncExternalStore(noSubscribe, () => true, () => false);
 
   return (
     <section className="mt-8">
@@ -35,7 +42,7 @@ export function CategoryGallery({ images, name }: { images: string[]; name: stri
           </button>
         ))}
       </div>
-      {open !== null && <Lightbox images={images} name={name} index={open} onIndex={setOpen} onClose={close} />}
+      {open !== null && inBrowser && <Lightbox images={images} name={name} index={open} onIndex={setOpen} onClose={close} />}
     </section>
   );
 }

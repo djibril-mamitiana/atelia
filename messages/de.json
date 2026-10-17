@@ -153,13 +153,17 @@
     "materialTipTitle": "Tipp:",
     "materialTipText": "Welche Scheibe und welche Bohrkrone für welches Material?",
     "heroCleanerBadge": "Biologisch abbaubar",
-    "heroCleanerChip": "Betonreiniger · 5 L & 20 L",
-    "heroCleanerPlay": "Video zum Betonmischer-Reiniger Décap Béton ansehen",
-    "heroCleanerCaption": "Neu: Betonmischer-Reiniger Décap Béton im Video",
+    "heroCleanerChip": "Zementschleier-Entferner · 5 L · 20 L",
+    "heroCleanerPlay": "Video zum Zementschleier-Entferner Décap Béton ansehen",
+    "heroCleanerCaption": "Neu: Zementschleier-Entferner Décap Béton im Video",
     "heroCleanerAlt5": "5-L-Kanister Betonmischer-Reiniger ABAX Décap Béton",
     "heroCleanerAlt20": "20-L-Kanister Betonmischer-Reiniger ABAX Décap Béton",
     "heroCleanerProduct": "Zum Produkt",
-    "videoClose": "Video schließen"
+    "videoClose": "Video schließen",
+    "specialEyebrow": "Entdecken",
+    "specialTitle": "Spezialprodukte",
+    "specialSubtitle": "Tippen Sie auf ein Foto, um es in seiner Kategorie zu öffnen.",
+    "photosCount": "{count, plural, one {# Foto} other {# Fotos}}"
   },
   "LanguageSwitcher": {
     "label": "Sprache"
@@ -663,7 +667,8 @@
       "lang_en": "Englisch",
       "lang_it": "Italienisch",
       "labelVideo": "Video (YouTube-Link oder .mp4-Datei), oben auf der Kategorieseite",
-      "labelImages": "Fotos, als Galerie auf der Kategorieseite"
+      "labelImages": "Fotos, als Galerie auf der Kategorieseite",
+      "featuredOnHomeCheckbox": "Spezialprodukte: Fotos und Produkte im Laufband der Startseite"
     },
     "Brands": {
       "title": "Marken",

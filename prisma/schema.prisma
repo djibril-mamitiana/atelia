@@ -184,6 +184,9 @@ model Category {
   // Photo gallery shown on the category page (addresses, in display order) —
   // e.g. workshop photos of accessories that aren't sold online yet.
   images      String[] @default([])
+  // "Produits spéciaux": the category's photos and products scroll in the
+  // band under the home page hero.
+  featuredOnHome Boolean @default(false)
   parentId    String?
   order       Int      @default(0)
   seoTitle       String?

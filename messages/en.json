@@ -153,13 +153,17 @@
     "materialTipTitle": "Tip:",
     "materialTipText": "which blade and which core bit for which material?",
     "heroCleanerBadge": "Biodegradable",
-    "heroCleanerChip": "Concrete cleaner · 5 L & 20 L",
-    "heroCleanerPlay": "Watch the Décap Béton mixer cleaner video",
-    "heroCleanerCaption": "New: Décap Béton mixer cleaner, on video",
+    "heroCleanerChip": "Concrete laitance cleaner · 5 L · 20 L",
+    "heroCleanerPlay": "Watch the Décap Béton concrete laitance cleaner video",
+    "heroCleanerCaption": "New: Décap Béton concrete laitance cleaner, on video",
     "heroCleanerAlt5": "5 L can of ABAX Décap Béton mixer cleaner",
     "heroCleanerAlt20": "20 L can of ABAX Décap Béton mixer cleaner",
     "heroCleanerProduct": "View product",
-    "videoClose": "Close video"
+    "videoClose": "Close video",
+    "specialEyebrow": "Discover",
+    "specialTitle": "Special products",
+    "specialSubtitle": "Tap a photo to open it in its category.",
+    "photosCount": "{count, plural, one {# photo} other {# photos}}"
   },
   "LanguageSwitcher": {
     "label": "Language"
@@ -663,7 +667,8 @@
       "lang_en": "English",
       "lang_it": "Italian",
       "labelVideo": "Video (YouTube link or .mp4 file), shown at the top of the category",
-      "labelImages": "Photos, shown as a gallery on the category page"
+      "labelImages": "Photos, shown as a gallery on the category page",
+      "featuredOnHomeCheckbox": "Special products: photos and products in the scrolling band on the home page"
     },
     "Brands": {
       "title": "Brands",

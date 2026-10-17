@@ -13,4 +13,8 @@ export const RETIRED_CATEGORY_REDIRECTS: Record<string, string> = {
   "disques-diamant-pierre-naturelle": "disques-scie-table",
   "autres-disques-diamant": "disques-meuleuse-tronconneuse",
   interflex: "disques-meuleuse-tronconneuse",
+  // October 2026: the two photo sub-categories of "Accessoires" became the
+  // "Aide au carottage" family (scripts/lib/special-categories.ts).
+  "accessoires-carottage": "aide-au-carottage",
+  "accessoires-sciage": "aide-au-carottage",
 };

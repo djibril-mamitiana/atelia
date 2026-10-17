@@ -45,6 +45,7 @@ export async function createCategoryAction(input: CategoryInput): Promise<AdminA
       order: parsed.data.order,
       seoTitle: parsed.data.seoTitle || null,
       seoDescription: parsed.data.seoDescription || null,
+      featuredOnHome: parsed.data.featuredOnHome,
       isActive: parsed.data.isActive,
     },
   });
@@ -87,6 +88,7 @@ export async function updateCategoryAction(id: string, input: CategoryInput): Pr
       order: parsed.data.order,
       seoTitle: parsed.data.seoTitle || null,
       seoDescription: parsed.data.seoDescription || null,
+      featuredOnHome: parsed.data.featuredOnHome,
       isActive: parsed.data.isActive,
     },
   });
